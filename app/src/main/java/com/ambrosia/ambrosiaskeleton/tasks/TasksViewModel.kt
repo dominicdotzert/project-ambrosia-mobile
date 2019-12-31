@@ -1,28 +1,40 @@
 package com.ambrosia.ambrosiaskeleton.tasks
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-const val STRING1 = "Do thing 1\nDo thing 2"
-const val STRING2 = "Do thing 3"
+import com.ambrosia.ambrosiaskeleton.network.AmbrosiaApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.lang.Exception
 
 class TasksViewModel : ViewModel() {
 
-    var todoText = MutableLiveData<String>()
-    var completedText = MutableLiveData<String>()
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
-        todoText.value = STRING1
-        completedText.value = STRING2
+    private val _testResponse = MutableLiveData<String>()
+    val todoText: LiveData<String>
+        get() = _testResponse
+
+    fun refreshTodo() {
+        coroutineScope.launch {
+            val testResultDeferred = AmbrosiaApi.retrofitService.myTest()
+            try {
+                val testResponse = testResultDeferred.await()
+                _testResponse.value = testResponse
+            } catch (e: Exception) {
+                _testResponse.value = "Error: ${e.message}"
+                Timber.d(e.message)
+            }
+        }
     }
 
-    fun refresh() {
-        if (todoText.value == STRING1) {
-            todoText.value = STRING2
-            completedText.value = STRING1
-        } else {
-            todoText.value = STRING1
-            completedText.value = STRING2
-        }
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

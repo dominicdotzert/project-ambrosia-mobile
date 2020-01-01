@@ -6,28 +6,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 
 import com.ambrosia.ambrosiaskeleton.R
+import com.ambrosia.ambrosiaskeleton.databinding.FragmentJournalBinding
+import timber.log.Timber
 
 class JournalFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = JournalFragment()
-    }
-
     private lateinit var viewModel: JournalViewModel
+    private lateinit var binding: FragmentJournalBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_journal, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(JournalViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_journal, container, false)
+        binding.lifecycleOwner = this
+        binding.journalViewModel = viewModel
 
+        binding.button.setOnClickListener {
+            Timber.i("Entry value is: ${binding.journalEntry.text}")
+        }
+
+        return binding.root
+    }
 }

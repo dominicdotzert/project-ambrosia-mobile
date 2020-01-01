@@ -6,4 +6,5 @@
     <color name="backgroundLight">#FCF3EC</color>
 
     <color name="mainTextColor">#4E4E56</color>
+    <color name="backgroundGrey">#EBEBEB</color>
 </resources>

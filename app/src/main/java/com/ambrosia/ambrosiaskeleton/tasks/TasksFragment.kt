@@ -20,10 +20,9 @@ class TasksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(TasksViewModel::class.java)
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tasks, container, false)
-        binding.taskViewModel = viewModel
         binding.lifecycleOwner = this
+        binding.taskViewModel = viewModel
         return binding.root
     }
 }

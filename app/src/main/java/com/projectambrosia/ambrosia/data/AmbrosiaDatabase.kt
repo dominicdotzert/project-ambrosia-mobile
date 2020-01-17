@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.database
+package com.projectambrosia.ambrosia.data
 
 import android.content.Context
 import androidx.room.Database

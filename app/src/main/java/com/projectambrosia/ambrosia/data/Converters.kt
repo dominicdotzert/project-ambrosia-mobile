@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.database
+package com.projectambrosia.ambrosia.data
 
 import androidx.room.TypeConverter
 import java.util.*

@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton
+package com.projectambrosia.ambrosia
 
 import org.junit.Test
 

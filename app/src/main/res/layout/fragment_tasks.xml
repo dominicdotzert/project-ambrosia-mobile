@@ -5,7 +5,7 @@
     <data>
         <variable
             name="taskViewModel"
-            type="com.ambrosia.ambrosiaskeleton.tasks.TasksViewModel"/>
+            type="com.projectambrosia.ambrosia.tasks.TasksViewModel"/>
     </data>
 
     <ScrollView

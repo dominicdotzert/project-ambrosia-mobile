@@ -1,11 +1,11 @@
-package com.ambrosia.ambrosiaskeleton
+package com.projectambrosia.ambrosia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.ambrosia.ambrosiaskeleton.databinding.ActivityMainBinding
+import com.projectambrosia.ambrosia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

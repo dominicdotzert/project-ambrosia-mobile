@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.journal
+package com.projectambrosia.ambrosia.journal
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

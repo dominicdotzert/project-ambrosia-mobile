@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.database
+package com.projectambrosia.ambrosia.database
 
 import androidx.room.Dao
 

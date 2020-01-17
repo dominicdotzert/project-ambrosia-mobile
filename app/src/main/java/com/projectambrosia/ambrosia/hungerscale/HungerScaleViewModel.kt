@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.hungerscale
+package com.projectambrosia.ambrosia.hungerscale
 
 import androidx.lifecycle.ViewModel
 

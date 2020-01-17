@@ -1,11 +1,11 @@
-package com.ambrosia.ambrosiaskeleton.database
+package com.projectambrosia.ambrosia.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.ambrosia.ambrosiaskeleton.utilities.DATABASE_NAME
+import com.projectambrosia.ambrosia.utilities.DATABASE_NAME
 
 // TODO: Revisit exportSchema
 @Database(entities = [JournalEntry::class], version = 1, exportSchema = false)

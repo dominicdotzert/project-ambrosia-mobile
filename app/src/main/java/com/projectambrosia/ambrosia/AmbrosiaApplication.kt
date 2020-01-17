@@ -1,9 +1,9 @@
-package com.ambrosia.ambrosiaskeleton
+package com.projectambrosia.ambrosia
 
 import android.app.Application
 import timber.log.Timber
 
-class AmbrosiaSkeletonApplication : Application() {
+class AmbrosiaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())

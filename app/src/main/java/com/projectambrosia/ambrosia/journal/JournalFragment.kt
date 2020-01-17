@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.journal
+package com.projectambrosia.ambrosia.journal
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 
-import com.ambrosia.ambrosiaskeleton.R
-import com.ambrosia.ambrosiaskeleton.databinding.FragmentJournalBinding
+import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.databinding.FragmentJournalBinding
 import timber.log.Timber
 
 class JournalFragment : Fragment() {

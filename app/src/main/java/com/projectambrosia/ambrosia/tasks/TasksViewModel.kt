@@ -1,9 +1,9 @@
-package com.ambrosia.ambrosiaskeleton.tasks
+package com.projectambrosia.ambrosia.tasks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ambrosia.ambrosiaskeleton.network.AmbrosiaApi
+import com.projectambrosia.ambrosia.network.AmbrosiaApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

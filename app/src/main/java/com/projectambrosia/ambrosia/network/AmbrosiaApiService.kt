@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.network
+package com.projectambrosia.ambrosia.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi

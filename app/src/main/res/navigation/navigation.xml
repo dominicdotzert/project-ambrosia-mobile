@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/tasksFragment"
-        android:name="com.ambrosia.ambrosiaskeleton.tasks.TasksFragment"
+        android:name="com.projectambrosia.ambrosia.tasks.TasksFragment"
         android:label="fragment_tasks"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/hungerScaleFragment"
-        android:name="com.ambrosia.ambrosiaskeleton.hungerscale.HungerScaleFragment"
+        android:name="com.projectambrosia.ambrosia.hungerscale.HungerScaleFragment"
         android:label="fragment_hunger_scale"
         tools:layout="@layout/fragment_hunger_scale" />
     <fragment
         android:id="@+id/journalFragment"
-        android:name="com.ambrosia.ambrosiaskeleton.journal.JournalFragment"
+        android:name="com.projectambrosia.ambrosia.journal.JournalFragment"
         android:label="fragment_journal"
         tools:layout="@layout/fragment_journal" />
 </navigation>

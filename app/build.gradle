@@ -14,7 +14,7 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.ambrosia.ambrosiaskeleton"
+        applicationId "com.projectambrosia.ambrosia"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1

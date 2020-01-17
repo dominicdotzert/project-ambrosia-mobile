@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.tasks
+package com.projectambrosia.ambrosia.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.ambrosia.ambrosiaskeleton.R
-import com.ambrosia.ambrosiaskeleton.databinding.FragmentTasksBinding
+import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
 
 class TasksFragment : Fragment() {
 

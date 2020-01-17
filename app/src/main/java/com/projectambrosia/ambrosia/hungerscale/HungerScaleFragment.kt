@@ -1,4 +1,4 @@
-package com.ambrosia.ambrosiaskeleton.hungerscale
+package com.projectambrosia.ambrosia.hungerscale
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.ambrosia.ambrosiaskeleton.R
+import com.projectambrosia.ambrosia.R
 
 class HungerScaleFragment : Fragment() {
 

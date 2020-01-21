@@ -16,5 +16,6 @@ data class Task(
     @ColumnInfo(name = "text") val taskText: String,
     val difficulty: Int,
     val tool: Tool,
-    @ColumnInfo(name = "type") val taskType: Int
+    @ColumnInfo(name = "type") val taskType: Int,
+    @ColumnInfo(name = "is_completed") val isCompleted: Boolean = false
 )

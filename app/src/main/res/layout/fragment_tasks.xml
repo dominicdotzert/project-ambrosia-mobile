@@ -10,124 +10,125 @@
             type="com.projectambrosia.ambrosia.tasks.TasksViewModel" />
     </data>
 
-    <ScrollView
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/left_wall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/right_wall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="@dimen/spacing_regular" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/backgroundOrange"
+            app:layout_constraintBottom_toTopOf="@id/home_divider_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/backgroundOrange"
-                app:layout_constraintBottom_toTopOf="@id/home_divider_line"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/home_heading_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/title_goals"
+            android:textAppearance="@style/TextAppearance.Heading"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/home_heading_goal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_regular"
-                android:text="@string/title_goals"
-                android:textAppearance="@style/TextAppearance.Heading"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/home_text_goal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/placeholder_goal"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_heading_goal" />
 
-            <TextView
-                android:id="@+id/home_text_goal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/placeholder_goal"
-                android:textAppearance="@style/TextAppearance.BodyText"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_heading_goal" />
-
-            <FrameLayout
-                android:id="@+id/home_calendar_placeholder"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_marginTop="@dimen/spacing_regular"
-                android:background="@android:color/white"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_text_goal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="CALENDAR PLACEHOLDER"
-                    android:textColor="@color/mainTextColor" />
-            </FrameLayout>
-
-            <View
-                android:id="@+id/home_divider_line"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacing_regular"
-                android:background="@color/backgroundGrey"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_calendar_placeholder" />
+        <FrameLayout
+            android:id="@+id/home_calendar_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_text_goal">
 
             <TextView
-                android:id="@+id/home_heading_todo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/title_todo"
-                android:textAppearance="@style/TextAppearance.Heading"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_divider_line" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="CALENDAR PLACEHOLDER"
+                android:textColor="@color/mainTextColor" />
+        </FrameLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_todo_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_heading_todo" />
+        <View
+            android:id="@+id/home_divider_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@color/backgroundGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_calendar_placeholder" />
 
-            <TextView
-                android:id="@+id/home_heading_completed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/title_completed"
-                android:textAppearance="@style/TextAppearance.Heading"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_todo_list" />
+        <TextView
+            android:id="@+id/home_heading_todo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_todo"
+            android:textAppearance="@style/TextAppearance.Heading"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_divider_line" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_completed_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="@id/right_wall"
-                app:layout_constraintStart_toStartOf="@id/left_wall"
-                app:layout_constraintTop_toBottomOf="@id/home_heading_completed" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_todo_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_heading_todo" />
+
+        <TextView
+            android:id="@+id/home_heading_completed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_completed"
+            android:textAppearance="@style/TextAppearance.Heading"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_todo_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_completed_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/right_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintTop_toBottomOf="@id/home_heading_completed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    </ScrollView>-->
 </layout>

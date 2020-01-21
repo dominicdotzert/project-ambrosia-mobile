@@ -6,10 +6,6 @@
         <item name="colorPrimary">@color/lightOrange</item>
         <item name="colorPrimaryDark">@color/darkOrange</item>
         <item name="colorAccent">@color/salmon</item>
-
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="fontFamily">@font/lato</item>
-        <item name="android:textColor">@color/mainTextColor</item>
     </style>
 
     <style name="TextAppearance.Heading" parent="TextAppearance.MaterialComponents.Subtitle1">

@@ -7,13 +7,24 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.projectambrosia.ambrosia.utilities.DATABASE_NAME
 
-// TODO: Revisit exportSchema
-@Database(entities = [JournalEntry::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        User::class,
+        Task::class,
+        JournalEntry::class,
+        HSEntry::class
+    ],
+    version = 1,
+    exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AmbrosiaDatabase : RoomDatabase() {
+    abstract val userDao: UserDao
+    abstract val taskDao: TaskDao
+    abstract val journalEntryDao: JournalEntryDao
+    abstract val hsEntryDao: HSEntryDao
+
     companion object {
-        @Volatile
-        private var INSTANCE: AmbrosiaDatabase? = null
+        @Volatile private var INSTANCE: AmbrosiaDatabase? = null
 
         fun getInstance(context: Context): AmbrosiaDatabase {
             return INSTANCE?: synchronized(this) {

@@ -4,15 +4,16 @@ import androidx.room.*
 import java.util.*
 
 @Entity(
-    tableName = "journal_entries",
+    tableName = "hs_entries",
     foreignKeys = [ForeignKey(entity = User::class, parentColumns = ["id"], childColumns = ["user_id"], onDelete = ForeignKey.CASCADE)],
     indices = [Index("user_id")]
 )
-data class JournalEntry(
+data class HSEntry(
     @ColumnInfo(name = "user_id") val userId: Long,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
-    @ColumnInfo(name = "text") val entryText: String,
-    @ColumnInfo(name = "task_id") val taskId: Long?
+    @ColumnInfo(name = "task_id") val taskId: Long,
+    val before: Int,
+    val after: Int
 ) {
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var entryId: Long = 0L
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var hsEntryId: Long = 0L
 }

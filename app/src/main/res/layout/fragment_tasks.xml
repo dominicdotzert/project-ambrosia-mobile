@@ -1,125 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="taskViewModel"
-            type="com.projectambrosia.ambrosia.tasks.TasksViewModel"/>
+            type="com.projectambrosia.ambrosia.tasks.TasksViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/backgroundLight"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="@string/title_goals"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/home_text_goal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:text="@string/placeholder_goal"
-                    android:textColor="@color/mainTextColor" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@android:color/white">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="CALENDAR PLACEHOLDER"
-                        android:textColor="@color/mainTextColor" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/left_wall"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/right_wall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/backgroundOrange"
+                app:layout_constraintBottom_toTopOf="@id/home_divider_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_heading_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/title_goals"
+                android:textAppearance="@style/TextAppearance.Heading"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_text_goal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/placeholder_goal"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_heading_goal" />
+
+            <FrameLayout
+                android:id="@+id/home_calendar_placeholder"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:background="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_text_goal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="@string/title_todo"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tasks_text_todo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/lato"
-                    android:textColor="@color/mainTextColor"
-                    android:text="@{taskViewModel.todoText}"/>
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CALENDAR PLACEHOLDER"
+                    android:textColor="@color/mainTextColor" />
+            </FrameLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="@string/title_completed"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp" />
+            <View
+                android:id="@+id/home_divider_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:background="@color/backgroundGrey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_calendar_placeholder" />
 
-                <TextView
-                    android:id="@+id/tasks_text_completed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/lato"
-                    android:textColor="@color/mainTextColor"/>
+            <TextView
+                android:id="@+id/home_heading_todo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/title_todo"
+                android:textAppearance="@style/TextAppearance.Heading"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_divider_line" />
 
-                <Button
-                    android:id="@+id/tasks_button_refresh"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:onClick="@{() -> taskViewModel.refreshTodo()}"
-                    android:text="Update TODO (myTest)"
-                    android:textAllCaps="false" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_todo_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_heading_todo" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/home_heading_completed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/title_completed"
+                android:textAppearance="@style/TextAppearance.Heading"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_todo_list" />
 
-        </LinearLayout>
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_completed_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/right_wall"
+                app:layout_constraintStart_toStartOf="@id/left_wall"
+                app:layout_constraintTop_toBottomOf="@id/home_heading_completed" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

@@ -26,6 +26,7 @@ abstract class AmbrosiaDatabase : RoomDatabase() {
     companion object {
         @Volatile private var INSTANCE: AmbrosiaDatabase? = null
 
+        // TODO: Add callback to pre-populate database (for debug)
         fun getInstance(context: Context): AmbrosiaDatabase {
             return INSTANCE?: synchronized(this) {
                 return Room.databaseBuilder(

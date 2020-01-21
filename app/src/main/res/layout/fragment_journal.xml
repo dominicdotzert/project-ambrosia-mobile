@@ -27,7 +27,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/lato_italic"
                 android:text="I want to live my life free from the control of food and love my body for the way it is."
                 android:textAllCaps="false"
                 android:textColor="@color/mainTextColor"
@@ -59,10 +58,9 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:fontFamily="@font/lato_bold"
                 android:text="@string/title_journal"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/lightOrange"
                 android:textSize="14sp" />
 
             <EditText
@@ -70,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:background="@color/backgroundLight"
+                android:background="@color/backgroundOrange"
                 android:fontFamily="@font/lato"
                 android:gravity="top"
                 android:hint="Respond to prompt here"

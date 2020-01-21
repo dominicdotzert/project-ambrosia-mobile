@@ -16,22 +16,22 @@ class TasksViewModel : ViewModel() {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _testResponse = MutableLiveData<String>()
-    val todoText: LiveData<String>
-        get() = _testResponse
+//    private val _testResponse = MutableLiveData<String>()
+//    val todoText: LiveData<String>
+//        get() = _testResponse
 
-    fun refreshTodo() {
-        coroutineScope.launch {
-            val testResultDeferred = AmbrosiaApi.retrofitService.myTest()
-            try {
-                val testResponse = testResultDeferred.await()
-                _testResponse.value = testResponse
-            } catch (e: Exception) {
-                _testResponse.value = "Error: ${e.message}"
-                Timber.d(e.message)
-            }
-        }
-    }
+//    fun refreshTodo() {
+//        coroutineScope.launch {
+//            val testResultDeferred = AmbrosiaApi.retrofitService.myTest()
+//            try {
+//                val testResponse = testResultDeferred.await()
+//                _testResponse.value = testResponse
+//            } catch (e: Exception) {
+//                _testResponse.value = "Error: ${e.message}"
+//                Timber.d(e.message)
+//            }
+//        }
+//    }
 
     override fun onCleared() {
         super.onCleared()

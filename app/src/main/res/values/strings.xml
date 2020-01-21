@@ -5,7 +5,7 @@
     <string name="title_journal">Journal</string>
     <string name="title_hunger_scale">Hunger Scale</string>
 
-    <string name="title_goals">Goals</string>
+    <string name="title_goals">Goal</string>
     <string name="placeholder_goal">I want to improve my ability to honour my hunger and satiety.</string>
     <string name="title_todo">TO-DO</string>
     <string name="title_completed">Completed</string>

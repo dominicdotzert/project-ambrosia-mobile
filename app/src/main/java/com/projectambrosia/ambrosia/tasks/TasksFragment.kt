@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.Task
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
@@ -45,9 +46,15 @@ class TasksFragment : Fragment() {
     private fun navigateToTask(task: Task?) {
         task?.let {
             when (task.tool) {
-                Tool.JOURNAL -> Toast.makeText(activity, "Journal Tool", Toast.LENGTH_SHORT).show()
-                Tool.HS -> Toast.makeText(activity, "Hunger Scale Tool", Toast.LENGTH_SHORT).show()
-                Tool.IEAS -> Toast.makeText(activity, "IEAS", Toast.LENGTH_SHORT).show()
+                Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
+                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
+                Tool.IEAS -> {
+                    Toast.makeText(activity, "IEAS", Toast.LENGTH_SHORT).show()
+
+
+
+
+                }
                 Tool.OTHER -> Toast.makeText(activity, "Other", Toast.LENGTH_SHORT).show()
             }
         }

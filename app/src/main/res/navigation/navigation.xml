@@ -38,6 +38,14 @@
         <fragment
             android:id="@+id/IEASQuestionsFragment"
             android:name="com.projectambrosia.ambrosia.ieas.IEASQuestionsFragment"
-            android:label="IEASQuestionsFragment" />
+            android:label="IEASQuestionsFragment" >
+            <action
+                android:id="@+id/action_IEASQuestionsFragment_to_IEASResultsFragment"
+                app:destination="@id/IEASResultsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/IEASResultsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.IEASResultsFragment"
+            android:label="IEASResultsFragment" />
     </navigation>
 </navigation>

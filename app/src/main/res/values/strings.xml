@@ -20,4 +20,27 @@
 
     <!-- IEAS Questions -->
     <string name="ieas_question_1">I try to avoid certain foods high in fat, carbs, or calories.</string>
+    <string name="ieas_question_2">I have forbidden foods that I don’t allow myself to eat. </string>
+    <string name="ieas_question_3">I get mad at myself for eating something unhealthy.</string>
+    <string name="ieas_question_4">If I am craving a certain food, I allow myself to have it.</string>
+    <string name="ieas_question_5">I allow myself to eat what food I desire at the moment.</string>
+    <string name="ieas_question_6">I do NOT follow eating rules or dieting plans that dictate what, when, and/or how much to eat.</string>
+    <string name="ieas_question_7">I find myself eating when I’m feeling emotional (e.g., anxious, depressed, sad), even when I’m not physically hungry.</string>
+    <string name="ieas_question_8">I find myself eating when I am lonely, even when I’m not physically hungry.</string>
+    <string name="ieas_question_9">I use food to help me soothe my negative emotions.</string>
+    <string name="ieas_question_10">I find myself eating when I am stressed out, even when I’m not physically hungry.</string>
+    <string name="ieas_question_11">I am able to cope with my negative emotions (e.g., anxiety, sadness) without turning to food for comfort. </string>
+    <string name="ieas_question_12">When I am bored, I do NOT eat just for something to do.</string>
+    <string name="ieas_question_13">When I am lonely, I do NOT turn to food for comfort.</string>
+    <string name="ieas_question_14">I find other ways to cope with stress and anxiety than by eating.</string>
+    <string name="ieas_question_15">I trust my body to tell me when to eat.</string>
+    <string name="ieas_question_16">I trust my body to tell me what to eat.</string>
+    <string name="ieas_question_17">I trust my body to tell me how much to eat.</string>
+    <string name="ieas_question_18">I rely on my hunger signals to tell me when to eat.</string>
+    <string name="ieas_question_19">I rely on my fullness (satiety) signals to tell me when to stop eating.</string>
+    <string name="ieas_question_20">I trust my body to tell me when to stop eating.</string>
+    <string name="ieas_question_21">Most of the time, I desire to eat nutritious foods.</string>
+    <string name="ieas_question_22">I mostly eat foods that make my body perform efficiently (well).</string>
+    <string name="ieas_question_23">I mostly eat foods that give my body energy and stamina.</string>
+
 </resources>

@@ -7,24 +7,73 @@
 
         <variable
             name="viewModel"
-            type="com.projectambrosia.ambrosia.ieas.IEASSharedViewModel" />
+            type="com.projectambrosia.ambrosia.ieas.IEASQuestionsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroundOrange"
         tools:context=".ieas.IEASQuestionsFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_regular"
-            android:gravity="center"
-            android:text="@{viewModel.text}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall_ieas_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall_ieas_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+        <ProgressBar
+            android:id="@+id/ieas_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:progress="@{viewModel.progress}"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ieas_questions_instruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/ieas_questions_instructions"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions"
+            app:layout_constraintTop_toBottomOf="@id/ieas_progress_bar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ieas_questions"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/ieas_next_button"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions"
+            app:layout_constraintTop_toBottomOf="@id/ieas_questions_instruction" />
+
+        <Button
+            android:id="@+id/ieas_next_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:onClick="@{() -> viewModel.onNext()}"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,12 +1,12 @@
 package com.projectambrosia.ambrosia.journal
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.FragmentJournalBinding
@@ -14,7 +14,8 @@ import timber.log.Timber
 
 class JournalFragment : Fragment() {
 
-    private lateinit var viewModel: JournalViewModel
+    private val viewModel: JournalViewModel by viewModels()
+
     private lateinit var binding: FragmentJournalBinding
 
     override fun onCreateView(
@@ -22,7 +23,6 @@ class JournalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = ViewModelProviders.of(this).get(JournalViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_journal, container, false)
         binding.lifecycleOwner = this
         binding.journalViewModel = viewModel

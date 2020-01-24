@@ -5,29 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.Task
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
 import com.projectambrosia.ambrosia.utilities.Tool
-import timber.log.Timber
 
 class TasksFragment : Fragment() {
 
-    private lateinit var tasksViewModel: TasksViewModel
+    private val tasksViewModel: TasksViewModel by viewModels()
     private lateinit var binding: FragmentTasksBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        tasksViewModel = ViewModelProviders.of(this).get(TasksViewModel::class.java)
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tasks, container, false)
+        binding = FragmentTasksBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.taskViewModel = tasksViewModel
 
@@ -48,13 +45,7 @@ class TasksFragment : Fragment() {
             when (task.tool) {
                 Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
                 Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-                Tool.IEAS -> {
-                    Toast.makeText(activity, "IEAS", Toast.LENGTH_SHORT).show()
-
-
-
-
-                }
+                Tool.IEAS ->Toast.makeText(activity, "IEAS", Toast.LENGTH_SHORT).show()
                 Tool.OTHER -> Toast.makeText(activity, "Other", Toast.LENGTH_SHORT).show()
             }
         }

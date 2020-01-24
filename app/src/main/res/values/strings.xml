@@ -9,4 +9,15 @@
     <string name="placeholder_goal">I want to improve my ability to honour my hunger and satiety.</string>
     <string name="title_todo">TO-DO</string>
     <string name="title_completed">Completed</string>
+
+    <!-- IEAS Strings -->
+    <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>
+    <string name="ieas_full_instructions_1">This quiz will assess whether you are an Intuitive Eater, or perhaps where you might need some work.</string>
+    <string name="ieas_full_instructions_2">There will be 4 sections, and you will answer a total of 23 questions.</string>
+    <string name="lets_go">Let\'s go</string>
+    <string name="ieas_questions_instructions">Please check off all that apply</string>
+    <string name="next">Next</string>
+
+    <!-- IEAS Questions -->
+    <string name="ieas_question_1">I try to avoid certain foods high in fat, carbs, or calories.</string>
 </resources>

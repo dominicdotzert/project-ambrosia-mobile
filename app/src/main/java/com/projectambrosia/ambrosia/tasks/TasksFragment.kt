@@ -40,12 +40,13 @@ class TasksFragment : Fragment() {
         return binding.root
     }
 
+    // TODO: Update to use events to trigger navigation instead
     private fun navigateToTask(task: Task?) {
         task?.let {
             when (task.tool) {
                 Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
                 Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-                Tool.IEAS ->Toast.makeText(activity, "IEAS", Toast.LENGTH_SHORT).show()
+                Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment())
                 Tool.OTHER -> Toast.makeText(activity, "Other", Toast.LENGTH_SHORT).show()
             }
         }

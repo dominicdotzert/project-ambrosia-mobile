@@ -14,11 +14,31 @@
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
     </style>
-    
+
     <style name="TextAppearance.BodyText" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
         <item name="android:textColor">@color/mainTextColor</item>
+    </style>
+
+    <style name="TextAppearance.LargeBodyText" parent="TextAppearance.BodyText">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.IEASHeader" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="AmbrosiaButton">
+        <item name="android:background">@color/lightOrange</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

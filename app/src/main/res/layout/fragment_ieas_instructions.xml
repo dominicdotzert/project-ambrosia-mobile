@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundOrange"
+        tools:context=".ieas.IEASInstructionsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall_ieas_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall_ieas_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+        <TextView
+            android:id="@+id/ieas_instructions_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginEnd="@dimen/spacing_regular"
+            android:text="@string/ieas_full_name"
+            android:textAppearance="@style/TextAppearance.IEASHeader"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ieas_instructions_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/ieas_full_instructions_1"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
+            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_title"
+            app:layout_goneMarginTop="@dimen/spacing_regular" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/ieas_full_instructions_2"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
+            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_1" />
+
+        <Button
+            android:id="@+id/ieas_start_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:text="@string/lets_go"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
+            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

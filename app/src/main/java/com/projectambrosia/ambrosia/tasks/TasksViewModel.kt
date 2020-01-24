@@ -27,7 +27,8 @@ class TasksViewModel : ViewModel() {
         _todoList.value = listOf(
             Task(1, 1, Calendar.getInstance(), "Go to the journal", 1, Tool.JOURNAL, 1),
             Task(2, 1, Calendar.getInstance(), "Go to the hunger scale", 1, Tool.HS, 1),
-            Task(3, 1, Calendar.getInstance(), "Go to the IEAS", 1, Tool.IEAS, 1)
+            Task(3, 1, Calendar.getInstance(), "Go to the IEAS", 1, Tool.IEAS, 1),
+            Task(4, 1, Calendar.getInstance(), "Do something unrelated to our tools and also that is really long and will require text to wrap", 1, Tool.OTHER, 1)
         )
     }
 

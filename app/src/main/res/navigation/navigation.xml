@@ -9,7 +9,11 @@
         android:id="@+id/tasksFragment"
         android:name="com.projectambrosia.ambrosia.tasks.TasksFragment"
         android:label="fragment_tasks"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks" >
+        <action
+            android:id="@+id/action_tasksFragment_to_IEASInstructionsFragment"
+            app:destination="@id/ieasGraph" />
+    </fragment>
     <fragment
         android:id="@+id/hungerScaleFragment"
         android:name="com.projectambrosia.ambrosia.hungerscale.HungerScaleFragment"
@@ -20,4 +24,20 @@
         android:name="com.projectambrosia.ambrosia.journal.JournalFragment"
         android:label="fragment_journal"
         tools:layout="@layout/fragment_journal" />
+    <navigation
+        android:id="@+id/ieasGraph"
+        app:startDestination="@id/IEASInstructionsFragment" >
+        <fragment
+            android:id="@+id/IEASInstructionsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.IEASInstructionsFragment"
+            android:label="IEASInstructionsFragment">
+            <action
+                android:id="@+id/action_IEASInstructionsFragment_to_IEASQuestionsFragment"
+                app:destination="@id/IEASQuestionsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/IEASQuestionsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.IEASQuestionsFragment"
+            android:label="IEASQuestionsFragment" />
+    </navigation>
 </navigation>

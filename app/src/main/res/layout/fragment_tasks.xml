@@ -19,14 +19,14 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/left_wall"
+            android:id="@+id/left_wall_tasks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="@dimen/spacing_regular" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/right_wall"
+            android:id="@+id/right_wall_tasks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -48,7 +48,7 @@
             android:layout_marginTop="@dimen/spacing_regular"
             android:text="@string/title_goals"
             android:textAppearance="@style/TextAppearance.Heading"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -58,8 +58,8 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/placeholder_goal"
             android:textAppearance="@style/TextAppearance.BodyText"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_heading_goal" />
 
         <FrameLayout
@@ -68,8 +68,8 @@
             android:layout_height="46dp"
             android:layout_marginTop="@dimen/spacing_regular"
             android:background="@android:color/white"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_text_goal">
 
             <TextView
@@ -97,8 +97,8 @@
             android:layout_marginTop="24dp"
             android:text="@string/title_todo"
             android:textAppearance="@style/TextAppearance.Heading"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_divider_line" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -106,8 +106,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_heading_todo" />
 
         <TextView
@@ -117,8 +117,8 @@
             android:layout_marginTop="24dp"
             android:text="@string/title_completed"
             android:textAppearance="@style/TextAppearance.Heading"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_todo_list" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -126,8 +126,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/right_wall"
-            app:layout_constraintStart_toStartOf="@id/left_wall"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+            app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
             app:layout_constraintTop_toBottomOf="@id/home_heading_completed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--    </ScrollView>-->

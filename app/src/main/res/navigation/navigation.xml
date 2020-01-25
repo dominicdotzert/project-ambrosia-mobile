@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_tasks" >
         <action
             android:id="@+id/action_tasksFragment_to_IEASInstructionsFragment"
-            app:destination="@id/ieasGraph" />
+            app:destination="@id/ieasGraph"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popExitAnim="@anim/slide_out_bottom" />
     </fragment>
     <fragment
         android:id="@+id/hungerScaleFragment"
@@ -33,7 +36,10 @@
             android:label="IEASInstructionsFragment">
             <action
                 android:id="@+id/action_IEASInstructionsFragment_to_IEASQuestionsFragment"
-                app:destination="@id/IEASQuestionsFragment" />
+                app:destination="@id/IEASQuestionsFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
         </fragment>
         <fragment
             android:id="@+id/IEASQuestionsFragment"
@@ -41,7 +47,10 @@
             android:label="IEASQuestionsFragment" >
             <action
                 android:id="@+id/action_IEASQuestionsFragment_to_IEASResultsFragment"
-                app:destination="@id/IEASResultsFragment" />
+                app:destination="@id/IEASResultsFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
         </fragment>
         <fragment
             android:id="@+id/IEASResultsFragment"

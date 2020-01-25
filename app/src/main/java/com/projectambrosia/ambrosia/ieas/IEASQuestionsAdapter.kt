@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.projectambrosia.ambrosia.databinding.ListItemIeasQuestionBinding
 
+// TODO: Look into improving the ListAdapter item animations (i.e. slide_in, slide_out)
 class IEASQuestionsAdapter(private val questionListener: IEASQuestionClickListener) : ListAdapter<IEASQuestion, IEASQuestionsAdapter.ViewHolder>(IEASQuestionDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

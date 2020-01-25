@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
             android:progress="25"
-            android:scaleY="1.5"
+            android:progressDrawable="@drawable/progress_bar_rounded_corners"
+            android:scaleY="0.6"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
             app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions"
             app:layout_constraintTop_toTopOf="parent" />

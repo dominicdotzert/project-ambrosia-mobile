@@ -8,3 +8,7 @@ fun NavDestination.hasBottomNavBar(): Boolean {
             this.id == R.id.journalFragment ||
             this.id == R.id.hungerScaleFragment
 }
+
+class SupportNavigateUpCallback(val clickListener: () -> Unit) {
+    fun onNavigateUp() = clickListener()
+}

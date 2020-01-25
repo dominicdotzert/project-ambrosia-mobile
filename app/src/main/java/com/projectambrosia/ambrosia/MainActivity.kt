@@ -9,11 +9,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.projectambrosia.ambrosia.databinding.ActivityMainBinding
+import com.projectambrosia.ambrosia.utilities.SupportNavigateUpCallback
 import com.projectambrosia.ambrosia.utilities.hasBottomNavBar
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    var supportNavigateUpCallback: SupportNavigateUpCallback? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +45,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp()
+        return if (supportNavigateUpCallback != null) {
+            supportNavigateUpCallback?.onNavigateUp()
+            true
+        } else {
+            val navController = this.findNavController(R.id.nav_host_fragment)
+            navController.navigateUp()
+        }
     }
 }

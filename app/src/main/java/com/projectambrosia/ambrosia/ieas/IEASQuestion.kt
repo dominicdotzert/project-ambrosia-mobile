@@ -3,7 +3,7 @@ package com.projectambrosia.ambrosia.ieas
 import android.content.Context
 import com.projectambrosia.ambrosia.R
 
-class IEASQuestion private constructor(val question: String, val questionSet: Int, var value: Boolean = false) {
+class IEASQuestion private constructor(val question: String, val questionSet: Int, var selected: Boolean = false) {
     companion object {
         fun get(context: Context): List<IEASQuestion> {
             return listOf(

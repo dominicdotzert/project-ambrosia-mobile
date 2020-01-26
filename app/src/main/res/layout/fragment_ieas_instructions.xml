@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ieas_instructions_1"
+            android:id="@+id/ieas_results_instructions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
@@ -44,8 +44,7 @@
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
             app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
-            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_title"
-            app:layout_goneMarginTop="@dimen/spacing_regular" />
+            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_title"/>
 
         <TextView
             android:layout_width="0dp"
@@ -55,7 +54,7 @@
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
             app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
-            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_1" />
+            app:layout_constraintTop_toBottomOf="@id/ieas_results_instructions" />
 
         <Button
             android:id="@+id/ieas_start_button"

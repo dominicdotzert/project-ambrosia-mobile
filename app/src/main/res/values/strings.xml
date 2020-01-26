@@ -17,6 +17,14 @@
     <string name="lets_go">Let\'s go</string>
     <string name="ieas_questions_instructions">Please check off all that apply</string>
     <string name="next">Next</string>
+    <string name="results">Results</string>
+    <string name="results_explanation">Low percentages suggest areas that might need more work :)</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="ieas_percentage"><![CDATA[%d<small>%%</small>]]></string>
+    <string name="ieas_category_1">Unconditional permission to eat</string>
+    <string name="ieas_category_2">Eating for physical rather than emotional reasons</string>
+    <string name="ieas_category_3">Reliance on internal hunger and satiety cues</string>
+    <string name="ieas_category_4">Body-food choice congruence</string>
 
     <!-- IEAS Questions -->
     <string name="ieas_question_1">I try to avoid certain foods high in fat, carbs, or calories.</string>

@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.projectambrosia.ambrosia.data.IEASRepository
 import com.projectambrosia.ambrosia.data.TasksRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +16,7 @@ import kotlin.math.roundToInt
 class IEASResultsViewModel(
     private val applicationContext: Application,
     tasksRepository: TasksRepository,
+    ieasRepository: IEASRepository,
     taskId: Long,
     responses: BooleanArray
 ) : AndroidViewModel(applicationContext) {
@@ -47,9 +49,10 @@ class IEASResultsViewModel(
     init {
         viewModelScope.launch {
             tasksRepository.markTaskAsComplete(taskId)
-        }
 
-        saveResults()
+            // TODO: Update to use proper UserId
+            ieasRepository.saveResults(1, taskId, responses)
+        }
     }
 
     fun navigateHome() {
@@ -59,10 +62,6 @@ class IEASResultsViewModel(
 
     fun onDoneNavigating() {
         _navigateToHome.value = false
-    }
-
-    private fun saveResults() {
-        // TODO: Implement Save IEAS Results
     }
 
     private fun getPercentageYes(responsesInCategory: BooleanArray): Int {

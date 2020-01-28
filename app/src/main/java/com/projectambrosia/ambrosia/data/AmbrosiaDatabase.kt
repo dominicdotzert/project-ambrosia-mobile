@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
         User::class,
         Task::class,
         JournalEntry::class,
-        HSEntry::class
+        HSEntry::class,
+        IEASResults::class
     ],
     version = 1,
     exportSchema = false
@@ -27,6 +28,7 @@ abstract class AmbrosiaDatabase : RoomDatabase() {
     abstract val taskDao: TaskDao
     abstract val journalEntryDao: JournalEntryDao
     abstract val hsEntryDao: HSEntryDao
+    abstract val ieasResultsDao: IEASResultsDao
 
     companion object {
         @Volatile

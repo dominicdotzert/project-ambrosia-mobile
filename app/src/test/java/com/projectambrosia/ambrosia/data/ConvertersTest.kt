@@ -42,4 +42,16 @@ class ConvertersTest {
         assertThat(Converters().toTool(2), equalTo(Tool.HS))
         assertThat(Converters().toTool(3), equalTo(Tool.IEAS))
     }
+
+    @Test
+    fun fromBooleanArray() {
+        assertThat(Converters().fromBooleanArray(booleanArrayOf(true, false, false)), equalTo("100"))
+        assertThat(Converters().fromBooleanArray(BooleanArray(0)), equalTo(""))
+    }
+
+    @Test
+    fun toBooleanArray() {
+        assertThat(Converters().toBooleanArray("100"), equalTo(booleanArrayOf(true, false, false)))
+        assertThat(Converters().toBooleanArray(""), equalTo(BooleanArray(0)))
+    }
 }

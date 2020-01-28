@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
+import com.projectambrosia.ambrosia.data.IEASRepository
 import com.projectambrosia.ambrosia.data.TasksRepository
 import java.lang.IllegalArgumentException
 
@@ -17,9 +18,11 @@ class IEASResultsViewModelFactory(
         if (modelClass.isAssignableFrom(IEASResultsViewModel::class.java)) {
             val database = AmbrosiaDatabase.getInstance(application)
             val tasksRepository = TasksRepository(database.taskDao)
+            val ieasRepository = IEASRepository(database.ieasResultsDao)
             return IEASResultsViewModel(
                 application,
                 tasksRepository,
+                ieasRepository,
                 taskId,
                 responses
             ) as T

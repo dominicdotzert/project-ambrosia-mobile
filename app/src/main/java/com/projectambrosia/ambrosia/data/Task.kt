@@ -17,5 +17,5 @@ data class Task(
     val difficulty: Int,
     val tool: Tool,
     @ColumnInfo(name = "type") val taskType: Int,
-    @ColumnInfo(name = "is_completed") val isCompleted: Boolean = false
+    @ColumnInfo(name = "is_completed") val isCompleted: Boolean = false // TODO: Convert to timestamp: Long?
 )

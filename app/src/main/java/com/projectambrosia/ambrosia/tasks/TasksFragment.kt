@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -15,12 +14,14 @@ import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
 import com.projectambrosia.ambrosia.utilities.Tool
 
 class TasksFragment : Fragment() {
+
+    private val tasksViewModel: TasksViewModel by viewModels { TasksViewModelFactory(requireActivity().application) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val tasksViewModel: TasksViewModel by viewModels { TasksViewModelFactory(requireActivity().application) }
         val binding = FragmentTasksBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.taskViewModel = tasksViewModel
@@ -55,7 +56,7 @@ class TasksFragment : Fragment() {
                 Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
                 Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
                 Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
-                Tool.OTHER -> Toast.makeText(activity, "Other", Toast.LENGTH_SHORT).show()
+                Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
             }
         }
     }

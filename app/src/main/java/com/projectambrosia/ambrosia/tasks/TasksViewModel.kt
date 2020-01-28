@@ -23,8 +23,13 @@ class TasksViewModel(
         it.filter { task -> !task.isCompleted }
     }
 
+    // TODO: Order by timestamp
     val completedList = Transformations.map(tasks) {
         it.filter { task -> task.isCompleted }
+    }
+
+    fun markTaskAsComplete(taskId: Long) = viewModelScope.launch {
+        tasksRepository.markTaskAsComplete(taskId)
     }
 
     fun markTaskAsIncomplete(taskId: Long) = viewModelScope.launch {

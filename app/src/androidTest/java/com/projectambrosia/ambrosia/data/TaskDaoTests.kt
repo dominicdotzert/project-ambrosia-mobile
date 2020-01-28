@@ -31,9 +31,9 @@ class TaskDaoTests {
     private val dailyTask2 = Task(2, user.userId, today, "task 2", 1, Tool.HS, 1)
     private val dailyTask3 = Task(3, user.userId, today, "task 3", 1, Tool.OTHER, 1)
 
-    private val completedTask1 = Task(4, user.userId, yesterday, "completed task 1", 1, Tool.JOURNAL, 1)
-    private val completedTask2 = Task(5, user.userId, yesterday, "completed task 2", 1, Tool.HS, 1)
-    private val completedTask3 = Task(6, user.userId, yesterday, "completed task 3", 1, Tool.OTHER, 1)
+    private val completedTask1 = Task(4, user.userId, yesterday, "completed task 1", 1, Tool.JOURNAL, 1, true)
+    private val completedTask2 = Task(5, user.userId, yesterday, "completed task 2", 1, Tool.HS, 1, true)
+    private val completedTask3 = Task(6, user.userId, yesterday, "completed task 3", 1, Tool.OTHER, 1, true)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -69,7 +69,6 @@ class TaskDaoTests {
 
     @Test
     fun testGetTasksSince() {
-
         val dailyTasks = getValue(taskDao.getTasksSince(1510000000000))
 
         assertThat(dailyTasks.size, equalTo(3))
@@ -90,6 +89,12 @@ class TaskDaoTests {
         taskDao.updateTaskIsCompleted(1)
         val tasks = getValue(taskDao.getTasks())
         assertThat(tasks[0].isCompleted, equalTo(true))
-        assertThat(tasks[1].isCompleted, equalTo(false))
+    }
+
+    @Test
+    fun testUpdateTaskIsIncomplete() {
+        taskDao.updateTaskIsIncomplete(4)
+        val tasks = getValue(taskDao.getTasks())
+        assertThat(tasks[3].isCompleted, equalTo(false))
     }
 }

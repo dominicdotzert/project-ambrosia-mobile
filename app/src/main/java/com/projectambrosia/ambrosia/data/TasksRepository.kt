@@ -11,4 +11,8 @@ class TasksRepository(private val taskDao: TaskDao) {
         // TODO: Add network call
         taskDao.updateTaskIsCompleted(taskId)
     }
+
+    suspend fun markTaskAsIncomplete(taskId: Long) = withContext(Dispatchers.IO) {
+        taskDao.updateTaskIsIncomplete(taskId)
+    }
 }

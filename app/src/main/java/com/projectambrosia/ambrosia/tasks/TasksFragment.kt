@@ -25,13 +25,24 @@ class TasksFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.taskViewModel = tasksViewModel
 
-        val adapter = TaskAdapter(TaskListener { task ->
+        val todoAdapter = TaskAdapter(TaskListener { task ->
             navigateToTask(task)
         })
-        binding.homeTodoList.adapter = adapter
+        binding.homeTodoList.adapter = todoAdapter
 
         tasksViewModel.todoList.observe(this, Observer {tasks ->
-            adapter.submitList(tasks)
+            todoAdapter.submitList(tasks)
+        })
+
+        val completedAdapter = TaskAdapter(TaskListener { task ->
+            task?.let {
+                tasksViewModel.markTaskAsIncomplete(task.taskId)
+            }
+        })
+        binding.homeCompletedList.adapter = completedAdapter
+
+        tasksViewModel.completedList.observe(this, Observer { tasks ->
+            completedAdapter.submitList(tasks)
         })
 
         return binding.root

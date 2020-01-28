@@ -2,11 +2,37 @@ package com.projectambrosia.ambrosia.tasks
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.Transformations
 import com.projectambrosia.ambrosia.data.TasksRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class TasksViewModel(
     application: Application,
-    tasksRepository: TasksRepository
+    private val tasksRepository: TasksRepository
 ) : AndroidViewModel(application) {
-    val todoList = tasksRepository.getTasks()
+
+    private val viewModelJob = Job()
+    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    private val tasks = tasksRepository.getTasks()
+
+    val todoList = Transformations.map(tasks) {
+        it.filter { task -> !task.isCompleted }
+    }
+
+    val completedList = Transformations.map(tasks) {
+        it.filter { task -> task.isCompleted }
+    }
+
+    fun markTaskAsIncomplete(taskId: Long) = viewModelScope.launch {
+        tasksRepository.markTaskAsIncomplete(taskId)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 }

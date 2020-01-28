@@ -95,7 +95,7 @@
                     android:id="@+id/ieas_results_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
+                    android:layout_marginTop="@dimen/spacing_small"
                     app:category="@string/ieas_category_2"
                     app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_results_inner"
                     app:layout_constraintStart_toStartOf="@id/left_wall_ieas_results_inner"
@@ -106,7 +106,7 @@
                     android:id="@+id/ieas_results_3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
+                    android:layout_marginTop="@dimen/spacing_small"
                     app:category="@string/ieas_category_3"
                     app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_results_inner"
                     app:layout_constraintStart_toStartOf="@id/left_wall_ieas_results_inner"
@@ -114,14 +114,22 @@
                     app:percentage="@{viewModel.percentage3}" />
 
                 <com.projectambrosia.ambrosia.ieas.IEASResultView
+                    android:id="@+id/ieas_results_4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
+                    android:layout_marginTop="@dimen/spacing_small"
                     app:category="@string/ieas_category_4"
                     app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_results_inner"
                     app:layout_constraintStart_toStartOf="@id/left_wall_ieas_results_inner"
                     app:layout_constraintTop_toBottomOf="@id/ieas_results_3"
                     app:percentage="@{viewModel.percentage4}" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ieas_results_4"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
@@ -132,6 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height"
             android:layout_marginBottom="@dimen/spacing_regular"
+            android:onClick="@{() -> viewModel.navigateHome()}"
             android:text="@string/back_to_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_results_outer"

@@ -46,7 +46,7 @@ class TasksFragment : Fragment() {
             when (task.tool) {
                 Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
                 Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-                Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment())
+                Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
                 Tool.OTHER -> Toast.makeText(activity, "Other", Toast.LENGTH_SHORT).show()
             }
         }

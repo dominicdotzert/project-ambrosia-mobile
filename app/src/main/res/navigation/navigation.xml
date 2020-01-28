@@ -15,6 +15,7 @@
             app:destination="@id/ieasGraph"
             app:enterAnim="@anim/slide_in_bottom"
             app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/slide_out_bottom" />
     </fragment>
     <fragment
@@ -30,6 +31,9 @@
     <navigation
         android:id="@+id/ieasGraph"
         app:startDestination="@id/IEASInstructionsFragment" >
+        <argument
+            android:name="taskId"
+            app:argType="long" />
         <fragment
             android:id="@+id/IEASInstructionsFragment"
             android:name="com.projectambrosia.ambrosia.ieas.IEASInstructionsFragment"
@@ -40,6 +44,9 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <argument
+                android:name="taskId"
+                app:argType="long" />
         </fragment>
         <fragment
             android:id="@+id/IEASQuestionsFragment"
@@ -51,10 +58,20 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <argument
+                android:name="taskId"
+                app:argType="long" />
         </fragment>
         <fragment
             android:id="@+id/IEASResultsFragment"
             android:name="com.projectambrosia.ambrosia.ieas.IEASResultsFragment"
-            android:label="IEASResultsFragment" />
+            android:label="IEASResultsFragment" >
+            <argument
+                android:name="taskId"
+                app:argType="long" />
+            <argument
+                android:name="responses"
+                app:argType="boolean[]" />
+        </fragment>
     </navigation>
 </navigation>

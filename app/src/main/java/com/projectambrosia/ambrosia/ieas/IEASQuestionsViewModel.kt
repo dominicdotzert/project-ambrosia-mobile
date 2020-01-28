@@ -53,4 +53,8 @@ class IEASQuestionsViewModel(application: Application) : AndroidViewModel(applic
     fun doneNavigatingBack() {
         _navigateBack.value = false
     }
+
+    fun getResponsesArray(): BooleanArray {
+        return questions.value!!.map { it.selected }.toBooleanArray()
+    }
 }

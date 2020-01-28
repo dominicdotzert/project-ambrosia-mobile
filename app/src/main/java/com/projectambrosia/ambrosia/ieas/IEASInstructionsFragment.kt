@@ -2,13 +2,12 @@ package com.projectambrosia.ambrosia.ieas
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
-import com.projectambrosia.ambrosia.R
+import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.databinding.FragmentIeasInstructionsBinding
 
 class IEASInstructionsFragment : Fragment() {
@@ -20,8 +19,11 @@ class IEASInstructionsFragment : Fragment() {
     ): View? {
         val binding = FragmentIeasInstructionsBinding.inflate(inflater, container, false)
 
+        val args: IEASInstructionsFragmentArgs by navArgs()
+        val taskId = args.taskId
+
         binding.ieasStartButton.setOnClickListener {
-            this.findNavController().navigate(IEASInstructionsFragmentDirections.actionIEASInstructionsFragmentToIEASQuestionsFragment())
+            this.findNavController().navigate(IEASInstructionsFragmentDirections.actionIEASInstructionsFragmentToIEASQuestionsFragment(taskId))
         }
 
         return binding.root

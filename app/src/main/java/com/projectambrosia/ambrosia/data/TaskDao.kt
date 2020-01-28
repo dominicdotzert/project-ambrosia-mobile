@@ -12,4 +12,7 @@ interface TaskDao : BaseDao<Task> {
 
     @Query("SELECT * FROM tasks WHERE timestamp > :timeInMillis")
     fun getTasksSince(timeInMillis: Long): LiveData<List<Task>>
+
+    @Query("UPDATE tasks SET is_completed = 1 WHERE id = :taskId")
+    fun updateTaskIsCompleted(taskId: Long)
 }

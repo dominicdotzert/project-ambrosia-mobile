@@ -84,4 +84,12 @@ class TaskDaoTests {
         val tasks = getValue(taskDao.getTasks())
         assertThat(tasks.size, equalTo(0))
     }
+
+    @Test
+    fun testUpdateTaskIsCompleted() {
+        taskDao.updateTaskIsCompleted(1)
+        val tasks = getValue(taskDao.getTasks())
+        assertThat(tasks[0].isCompleted, equalTo(true))
+        assertThat(tasks[1].isCompleted, equalTo(false))
+    }
 }

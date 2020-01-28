@@ -3,6 +3,8 @@ package com.projectambrosia.ambrosia.ieas
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
+import com.projectambrosia.ambrosia.data.TasksRepository
 import java.lang.IllegalArgumentException
 
 class IEASResultsViewModelFactory(
@@ -13,7 +15,14 @@ class IEASResultsViewModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(IEASResultsViewModel::class.java)) {
-            return IEASResultsViewModel(application, taskId, responses) as T
+            val database = AmbrosiaDatabase.getInstance(application)
+            val tasksRepository = TasksRepository(database.taskDao)
+            return IEASResultsViewModel(
+                application,
+                tasksRepository,
+                taskId,
+                responses
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

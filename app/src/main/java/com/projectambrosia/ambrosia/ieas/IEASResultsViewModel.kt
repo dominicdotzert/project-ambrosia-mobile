@@ -5,13 +5,22 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.projectambrosia.ambrosia.data.TasksRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 class IEASResultsViewModel(
     private val applicationContext: Application,
-    private val taskId: Long,
+    tasksRepository: TasksRepository,
+    taskId: Long,
     responses: BooleanArray
 ) : AndroidViewModel(applicationContext) {
+
+    private val job = Job()
+    private val viewModelScope = CoroutineScope(job + Dispatchers.Main)
 
     // Results Data Objects
     private val _percentage1 = MutableLiveData(getPercentageNo(responses.copyOfRange(0, 6)))
@@ -36,8 +45,11 @@ class IEASResultsViewModel(
         get() = _navigateToHome
 
     init {
+        viewModelScope.launch {
+            tasksRepository.markTaskAsComplete(taskId)
+        }
+
         saveResults()
-        saveTaskComplete()
     }
 
     fun navigateHome() {
@@ -53,10 +65,6 @@ class IEASResultsViewModel(
         // TODO: Implement Save IEAS Results
     }
 
-    private fun saveTaskComplete() {
-        // TODO: Implement Mark IEAS Task Complete
-    }
-
     private fun getPercentageYes(responsesInCategory: BooleanArray): Int {
         val totalYes = responsesInCategory.sumBy { if (it) 1 else 0 }
         val percentage = (totalYes.toFloat() / responsesInCategory.size) * 100
@@ -65,5 +73,10 @@ class IEASResultsViewModel(
 
     private fun getPercentageNo(responsesInCategory: BooleanArray): Int {
         return 100 - getPercentageYes(responsesInCategory)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
     }
 }

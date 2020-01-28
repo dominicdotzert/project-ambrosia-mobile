@@ -15,16 +15,13 @@ import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
 import com.projectambrosia.ambrosia.utilities.Tool
 
 class TasksFragment : Fragment() {
-
-    private val tasksViewModel: TasksViewModel by viewModels()
-    private lateinit var binding: FragmentTasksBinding
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTasksBinding.inflate(inflater, container, false)
+        val tasksViewModel: TasksViewModel by viewModels { TasksViewModelFactory(requireActivity().application) }
+        val binding = FragmentTasksBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.taskViewModel = tasksViewModel
 

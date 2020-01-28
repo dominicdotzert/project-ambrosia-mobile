@@ -1,4 +1,4 @@
- package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -10,7 +10,6 @@ class IEASResultsViewModelFactory(
     private val taskId: Long,
     private val responses: BooleanArray
 ) : ViewModelProvider.AndroidViewModelFactory(application) {
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(IEASResultsViewModel::class.java)) {

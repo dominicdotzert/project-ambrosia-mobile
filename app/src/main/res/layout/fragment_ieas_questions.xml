@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.projectambrosia.ambrosia.ieas.IEASQuestionsViewModel" />
+            type="com.projectambrosia.ambrosia.ieas.viewmodels.IEASQuestionsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
-        tools:context=".ieas.IEASQuestionsFragment">
+        tools:context=".ieas.fragments.IEASQuestionsFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/left_wall_ieas_questions"

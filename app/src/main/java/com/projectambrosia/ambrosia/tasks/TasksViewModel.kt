@@ -3,7 +3,7 @@ package com.projectambrosia.ambrosia.tasks
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
-import com.projectambrosia.ambrosia.data.TasksRepository
+import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

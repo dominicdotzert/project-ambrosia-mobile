@@ -1,5 +1,7 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.repositories
 
+import com.projectambrosia.ambrosia.data.models.IEASResults
+import com.projectambrosia.ambrosia.data.dao.IEASResultsDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*

@@ -1,12 +1,12 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas.viewmodels
 
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.projectambrosia.ambrosia.data.IEASRepository
-import com.projectambrosia.ambrosia.data.TasksRepository
+import com.projectambrosia.ambrosia.data.repositories.IEASRepository
+import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

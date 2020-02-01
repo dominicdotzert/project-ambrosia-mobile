@@ -6,7 +6,7 @@
 
         <variable
             name="task"
-            type="com.projectambrosia.ambrosia.data.Task" />
+            type="com.projectambrosia.ambrosia.data.models.Task" />
 
         <variable
             name="clickListener"

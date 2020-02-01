@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas.fragments
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -13,6 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.MainActivity
 import com.projectambrosia.ambrosia.databinding.FragmentIeasQuestionsBinding
+import com.projectambrosia.ambrosia.ieas.IEASQuestionClickListener
+import com.projectambrosia.ambrosia.ieas.IEASQuestionsAdapter
+import com.projectambrosia.ambrosia.ieas.viewmodels.IEASQuestionsViewModel
 import com.projectambrosia.ambrosia.utilities.SupportNavigateUpCallback
 
 class IEASQuestionsFragment : Fragment() {
@@ -24,9 +27,10 @@ class IEASQuestionsFragment : Fragment() {
         val args: IEASQuestionsFragmentArgs by navArgs()
         val viewModel: IEASQuestionsViewModel by viewModels()
         val binding = FragmentIeasQuestionsBinding.inflate(inflater, container, false)
-        val adapter = IEASQuestionsAdapter(IEASQuestionClickListener { question ->
-            question.toggle()
-        })
+        val adapter = IEASQuestionsAdapter(
+            IEASQuestionClickListener { question ->
+                question.toggle()
+            })
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -52,8 +56,8 @@ class IEASQuestionsFragment : Fragment() {
         viewModel.navigateToResults.observe(this, Observer {
             if (it) {
                 this.findNavController()
-                    .navigate(IEASQuestionsFragmentDirections
-                        .actionIEASQuestionsFragmentToIEASResultsFragment(
+                    .navigate(
+                        IEASQuestionsFragmentDirections.actionIEASQuestionsFragmentToIEASResultsFragment(
                             args.taskId,
                             viewModel.getResponsesArray()
                         )

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
-import com.projectambrosia.ambrosia.data.TasksRepository
+import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import java.lang.IllegalArgumentException
 
 class TasksViewModelFactory(

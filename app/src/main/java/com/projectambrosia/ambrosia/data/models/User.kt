@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

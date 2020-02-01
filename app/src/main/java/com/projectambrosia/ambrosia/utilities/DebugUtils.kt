@@ -2,8 +2,8 @@ package com.projectambrosia.ambrosia.utilities
 
 import android.content.Context
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
-import com.projectambrosia.ambrosia.data.Task
-import com.projectambrosia.ambrosia.data.User
+import com.projectambrosia.ambrosia.data.models.Task
+import com.projectambrosia.ambrosia.data.models.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*

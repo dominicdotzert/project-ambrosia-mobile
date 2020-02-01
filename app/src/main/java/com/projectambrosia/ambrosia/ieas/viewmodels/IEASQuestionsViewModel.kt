@@ -1,7 +1,8 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.projectambrosia.ambrosia.ieas.IEASQuestion
 
 class IEASQuestionsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -12,7 +13,9 @@ class IEASQuestionsViewModel(application: Application) : AndroidViewModel(applic
     }
 
     // Question lists
-    private val questions = MutableLiveData<List<IEASQuestion>>(IEASQuestion.get(application))
+    private val questions = MutableLiveData<List<IEASQuestion>>(
+        IEASQuestion.get(application)
+    )
     val currentQuestions: LiveData<List<IEASQuestion>> = Transformations.map(_currentPage) {
         questions.value?.filter { question -> question.questionSet == it }
     }

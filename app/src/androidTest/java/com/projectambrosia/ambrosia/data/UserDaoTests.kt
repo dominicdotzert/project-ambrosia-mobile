@@ -4,6 +4,8 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.projectambrosia.ambrosia.data.dao.UserDao
+import com.projectambrosia.ambrosia.data.models.User
 import com.projectambrosia.ambrosia.utilities.getValue
 import org.hamcrest.Matchers.equalTo
 import org.junit.After

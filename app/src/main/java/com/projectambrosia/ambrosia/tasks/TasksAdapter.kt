@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.projectambrosia.ambrosia.data.Task
+import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.ListItemTaskBinding
 
 class TaskAdapter(private val taskListener: TaskListener) : ListAdapter<Task, TaskAdapter.ViewHolder>(TaskDiffCallback()) {

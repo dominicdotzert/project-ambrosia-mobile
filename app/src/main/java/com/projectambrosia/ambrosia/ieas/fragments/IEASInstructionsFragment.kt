@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas.fragments
 
 
 import android.os.Bundle
@@ -23,7 +23,11 @@ class IEASInstructionsFragment : Fragment() {
         val taskId = args.taskId
 
         binding.ieasStartButton.setOnClickListener {
-            this.findNavController().navigate(IEASInstructionsFragmentDirections.actionIEASInstructionsFragmentToIEASQuestionsFragment(taskId))
+            this.findNavController().navigate(
+                IEASInstructionsFragmentDirections.actionIEASInstructionsFragmentToIEASQuestionsFragment(
+                    taskId
+                )
+            )
         }
 
         return binding.root

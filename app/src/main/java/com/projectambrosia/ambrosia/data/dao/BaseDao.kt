@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.dao
 
 import androidx.room.Delete
 import androidx.room.Insert

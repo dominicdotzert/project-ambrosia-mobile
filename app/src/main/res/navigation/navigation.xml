@@ -36,7 +36,7 @@
             app:argType="long" />
         <fragment
             android:id="@+id/IEASInstructionsFragment"
-            android:name="com.projectambrosia.ambrosia.ieas.IEASInstructionsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.fragments.IEASInstructionsFragment"
             android:label="IEASInstructionsFragment">
             <action
                 android:id="@+id/action_IEASInstructionsFragment_to_IEASQuestionsFragment"
@@ -50,7 +50,7 @@
         </fragment>
         <fragment
             android:id="@+id/IEASQuestionsFragment"
-            android:name="com.projectambrosia.ambrosia.ieas.IEASQuestionsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.fragments.IEASQuestionsFragment"
             android:label="IEASQuestionsFragment" >
             <action
                 android:id="@+id/action_IEASQuestionsFragment_to_IEASResultsFragment"
@@ -64,7 +64,7 @@
         </fragment>
         <fragment
             android:id="@+id/IEASResultsFragment"
-            android:name="com.projectambrosia.ambrosia.ieas.IEASResultsFragment"
+            android:name="com.projectambrosia.ambrosia.ieas.fragments.IEASResultsFragment"
             android:label="IEASResultsFragment" >
             <argument
                 android:name="taskId"

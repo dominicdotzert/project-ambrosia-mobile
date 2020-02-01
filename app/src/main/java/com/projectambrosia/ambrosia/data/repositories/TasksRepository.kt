@@ -1,5 +1,6 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.repositories
 
+import com.projectambrosia.ambrosia.data.dao.TaskDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

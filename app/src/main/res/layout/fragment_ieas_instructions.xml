@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
-        tools:context=".ieas.IEASInstructionsFragment">
+        tools:context=".ieas.fragments.IEASInstructionsFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/left_wall_ieas_instructions"

@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.ieas.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.FragmentIeasResultsBinding
+import com.projectambrosia.ambrosia.ieas.viewmodels.IEASResultsViewModel
+import com.projectambrosia.ambrosia.ieas.viewmodels.IEASResultsViewModelFactory
 
 class IEASResultsFragment : Fragment() {
 
@@ -21,7 +23,13 @@ class IEASResultsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val args: IEASResultsFragmentArgs by navArgs()
-        val viewModel: IEASResultsViewModel by viewModels { IEASResultsViewModelFactory(requireActivity().application, args.taskId, args.responses) }
+        val viewModel: IEASResultsViewModel by viewModels {
+            IEASResultsViewModelFactory(
+                requireActivity().application,
+                args.taskId,
+                args.responses
+            )
+        }
         val binding = FragmentIeasResultsBinding.inflate(layoutInflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel

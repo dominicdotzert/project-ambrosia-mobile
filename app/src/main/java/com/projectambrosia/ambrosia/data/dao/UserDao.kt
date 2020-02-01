@@ -1,7 +1,8 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.projectambrosia.ambrosia.data.models.User
 
 @Dao
 interface UserDao : BaseDao<User> {

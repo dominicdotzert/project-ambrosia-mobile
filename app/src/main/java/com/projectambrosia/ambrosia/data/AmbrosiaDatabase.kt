@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.projectambrosia.ambrosia.data.dao.*
+import com.projectambrosia.ambrosia.data.models.*
 import com.projectambrosia.ambrosia.utilities.DATABASE_NAME
 import com.projectambrosia.ambrosia.utilities.prepopulateDatabase
 import kotlinx.coroutines.MainScope

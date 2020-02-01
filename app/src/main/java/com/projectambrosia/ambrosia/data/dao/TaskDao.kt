@@ -1,8 +1,9 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
+import com.projectambrosia.ambrosia.data.models.Task
 
 @Dao
 interface TaskDao : BaseDao<Task> {

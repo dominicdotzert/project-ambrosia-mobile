@@ -1,4 +1,4 @@
-package com.projectambrosia.ambrosia.ieas
+package com.projectambrosia.ambrosia.views
 
 import android.content.Context
 import android.os.Build

@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
-import com.projectambrosia.ambrosia.data.Task
+import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
 import com.projectambrosia.ambrosia.utilities.Tool
 

@@ -4,7 +4,7 @@
     <color name="darkOrange">#FF9840</color>
     <color name="salmon">#FF7675</color>
     <color name="backgroundOrange">#FCF3EC</color>
-    <color name="progressBarBackgroundOrange">#F8E7D9</color>
+    <color name="backgroundDarkOrange">#F8E7D9</color>
 
     <color name="mainTextColor">#4E4E56</color>
     <color name="backgroundGrey">#EBEBEB</color>

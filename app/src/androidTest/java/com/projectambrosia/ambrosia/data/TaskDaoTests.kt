@@ -29,7 +29,7 @@ class TaskDaoTests {
     private val today = Calendar.getInstance().apply { timeInMillis = 1520000000000 }
     private val yesterday = Calendar.getInstance().apply { timeInMillis = 1500000000000 }
 
-    private val user = User(1, "email", "name", 1, "motivation")
+    private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val dailyTask1 = Task(1, user.userId, today, "task 1", 1, Tool.JOURNAL, 1)
     private val dailyTask2 = Task(2, user.userId, today, "task 2", 1, Tool.HS, 1)

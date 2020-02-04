@@ -14,6 +14,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class UserDaoTests {
@@ -21,9 +22,9 @@ class UserDaoTests {
     private lateinit var database: AmbrosiaDatabase
     private lateinit var userDao: UserDao
     
-    private val user1 = User(1, "email_1", "user_a", 1, "motivation_1")
-    private val user2 = User(2, "email_2", "user_a", 2, "motivation_2")
-    private val user3 = User(3, "email_3", "user_a", 3, "motivation_3")
+    private val user1 = User(1, "email_1", "user_a", 1, "motivation_1", Calendar.getInstance())
+    private val user2 = User(2, "email_2", "user_a", 2, "motivation_2", Calendar.getInstance())
+    private val user3 = User(3, "email_3", "user_a", 3, "motivation_3", Calendar.getInstance())
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -54,9 +55,16 @@ class UserDaoTests {
 
     @Test
     fun testGetUser() {
-        val user = userDao.getUser(2)
+        val user = getValue(userDao.getUser(2))
 
         assertThat(user, equalTo(user2))
+    }
+
+    @Test
+    fun testGetUserName() {
+        val userName = getValue(userDao.getUserName(1))
+
+        assertThat(userName, equalTo(user1.name))
     }
 
     @Test
@@ -71,14 +79,14 @@ class UserDaoTests {
         val testString = "test"
         userDao.updateUserMotivation(2, testString)
 
-        val user = userDao.getUser(2)
+        val user = getValue(userDao.getUser(2))
 
         assertThat(user.motivation, equalTo(testString))
     }
 
     @Test
     fun testAddUser() {
-        val user4 = User(4, "email_4", "user_a", 4, "motivation_4")
+        val user4 = User(4, "email_4", "user_a", 4, "motivation_4", Calendar.getInstance())
         userDao.insert(user4)
 
         val users = userDao.getUsers()
@@ -94,17 +102,17 @@ class UserDaoTests {
         val newGoal = 100
         val newMotivation = "New Motivation"
 
-        val user = User(1, newEmail, newName, newGoal, newMotivation)
+        val user = User(1, newEmail, newName, newGoal, newMotivation, Calendar.getInstance())
         userDao.update(user)
 
-        val updatedUser = userDao.getUser(1)
+        val updatedUser = getValue(userDao.getUser(1))
 
         assertThat(user, equalTo(updatedUser))
     }
 
     @Test
     fun testDeleteUser() {
-        val userToDelete = userDao.getUser(3)
+        val userToDelete = getValue(userDao.getUser(3))
         userDao.delete(userToDelete)
 
         val users = userDao.getUsers()

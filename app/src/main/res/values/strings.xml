@@ -10,6 +10,12 @@
     <string name="title_todo">TO-DO</string>
     <string name="title_completed">Completed</string>
 
+    <!-- Journal Strings -->
+    <string name="quote_body">\"%s\"</string>
+    <string name="quote_author">— %s, %s</string>
+    <string name="freestyle">Free Style</string>
+    <string name="prompt">Prompt</string>
+
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>
     <string name="ieas_full_instructions_1">This quiz will assess whether you are an Intuitive Eater, or perhaps where you might need some work.</string>

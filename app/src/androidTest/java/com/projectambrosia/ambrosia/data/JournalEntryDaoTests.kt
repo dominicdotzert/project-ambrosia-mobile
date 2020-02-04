@@ -25,7 +25,7 @@ class JournalEntryDaoTests {
     private lateinit var userDao: UserDao
     private lateinit var journalEntryDao: JournalEntryDao
 
-    private val user = User(1, "email", "name", 1, "motivation")
+    private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val calendar = Calendar.getInstance()
     private val entry1 = JournalEntry(user.userId, calendar, "entry1", 1)

@@ -13,8 +13,12 @@
     <!-- Journal Strings -->
     <string name="quote_body">\"%s\"</string>
     <string name="quote_author">— %s, %s</string>
-    <string name="freestyle">Free Style</string>
     <string name="prompt">Prompt</string>
+    <string name="freestyle">Free Style</string>
+    <string name="freestyle_description">Share how you feel in the moment.</string>
+    <string name="start_typing_placeholder">Start typing…</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>

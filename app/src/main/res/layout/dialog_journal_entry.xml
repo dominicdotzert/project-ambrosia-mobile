@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="prompt"
+            type="com.projectambrosia.ambrosia.journal.JournalPrompt" />
+    </data>
+
+    <!-- TODO: Polish screen for smaller devices -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_round">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall_journal_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall_journal_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_journal_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/journal_dialog_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.JournalPromptHeader"
+            app:freestyle_text="@{@string/freestyle}"
+            app:journal_prompt_task="@{prompt.taskId}"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_journal_dialog"
+            app:layout_constraintTop_toTopOf="parent"
+            app:prompt_text="@{@string/prompt}" />
+
+        <TextView
+            android:id="@+id/journal_dialog_prompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@{prompt.promptText}"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_journal_dialog"
+            app:layout_constraintTop_toBottomOf="@id/journal_dialog_header" />
+
+        <EditText
+            android:id="@+id/journal_dialog_entry"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/journal_dialog_entry_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@android:color/white"
+            android:gravity="top|left"
+            android:hint="@string/start_typing_placeholder"
+            android:padding="@dimen/spacing_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/journal_dialog_prompt" />
+
+        <Button
+            android:id="@+id/journal_dialog_cancel_button"
+            style="@style/AmbrosiaDialogCancelButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toEndOf="@id/center_journal_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_journal_dialog"
+            app:layout_constraintTop_toBottomOf="@id/journal_dialog_entry" />
+
+        <Button
+            android:id="@+id/journal_dialog_save_button"
+            style="@style/AmbrosiaDialogSaveButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"
+            app:layout_constraintStart_toStartOf="@id/center_journal_dialog"
+            app:layout_constraintTop_toBottomOf="@id/journal_dialog_entry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

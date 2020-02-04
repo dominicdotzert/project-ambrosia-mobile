@@ -6,18 +6,31 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.User
 import com.projectambrosia.ambrosia.data.repositories.JournalRepository
+import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
-import timber.log.Timber
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.util.*
 
+
+// TODO: Update to use proper UserId
 class JournalViewModel(
     application: Application,
     userRepository: UserRepository,
-    journalRepository: JournalRepository
+    private val journalRepository: JournalRepository,
+    private val tasksRepository: TasksRepository
 ) : AndroidViewModel(application) {
-    // TODO: Update to use proper UserId
+
+    private val viewModelJob = Job()
+    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    // Load quote
     private val _user: LiveData<User> = userRepository.getUser(1)
     val userMotivation = Transformations.map(_user) {
         application.resources.getString(R.string.quote_body, it.motivation)
@@ -32,13 +45,17 @@ class JournalViewModel(
         application.resources.getString(R.string.quote_author, it.name, date)
     }
 
+    // Load prompts
     private val _journalTasks = journalRepository.loadPrompts(1)
     val journalTasks = Transformations.map(_journalTasks) {
         it.map { task -> JournalPrompt(task.taskText, task.taskId) }
     }
 
-    fun openPrompt(prompt: JournalPrompt) {
-        // TODO: Open JournalDialogPrompt
-        Timber.d(prompt.prompt)
+    fun savePrompt(prompt: JournalPrompt, entryText: String) {
+        val entry = JournalEntry(1, Calendar.getInstance(), entryText, prompt.taskId)
+        viewModelScope.launch {
+            journalRepository.saveEntry(entry)
+            prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
+        }
     }
 }

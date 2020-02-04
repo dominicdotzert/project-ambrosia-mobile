@@ -20,7 +20,7 @@ class JournalPromptAdapter(private val journalPromptListener: JournalPromptListe
     }
 
     fun addFreestyleAndSubmitList(list: List<JournalPrompt>?, application: Application) {
-        val freeStylePrompt = JournalPrompt(application.resources.getString(R.string.freestyle))
+        val freeStylePrompt = JournalPrompt(application.resources.getString(R.string.freestyle_description))
         val items = when (list) {
             null -> listOf(freeStylePrompt)
             else -> list + listOf(freeStylePrompt)
@@ -44,7 +44,7 @@ class JournalPromptAdapter(private val journalPromptListener: JournalPromptListe
     }
 }
 
-data class JournalPrompt(val prompt: String, val taskId: Long? = null)
+data class JournalPrompt(val promptText: String, val taskId: Long? = null)
 
 class JournalPromptDiffCallback : DiffUtil.ItemCallback<JournalPrompt>() {
     override fun areItemsTheSame(oldItem: JournalPrompt, newItem: JournalPrompt): Boolean {

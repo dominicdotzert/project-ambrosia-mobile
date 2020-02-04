@@ -8,8 +8,10 @@ import com.projectambrosia.ambrosia.data.models.Task
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+// TODO: Write tests
 class JournalRepository(private val journalEntryDao: JournalEntryDao, private val  taskDao: TaskDao) {
     suspend fun saveEntry(journalEntry: JournalEntry) {
+        // TODO: Add network call
         withContext(Dispatchers.IO) {
             journalEntryDao.insert(journalEntry)
         }

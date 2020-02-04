@@ -79,6 +79,7 @@
             app:layout_constraintStart_toStartOf="@id/left_wall_journal"
             app:layout_constraintTop_toBottomOf="@id/journal_divider" />
 
+        <!-- TODO: Align to edges of parent and add left and right padding to items -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/journal_prompt_list"
             android:layout_width="0dp"

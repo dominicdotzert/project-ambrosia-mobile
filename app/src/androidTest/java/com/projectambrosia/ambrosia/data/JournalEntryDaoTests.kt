@@ -28,9 +28,9 @@ class JournalEntryDaoTests {
     private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val calendar = Calendar.getInstance()
-    private val entry1 = JournalEntry(user.userId, calendar, "entry1", 1)
-    private val entry2 = JournalEntry(user.userId, calendar, "entry2", 2)
-    private val entry3 = JournalEntry(user.userId, calendar, "entry3", 3)
+    private val entry1 = JournalEntry(user.userId, calendar, "prompt1","entry1", 1)
+    private val entry2 = JournalEntry(user.userId, calendar, "prompt2","entry2", 2)
+    private val entry3 = JournalEntry(user.userId, calendar, "prompt3","entry3", 3)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

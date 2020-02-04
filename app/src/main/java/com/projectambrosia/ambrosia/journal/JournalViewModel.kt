@@ -1,7 +1,6 @@
 package com.projectambrosia.ambrosia.journal
 
 import android.app.Application
-import android.os.Build
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -36,24 +35,22 @@ class JournalViewModel(
         application.resources.getString(R.string.quote_body, it.motivation)
     }
     val userName = Transformations.map(_user) {
-        val date =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                formatQuoteDate(it.motivationEntryDate, application.resources.configuration.locales.get(0))
-            } else {
-                formatQuoteDate(it.motivationEntryDate, application.resources.configuration.locale)
-            }
+        val date = formatQuoteDate(it.motivationEntryDate)
         application.resources.getString(R.string.quote_author, it.name, date)
     }
 
-    // Load prompts
+    // Load active prompts
     private val _journalTasks = journalRepository.loadPrompts(1)
     val journalTasks = Transformations.map(_journalTasks) {
         it.map { task -> JournalPrompt(task.taskText, task.taskId) }
     }
 
+    // Load history
+    val entryHistory = journalRepository.loadHistory(1)
+
     fun savePrompt(prompt: JournalPrompt, entryText: String) {
-        val entry = JournalEntry(1, Calendar.getInstance(), entryText, prompt.taskId)
         viewModelScope.launch {
+            val entry = JournalEntry(1, Calendar.getInstance(), prompt.promptText, entryText, prompt.taskId)
             journalRepository.saveEntry(entry)
             prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
         }

@@ -11,6 +11,7 @@ import java.util.*
 data class JournalEntry(
     @ColumnInfo(name = "user_id") val userId: Long,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
+    @ColumnInfo(name = "prompt") val promptText: String,
     @ColumnInfo(name = "text") val entryText: String,
     @ColumnInfo(name = "task_id") val taskId: Long?
 ) {

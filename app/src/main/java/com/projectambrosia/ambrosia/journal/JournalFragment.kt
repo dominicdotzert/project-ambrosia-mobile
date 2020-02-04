@@ -27,18 +27,23 @@ class JournalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentJournalBinding.inflate(inflater, container, false)
-        val adapter = JournalPromptAdapter(JournalPromptListener { prompt ->
+        val journalPromptAdapter = JournalPromptAdapter(JournalPromptListener { prompt ->
             if (!dialogOpen) {
                 showJournalPopup(prompt)
             }
         })
+        val journalHistoryAdapter = JournalHistoryAdapter()
 
         binding.lifecycleOwner = this
         binding.journalViewModel = viewModel
-        binding.journalPromptList.adapter = adapter
+        binding.journalPromptList.adapter = journalPromptAdapter
+        binding.journalHistory.adapter = journalHistoryAdapter
 
-        viewModel.journalTasks.observe(this, Observer { prompts ->
-            adapter.addFreestyleAndSubmitList(prompts, requireActivity().application)
+        viewModel.journalTasks.observe(this, Observer {
+            journalPromptAdapter.addFreestyleAndSubmitList(it, requireActivity().application)
+        })
+        viewModel.entryHistory.observe(this, Observer {
+            journalHistoryAdapter.submitList(it)
         })
 
         return binding.root

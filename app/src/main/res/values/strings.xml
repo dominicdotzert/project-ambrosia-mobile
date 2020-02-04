@@ -19,6 +19,7 @@
     <string name="start_typing_placeholder">Start typing…</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="journal_empty_history">Your journal entries will show up here!</string>
 
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>

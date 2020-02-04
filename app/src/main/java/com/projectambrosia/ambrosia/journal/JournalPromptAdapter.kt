@@ -32,6 +32,7 @@ class JournalPromptAdapter(private val journalPromptListener: JournalPromptListe
         fun bind(item: JournalPrompt, journalPromptListener: JournalPromptListener) {
             binding.prompt = item
             binding.clickListener = journalPromptListener
+            binding.executePendingBindings()
         }
 
         companion object {

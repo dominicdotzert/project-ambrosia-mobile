@@ -12,9 +12,8 @@ class StringFormattingUtilsTests {
             set(Calendar.MONTH, Calendar.FEBRUARY)
             set(Calendar.YEAR, 2020)
         }
-        val locale = Locale.CANADA
 
-        val formattedDate = formatQuoteDate(calendar, locale)
+        val formattedDate = formatQuoteDate(calendar)
 
         assertThat(formattedDate, equalTo("February 2020"))
     }

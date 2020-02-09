@@ -7,7 +7,7 @@
     <dimen name="corner_radius">8dp</dimen>
 
     <dimen name="button_height">60dp</dimen>
-    <dimen name="secondary_button_height">32dp</dimen>
+    <dimen name="secondary_button_height">40dp</dimen>
 
     <dimen name="journal_card_width">224dp</dimen>
     <dimen name="journal_card_height">200dp</dimen>

@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".hungerscale.HungerScaleFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <variable
+            name="hungerScaleViewModel"
+            type="com.projectambrosia.ambrosia.hungerscale.HungerScaleViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Hunger Scale" />
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:paddingBottom="?attr/actionBarSize">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/spacing_small">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/left_wall_hunger_scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/right_wall_hunger_scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+            <TextView
+                android:id="@+id/hunger_scale_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/title_hunger_scale"
+                android:textAppearance="@style/TextAppearance.Heading"
+                app:layout_constraintStart_toStartOf="@id/left_wall_hunger_scale"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/hunger_scale_help_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:src="@drawable/ic_help_outline_black_20dp"
+                app:layout_constraintBottom_toBottomOf="@id/hunger_scale_header"
+                app:layout_constraintStart_toEndOf="@id/hunger_scale_header"
+                app:layout_constraintTop_toTopOf="@id/hunger_scale_header" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

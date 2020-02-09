@@ -38,6 +38,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextAppearance.HelpHeader" parent="TextAppearance.LargeBodyText">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <!-- TODO: Add background drawables for buttons (with states) -->
     <style name="AmbrosiaButton">
         <item name="android:background">@color/lightOrange</item>
@@ -48,14 +52,14 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="AmbrosiaDialogSaveButton" parent="AmbrosiaButton">
+    <style name="AmbrosiaDialogPrimaryButton" parent="AmbrosiaButton">
         <item name="android:background">@color/salmon</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="AmbrosiaDialogCancelButton" parent="AmbrosiaDialogSaveButton">
+    <style name="AmbrosiaDialogSecondaryButton" parent="AmbrosiaDialogPrimaryButton">
         <item name="android:background">@android:color/white</item>
         <item name="android:textColor">@color/salmon</item>
     </style>

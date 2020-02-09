@@ -21,6 +21,26 @@
     <string name="save">Save</string>
     <string name="journal_empty_history">Your journal entries will show up here!</string>
 
+    <!-- Hunger Scale Instructions Strings -->
+    <string name="got_it">Got it</string>
+    <string name="what_is_hunger_scale">What is the Hunger Scale?</string>
+    <string name="hunger_scale_explanation">The use of the Hunger Scale can help you become more tuned into your feelings of hunger and ultimately more in control of your eating habits.</string>
+    <string name="how_to_use_header">How to use</string>
+    <string name="how_to_use_instruction">Attempt to start eating when you feel you are at a 3 and stop eating at a 7. This range generally makes people feel the most comfortable.</string>
+    <string name="scale">Scale</string>
+    <string name="scale_levels"><![CDATA[<b>1</b>\tRavenous<br /><b>2</b>\tExtremely hungry<br /><b>3</b>\tHungry<br /><b>4</b>\t“I could eat”<br /><b>5</b>\tNeutral<br /><b>6</b>\tMild fullness<br /><b>7</b>\tRavenous<br /><b>8</b>\tSlight discomfort<br /><b>9</b>\tOverstuffed<br /><b>10</b>\tPhysically ill]]></string>
+    <string name="hs_level_1">Ravenous</string>
+    <string name="hs_level_2">Extremely hungry</string>
+    <string name="hs_level_3">Hungry</string>
+    <string name="hs_level_4">“I could eat”</string>
+    <string name="hs_level_5">Neutral</string>
+    <string name="hs_level_6">Mild fullness</string>
+    <string name="hs_level_7">Satisfied</string>
+    <string name="hs_level_8">Slight discomfort</string>
+    <string name="hs_level_9">Overstuffed</string>
+    <string name="hs_level_10">Physically ill</string>
+    <string name="help_conclusion">You can always tap the info icon on this page to access this info again!</string>
+
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>
     <string name="ieas_full_instructions_1">This quiz will assess whether you are an Intuitive Eater, or perhaps where you might need some work.</string>

@@ -87,5 +87,9 @@
     <string name="email_placeholder">Email address</string>
     <string name="continue_label">Continue</string>
     <string name="invalid_email">Please enter a valid email address.</string>
+    <string name="welcome">Welcome!</string>
+    <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to monitor your progress.]]></string>
+    <string name="sign_up_welcome_message_2">If you’re okay with this, please continue to the disclaimer!</string>
+    <string name="ie_credit">Tools adapted from Evelyn Tribole and Elyse Resch’s model of Intuitive Eating</string>
 
 </resources>

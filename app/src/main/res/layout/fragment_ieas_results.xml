@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
             android:text="@string/results"
-            android:textAppearance="@style/TextAppearance.IEASHeader"
+            android:textAppearance="@style/TextAppearance.PageHeader"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_results_outer"
             app:layout_constraintStart_toStartOf="@id/left_wall_ieas_results_outer"
             app:layout_constraintTop_toTopOf="parent" />

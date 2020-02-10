@@ -36,11 +36,16 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextAppearance.IEASHeader" parent="TextAppearance.MaterialComponents.Headline5">
+    <style name="TextAppearance.CreditText" parent="TextAppearance.BodyText">
+        <item name="android:textColor">@color/greyTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.PageHeader" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">32sp</item>
     </style>
 
     <style name="TextAppearance.JournalPromptHeader" parent="TextAppearance.BodyText">

@@ -8,6 +8,7 @@ import com.projectambrosia.ambrosia.utilities.isValidEmail
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class EmailViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -22,15 +23,33 @@ class EmailViewModel(private val userRepository: UserRepository) : ViewModel() {
     val validEmail: LiveData<Boolean>
         get() = _validEmail
 
+    private val _navigateToLogIn = MutableLiveData<Boolean>()
+    val navigateToLogIn: LiveData<Boolean>
+        get() = _navigateToLogIn
+    
+    private val _navigateToSignUp = MutableLiveData<Boolean>()
+    val navigateToSignUp: LiveData<Boolean>
+        get() = _navigateToSignUp
+
     fun onContinue() {
-        _validEmail.value = isValidEmail(email.value!!)
+        _validEmail.value = !email.value.isNullOrEmpty() && isValidEmail(email.value!!)
         if (!validEmail.value!!) return
 
-        if (userRepository.userExists(email.value!!)) {
-            // TODO: Navigate to sign-in
-        } else {
-            // TODO: Navigate to login
+        viewModelScope.launch {
+            if (userRepository.userExists(email.value!!)) {
+                _navigateToLogIn.value = true
+            } else {
+                _navigateToSignUp.value = true
+            }
         }
+    }
+
+    fun doneNavigatingToLogin() {
+        _navigateToLogIn.value = false
+    }
+
+    fun doneNavigatingToSignUp() {
+        _navigateToSignUp.value = false
     }
 
     override fun onCleared() {

@@ -77,5 +77,15 @@
     <fragment
         android:id="@+id/emailFragment"
         android:name="com.projectambrosia.ambrosia.login.fragments.EmailFragment"
-        android:label="EmailFragment" />
+        android:label="EmailFragment" >
+        <action
+            android:id="@+id/action_emailFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.projectambrosia.ambrosia.login.fragments.WelcomeFragment"
+        android:label="WelcomeFragment" />
 </navigation>

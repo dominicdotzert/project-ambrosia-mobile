@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.databinding.FragmentLoginEmailBinding
 import com.projectambrosia.ambrosia.login.factories.EmailViewModelFactory
 import com.projectambrosia.ambrosia.login.viewmodels.EmailViewModel
@@ -22,6 +24,20 @@ class EmailFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        viewModel.navigateToLogIn.observe(this, Observer {
+            if (it) {
+                // TODO: Navigate to log in page
+                viewModel.doneNavigatingToLogin()
+            }
+        })
+
+        viewModel.navigateToSignUp.observe(this, Observer {
+            if (it) {
+                this.findNavController().navigate(EmailFragmentDirections.actionEmailFragmentToWelcomeFragment())
+                viewModel.doneNavigatingToSignUp()
+            }
+        })
 
         return binding.root
     }

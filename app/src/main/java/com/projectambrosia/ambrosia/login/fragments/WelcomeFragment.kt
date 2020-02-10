@@ -1,0 +1,32 @@
+package com.projectambrosia.ambrosia.login.fragments
+
+import android.os.Build
+import android.os.Bundle
+import android.text.Html
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.databinding.FragmentWelcomeBinding
+
+class WelcomeFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding = FragmentWelcomeBinding.inflate(layoutInflater, container, false)
+
+        val welcomeText = resources.getString(R.string.sign_up_welcome_message_1)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            binding.loginWelcomeText1.text = Html.fromHtml(welcomeText, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            @Suppress("DEPRECATION")
+            binding.loginWelcomeText1.text = Html.fromHtml(welcomeText)
+        }
+
+        return binding.root
+    }
+}

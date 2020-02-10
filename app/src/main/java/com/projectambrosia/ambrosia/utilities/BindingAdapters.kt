@@ -27,3 +27,9 @@ fun setJournalHistoryPlaceholderVisibility(view: CardView, prompts: List<Journal
 fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
     view.text = formatJournalEntryDate(entryDate)
 }
+
+@BindingAdapter("visibility_adapter_inverted")
+fun setViewVisibility(view: View, isVisible: Boolean) {
+    if (!isVisible) view.visibility = View.VISIBLE
+    else view.visibility = View.GONE
+}

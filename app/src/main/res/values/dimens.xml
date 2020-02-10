@@ -12,4 +12,6 @@
     <dimen name="journal_card_width">224dp</dimen>
     <dimen name="journal_card_height">200dp</dimen>
     <dimen name="journal_dialog_entry_height">200dp</dimen>
+
+    <dimen name="edit_text_height">60dp</dimen>
 </resources>

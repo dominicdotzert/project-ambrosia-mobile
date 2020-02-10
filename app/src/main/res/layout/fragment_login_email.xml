@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.projectambrosia.ambrosia.login.viewmodels.EmailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundSalmon"
+        android:padding="@dimen/spacing_regular"
+        tools:context=".login.fragments.EmailFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/email_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/ambrosia_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ambrosia_outlined"
+            app:layout_constraintBottom_toTopOf="@id/ambrosia_app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/ambrosia_app_name"
+            style="@style/TextAppearance.AppNameHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="@id/email_center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/ambrosia_description_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginEnd="80dp"
+            android:text="@string/ambrosia_description"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ambrosia_app_name" />
+
+        <TextView
+            style="@style/TextAppearance.ErrorText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/invalid_email"
+            app:layout_constraintBottom_toTopOf="@id/email_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:visibility_adapter_inverted="@{viewModel.validEmail}" />
+
+        <EditText
+            android:id="@+id/email_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:autofillHints="emailAddress"
+            android:hint="@string/email_placeholder"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            app:layout_constraintBottom_toTopOf="@id/email_continue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/email_continue_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/continue_label"
+            android:onClick="@{() -> viewModel.onContinue()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

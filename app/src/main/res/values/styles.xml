@@ -15,10 +15,21 @@
         <item name="fontFamily">@font/lato</item>
     </style>
 
+    <style name="TextAppearance.AppNameHeading" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:fontFamily">@font/la_belle_aurore</item>
+        <item name="fontFamily">@font/la_belle_aurore</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="TextAppearance.BodyText" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
         <item name="android:textColor">@color/mainTextColor</item>
+    </style>
+
+    <style name="TextAppearance.ErrorText" parent="TextAppearance.BodyText">
+        <item name="android:textColor">@android:color/holo_red_light</item>
     </style>
 
     <style name="TextAppearance.LargeBodyText" parent="TextAppearance.BodyText">
@@ -62,6 +73,18 @@
     <style name="AmbrosiaDialogSecondaryButton" parent="AmbrosiaDialogPrimaryButton">
         <item name="android:background">@android:color/white</item>
         <item name="android:textColor">@color/salmon</item>
+    </style>
+
+    <style name="AmbrosiaEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:paddingStart">@dimen/spacing_regular</item>
+        <item name="android:paddingEnd">@dimen/spacing_regular</item>
+        <item name="android:paddingTop">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="DialogAnimation">

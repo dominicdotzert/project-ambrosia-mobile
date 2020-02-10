@@ -1,10 +1,8 @@
 package com.projectambrosia.ambrosia.ieas.viewmodels
 
-import android.app.Application
-import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.projectambrosia.ambrosia.data.repositories.IEASRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import kotlinx.coroutines.CoroutineScope
@@ -14,12 +12,11 @@ import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 class IEASResultsViewModel(
-    private val applicationContext: Application,
     tasksRepository: TasksRepository,
     ieasRepository: IEASRepository,
     taskId: Long,
     responses: BooleanArray
-) : AndroidViewModel(applicationContext) {
+) : ViewModel() {
 
     private val job = Job()
     private val viewModelScope = CoroutineScope(job + Dispatchers.Main)
@@ -56,7 +53,6 @@ class IEASResultsViewModel(
     }
 
     fun navigateHome() {
-        Toast.makeText(applicationContext, "IEAS Results Saved", Toast.LENGTH_LONG).show()
         _navigateToHome.value = true
     }
 

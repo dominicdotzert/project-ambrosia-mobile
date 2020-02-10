@@ -20,4 +20,7 @@ interface UserDao : BaseDao<User> {
 
     @Query("UPDATE users SET motivation = :motivation WHERE id = :userId")
     fun updateUserMotivation(userId: Long, motivation: String)
+
+    @Query("SELECT COUNT(1) FROM users WHERE email = :email")
+    fun userExists(email: String): Int
 }

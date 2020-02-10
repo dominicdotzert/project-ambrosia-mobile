@@ -82,4 +82,10 @@
     <string name="ieas_question_22">I mostly eat foods that make my body perform efficiently (well).</string>
     <string name="ieas_question_23">I mostly eat foods that give my body energy and stamina.</string>
 
+    <!-- Login Pages -->
+    <string name="ambrosia_description">The tool to becoming the ultimate Intuitive Eater</string>
+    <string name="email_placeholder">Email address</string>
+    <string name="continue_label">Continue</string>
+    <string name="invalid_email">Please enter a valid email address.</string>
+
 </resources>

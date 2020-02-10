@@ -20,7 +20,6 @@ class IEASResultsViewModelFactory(
             val tasksRepository = TasksRepository(database.taskDao)
             val ieasRepository = IEASRepository(database.ieasResultsDao)
             return IEASResultsViewModel(
-                application,
                 tasksRepository,
                 ieasRepository,
                 taskId,

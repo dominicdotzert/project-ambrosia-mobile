@@ -5,6 +5,7 @@
     <dimen name="spacing_medium">16dp</dimen>
 
     <dimen name="corner_radius">8dp</dimen>
+    <dimen name="corner_radius_secondary">4dp</dimen>
 
     <dimen name="button_height">60dp</dimen>
     <dimen name="secondary_button_height">40dp</dimen>

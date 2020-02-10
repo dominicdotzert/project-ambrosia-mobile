@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_round_white"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_regular">
+
+        <TextView
+            android:id="@+id/disclaimer_dialog_results_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disclaimer_results_header"
+            android:textAppearance="@style/TextAppearance.PageHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/disclaimer_dialog_results_text_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/disclaimer_results_text_1"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disclaimer_dialog_results_header" />
+
+        <TextView
+            android:id="@+id/disclaimer_dialog_results_text_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/disclaimer_results_text_2"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disclaimer_dialog_results_text_1" />
+
+        <Button
+            android:id="@+id/disclaimer_dialog_results_button"
+            style="@style/AmbrosiaDialogPrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/exit_app"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disclaimer_dialog_results_text_2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

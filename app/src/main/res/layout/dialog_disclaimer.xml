@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_round_white"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_regular">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/disclaimer_dialog_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/disclaimer_dialog_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disclaimer_header"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/disclaimer_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/disclaimer_dialog_cancel_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disclaimer_dialog_header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.projectambrosia.ambrosia.views.ScoffQuestionView
+                    android:id="@+id/disclaimer_question_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:question="@string/scoff_item_1" />
+
+                <com.projectambrosia.ambrosia.views.ScoffQuestionView
+                    android:id="@+id/disclaimer_question_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:question="@string/scoff_item_2" />
+
+                <com.projectambrosia.ambrosia.views.ScoffQuestionView
+                    android:id="@+id/disclaimer_question_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:question="@string/scoff_item_3" />
+
+                <com.projectambrosia.ambrosia.views.ScoffQuestionView
+                    android:id="@+id/disclaimer_question_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:question="@string/scoff_item_4" />
+
+                <com.projectambrosia.ambrosia.views.ScoffQuestionView
+                    android:id="@+id/disclaimer_question_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:question="@string/scoff_item_5" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/disclaimer_dialog_cancel_button"
+            style="@style/AmbrosiaDialogSecondaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/disclaimer_dialog_center"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/disclaimer_dialog_complete_button"
+            style="@style/AmbrosiaDialogPrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginStart="@dimen/spacing_regular"
+            android:text="@string/complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/disclaimer_dialog_center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

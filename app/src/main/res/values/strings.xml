@@ -95,5 +95,16 @@
     <string name="disclaimer_explanation">This app is not appropriate if you are experiencing symptoms of an eating disorder. Click here if you are not sure.</string>
     <string name="disclaimer_explanation_link">here</string>
     <string name="disclaimer_text">I do not experience having symptoms of an eating disorder and choose to continue using the app.</string>
+    <string name="disclaimer_header">Please check off everything that applies to you:</string>
+    <string name="scoff_item_1">Do you make yourself sick because you feel uncomfortably full?</string>
+    <string name="scoff_item_2">Do you worry you have lost control over how much you eat?</string>
+    <string name="scoff_item_3">Do you believe yourself to be fat when others say you are too thin?</string>
+    <string name="scoff_item_4">Have you recently lost more than 14 pounds in a 3-month period?</string>
+    <string name="scoff_item_5">Would you say that food dominates your life?</string>
+    <string name="complete">Complete</string>
+    <string name="disclaimer_results_header">We\'d really love to have you here…</string>
+    <string name="disclaimer_results_text_1">We advise you for now not to use our app because we are unable to support you in the areas you indicated.</string>
+    <string name="disclaimer_results_text_2">Please consult a dietitian or medical professional before further use.</string>
+    <string name="exit_app">Exit App</string>
 
 </resources>

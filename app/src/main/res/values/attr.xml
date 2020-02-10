@@ -3,4 +3,8 @@
     <declare-styleable name="IEASResultView">
         <attr name="category" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="ScoffQuestionView">
+        <attr name="question" format="string" />
+    </declare-styleable>
 </resources>

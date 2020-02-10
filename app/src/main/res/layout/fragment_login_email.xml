@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundSalmon"
+        android:clipToPadding="false"
         android:padding="@dimen/spacing_regular"
         tools:context=".login.fragments.EmailFragment">
 
@@ -88,8 +89,8 @@
             style="@style/AmbrosiaButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height"
-            android:text="@string/continue_label"
             android:onClick="@{() -> viewModel.onContinue()}"
+            android:text="@string/continue_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

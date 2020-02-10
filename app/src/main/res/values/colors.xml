@@ -2,6 +2,7 @@
 <resources>
     <color name="lightOrange">#FEB371</color>
     <color name="darkOrange">#FF9840</color>
+    <color name="disabledOrange">#FDCDA4</color>
     <color name="salmon">#FFABAA</color>
     <color name="backgroundSalmon">#FFE5E5</color>
     <color name="backgroundOrange">#FCF3EC</color>

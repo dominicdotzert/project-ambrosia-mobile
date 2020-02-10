@@ -91,5 +91,9 @@
     <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to monitor your progress.]]></string>
     <string name="sign_up_welcome_message_2">If you’re okay with this, please continue to the disclaimer!</string>
     <string name="ie_credit">Tools adapted from Evelyn Tribole and Elyse Resch’s model of Intuitive Eating</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="disclaimer_explanation">This app is not appropriate if you are experiencing symptoms of an eating disorder. Click here if you are not sure.</string>
+    <string name="disclaimer_explanation_link">here</string>
+    <string name="disclaimer_text">I do not experience having symptoms of an eating disorder and choose to continue using the app.</string>
 
 </resources>

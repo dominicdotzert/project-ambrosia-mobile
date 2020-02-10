@@ -82,10 +82,22 @@
             android:id="@+id/action_emailFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.projectambrosia.ambrosia.login.fragments.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_disclaimerFragment"
+            app:destination="@id/disclaimerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/disclaimerFragment"
+        android:name="com.projectambrosia.ambrosia.login.fragments.DisclaimerFragment"
+        android:label="DisclaimerFragment" />
 </navigation>

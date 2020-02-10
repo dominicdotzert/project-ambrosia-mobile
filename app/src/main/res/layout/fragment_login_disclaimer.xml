@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.projectambrosia.ambrosia.login.viewmodels.DisclaimerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_regular"
+        tools:context=".login.fragments.DisclaimerFragment">
+
+        <TextView
+            android:id="@+id/disclaimer_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disclaimer"
+            android:textAppearance="@style/TextAppearance.PageHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/disclaimer_explanation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disclaimer_header" />
+
+        <RadioButton
+            android:id="@+id/disclaimer_accept_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{viewModel.accept}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/disclaimer_text" />
+
+        <TextView
+            android:id="@+id/disclaimer_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:text="@string/disclaimer_text"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintBottom_toTopOf="@id/disclaimer_continue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/disclaimer_accept_radio_button" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.toggleAccept()}"
+            app:layout_constraintBottom_toBottomOf="@id/disclaimer_text"
+            app:layout_constraintEnd_toEndOf="@id/disclaimer_text"
+            app:layout_constraintStart_toStartOf="@id/disclaimer_accept_radio_button"
+            app:layout_constraintTop_toTopOf="@id/disclaimer_text" />
+
+        <Button
+            android:id="@+id/disclaimer_continue_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/continue_label"
+            app:enabled="@{viewModel.accept}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

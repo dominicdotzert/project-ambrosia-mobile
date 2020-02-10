@@ -7,8 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
-import com.projectambrosia.ambrosia.databinding.FragmentWelcomeBinding
+import com.projectambrosia.ambrosia.databinding.FragmentLoginWelcomeBinding
 
 class WelcomeFragment : Fragment() {
 
@@ -17,7 +18,7 @@ class WelcomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentWelcomeBinding.inflate(layoutInflater, container, false)
+        val binding = FragmentLoginWelcomeBinding.inflate(layoutInflater, container, false)
 
         val welcomeText = resources.getString(R.string.sign_up_welcome_message_1)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -25,6 +26,10 @@ class WelcomeFragment : Fragment() {
         } else {
             @Suppress("DEPRECATION")
             binding.loginWelcomeText1.text = Html.fromHtml(welcomeText)
+        }
+
+        binding.loginWelcomeContinueButton.setOnClickListener {
+            this.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToDisclaimerFragment())
         }
 
         return binding.root

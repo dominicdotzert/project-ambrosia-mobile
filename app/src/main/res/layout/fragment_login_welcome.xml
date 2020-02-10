@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
         android:padding="@dimen/spacing_regular"
         tools:context=".login.fragments.WelcomeFragment">
 
@@ -25,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
-            android:textAppearance="@style/TextAppearance.BodyText"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/login_welcome_header" />
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
             android:text="@string/sign_up_welcome_message_2"
-            android:textAppearance="@style/TextAppearance.BodyText"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/login_welcome_text_1" />

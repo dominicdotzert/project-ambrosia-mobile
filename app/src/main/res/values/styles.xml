@@ -38,7 +38,6 @@
 
     <style name="TextAppearance.CreditText" parent="TextAppearance.BodyText">
         <item name="android:textColor">@color/greyTextColor</item>
-        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextAppearance.PageHeader" parent="TextAppearance.MaterialComponents.Headline5">
@@ -60,7 +59,7 @@
 
     <!-- TODO: Add background drawables for buttons (with states) -->
     <style name="AmbrosiaButton">
-        <item name="android:background">@color/lightOrange</item>
+        <item name="android:background">@drawable/ambrosia_button</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
         <item name="android:textAllCaps">false</item>

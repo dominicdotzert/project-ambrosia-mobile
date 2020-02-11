@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/emailFragment">
+    app:startDestination="@id/loginGraph">
 
     <fragment
         android:id="@+id/tasksFragment"
@@ -74,30 +74,55 @@
                 app:argType="boolean[]" />
         </fragment>
     </navigation>
-    <fragment
-        android:id="@+id/emailFragment"
-        android:name="com.projectambrosia.ambrosia.login.fragments.EmailFragment"
-        android:label="EmailFragment" >
-        <action
-            android:id="@+id/action_emailFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.projectambrosia.ambrosia.login.fragments.WelcomeFragment"
-        android:label="WelcomeFragment" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_disclaimerFragment"
-            app:destination="@id/disclaimerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/disclaimerFragment"
-        android:name="com.projectambrosia.ambrosia.login.fragments.DisclaimerFragment"
-        android:label="DisclaimerFragment" />
+    <navigation
+        android:id="@+id/loginGraph"
+        app:startDestination="@id/emailFragment" >
+        <fragment
+            android:id="@+id/emailFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.EmailFragment"
+            android:label="EmailFragment">
+            <action
+                android:id="@+id/action_emailFragment_to_welcomeFragment"
+                app:destination="@id/welcomeFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
+            <action
+                android:id="@+id/action_emailFragment_to_passwordFragment"
+                app:destination="@id/passwordFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
+        <fragment
+            android:id="@+id/welcomeFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.WelcomeFragment"
+            android:label="WelcomeFragment">
+            <action
+                android:id="@+id/action_welcomeFragment_to_disclaimerFragment"
+                app:destination="@id/disclaimerFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
+        <fragment
+            android:id="@+id/disclaimerFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.DisclaimerFragment"
+            android:label="DisclaimerFragment">
+            <action
+                android:id="@+id/action_disclaimerFragment_to_passwordFragment"
+                app:destination="@id/passwordFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
+        <fragment
+            android:id="@+id/passwordFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.PasswordFragment"
+            android:label="PasswordFragment" >
+            <argument
+                android:name="isReturningUser"
+                app:argType="boolean" />
+        </fragment>
+    </navigation>
 </navigation>

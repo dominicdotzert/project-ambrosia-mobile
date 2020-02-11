@@ -5,3 +5,12 @@ private const val EMAIL_PATTERN = "(?:[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9
 fun isValidEmail(email: String): Boolean {
     return Regex(EMAIL_PATTERN).containsMatchIn(email)
 }
+
+// TODO: Revisit after discussing auth
+fun isValidPassword(password: String): Boolean{
+    val containsNumber = Regex("\\d").containsMatchIn(password)
+    val containsSymbols = Regex("[^a-zA-Z\\d\\s:]").containsMatchIn(password)
+    val longEnough = password.length > PASSWORD_MIN_LENGTH
+
+    return (containsNumber || containsSymbols) && longEnough
+}

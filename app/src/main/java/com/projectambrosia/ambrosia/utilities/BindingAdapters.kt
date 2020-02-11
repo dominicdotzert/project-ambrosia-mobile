@@ -1,6 +1,7 @@
 package com.projectambrosia.ambrosia.utilities
 
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
@@ -32,4 +33,14 @@ fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
 fun setViewVisibility(view: View, isVisible: Boolean) {
     if (!isVisible) view.visibility = View.VISIBLE
     else view.visibility = View.GONE
+}
+
+@BindingAdapter("isReturningUser", "returning_user_text", "new_user_text")
+fun setPasswordPageText(view: TextView, isReturningUser: Boolean, returningUserText: String, newUserText: String) {
+    view.text = if (isReturningUser) returningUserText else newUserText
+}
+
+@BindingAdapter("isReturningUser", "returning_user_text", "new_user_text")
+fun setPasswordPageText(view: Button, isReturningUser: Boolean, returningUserText: String, newUserText: String) {
+    view.text = if (isReturningUser) returningUserText else newUserText
 }

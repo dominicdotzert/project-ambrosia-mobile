@@ -10,8 +10,20 @@ class DisclaimerViewModel : ViewModel() {
     val accept: LiveData<Boolean>
         get() = _accept
 
+    private val _navigatingToPassword = MutableLiveData<Boolean>()
+    val navigatingToPassword: LiveData<Boolean>
+        get() = _navigatingToPassword
+
     fun toggleAccept() {
         if (_accept.value == null) _accept.value = true
         else _accept.value = !accept.value!!
+    }
+
+    fun navigateToPassword() {
+        _navigatingToPassword.value = true
+    }
+
+    fun doneNavigatingToPassword() {
+        _navigatingToPassword.value = false
     }
 }

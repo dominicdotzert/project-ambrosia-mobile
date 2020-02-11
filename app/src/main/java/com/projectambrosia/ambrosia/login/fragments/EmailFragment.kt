@@ -27,7 +27,7 @@ class EmailFragment : Fragment() {
 
         viewModel.navigateToLogIn.observe(this, Observer {
             if (it) {
-                // TODO: Navigate to log in page
+                this.findNavController().navigate(EmailFragmentDirections.actionEmailFragmentToPasswordFragment(true))
                 viewModel.doneNavigatingToLogin()
             }
         })

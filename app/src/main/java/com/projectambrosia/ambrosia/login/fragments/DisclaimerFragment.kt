@@ -14,6 +14,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.DialogDisclaimerBinding
 import com.projectambrosia.ambrosia.databinding.DialogDisclaimerResultsBinding
@@ -38,10 +40,12 @@ class DisclaimerFragment : Fragment() {
 
         setDisclaimerExplanationText(binding.disclaimerExplanation)
 
-        binding.disclaimerContinueButton.setOnClickListener {
-            // TODO: Add navigation to next page
-            Toast.makeText(requireActivity(), "Continue", Toast.LENGTH_SHORT).show()
-        }
+        viewModel.navigatingToPassword.observe(this, Observer {
+            if (it) {
+                this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment(false))
+                viewModel.doneNavigatingToPassword()
+            }
+        })
 
         return binding.root
     }

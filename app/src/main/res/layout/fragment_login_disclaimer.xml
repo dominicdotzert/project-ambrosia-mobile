@@ -75,6 +75,7 @@
             android:layout_height="@dimen/button_height"
             android:text="@string/continue_label"
             app:enabled="@{viewModel.accept}"
+            android:onClick="@{() -> viewModel.navigateToPassword()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

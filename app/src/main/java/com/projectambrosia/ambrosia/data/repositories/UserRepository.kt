@@ -7,8 +7,9 @@ import kotlinx.coroutines.withContext
 // TODO: Write tests
 class UserRepository(private val userDao: UserDao) {
 
-    suspend fun userExists(email: String): Boolean = withContext(Dispatchers.IO) {
+    suspend fun validateUser(email: String): Boolean = withContext(Dispatchers.IO) {
         // TODO: Add network call (and flesh out logic here)
+        // Currently just checks if email exists in local db
         val count = userDao.userExists(email)
         count > 0
     }

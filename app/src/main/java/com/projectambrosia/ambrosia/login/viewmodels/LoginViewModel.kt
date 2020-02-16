@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class EmailViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     // Coroutine objects
     private val viewModelJob = Job()
@@ -18,34 +18,44 @@ class EmailViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     // Live Data objects
     val email = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
 
     private val _validEmail = MutableLiveData(true)
     val validEmail: LiveData<Boolean>
         get() = _validEmail
 
-    private val _navigateToLogIn = MutableLiveData<Boolean>()
-    val navigateToLogIn: LiveData<Boolean>
-        get() = _navigateToLogIn
+    private val _navigateToHome = MutableLiveData<Boolean>()
+    val navigateToHome: LiveData<Boolean>
+        get() = _navigateToHome
     
     private val _navigateToSignUp = MutableLiveData<Boolean>()
     val navigateToSignUp: LiveData<Boolean>
         get() = _navigateToSignUp
 
+    // TODO: Debug block. Remove.
+    init {
+        email.value = "test@test.com"
+    }
+
+    fun createAccount() {
+        _navigateToSignUp.value = true
+    }
+
     fun onContinue() {
+        // TODO: Validate credentials with server
         _validEmail.value = !email.value.isNullOrEmpty() && isValidEmail(email.value!!)
         if (!validEmail.value!!) return
 
         viewModelScope.launch {
-            if (userRepository.userExists(email.value!!)) {
-                _navigateToLogIn.value = true
-            } else {
-                _navigateToSignUp.value = true
+            // TODO: Add error message for failed auth
+            if (userRepository.validateUser(email.value!!)) {
+                _navigateToHome.value = true
             }
         }
     }
 
     fun doneNavigatingToLogin() {
-        _navigateToLogIn.value = false
+        _navigateToHome.value = false
     }
 
     fun doneNavigatingToSignUp() {

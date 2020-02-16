@@ -37,8 +37,7 @@ class PasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding =  FragmentPasswordBinding.inflate(inflater, container, false)
-        val args: PasswordFragmentArgs by navArgs()
-        val viewModel: PasswordViewModel by viewModels { PasswordViewModelFactory(args.isReturningUser) }
+        val viewModel: PasswordViewModel by viewModels { PasswordViewModelFactory() }
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -47,13 +46,6 @@ class PasswordFragment : Fragment() {
             if (it) {
                 Toast.makeText(requireActivity(), "Create account", Toast.LENGTH_SHORT).show()
                 viewModel.doneNavigatingToCreateAccount()
-            }
-        })
-
-        viewModel.navigateToHome.observe(this, Observer {
-            if (it) {
-                Toast.makeText(requireActivity(), "Sign in ", Toast.LENGTH_SHORT).show()
-                viewModel.doneNavigatingHome()
             }
         })
 

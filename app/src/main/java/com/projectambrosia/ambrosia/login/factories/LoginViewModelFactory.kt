@@ -5,16 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
-import com.projectambrosia.ambrosia.login.viewmodels.EmailViewModel
+import com.projectambrosia.ambrosia.login.viewmodels.LoginViewModel
 import java.lang.IllegalArgumentException
 
-class EmailViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
+class LoginViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(EmailViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             val database = AmbrosiaDatabase.getInstance(application)
             val userRepository = UserRepository(database.userDao)
-            return EmailViewModel(userRepository) as T
+            return LoginViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

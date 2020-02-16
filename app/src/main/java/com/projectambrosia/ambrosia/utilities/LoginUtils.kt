@@ -10,7 +10,7 @@ fun isValidEmail(email: String): Boolean {
 fun isValidPassword(password: String): Boolean{
     val containsNumber = Regex("\\d").containsMatchIn(password)
     val containsSymbols = Regex("[^a-zA-Z\\d\\s:]").containsMatchIn(password)
-    val longEnough = password.length > PASSWORD_MIN_LENGTH
+    val longEnough = password.length >= PASSWORD_MIN_LENGTH
 
     return (containsNumber || containsSymbols) && longEnough
 }

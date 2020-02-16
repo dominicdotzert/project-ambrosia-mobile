@@ -52,6 +52,8 @@ class JournalViewModel(
         viewModelScope.launch {
             val entry = JournalEntry(1, Calendar.getInstance(), prompt.promptText, entryText, prompt.taskId)
             journalRepository.saveEntry(entry)
+
+            // TODO: Pending group decision, remove this.
             prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
         }
     }

@@ -76,20 +76,14 @@
     </navigation>
     <navigation
         android:id="@+id/loginGraph"
-        app:startDestination="@id/emailFragment" >
+        app:startDestination="@id/loginFragment" >
         <fragment
-            android:id="@+id/emailFragment"
-            android:name="com.projectambrosia.ambrosia.login.fragments.EmailFragment"
-            android:label="EmailFragment">
+            android:id="@+id/loginFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.LoginFragment"
+            android:label="LoginFragment">
             <action
-                android:id="@+id/action_emailFragment_to_welcomeFragment"
+                android:id="@+id/action_loginFragment_to_welcomeFragment"
                 app:destination="@id/welcomeFragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/fragment_fade_exit"
-                app:popExitAnim="@anim/slide_out_right" />
-            <action
-                android:id="@+id/action_emailFragment_to_passwordFragment"
-                app:destination="@id/passwordFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
@@ -119,10 +113,12 @@
         <fragment
             android:id="@+id/passwordFragment"
             android:name="com.projectambrosia.ambrosia.login.fragments.PasswordFragment"
-            android:label="PasswordFragment" >
-            <argument
-                android:name="isReturningUser"
-                app:argType="boolean" />
-        </fragment>
+            android:label="PasswordFragment" />
+        <action
+            android:id="@+id/action_global_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popUpTo="@+id/loginGraph"
+            app:popUpToInclusive="true" />
     </navigation>
 </navigation>

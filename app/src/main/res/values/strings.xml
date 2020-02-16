@@ -86,7 +86,7 @@
     <string name="ambrosia_description">The tool to becoming the ultimate Intuitive Eater</string>
     <string name="email_placeholder">Email address</string>
     <string name="continue_label">Continue</string>
-    <string name="invalid_email">Please enter a valid email address.</string>
+    <string name="invalid_credentials">Invalid credentials.</string>
     <string name="welcome">Welcome!</string>
     <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to monitor your progress.]]></string>
     <string name="sign_up_welcome_message_2">If you’re okay with this, please continue to the disclaimer!</string>
@@ -106,9 +106,7 @@
     <string name="disclaimer_results_text_1">We advise you for now not to use our app because we are unable to support you in the areas you indicated.</string>
     <string name="disclaimer_results_text_2">Please consult a dietitian or medical professional before further use.</string>
     <string name="exit_app">Exit App</string>
-    <string name="password_welcome_new">Hello, you\'re new!</string>
-    <string name="password_welcome_back">Welcome back!</string>
-    <string name="enter_password">Please enter your password below.</string>
+    <string name="password_welcome">Hello, you\'re new!</string>
     <string name="create_password">Create a password that includes a symbol or a number and is 8 or more characters long.</string>
     <string name="password_placeholder">Password</string>
     <string name="create_account">Create account</string>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.projectambrosia.ambrosia.login.viewmodels.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundSalmon"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_regular"
+        tools:context=".login.fragments.LoginFragment">
+
+        <ImageView
+            android:id="@+id/ambrosia_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:src="@drawable/ambrosia_outlined"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ambrosia_app_name"
+            style="@style/TextAppearance.AppNameHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ambrosia_logo" />
+
+        <TextView
+            android:id="@+id/ambrosia_description_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:breakStrategy="balanced"
+            android:text="@string/ambrosia_description"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ambrosia_app_name" />
+
+        <TextView
+            android:id="@+id/login_error_text"
+            style="@style/TextAppearance.ErrorText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/invalid_credentials"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ambrosia_description_label"
+            app:set_invisible="@{true}"
+            app:visibility_adapter_inverted="@{viewModel.validEmail}" />
+
+        <EditText
+            android:id="@+id/login_email_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:autofillHints="emailAddress"
+            android:hint="@string/email_placeholder"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_error_text" />
+
+        <EditText
+            android:id="@+id/login_password_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:hint="@string/password_placeholder"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_email_edit_text" />
+
+        <TextView
+            android:id="@+id/login_create_account_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/create_account"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            android:textColor="@color/darkSalmon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_password_edit_text" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.createAccount()}"
+            android:padding="@dimen/spacing_small"
+            app:layout_constraintBottom_toBottomOf="@id/login_create_account_text"
+            app:layout_constraintEnd_toEndOf="@id/login_create_account_text"
+            app:layout_constraintStart_toStartOf="@id/login_create_account_text"
+            app:layout_constraintTop_toTopOf="@id/login_create_account_text" />
+
+        <Button
+            android:id="@+id/login_continue_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:onClick="@{() -> viewModel.onContinue()}"
+            android:text="@string/sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

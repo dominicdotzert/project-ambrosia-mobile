@@ -42,7 +42,7 @@ class DisclaimerFragment : Fragment() {
 
         viewModel.navigatingToPassword.observe(this, Observer {
             if (it) {
-                this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment(false))
+                this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment())
                 viewModel.doneNavigatingToPassword()
             }
         })

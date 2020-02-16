@@ -45,6 +45,7 @@ class IEASResultsViewModel(
 
     init {
         viewModelScope.launch {
+            // TODO: Pending group decision, remove this.
             tasksRepository.markTaskAsComplete(taskId)
 
             // TODO: Update to use proper UserId

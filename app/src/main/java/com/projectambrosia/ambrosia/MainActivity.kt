@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.journalFragment,
                 R.id.hungerScaleFragment,
                 R.id.IEASResultsFragment,
-                R.id.emailFragment)
+                R.id.loginFragment)
         )
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setupActionBarWithNavController(navController, appBarConfiguration)

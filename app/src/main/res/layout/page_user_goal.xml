@@ -33,5 +33,52 @@
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintTop_toBottomOf="@id/user_goal_header" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:scrollbarStyle="insideInset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_goal_explanation">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@={viewModel.goalRadioButtonId}">
+
+                <RadioButton
+                    android:id="@+id/user_goal_radio_button_1"
+                    style="@style/AmbrosiaGoalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_goal_1" />
+
+                <RadioButton
+                    android:id="@+id/user_goal_radio_button_2"
+                    style="@style/AmbrosiaGoalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/user_goal_2" />
+
+                <RadioButton
+                    android:id="@+id/user_goal_radio_button_3"
+                    style="@style/AmbrosiaGoalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/user_goal_3" />
+
+                <RadioButton
+                    android:id="@+id/user_goal_radio_button_4"
+                    style="@style/AmbrosiaGoalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/user_goal_4" />
+            </RadioGroup>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

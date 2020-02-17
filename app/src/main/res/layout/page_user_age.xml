@@ -33,36 +33,37 @@
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintTop_toBottomOf="@id/user_age_header" />
 
-        <!--        <com.google.android.material.chip.ChipGroup-->
-        <!--            android:id="@+id/user_age_chip_group"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="@dimen/spacing_regular"-->
-        <!--            android:orientation="vertical"-->
-        <!--            app:chipSpacing="@dimen/spacing_regular"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/user_age_explanation">-->
+        <RadioGroup
+            android:id="@+id/user_age_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:checkedButton="@={viewModel.ageRadioButtonId}"
+            app:layout_constraintTop_toBottomOf="@id/user_age_explanation">
 
-        <!--            <com.google.android.material.chip.Chip-->
-        <!--                android:id="@+id/chip_under_18"-->
-        <!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="44dp"-->
-        <!--                android:background="@android:color/white"-->
-        <!--                android:checkable="true"-->
-        <!--                android:text="@string/user_age_under_18"-->
-        <!--                android:textAllCaps="true" />-->
+            <RadioButton
+                android:id="@+id/user_age_radio_button_1"
+                style="@style/AmbrosiaAgeGroupRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/radio_button_age_group"
+                android:text="@string/user_age_under_18" />
 
-        <!--            <com.google.android.material.chip.Chip-->
-        <!--                android:id="@+id/chip_2"-->
-        <!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="44dp"-->
-        <!--                android:background="@android:color/white"-->
-        <!--                android:checkable="true"-->
-        <!--                android:text="@string/user_age_between_18_and_25"-->
-        <!--                android:textAllCaps="true" />-->
+            <RadioButton
+                android:id="@+id/user_age_radio_button_2"
+                style="@style/AmbrosiaAgeGroupRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/radio_button_age_group"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/user_age_between_18_and_25" />
 
-        <!--        </com.google.android.material.chip.ChipGroup>-->
+            <RadioButton
+                android:id="@+id/user_age_radio_button_3"
+                style="@style/AmbrosiaAgeGroupRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/radio_button_age_group"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/user_age_over_25" />
 
+        </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

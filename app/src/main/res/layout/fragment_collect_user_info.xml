@@ -46,8 +46,6 @@
             android:id="@+id/user_info_view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_regular"
-            android:layout_marginBottom="@dimen/spacing_regular"
             app:layout_constraintBottom_toTopOf="@id/user_info_next_button"
             app:layout_constraintTop_toBottomOf="@id/user_info_progress_bar" />
 

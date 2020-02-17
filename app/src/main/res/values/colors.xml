@@ -12,4 +12,6 @@
 
     <color name="mainTextColor">#4E4E56</color>
     <color name="greyTextColor">#ABACB6</color>
+
+    <color name="rippleDarkSalmon">#42FF7878</color>
 </resources>

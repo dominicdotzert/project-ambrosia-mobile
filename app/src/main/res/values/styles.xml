@@ -95,6 +95,32 @@
         <item name="android:progressDrawable">@drawable/progress_bar_rounded_corners</item>
     </style>
 
+    <style name="AmbrosiaAgeGroupRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:paddingLeft">@dimen/spacing_medium</item>
+        <item name="android:paddingRight">@dimen/spacing_medium</item>
+        <item name="android:paddingTop">@dimen/spacing_small</item>
+        <item name="android:paddingBottom">@dimen/spacing_small</item>
+        <item name="android:background">@drawable/ambrosia_age_group_radio_button</item>
+        <item name="android:foreground">@drawable/ambrosia_age_group_radio_button_ripple</item>
+        <item name="android:textColor">@color/ambrosia_radio_button_age_group_text</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AmbrosiaGoalRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:padding">@dimen/spacing_regular</item>
+        <item name="android:background">@drawable/ambrosia_goal_radio_button</item>
+        <item name="android:foreground">@drawable/ambrosia_goal_radio_button_ripple</item>
+        <item name="android:textColor">@color/ambrosia_radio_button_goal_text</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/scale_in</item>
         <item name="android:windowExitAnimation">@anim/scale_out</item>

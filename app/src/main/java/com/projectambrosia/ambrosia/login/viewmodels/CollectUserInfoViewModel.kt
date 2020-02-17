@@ -25,11 +25,29 @@ class CollectUserInfoViewModel(application: Application) : AndroidViewModel(appl
 
     val buttonEnabled = MediatorLiveData<Boolean>()
 
+    val ageRadioButtonId = MutableLiveData<Int>()
+    val goalRadioButtonId = MutableLiveData<Int>()
+
     // User Info LiveData Objects
-    val name = MutableLiveData<String>()
-    val ageGroup = MutableLiveData<Int>(1)
-    val goal = MutableLiveData<Int>(1)
+    val name = MutableLiveData<String>("Name")
     val motivation = MutableLiveData<String>()
+    private val ageGroup = Transformations.map(ageRadioButtonId) {
+        when (it) {
+            R.id.user_age_radio_button_1 -> UNDER_18
+            R.id.user_age_radio_button_2 -> BETWEEN_18_TO_25
+            R.id.user_age_radio_button_3 -> OVER_25
+            else -> 0
+        }
+    }
+    private val goal = Transformations.map(goalRadioButtonId) {
+        when (it) {
+            R.id.user_goal_radio_button_1 -> UNCONDITIONAL_PERMISSION_TO_EAT
+            R.id.user_goal_radio_button_2 -> EATING_FOR_PHYSICAL_NOT_EMOTIONAL_REASONS
+            R.id.user_goal_radio_button_3 -> RELIANCE_ON_INTERNAL_HUNGER_AND_SATIETY_CUES
+            R.id.user_goal_radio_button_4 -> BODY_FOOD_CHOICE_CONGRUENCE
+            else -> 0
+        }
+    }
 
     // Navigation Events
     private val _navigateToHome = MutableLiveData<Boolean>()
@@ -43,11 +61,12 @@ class CollectUserInfoViewModel(application: Application) : AndroidViewModel(appl
     init {
         // Setup buttonEnabled MediatorLiveData
         buttonEnabled.addSource(currentPage) {
-            when (it) {
+            buttonEnabled.value = when (it) {
                 USER_NAME_PAGE -> !name.value.isNullOrBlank()
-                USER_AGE_PAGE -> ageGroup.value != null
-                USER_GOAL_PAGE -> goal.value != null
+                USER_AGE_PAGE -> ageRadioButtonId.value != null
+                USER_GOAL_PAGE -> goalRadioButtonId.value != null
                 USER_MOTIVATION_PAGE -> !motivation.value.isNullOrBlank()
+                else -> false
             }
         }
         buttonEnabled.addSource(name) {
@@ -55,12 +74,12 @@ class CollectUserInfoViewModel(application: Application) : AndroidViewModel(appl
                 buttonEnabled.value = !it.isNullOrBlank()
             }
         }
-        buttonEnabled.addSource(ageGroup) {
+        buttonEnabled.addSource(ageRadioButtonId) {
             if (currentPage.value == USER_AGE_PAGE) {
                 buttonEnabled.value = it != null
             }
         }
-        buttonEnabled.addSource(goal) {
+        buttonEnabled.addSource(goalRadioButtonId) {
             if (currentPage.value == USER_GOAL_PAGE) {
                 buttonEnabled.value = it != null
             }

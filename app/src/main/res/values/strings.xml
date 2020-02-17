@@ -52,12 +52,14 @@
     <string name="results_explanation">Low percentages suggest areas that might need more work :)</string>
     <string name="back_to_home">Back to home</string>
     <string name="ieas_percentage"><![CDATA[%d<small>%%</small>]]></string>
+    <!-- TODO: Extract to string array -->
     <string name="ieas_category_1">Unconditional permission to eat</string>
     <string name="ieas_category_2">Eating for physical rather than emotional reasons</string>
     <string name="ieas_category_3">Reliance on internal hunger and satiety cues</string>
     <string name="ieas_category_4">Body-food choice congruence</string>
 
     <!-- IEAS Questions -->
+    <!-- TODO: Extract to string array -->
     <string name="ieas_question_1">I try to avoid certain foods high in fat, carbs, or calories.</string>
     <string name="ieas_question_2">I have forbidden foods that I don’t allow myself to eat. </string>
     <string name="ieas_question_3">I get mad at myself for eating something unhealthy.</string>
@@ -82,20 +84,24 @@
     <string name="ieas_question_22">I mostly eat foods that make my body perform efficiently (well).</string>
     <string name="ieas_question_23">I mostly eat foods that give my body energy and stamina.</string>
 
-    <!-- Login Pages -->
+    <!-- Login Flow -->
+    <!-- Login -->
     <string name="ambrosia_description">The tool to becoming the ultimate Intuitive Eater</string>
     <string name="email_placeholder">Email address</string>
     <string name="continue_label">Continue</string>
     <string name="invalid_credentials">Invalid credentials.</string>
+    <!-- Welcome -->
     <string name="welcome">Welcome!</string>
     <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to monitor your progress.]]></string>
     <string name="sign_up_welcome_message_2">If you’re okay with this, please continue to the disclaimer!</string>
     <string name="ie_credit">Tools adapted from Evelyn Tribole and Elyse Resch’s model of Intuitive Eating</string>
+    <!-- Disclaimer -->
     <string name="disclaimer">Disclaimer</string>
     <string name="disclaimer_explanation">This app is not appropriate if you are experiencing symptoms of an eating disorder. Click here if you are not sure.</string>
     <string name="disclaimer_explanation_link">here</string>
     <string name="disclaimer_text">I do not experience having symptoms of an eating disorder and choose to continue using the app.</string>
     <string name="disclaimer_header">Please check off everything that applies to you:</string>
+    <!-- TODO: Extract to string array -->
     <string name="scoff_item_1">Do you make yourself sick because you feel uncomfortably full?</string>
     <string name="scoff_item_2">Do you worry you have lost control over how much you eat?</string>
     <string name="scoff_item_3">Do you believe yourself to be fat when others say you are too thin?</string>
@@ -106,10 +112,30 @@
     <string name="disclaimer_results_text_1">We advise you for now not to use our app because we are unable to support you in the areas you indicated.</string>
     <string name="disclaimer_results_text_2">Please consult a dietitian or medical professional before further use.</string>
     <string name="exit_app">Exit App</string>
+    <!-- Password -->
     <string name="password_welcome">Hello, you\'re new!</string>
     <string name="create_password">Create a password that includes a symbol or a number and is 8 or more characters long.</string>
     <string name="password_placeholder">Password</string>
     <string name="create_account">Create account</string>
     <string name="sign_in">Sign in</string>
+    <string name="done">Done</string>
+    <!-- Name -->
+    <string name="user_name_header">How would you like us to address you?</string>
+    <string name="user_name_explanation">A first name or even a nickname works for us!</string>
+    <string name="user_name_edit_text_hint">Name</string>
+    <!-- Age -->
+    <string name="user_age_header">What is your age?</string>
+    <string name="user_age_explanation">A friendly reminder that we only use your age to personalize our tools to the stage in your life.</string>
+    <string name="user_age_under_18">Under 18</string>
+    <string name="user_age_between_18_and_25">Between 18 to 25</string>
+    <string name="user_age_over_25">Over 25</string>
+    <!-- Goal -->
+    <string name="user_goal_header">How can we help you feel your best?</string>
+    <string name="user_goal_explanation">Select a goal that we can help you achieve. We’ll create a plan for you!</string>
+    <!-- Motivation -->
+    <string name="user_motivation_header">Tell us why</string>
+    <string name="user_motivation_explanation_1">Research says that when you know your intentions, you’ve taken the 1st step to reaching your goal.</string>
+    <string name="user_motivation_explanation_2">Tell us why you have chosen to embark on this journey with us.</string>
+    <string name="user_motivation_edit_text_hint">I want to feel relaxed when I am around food…</string>
 
 </resources>

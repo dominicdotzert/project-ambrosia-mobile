@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.projectambrosia.ambrosia.login.viewmodels.CollectUserInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_regular">
+
+        <TextView
+            android:id="@+id/user_name_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name_header"
+            android:textAppearance="@style/TextAppearance.PageHeader"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_name_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/user_name_explanation"
+            android:textAppearance="@style/TextAppearance.LargeBodyText"
+            app:layout_constraintTop_toBottomOf="@id/user_name_header" />
+
+        <EditText
+            android:id="@+id/user_name_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:hint="@string/user_name_edit_text_hint"
+            android:inputType="text"
+            android:text="@={viewModel.name}"
+            app:layout_constraintTop_toBottomOf="@id/user_name_explanation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -36,7 +36,7 @@ class JournalPromptAdapter(private val journalPromptListener: JournalPromptListe
         }
 
         companion object {
-            fun from (parent: ViewGroup): ViewHolder {
+            fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemJournalPromptBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)

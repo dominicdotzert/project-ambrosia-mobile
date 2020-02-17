@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.projectambrosia.ambrosia.login.viewmodels.CollectUserInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
+        tools:context=".login.fragments.CollectUserInfoFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall_collect_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall_collect_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+        <ProgressBar
+            android:id="@+id/user_info_progress_bar"
+            style="@style/AmbrosiaProgressBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:progress="20"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_collect_user_info"
+            app:layout_constraintStart_toStartOf="@id/left_wall_collect_user_info"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/user_info_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            app:layout_constraintBottom_toTopOf="@id/user_info_next_button"
+            app:layout_constraintTop_toBottomOf="@id/user_info_progress_bar" />
+
+        <Button
+            android:id="@+id/user_info_next_button"
+            style="@style/AmbrosiaButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/spacing_regular"
+            android:enabled="@{viewModel.buttonEnabled}"
+            android:onClick="@{() -> viewModel.onNext()}"
+            android:text="@{viewModel.buttonText}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_collect_user_info"
+            app:layout_constraintStart_toStartOf="@id/left_wall_collect_user_info" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

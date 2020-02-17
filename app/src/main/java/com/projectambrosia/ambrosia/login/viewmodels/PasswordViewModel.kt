@@ -17,6 +17,11 @@ class PasswordViewModel : ViewModel() {
     val navigateToCreateAccount: LiveData<Boolean>
         get() = _navigateToCreateAccount
 
+    // TODO: Debug block. remove.
+    init {
+        password.value = "test1234"
+    }
+
     fun checkPassword() {
         password.value?.let {
             if (isValidPassword(it)) {

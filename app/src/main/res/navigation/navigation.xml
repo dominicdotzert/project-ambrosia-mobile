@@ -113,12 +113,24 @@
         <fragment
             android:id="@+id/passwordFragment"
             android:name="com.projectambrosia.ambrosia.login.fragments.PasswordFragment"
-            android:label="PasswordFragment" />
+            android:label="PasswordFragment" >
+            <action
+                android:id="@+id/action_passwordFragment_to_collectUserInfoFragment"
+                app:destination="@id/collectUserInfoFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
         <action
             android:id="@+id/action_global_tasksFragment"
             app:destination="@id/tasksFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popUpTo="@+id/loginGraph"
             app:popUpToInclusive="true" />
+        <fragment
+            android:id="@+id/collectUserInfoFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.CollectUserInfoFragment"
+            android:label="fragment_collect_user_info"
+            tools:layout="@layout/fragment_collect_user_info" />
     </navigation>
 </navigation>

@@ -94,8 +94,8 @@
         <TextView
             android:id="@+id/login_create_account_text"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_height="@dimen/button_height"
+            android:gravity="center"
             android:text="@string/create_account"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
@@ -106,7 +106,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/button_height"
             android:background="?attr/selectableItemBackground"
             android:onClick="@{() -> viewModel.createAccount()}"
             android:padding="@dimen/spacing_small"

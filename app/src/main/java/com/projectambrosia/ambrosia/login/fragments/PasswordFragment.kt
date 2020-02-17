@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.databinding.FragmentPasswordBinding
 import com.projectambrosia.ambrosia.login.factories.PasswordViewModelFactory
 import com.projectambrosia.ambrosia.login.viewmodels.PasswordViewModel
@@ -44,7 +43,7 @@ class PasswordFragment : Fragment() {
 
         viewModel.navigateToCreateAccount.observe(this, Observer {
             if (it) {
-                Toast.makeText(requireActivity(), "Create account", Toast.LENGTH_SHORT).show()
+                this.findNavController().navigate(PasswordFragmentDirections.actionPasswordFragmentToCollectUserInfoFragment())
                 viewModel.doneNavigatingToCreateAccount()
             }
         })

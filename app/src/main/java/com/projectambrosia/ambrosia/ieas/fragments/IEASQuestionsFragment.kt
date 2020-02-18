@@ -1,6 +1,9 @@
 package com.projectambrosia.ambrosia.ieas.fragments
 
 import android.animation.ObjectAnimator
+import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +15,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.MainActivity
+import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.databinding.DialogIeasQuestionConfirmationBinding
 import com.projectambrosia.ambrosia.databinding.FragmentIeasQuestionsBinding
 import com.projectambrosia.ambrosia.ieas.IEASQuestionClickListener
 import com.projectambrosia.ambrosia.ieas.IEASQuestionsAdapter
@@ -19,18 +24,23 @@ import com.projectambrosia.ambrosia.ieas.viewmodels.IEASQuestionsViewModel
 import com.projectambrosia.ambrosia.utilities.SupportNavigateUpCallback
 
 class IEASQuestionsFragment : Fragment() {
+
+    private val viewModel: IEASQuestionsViewModel by viewModels()
+    private val args: IEASQuestionsFragmentArgs by navArgs()
+
+    private var dialogOpen = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val args: IEASQuestionsFragmentArgs by navArgs()
-        val viewModel: IEASQuestionsViewModel by viewModels()
         val binding = FragmentIeasQuestionsBinding.inflate(inflater, container, false)
         val adapter = IEASQuestionsAdapter(
             IEASQuestionClickListener { question ->
                 question.toggle()
-            })
+            }
+        )
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -54,14 +64,8 @@ class IEASQuestionsFragment : Fragment() {
 
         // Navigate to results page
         viewModel.navigateToResults.observe(this, Observer {
-            if (it) {
-                this.findNavController()
-                    .navigate(
-                        IEASQuestionsFragmentDirections.actionIEASQuestionsFragmentToIEASResultsFragment(
-                            args.taskId,
-                            viewModel.getResponsesArray()
-                        )
-                    )
+            if (it && !dialogOpen) {
+                showConfirmationDialog()
                 viewModel.doneNavigatingNext()
             }
         })
@@ -100,6 +104,40 @@ class IEASQuestionsFragment : Fragment() {
 
         if (activity is MainActivity) {
             (activity as MainActivity).supportNavigateUpCallback = null
+        }
+    }
+
+    private fun showConfirmationDialog() {
+        dialogOpen = true
+
+        val dialogBuilder = AlertDialog.Builder(requireActivity())
+        val dialogBinding = DialogIeasQuestionConfirmationBinding.inflate(layoutInflater)
+        dialogBuilder.setView(dialogBinding.root)
+
+        val dialog = dialogBuilder.create()
+        dialog.window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            attributes.windowAnimations = R.style.DialogAnimation
+        }
+        dialog.show()
+
+        dialogBinding.ieasResultsConfirmationDialogCancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialogBinding.ieasResultsConfirmationDialogCompleteButton.setOnClickListener {
+            dialog.dismiss()
+            this.findNavController()
+                .navigate(
+                    IEASQuestionsFragmentDirections.actionIEASQuestionsFragmentToIEASResultsFragment(
+                        args.taskId,
+                        viewModel.getResponsesArray()
+                    )
+                )
+        }
+
+        dialog.setOnDismissListener {
+            dialogOpen = false
         }
     }
 }

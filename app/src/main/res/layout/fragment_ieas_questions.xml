@@ -70,7 +70,7 @@
             android:layout_height="@dimen/button_height"
             android:layout_marginBottom="@dimen/spacing_regular"
             android:onClick="@{() -> viewModel.onNext()}"
-            android:text="@string/next"
+            android:text="@{viewModel.buttonText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_questions"
             app:layout_constraintStart_toStartOf="@id/left_wall_ieas_questions" />

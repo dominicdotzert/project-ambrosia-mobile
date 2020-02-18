@@ -28,7 +28,6 @@
     <string name="how_to_use_header">How to use</string>
     <string name="how_to_use_instruction">Attempt to start eating when you feel you are at a 3 and stop eating at a 7. This range generally makes people feel the most comfortable.</string>
     <string name="scale">Scale</string>
-    <string name="scale_levels"><![CDATA[<b>1</b>\tRavenous<br /><b>2</b>\tExtremely hungry<br /><b>3</b>\tHungry<br /><b>4</b>\t“I could eat”<br /><b>5</b>\tNeutral<br /><b>6</b>\tMild fullness<br /><b>7</b>\tRavenous<br /><b>8</b>\tSlight discomfort<br /><b>9</b>\tOverstuffed<br /><b>10</b>\tPhysically ill]]></string>
     <string name="hs_level_1">Ravenous</string>
     <string name="hs_level_2">Extremely hungry</string>
     <string name="hs_level_3">Hungry</string>
@@ -44,12 +43,15 @@
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>
     <string name="ieas_full_instructions_1">This quiz will assess whether you are an Intuitive Eater, or perhaps where you might need some work.</string>
-    <string name="ieas_full_instructions_2">There will be 4 sections, and you will answer a total of 23 questions.</string>
+    <string name="ieas_full_instructions_2"><![CDATA[There will be <font color=%s>4 sections</font>, and you will answer a total of <font color=%s>23 questions</font>.]]></string>
+    <string name="ieas_credit">Assessment adapted from Tracy Tylka</string>
     <string name="lets_go">Let\'s go</string>
     <string name="ieas_questions_instructions">Please check off all that apply</string>
     <string name="next">Next</string>
+    <string name="ieas_results_confirmation_dialog_header">Just to make sure</string>
+    <string name="ieas_results_confirmation_dialog_label">By tapping complete, you will no longer be able to adjust your answers and you will be shown your results.</string>
     <string name="results">Results</string>
-    <string name="results_explanation">Low percentages suggest areas that might need more work :)</string>
+    <string name="results_explanation">High percentages suggest areas that might need more work :)</string>
     <string name="back_to_home">Back to home</string>
     <string name="ieas_percentage"><![CDATA[%d<small>%%</small>]]></string>
     <!-- TODO: Extract to string array -->

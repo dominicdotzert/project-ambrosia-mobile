@@ -2,6 +2,7 @@ package com.projectambrosia.ambrosia.ieas.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.ieas.IEASQuestion
 
 class IEASQuestionsViewModel(application: Application) : AndroidViewModel(application) {
@@ -10,6 +11,14 @@ class IEASQuestionsViewModel(application: Application) : AndroidViewModel(applic
     private val _currentPage = MutableLiveData(1)
     val progress: LiveData<Int> = Transformations.map(_currentPage) {
         it * 25
+    }
+
+    // Button text
+    val buttonText = Transformations.map(_currentPage) {
+        when (it) {
+            4 -> application.resources.getString(R.string.complete)
+            else -> application.resources.getString(R.string.next)
+        }
     }
 
     // Question lists

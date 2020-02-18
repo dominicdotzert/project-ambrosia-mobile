@@ -7,65 +7,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_regular"
         tools:context=".ieas.fragments.IEASInstructionsFragment">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/left_wall_ieas_instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/right_wall_ieas_instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/spacing_regular" />
 
         <TextView
             android:id="@+id/ieas_instructions_title"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_regular"
-            android:layout_marginEnd="@dimen/spacing_regular"
+            android:breakStrategy="balanced"
             android:text="@string/ieas_full_name"
             android:textAppearance="@style/TextAppearance.PageHeader"
-            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
-            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ieas_results_instructions"
-            android:layout_width="0dp"
+            android:id="@+id/ieas_instructions_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
             android:text="@string/ieas_full_instructions_1"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
-            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
-            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
-            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_title"/>
+            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_title" />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/ieas_instructions_2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
-            android:text="@string/ieas_full_instructions_2"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
-            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
-            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions"
-            app:layout_constraintTop_toBottomOf="@id/ieas_results_instructions" />
+            app:layout_constraintTop_toBottomOf="@id/ieas_instructions_1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:gravity="center"
+            android:text="@string/ieas_credit"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.CreditText"
+            app:layout_constraintBottom_toTopOf="@id/ieas_start_button" />
 
         <Button
             android:id="@+id/ieas_start_button"
             style="@style/AmbrosiaButton"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:layout_marginBottom="@dimen/spacing_regular"
             android:text="@string/lets_go"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/right_wall_ieas_instructions"
-            app:layout_constraintStart_toStartOf="@id/left_wall_ieas_instructions" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

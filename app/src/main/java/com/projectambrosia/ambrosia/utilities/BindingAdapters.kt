@@ -1,10 +1,12 @@
 package com.projectambrosia.ambrosia.utilities
 
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import com.projectambrosia.ambrosia.data.models.JournalEntry
+import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.views.IEASResultView
 import java.util.*
 
@@ -26,6 +28,11 @@ fun setJournalHistoryPlaceholderVisibility(view: CardView, prompts: List<Journal
 @BindingAdapter("journal_entry_date")
 fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
     view.text = formatJournalEntryDate(entryDate)
+}
+
+@BindingAdapter("task_list_placeholder")
+fun setTaskListPlaceholderVisibility(view: LinearLayout, tasks: List<Task>?) {
+    view.visibility = if (tasks == null || tasks.isEmpty()) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("visibility_adapter_inverted", "set_invisible")

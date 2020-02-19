@@ -2,11 +2,9 @@ package com.projectambrosia.ambrosia.journal
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.JournalEntry
-import com.projectambrosia.ambrosia.data.models.User
 import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
@@ -30,7 +28,7 @@ class JournalViewModel(
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     // Load quote
-    private val _user: LiveData<User> = userRepository.getUser(1)
+    private val _user = userRepository.getUser(1)
     val userMotivation = Transformations.map(_user) {
         application.resources.getString(R.string.quote_body, it.motivation)
     }

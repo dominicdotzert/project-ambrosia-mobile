@@ -107,6 +107,15 @@
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"
                 app:layout_constraintTop_toBottomOf="@id/journal_prompt_list" />
 
+            <com.projectambrosia.ambrosia.views.TodayAllSelector
+                android:id="@+id/journal_today_all_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:journal_entry_history_placeholder_visibility_inverted="@{journalViewModel.entryHistory}"
+                app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
+                app:layout_constraintTop_toTopOf="@id/journal_completed_heading" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/journal_empty_history_card"
                 android:layout_width="0dp"
@@ -114,7 +123,7 @@
                 android:layout_marginTop="@dimen/spacing_regular"
                 android:layout_marginBottom="@dimen/spacing_small"
                 app:cardCornerRadius="@dimen/corner_radius"
-                app:journal_entry_history="@{journalViewModel.entryHistory}"
+                app:journal_entry_history_placeholder_visibility="@{journalViewModel.completedList}"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"
                 app:layout_constraintTop_toBottomOf="@id/journal_completed_heading">
@@ -151,8 +160,8 @@
                 android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
+                app:layout_constraintStart_toStartOf="@id/left_wall_journal"
                 app:layout_constraintTop_toBottomOf="@id/journal_completed_heading" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

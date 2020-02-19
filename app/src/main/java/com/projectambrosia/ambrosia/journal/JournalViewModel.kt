@@ -2,6 +2,8 @@ package com.projectambrosia.ambrosia.journal
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.JournalEntry
@@ -9,6 +11,7 @@ import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
+import com.projectambrosia.ambrosia.utilities.isToday
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -45,6 +48,13 @@ class JournalViewModel(
 
     // Load history
     val entryHistory = journalRepository.loadHistory(1)
+    val todaySelected = MutableLiveData<Boolean>()
+    val completedList = MediatorLiveData<List<JournalEntry>>()
+
+    init {
+        completedList.addSource(entryHistory) { updateHistoryList() }
+        completedList.addSource(todaySelected) { updateHistoryList() }
+    }
 
     fun savePrompt(prompt: JournalPrompt, entryText: String) {
         viewModelScope.launch {
@@ -59,5 +69,12 @@ class JournalViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    private fun updateHistoryList() {
+        completedList.value = when (todaySelected.value) {
+            false -> entryHistory.value
+            else -> entryHistory.value?.filter { entry -> entry.entryDate.isToday() }
+        }
     }
 }

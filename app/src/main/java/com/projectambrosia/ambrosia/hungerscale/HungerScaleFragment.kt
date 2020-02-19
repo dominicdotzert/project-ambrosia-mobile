@@ -32,13 +32,13 @@ class HungerScaleFragment : Fragment() {
         binding.hungerScaleViewModel = viewModel
         binding.hsHistory.adapter = hsHistoryAdapter
 
-        // Observer completed list
+        // Observe completed list
         viewModel.completedList.observe(this, Observer {
             val todaySelected = viewModel.todaySelected.value?: true
             hsHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
         })
 
-        // Set observer on TodayAllSelector
+        // Observe TodayAllSelector
         binding.hungerScaleTodayAllSelector.todaySelected.observe(this, Observer {
             it?.let {
                 viewModel.todaySelected.value = it

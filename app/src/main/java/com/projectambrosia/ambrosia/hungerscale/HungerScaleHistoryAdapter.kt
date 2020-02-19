@@ -53,10 +53,10 @@ class HungerScaleHistoryAdapter
 
         val groupedEntryList = entryList?.groupBy { entry -> entry.entryDate.getHistoryDateString() }
         val list = mutableListOf<HSAdapterItem>()
-        groupedEntryList?.forEach { taskGrouping ->
-            if (taskGrouping.key != "Today")
-                list.add(HSAdapterItem.DateItem(taskGrouping.key))
-            list.addAll(taskGrouping.value.map { HSAdapterItem.HSEntryItem(it) })
+        groupedEntryList?.forEach { entryGrouping ->
+            if (entryGrouping.key != "Today")
+                list.add(HSAdapterItem.DateItem(entryGrouping.key))
+            list.addAll(entryGrouping.value.map { HSAdapterItem.HSEntryItem(it) })
         }
         submitList(list)
     }

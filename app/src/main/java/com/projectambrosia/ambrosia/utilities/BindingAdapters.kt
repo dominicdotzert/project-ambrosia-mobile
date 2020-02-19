@@ -24,9 +24,14 @@ fun setJournalPromptHeading(view: TextView, taskId: Long?, prompt: String, frees
     view.text = if (taskId == null) freestyle else prompt
 }
 
-@BindingAdapter("journal_entry_history")
-fun setJournalHistoryPlaceholderVisibility(view: CardView, prompts: List<JournalEntry>?) {
+@BindingAdapter("journal_entry_history_placeholder_visibility")
+fun setJournalHistoryPlaceholderVisibility(view: ViewGroup, prompts: List<JournalEntry>?) {
     view.visibility = if (prompts == null || prompts.isEmpty()) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("journal_entry_history_placeholder_visibility_inverted")
+fun setJournalHistoryPlaceholderVisibilityInverted(view: ViewGroup, prompts: List<JournalEntry>?) {
+    view.visibility = if (prompts == null || prompts.isEmpty()) View.GONE else View.VISIBLE
 }
 
 // Tasks

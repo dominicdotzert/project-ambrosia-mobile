@@ -1,6 +1,6 @@
 package com.projectambrosia.ambrosia.data
 
-import com.projectambrosia.ambrosia.utilities.Tool
+import com.projectambrosia.ambrosia.utilities.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
@@ -29,18 +29,18 @@ class ConvertersTest {
 
     @Test
     fun fromTool() {
-        assertThat(Converters().fromTool(Tool.OTHER), equalTo(0))
-        assertThat(Converters().fromTool(Tool.JOURNAL), equalTo(1))
-        assertThat(Converters().fromTool(Tool.HS), equalTo(2))
-        assertThat(Converters().fromTool(Tool.IEAS), equalTo(3))
+        assertThat(Converters().fromTool(Tool.OTHER), equalTo(OTHER))
+        assertThat(Converters().fromTool(Tool.JOURNAL), equalTo(JOURNAL))
+        assertThat(Converters().fromTool(Tool.HS), equalTo(HUNGER_SCALE))
+        assertThat(Converters().fromTool(Tool.IEAS), equalTo(IEAS))
     }
 
     @Test
     fun toTool() {
-        assertThat(Converters().toTool(0), equalTo(Tool.OTHER))
-        assertThat(Converters().toTool(1), equalTo(Tool.JOURNAL))
-        assertThat(Converters().toTool(2), equalTo(Tool.HS))
-        assertThat(Converters().toTool(3), equalTo(Tool.IEAS))
+        assertThat(Converters().toTool(OTHER), equalTo(Tool.OTHER))
+        assertThat(Converters().toTool(JOURNAL), equalTo(Tool.JOURNAL))
+        assertThat(Converters().toTool(HUNGER_SCALE), equalTo(Tool.HS))
+        assertThat(Converters().toTool(IEAS), equalTo(Tool.IEAS))
     }
 
     @Test

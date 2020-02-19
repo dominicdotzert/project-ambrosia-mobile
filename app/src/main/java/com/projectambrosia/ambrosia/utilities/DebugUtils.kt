@@ -17,12 +17,16 @@ suspend fun prepopulateDatabase(context: Context) {
         )
 
         db.taskDao.insert(
-            Task(1, 1, Calendar.getInstance(), "Go to the journal", 1, Tool.JOURNAL, 1),
-            Task(2, 1, Calendar.getInstance(), "Go to the hunger scale", 1, Tool.HS, 1),
-            Task(3, 1, Calendar.getInstance(), "Go to the IEAS", 1, Tool.IEAS, 1),
-            Task(4, 1, Calendar.getInstance(), "Do something unrelated to our tools and also that is really long and will require text to wrap", 1, Tool.OTHER, 1),
+            Task(1, 1, Calendar.getInstance(), "Today - Journal", 1, Tool.JOURNAL, 1),
+            Task(2, 1, Calendar.getInstance(), "Today - HS", 1, Tool.HS, 1),
+            Task(3, 1, Calendar.getInstance(), "Today - IEAS", 1, Tool.IEAS, 1),
+            Task(4, 1, Calendar.getInstance(), "Today - Other", 1, Tool.OTHER, 1),
+            Task(5, 1, Calendar.getInstance(), "Today - Other - Completed", 1, Tool.OTHER, 1, true),
 
-            Task(5, 1, Calendar.getInstance(), "Describe how your lunch tasted in your mouth. Did you enjoy it?", 1, Tool.JOURNAL, 1)
+            Task(6, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, "Yesterday - Other - Completed", 1, Tool.OTHER, 1, true),
+            Task(7, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*2) }, "2 days ago - Other - Completed", 1, Tool.OTHER, 1, true),
+            Task(8, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*3) }, "3 days ago - Other - Completed", 1, Tool.OTHER, 1, true),
+            Task(9, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*4) }, "4 days ago - Other - Completed", 1, Tool.OTHER, 1, true)
         )
     }
 }

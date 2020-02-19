@@ -14,7 +14,7 @@
         android:paddingStart="@dimen/spacing_very_small"
         android:paddingEnd="@dimen/spacing_very_small"
         android:text="@string/today"
-        android:textAppearance="@style/TextAppearance.TodayAllText"
+        android:textAppearance="@style/TextAppearance.MinorHeader"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
@@ -43,7 +43,7 @@
         android:paddingStart="@dimen/spacing_very_small"
         android:paddingEnd="@dimen/spacing_very_small"
         android:text="@string/all"
-        android:textAppearance="@style/TextAppearance.TodayAllText"
+        android:textAppearance="@style/TextAppearance.MinorHeader"
         app:layout_constraintStart_toEndOf="@id/selector_today_label" />
 
     <View

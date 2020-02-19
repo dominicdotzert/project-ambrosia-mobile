@@ -2,8 +2,8 @@ package com.projectambrosia.ambrosia.utilities
 
 // TODO: Remove?
 enum class Tool(val value: Int) {
-    OTHER(com.projectambrosia.ambrosia.utilities.OTHER),
-    JOURNAL(com.projectambrosia.ambrosia.utilities.JOURNAL),
+    IEAS(com.projectambrosia.ambrosia.utilities.IEAS),
     HS(HUNGER_SCALE),
-    IEAS(com.projectambrosia.ambrosia.utilities.IEAS)
+    JOURNAL(com.projectambrosia.ambrosia.utilities.JOURNAL),
+    OTHER(com.projectambrosia.ambrosia.utilities.OTHER)
 }

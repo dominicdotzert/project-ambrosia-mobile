@@ -5,7 +5,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import java.util.*
 
-class StringFormattingUtilsTests {
+class CalendarExtensionsTests {
     @Test
     fun formatDateQuote() {
         val calendar = Calendar.getInstance().apply {

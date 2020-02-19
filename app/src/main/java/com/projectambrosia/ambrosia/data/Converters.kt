@@ -1,6 +1,9 @@
 package com.projectambrosia.ambrosia.data
 
 import androidx.room.TypeConverter
+import com.projectambrosia.ambrosia.utilities.HUNGER_SCALE
+import com.projectambrosia.ambrosia.utilities.IEAS
+import com.projectambrosia.ambrosia.utilities.JOURNAL
 import com.projectambrosia.ambrosia.utilities.Tool
 import java.lang.StringBuilder
 import java.util.*
@@ -21,9 +24,9 @@ class Converters {
     @TypeConverter
     fun toTool(value: Int): Tool {
         return when (value) {
-            1 -> Tool.JOURNAL
-            2 -> Tool.HS
-            3 -> Tool.IEAS
+            IEAS -> Tool.IEAS
+            HUNGER_SCALE -> Tool.HS
+            JOURNAL -> Tool.JOURNAL
             else -> Tool.OTHER
         }
     }

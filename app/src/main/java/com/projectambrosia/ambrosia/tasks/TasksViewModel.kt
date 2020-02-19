@@ -2,9 +2,13 @@ package com.projectambrosia.ambrosia.tasks
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
+import com.projectambrosia.ambrosia.utilities.isToday
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -25,15 +29,20 @@ class TasksViewModel(
         it.motivation
     }
 
-    private val tasks = tasksRepository.getTasks()
+    val tasks = tasksRepository.getTasks()
 
     val todoList = Transformations.map(tasks) {
         it.filter { task -> !task.isCompleted }
     }
 
     // TODO: Order by timestamp
-    val completedList = Transformations.map(tasks) {
-        it.filter { task -> task.isCompleted }
+    val todaySelected = MutableLiveData<Boolean>()
+    val completedList = MediatorLiveData<List<Task>>()
+
+    init {
+        // Setup completedList MediatorLiveData
+        completedList.addSource(tasks) { updateCompletedList() }
+        completedList.addSource(todaySelected) { updateCompletedList() }
     }
 
     fun markTaskAsComplete(taskId: Long) = viewModelScope.launch {
@@ -47,5 +56,12 @@ class TasksViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    private fun updateCompletedList() {
+        completedList.value = when (todaySelected.value) {
+            false -> tasks.value?.filter { task -> task.isCompleted }
+            else -> tasks.value?.filter { task -> task.isCompleted && task.timestamp.isToday() }
+        }
     }
 }

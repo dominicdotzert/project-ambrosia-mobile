@@ -4,17 +4,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.children
 import androidx.databinding.BindingAdapter
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.views.IEASResultView
+import kotlinx.android.synthetic.main.list_item_journal_history.view.*
 import java.util.*
 
+// IEAS
 @BindingAdapter("percentage")
 fun setResultsPercentage(view: IEASResultView, percentage: Int) {
     view.updatePercentage(percentage)
 }
 
+// Journal
 @BindingAdapter("journal_prompt_task", "prompt_text", "freestyle_text")
 fun setJournalPromptHeading(view: TextView, taskId: Long?, prompt: String, freestyle: String) {
     view.text = if (taskId == null) freestyle else prompt
@@ -30,6 +34,7 @@ fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
     view.text = formatJournalEntryDate(entryDate)
 }
 
+// Tasks
 @BindingAdapter("task_list_placeholder_visibility")
 fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.VISIBLE else View.GONE
@@ -40,6 +45,7 @@ fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?
     view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
 }
 
+// Generic
 @BindingAdapter("visibility_adapter_inverted", "set_invisible")
 fun setViewVisibility(view: View, isVisible: Boolean, setInvisible: Boolean = false) {
     if (!isVisible)
@@ -48,4 +54,12 @@ fun setViewVisibility(view: View, isVisible: Boolean, setInvisible: Boolean = fa
         view.visibility = View.INVISIBLE
     else
         view.visibility = View.GONE
+}
+
+@BindingAdapter("children_enabled_if_today")
+fun setChildrenEnabledIfToday(view: ViewGroup, calendar: Calendar) {
+    val isToday = calendar.isToday()
+    for (child in view.children) {
+        child.isEnabled = isToday
+    }
 }

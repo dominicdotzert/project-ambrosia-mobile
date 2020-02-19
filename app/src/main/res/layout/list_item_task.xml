@@ -15,7 +15,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:children_enabled_if_today="@{task.timestamp}">
 
         <CheckBox
             android:id="@+id/task_check_box"

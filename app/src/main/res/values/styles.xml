@@ -48,19 +48,17 @@
         <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="TextAppearance.JournalPromptHeader" parent="TextAppearance.BodyText">
+    <style name="TextAppearance.MinorHeader" parent="TextAppearance.BodyText">
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.JournalPromptHeader" parent="TextAppearance.MinorHeader">
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextAppearance.HelpHeader" parent="TextAppearance.LargeBodyText">
         <item name="android:textColor">@android:color/black</item>
-    </style>
-
-    <style name="TextAppearance.TodayAllText" parent="TextAppearance.BodyText">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AmbrosiaButton">

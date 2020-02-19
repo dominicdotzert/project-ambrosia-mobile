@@ -32,7 +32,7 @@ class TasksFragment : Fragment() {
         })
         binding.homeTodoList.adapter = todoAdapter
         tasksViewModel.todoList.observe(this, Observer {tasks ->
-            todoAdapter.submitList(tasks)
+            todoAdapter.addDatesAndSubmitList(tasks, false)
         })
 
         val completedAdapter = TaskAdapter(TaskListener { task ->
@@ -42,7 +42,15 @@ class TasksFragment : Fragment() {
         })
         binding.homeCompletedList.adapter = completedAdapter
         tasksViewModel.completedList.observe(this, Observer { tasks ->
-            completedAdapter.submitList(tasks)
+            val todaySelected = tasksViewModel.todaySelected.value?: true
+            completedAdapter.addDatesAndSubmitList(tasks, !todaySelected)
+        })
+
+        // Set observer on TodayAllSelector
+        binding.tasksTodayAllSelector.todaySelected.observe(this, Observer {
+            it?.let {
+                tasksViewModel.todaySelected.value = it
+            }
         })
 
         return binding.root
@@ -52,9 +60,9 @@ class TasksFragment : Fragment() {
     private fun navigateToTask(task: Task?) {
         task?.let {
             when (task.tool) {
-                Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
-                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
                 Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
+                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
+                Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
                 Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
             }
         }

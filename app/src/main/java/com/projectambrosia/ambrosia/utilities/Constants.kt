@@ -5,11 +5,10 @@ const val AWS_BASE_URL = "https://jhgn385jm8.execute-api.us-east-2.amazonaws.com
 const val DATABASE_NAME = "ambrosia-db"
 
 // Tools
-// TODO: Update values to match server
-const val OTHER = 0
-const val JOURNAL = 1
+const val IEAS = 1
 const val HUNGER_SCALE = 2
-const val IEAS = 3
+const val JOURNAL = 3
+const val OTHER = 4
 
 // Age Groups
 const val UNDER_18 = 1

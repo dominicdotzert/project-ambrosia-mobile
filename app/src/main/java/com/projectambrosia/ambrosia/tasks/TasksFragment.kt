@@ -26,11 +26,11 @@ class TasksFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.taskViewModel = tasksViewModel
 
+        // Set RecyclerView adapters and observe lists
         val todoAdapter = TaskAdapter(TaskListener { task ->
             navigateToTask(task)
         })
         binding.homeTodoList.adapter = todoAdapter
-
         tasksViewModel.todoList.observe(this, Observer {tasks ->
             todoAdapter.submitList(tasks)
         })
@@ -41,7 +41,6 @@ class TasksFragment : Fragment() {
             }
         })
         binding.homeCompletedList.adapter = completedAdapter
-
         tasksViewModel.completedList.observe(this, Observer { tasks ->
             completedAdapter.submitList(tasks)
         })

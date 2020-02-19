@@ -117,10 +117,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:paddingBottom="@dimen/spacing_very_small"
                 android:text="@string/tasks_completed_header"
                 android:textAppearance="@style/TextAppearance.Heading"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
                 app:layout_constraintTop_toBottomOf="@id/home_todo_list" />
+
+            <com.projectambrosia.ambrosia.views.TodayAllSelector
+                android:id="@+id/tasks_today_all_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
+                app:layout_constraintTop_toTopOf="@id/home_heading_completed"
+                app:task_list_placeholder_visibility_inverted="@{taskViewModel.completedList}" />
 
             <LinearLayout
                 android:id="@+id/tasks_empty_completed_list"
@@ -131,7 +140,7 @@
                 app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
                 app:layout_constraintTop_toBottomOf="@id/home_heading_completed"
-                app:task_list_placeholder="@{taskViewModel.completedList}">
+                app:task_list_placeholder_visibility="@{taskViewModel.completedList}">
 
                 <CheckBox
                     android:layout_width="wrap_content"

@@ -145,4 +145,8 @@
     <string name="user_motivation_explanation_2">Tell us why you have chosen to embark on this journey with us.</string>
     <string name="user_motivation_edit_text_hint">I want to feel relaxed when I am around food…</string>
 
+
+    <!-- Today All Selector -->
+    <string name="today">Today</string>
+    <string name="all">All</string>
 </resources>

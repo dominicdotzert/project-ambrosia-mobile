@@ -13,6 +13,7 @@
         <item name="android:textColor">@color/darkOrange</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.AppNameHeading" parent="TextAppearance.MaterialComponents.Headline3">
@@ -55,6 +56,11 @@
 
     <style name="TextAppearance.HelpHeader" parent="TextAppearance.LargeBodyText">
         <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.TodayAllText" parent="TextAppearance.BodyText">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AmbrosiaButton">

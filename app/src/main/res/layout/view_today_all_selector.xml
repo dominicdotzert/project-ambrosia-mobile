@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/selector_today_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_very_small"
+        android:paddingEnd="@dimen/spacing_very_small"
+        android:text="@string/today"
+        android:textAppearance="@style/TextAppearance.TodayAllText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/selector_today_underline"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/mainTextColor"
+        app:layout_constraintEnd_toEndOf="@id/selector_today_label"
+        app:layout_constraintStart_toStartOf="@id/selector_today_label"
+        app:layout_constraintTop_toBottomOf="@id/selector_today_label" />
+
+    <View
+        android:id="@+id/selector_today_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="@id/selector_today_underline"
+        app:layout_constraintEnd_toEndOf="@id/selector_today_label"
+        app:layout_constraintStart_toStartOf="@id/selector_today_label"
+        app:layout_constraintTop_toTopOf="@id/selector_today_label" />
+
+    <TextView
+        android:id="@+id/selector_all_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_very_small"
+        android:paddingEnd="@dimen/spacing_very_small"
+        android:text="@string/all"
+        android:textAppearance="@style/TextAppearance.TodayAllText"
+        app:layout_constraintStart_toEndOf="@id/selector_today_label" />
+
+    <View
+        android:id="@+id/selector_all_underline"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/mainTextColor"
+        app:layout_constraintEnd_toEndOf="@id/selector_all_label"
+        app:layout_constraintStart_toStartOf="@id/selector_all_label"
+        app:layout_constraintTop_toBottomOf="@id/selector_all_label" />
+
+    <View
+        android:id="@+id/selector_all_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="@id/selector_all_underline"
+        app:layout_constraintEnd_toEndOf="@id/selector_all_label"
+        app:layout_constraintStart_toStartOf="@id/selector_all_label"
+        app:layout_constraintTop_toTopOf="@id/selector_all_label" />
+</merge>

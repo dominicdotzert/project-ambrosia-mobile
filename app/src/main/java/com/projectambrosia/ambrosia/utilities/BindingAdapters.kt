@@ -1,7 +1,7 @@
 package com.projectambrosia.ambrosia.utilities
 
 import android.view.View
-import android.widget.LinearLayout
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
@@ -30,9 +30,14 @@ fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
     view.text = formatJournalEntryDate(entryDate)
 }
 
-@BindingAdapter("task_list_placeholder")
-fun setTaskListPlaceholderVisibility(view: LinearLayout, tasks: List<Task>?) {
+@BindingAdapter("task_list_placeholder_visibility")
+fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("task_list_placeholder_visibility_inverted")
+fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?) {
+    view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
 }
 
 @BindingAdapter("visibility_adapter_inverted", "set_invisible")

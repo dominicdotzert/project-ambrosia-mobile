@@ -2,6 +2,7 @@ package com.projectambrosia.ambrosia.utilities
 
 import android.content.Context
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
+import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.models.User
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +28,15 @@ suspend fun prepopulateDatabase(context: Context) {
             Task(7, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*2) }, "2 days ago - Other - Completed", 1, Tool.OTHER, 1, true),
             Task(8, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*3) }, "3 days ago - Other - Completed", 1, Tool.OTHER, 1, true),
             Task(9, 1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*4) }, "4 days ago - Other - Completed", 1, Tool.OTHER, 1, true)
+        )
+
+        db.hsEntryDao.insert(
+            HSEntry(1, Calendar.getInstance(), 1, 10, "hs entry 1"),
+            HSEntry(1, Calendar.getInstance(), 2, 9, "hs entry 2"),
+            HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, 3, 7, "hs entry 3"),
+            HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, 2, 6, "hs entry 4"),
+            HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*2) }, 5, 8, "hs entry 5"),
+            HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*3) }, 4, 7, "hs entry 6")
         )
     }
 }

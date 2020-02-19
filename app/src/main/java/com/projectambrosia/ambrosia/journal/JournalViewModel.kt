@@ -55,4 +55,9 @@ class JournalViewModel(
             prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 }

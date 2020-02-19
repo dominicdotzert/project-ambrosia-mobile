@@ -41,7 +41,7 @@
             android:id="@+id/journal_dialog_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.JournalPromptHeader"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
             app:freestyle_text="@{@string/freestyle}"
             app:journal_prompt_task="@{prompt.taskId}"
             app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"

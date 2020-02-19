@@ -17,11 +17,11 @@ class JournalRepository(private val journalEntryDao: JournalEntryDao, private va
         }
     }
 
-    fun loadPrompts(userId: Long) : LiveData<List<Task>> {
+    fun loadPrompts(userId: Long): LiveData<List<Task>> {
         return taskDao.getJournalTasks(userId)
     }
 
-    fun loadHistory(userId: Long) : LiveData<List<JournalEntry>> {
+    fun loadHistory(userId: Long): LiveData<List<JournalEntry>> {
         return journalEntryDao.getJournalEntries(userId)
     }
 }

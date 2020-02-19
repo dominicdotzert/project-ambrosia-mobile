@@ -12,7 +12,13 @@ fun formatQuoteDate(calendar: Calendar): String {
 
 // TODO: Add tests
 fun formatJournalEntryDate(calendar: Calendar): String {
-    val format = "MMM d, h:mm a"
+    val format = "MMM d, h:mm aaa"
+    val date = calendar.time
+    return SimpleDateFormat(format, Locale.getDefault()).format(date)
+}
+
+fun formatTime(calendar: Calendar): String {
+    val format = "h:mm aaa"
     val date = calendar.time
     return SimpleDateFormat(format, Locale.getDefault()).format(date)
 }

@@ -11,9 +11,9 @@ import java.util.*
 data class HSEntry(
     @ColumnInfo(name = "user_id") val userId: Long,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
-    @ColumnInfo(name = "task_id") val taskId: Long,
     val before: Int,
-    val after: Int
+    val after: Int?,
+    val label: String?
 ) {
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var hsEntryId: Long = 0L
 }

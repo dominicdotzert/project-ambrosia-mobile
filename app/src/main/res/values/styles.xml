@@ -53,12 +53,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.JournalPromptHeader" parent="TextAppearance.MinorHeader">
+    <style name="TextAppearance.EntryHeader" parent="TextAppearance.MinorHeader">
         <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextAppearance.HelpHeader" parent="TextAppearance.LargeBodyText">
         <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.ItalicBodyText" parent="TextAppearance.BodyText">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AmbrosiaButton">

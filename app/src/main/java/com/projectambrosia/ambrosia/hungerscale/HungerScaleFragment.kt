@@ -9,13 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.DialogHungerScaleHelpBinding
 import com.projectambrosia.ambrosia.databinding.FragmentHungerScaleBinding
 
 class HungerScaleFragment : Fragment() {
 
-    private val viewModel: HungerScaleViewModel by viewModels()
+    private val viewModel: HungerScaleViewModel by viewModels { HungerScaleViewModelFactory(requireActivity().application) }
 
     private var dialogOpen = false
 
@@ -25,10 +26,26 @@ class HungerScaleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHungerScaleBinding.inflate(inflater, container, false)
+        val hsHistoryAdapter = HungerScaleHistoryAdapter()
 
         binding.lifecycleOwner = this
         binding.hungerScaleViewModel = viewModel
+        binding.hsHistory.adapter = hsHistoryAdapter
 
+        // Observer completed list
+        viewModel.completedList.observe(this, Observer {
+            val todaySelected = viewModel.todaySelected.value?: true
+            hsHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
+        })
+
+        // Set observer on TodayAllSelector
+        binding.hungerScaleTodayAllSelector.todaySelected.observe(this, Observer {
+            it?.let {
+                viewModel.todaySelected.value = it
+            }
+        })
+
+        // Set OnClickListener on help button
         binding.hungerScaleHelpIcon.setOnClickListener {
             if (!dialogOpen) {
                 showHelpPopup()

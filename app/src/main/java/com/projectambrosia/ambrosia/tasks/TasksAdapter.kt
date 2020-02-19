@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.projectambrosia.ambrosia.data.models.Task
-import com.projectambrosia.ambrosia.databinding.ListItemHistoryDateBinding
 import com.projectambrosia.ambrosia.databinding.ListItemTaskBinding
 import com.projectambrosia.ambrosia.utilities.getHistoryDateString
+import com.projectambrosia.ambrosia.views.DateViewHolder
 
 private const val ITEM_VIEW_TYPE_TASK = 0
 private const val ITEM_VIEW_TYPE_DATE = 1
@@ -75,21 +75,6 @@ class TaskAdapter(
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemTaskBinding.inflate(layoutInflater, parent, false)
                 return TaskViewHolder(binding)
-            }
-        }
-    }
-
-    class DateViewHolder private constructor(val binding: ListItemHistoryDateBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(date: String) {
-            binding.date = date
-            binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): DateViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemHistoryDateBinding.inflate(layoutInflater, parent, false)
-                return DateViewHolder(binding)
             }
         }
     }

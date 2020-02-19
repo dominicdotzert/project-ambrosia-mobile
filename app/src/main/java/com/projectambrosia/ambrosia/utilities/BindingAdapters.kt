@@ -6,10 +6,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.children
 import androidx.databinding.BindingAdapter
+import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.views.IEASResultView
-import kotlinx.android.synthetic.main.list_item_journal_history.view.*
 import java.util.*
 
 // IEAS
@@ -29,11 +29,6 @@ fun setJournalHistoryPlaceholderVisibility(view: CardView, prompts: List<Journal
     view.visibility = if (prompts == null || prompts.isEmpty()) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("journal_entry_date")
-fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
-    view.text = formatJournalEntryDate(entryDate)
-}
-
 // Tasks
 @BindingAdapter("task_list_placeholder_visibility")
 fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
@@ -43,6 +38,17 @@ fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
 @BindingAdapter("task_list_placeholder_visibility_inverted")
 fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
+}
+
+// Hunger Scale
+@BindingAdapter("hs_history_placeholder_visibility")
+fun setHSHistoryPlaceholderVisibility(view: ViewGroup, history: List<HSEntry>?) {
+    view.visibility = if (history == null || history.isEmpty()) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("hs_history_placeholder_visibility_inverted")
+fun setHSHistryPlaceholderVisibilityInverted(view: ViewGroup, history: List<HSEntry>?) {
+    view.visibility = if (history == null || history.isEmpty()) View.GONE else View.VISIBLE
 }
 
 // Generic
@@ -62,4 +68,9 @@ fun setChildrenEnabledIfToday(view: ViewGroup, calendar: Calendar) {
     for (child in view.children) {
         child.isEnabled = isToday
     }
+}
+
+@BindingAdapter("entry_time")
+fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
+    view.text = formatTime(entryDate)
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="entry"
+            type="com.projectambrosia.ambrosia.data.models.HSEntry" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_small"
+        app:cardCornerRadius="@dimen/corner_radius">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundDarkOrange"
+            android:padding="@dimen/spacing_regular">
+
+            <TextView
+                android:id="@+id/hs_entry_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:entry_time="@{entry.entryDate}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- TODO: Replace TextView grouping with custom view -->
+            <TextView
+                android:id="@+id/before_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_regular"
+                android:text="BEFORE:"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:layout_constraintStart_toEndOf="@id/hs_entry_time"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/before_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:text="@{Integer.toString(entry.before)}"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:layout_constraintStart_toEndOf="@id/before_label"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/after_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_regular"
+                android:text="AFTER:"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:layout_constraintStart_toEndOf="@id/before_value"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/after_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:text="@{Integer.toString(entry.after)}"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:layout_constraintStart_toEndOf="@id/after_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@{entry.label}"
+                android:textAppearance="@style/TextAppearance.ItalicBodyText"
+                app:layout_constraintTop_toBottomOf="@id/hs_entry_time" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

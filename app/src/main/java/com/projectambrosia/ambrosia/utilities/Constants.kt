@@ -31,3 +31,6 @@ const val USER_MOTIVATION_PAGE = 3
 
 // Hunger Scale
 const val MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS = 5
+
+// Splash screen
+const val SPLASH_SCREEN_DELAY_TIME_MILLIS = 2000

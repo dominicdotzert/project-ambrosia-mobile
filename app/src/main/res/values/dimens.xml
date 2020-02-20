@@ -20,4 +20,6 @@
 
     <dimen name="radio_button_age_group">44dp</dimen>
     <dimen name="hunger_scale_value_side">40dp</dimen>
+
+    <dimen name="logo_side_length">100dp</dimen>
 </resources>

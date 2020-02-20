@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundSalmon"
+        tools:context=".login.fragments.SplashFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/splash_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/ambrosia_logo"
+            android:layout_width="@dimen/logo_side_length"
+            android:layout_height="@dimen/logo_side_length"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:src="@drawable/ic_ambrosia_logo"
+            app:layout_constraintBottom_toTopOf="@id/splash_center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/ambrosia_app_name"
+            style="@style/TextAppearance.AppNameHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/splash_center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

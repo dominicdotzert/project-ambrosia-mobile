@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginGraph">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/tasksFragment"
@@ -133,4 +133,20 @@
             android:label="fragment_collect_user_info"
             tools:layout="@layout/fragment_collect_user_info" />
     </navigation>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.projectambrosia.ambrosia.login.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginGraph"
+            app:destination="@id/loginGraph"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

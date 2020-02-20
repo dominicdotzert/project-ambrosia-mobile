@@ -60,35 +60,11 @@ class CollectUserInfoViewModel(application: Application) : AndroidViewModel(appl
 
     init {
         // Setup buttonEnabled MediatorLiveData
-        buttonEnabled.addSource(currentPage) {
-            buttonEnabled.value = when (it) {
-                USER_NAME_PAGE -> !name.value.isNullOrBlank()
-                USER_AGE_PAGE -> ageRadioButtonId.value != null
-                USER_GOAL_PAGE -> goalRadioButtonId.value != null
-                USER_MOTIVATION_PAGE -> !motivation.value.isNullOrBlank()
-                else -> false
-            }
-        }
-        buttonEnabled.addSource(name) {
-            if (currentPage.value == USER_NAME_PAGE) {
-                buttonEnabled.value = !it.isNullOrBlank()
-            }
-        }
-        buttonEnabled.addSource(ageRadioButtonId) {
-            if (currentPage.value == USER_AGE_PAGE) {
-                buttonEnabled.value = it != null
-            }
-        }
-        buttonEnabled.addSource(goalRadioButtonId) {
-            if (currentPage.value == USER_GOAL_PAGE) {
-                buttonEnabled.value = it != null
-            }
-        }
-        buttonEnabled.addSource(motivation) {
-            if (currentPage.value == USER_MOTIVATION_PAGE){
-                buttonEnabled.value = !it.isNullOrBlank()
-            }
-        }
+        buttonEnabled.addSource(currentPage) { updateButtonEnabled() }
+        buttonEnabled.addSource(name) { updateButtonEnabled() }
+        buttonEnabled.addSource(ageRadioButtonId) { updateButtonEnabled() }
+        buttonEnabled.addSource(goalRadioButtonId) { updateButtonEnabled() }
+        buttonEnabled.addSource(motivation) { updateButtonEnabled() }
     }
 
     fun onNext() {
@@ -115,5 +91,15 @@ class CollectUserInfoViewModel(application: Application) : AndroidViewModel(appl
 
     private fun registerUser() {
         _navigateToHome.value = true
+    }
+
+    private fun updateButtonEnabled() {
+        buttonEnabled.value = when (currentPage.value) {
+            USER_NAME_PAGE -> !name.value.isNullOrBlank()
+            USER_AGE_PAGE -> ageRadioButtonId.value != null
+            USER_GOAL_PAGE -> goalRadioButtonId.value != null
+            USER_MOTIVATION_PAGE -> !motivation.value.isNullOrBlank()
+            else -> false
+        }
     }
 }

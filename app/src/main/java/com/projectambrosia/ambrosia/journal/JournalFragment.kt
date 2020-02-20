@@ -44,7 +44,7 @@ class JournalFragment : Fragment() {
             journalPromptAdapter.addFreestyleAndSubmitList(it, requireActivity().application)
         })
         viewModel.completedList.observe(this, Observer {
-            val todaySelected = viewModel.todaySelected.value?: true
+            val todaySelected = viewModel.todaySelected.value ?: true
             journalHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
         })
 

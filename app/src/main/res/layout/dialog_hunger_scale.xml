@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="hungerValue"
+            type="Integer" />
+
+        <variable
+            name="previousEntry"
+            type="com.projectambrosia.ambrosia.data.models.HSEntry" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_round_orange"
+        android:clipToPadding="false">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hunger_scale_dialog_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/hunger_scale_instruction_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_your_hunger"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/hunger_scale_help_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:src="@drawable/ic_help_outline_black_20dp"
+            app:layout_constraintBottom_toBottomOf="@id/hunger_scale_instruction_header"
+            app:layout_constraintStart_toEndOf="@id/hunger_scale_instruction_header"
+            app:layout_constraintTop_toTopOf="@id/hunger_scale_instruction_header" />
+
+        <!-- TODO: Look into binding directly to the hungerValue variable -->
+        <com.projectambrosia.ambrosia.views.HungerScaleValues
+            android:id="@+id/hunger_scale_values"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hunger_scale_value_side"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/background_hs_values"
+            android:foreground="@drawable/foreground_hs_values"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_instruction_header" />
+
+        <!-- TODO: Revisit SeekBar customization -->
+        <!--        <SeekBar-->
+        <!--            android:id="@+id/seekBar2"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hapticFeedbackEnabled="true"-->
+        <!--            android:max="10"-->
+        <!--            android:min="1"-->
+        <!--            android:progress="4"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/hunger_scale_instruction_header"-->
+        <!--            tools:layout_editor_absoluteX="24dp"-->
+        <!--            tools:targetApi="o" />-->
+
+        <TextView
+            android:id="@+id/hunger_scale_pair_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/pair_with_last_entry"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:hs_visible_if_entry_not_null="@{previousEntry}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_values" />
+
+        <CheckBox
+            android:id="@+id/hunger_scale_pair_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:hs_visible_if_entry_not_null="@{previousEntry}"
+            app:layout_constraintBottom_toBottomOf="@id/hunger_scale_pair_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/hunger_scale_pair_label" />
+
+        <LinearLayout
+            android:id="@+id/hunger_scale_previous_entry_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@drawable/background_orange_rounded"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_medium"
+            app:hs_visible_if_entry_not_null="@{previousEntry}"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_pair_label">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EntryHeader"
+                app:entry_time="@{previousEntry.entryDate}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:text="@{previousEntry.label}"
+                android:textAppearance="@style/TextAppearance.ItalicBodyText" />
+        </LinearLayout>
+
+        <!-- TODO: Add TimePicker and show this label-->
+        <TextView
+            android:id="@+id/hunger_scale_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/time"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_previous_entry_description" />
+
+        <TextView
+            android:id="@+id/hunger_scale_notes_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/notes"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:layout_constraintBottom_toBottomOf="@id/hunger_scale_notes_edit_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/hunger_scale_notes_edit_text"
+            app:set_invisible="@{false}"
+            app:visibility_adapter_inverted="@{hungerScalePairCheckbox.checked}" />
+
+        <!-- TODO: Add new style for a smaller EditText -->
+        <EditText
+            android:id="@+id/hunger_scale_notes_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_regular"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:hint="@string/notes_hint"
+            android:lines="1"
+            android:maxLength="50"
+            android:padding="@dimen/spacing_small"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/hunger_scale_notes_label"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_time_label"
+            app:set_invisible="@{false}"
+            app:visibility_adapter_inverted="@{hungerScalePairCheckbox.checked}" />
+
+        <Button
+            android:id="@+id/hunger_scale_dialog_cancel_button"
+            style="@style/AmbrosiaDialogSecondaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toEndOf="@id/hunger_scale_dialog_center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_notes_edit_text" />
+
+        <Button
+            android:id="@+id/hunger_scale_dialog_log_button"
+            style="@style/AmbrosiaDialogPrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/log"
+            app:enabled_if_int_not_null="@{hungerValue}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/hunger_scale_dialog_center"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_notes_edit_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -130,6 +130,16 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="AmbrosiaHungerScaleValueRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/ambrosia_hs_value_radio_button</item>
+        <item name="android:foreground">@drawable/ambrosia_hs_value_radio_button_ripple</item>
+        <item name="android:textColor">@color/ambrosia_radio_button_hs_entry_text</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/scale_in</item>
         <item name="android:windowExitAnimation">@anim/scale_out</item>

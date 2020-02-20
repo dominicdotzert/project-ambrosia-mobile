@@ -28,3 +28,6 @@ const val USER_NAME_PAGE = 0
 const val USER_AGE_PAGE = 1
 const val USER_GOAL_PAGE = 2
 const val USER_MOTIVATION_PAGE = 3
+
+// Hunger Scale
+const val MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS = 5

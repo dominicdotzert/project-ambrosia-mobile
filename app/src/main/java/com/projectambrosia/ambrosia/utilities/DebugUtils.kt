@@ -41,7 +41,7 @@ suspend fun prepopulateDatabase(context: Context) {
         )
 
         db.hsEntryDao.insert(
-            HSEntry(1, Calendar.getInstance(), 1, 10, "hs entry 1"),
+            HSEntry(1, Calendar.getInstance(), 1, null, "hs entry 1"),
             HSEntry(1, Calendar.getInstance(), 2, 9, "hs entry 2"),
             HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, 3, 7, "hs entry 3"),
             HSEntry(1, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, 2, 6, "hs entry 4"),

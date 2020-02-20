@@ -10,10 +10,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 // TODO: Update to use proper UserId
-class HungerScaleViewModel(hsEntryRepository: HSEntryRepository) : ViewModel() {
+class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : ViewModel() {
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -28,9 +27,15 @@ class HungerScaleViewModel(hsEntryRepository: HSEntryRepository) : ViewModel() {
         completedList.addSource(todaySelected) { updateHistoryList() }
     }
 
-    fun saveEntry() {
+    fun saveEntry(entry: HSEntry) {
         viewModelScope.launch {
-            Timber.d("Save HS Entry")
+            hsEntryRepository.saveEntry(entry)
+        }
+    }
+
+    fun savePairedEntry(entry: HSEntry, after: Int) {
+        viewModelScope.launch {
+            hsEntryRepository.addAfterValue(entry, after)
         }
     }
 

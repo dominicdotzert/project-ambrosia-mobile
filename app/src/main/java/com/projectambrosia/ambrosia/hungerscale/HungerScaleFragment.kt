@@ -11,14 +11,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.data.models.HSEntry
+import com.projectambrosia.ambrosia.databinding.DialogHungerScaleBinding
 import com.projectambrosia.ambrosia.databinding.DialogHungerScaleHelpBinding
 import com.projectambrosia.ambrosia.databinding.FragmentHungerScaleBinding
+import com.projectambrosia.ambrosia.utilities.MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS
+import java.util.*
 
 class HungerScaleFragment : Fragment() {
 
     private val viewModel: HungerScaleViewModel by viewModels { HungerScaleViewModelFactory(requireActivity().application) }
 
-    private var dialogOpen = false
+    private var helpDialogOpen = false
+    private var hsDialogOpen = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +39,7 @@ class HungerScaleFragment : Fragment() {
 
         // Observe completed list
         viewModel.completedList.observe(this, Observer {
-            val todaySelected = viewModel.todaySelected.value?: true
+            val todaySelected = viewModel.todaySelected.value ?: true
             hsHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
         })
 
@@ -47,8 +52,15 @@ class HungerScaleFragment : Fragment() {
 
         // Set OnClickListener on help button
         binding.hungerScaleHelpIcon.setOnClickListener {
-            if (!dialogOpen) {
+            if (!helpDialogOpen) {
                 showHelpPopup()
+            }
+        }
+
+        // Set OnClickListener on hunger scale control
+        binding.hungerScaleControl.setOnClickListener {
+            if (!hsDialogOpen) {
+                showHSDialog()
             }
         }
 
@@ -56,7 +68,7 @@ class HungerScaleFragment : Fragment() {
     }
 
     private fun showHelpPopup() {
-        dialogOpen = true
+        helpDialogOpen = true
 
         val dialogBuilder = AlertDialog.Builder(requireActivity())
         val dialogBinding = DialogHungerScaleHelpBinding.inflate(layoutInflater)
@@ -90,7 +102,60 @@ class HungerScaleFragment : Fragment() {
         }
 
         dialog.setOnDismissListener {
-            dialogOpen = false
+            helpDialogOpen = false
+        }
+    }
+
+    private fun showHSDialog() {
+        hsDialogOpen = true
+
+        val dialogBuilder = AlertDialog.Builder(requireActivity())
+        val dialogBinding = DialogHungerScaleBinding.inflate(layoutInflater)
+        dialogBuilder.setView(dialogBinding.root)
+
+        val dialog = dialogBuilder.create()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            attributes.windowAnimations = R.style.DialogAnimation
+        }
+        dialog.show()
+
+        // Show/hide previous entry views if the previous entry is recent and missing the after value.
+        viewModel.completedList.value?.firstOrNull()?.let {
+            if (it.after == null) {
+                val timeElapsedHours = (Calendar.getInstance().timeInMillis - it.entryDate.timeInMillis) / (1000*60*60)
+                if (timeElapsedHours <= MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS) {
+                    dialogBinding.previousEntry = it
+                }
+            }
+        }
+
+        // Keep hungerValue variable in dialogBinding up to date
+        dialogBinding.hungerScaleValues.selectedValue.observe(this, Observer{
+            dialogBinding.hungerValue = it
+        })
+
+        // Setup dialog button onClickListeners
+        dialogBinding.hungerScaleHelpIcon.setOnClickListener {
+            showHelpPopup()
+        }
+        dialogBinding.hungerScaleDialogCancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        // TODO: Add time picker and read value
+        dialogBinding.hungerScaleDialogLogButton.setOnClickListener {
+            if (dialogBinding.previousEntry?.after == null && dialogBinding.hungerScalePairCheckbox.isChecked) {
+                viewModel.savePairedEntry(dialogBinding.previousEntry!!, dialogBinding.hungerValue!!)
+            } else {
+                val entry = HSEntry(1, Calendar.getInstance(), dialogBinding.hungerValue!!, null, dialogBinding.hungerScaleNotesEditText.text.toString())
+                viewModel.saveEntry(entry)
+            }
+            dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            hsDialogOpen = false
         }
     }
 }

@@ -42,7 +42,7 @@ class TasksFragment : Fragment() {
         })
         binding.homeCompletedList.adapter = completedAdapter
         tasksViewModel.completedList.observe(this, Observer { tasks ->
-            val todaySelected = tasksViewModel.todaySelected.value?: true
+            val todaySelected = tasksViewModel.todaySelected.value ?: true
             completedAdapter.addDatesAndSubmitList(tasks, !todaySelected)
         })
 

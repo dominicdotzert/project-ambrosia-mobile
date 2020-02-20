@@ -3,7 +3,6 @@ package com.projectambrosia.ambrosia.utilities
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.children
 import androidx.databinding.BindingAdapter
 import com.projectambrosia.ambrosia.data.models.HSEntry
@@ -52,8 +51,13 @@ fun setHSHistoryPlaceholderVisibility(view: ViewGroup, history: List<HSEntry>?) 
 }
 
 @BindingAdapter("hs_history_placeholder_visibility_inverted")
-fun setHSHistryPlaceholderVisibilityInverted(view: ViewGroup, history: List<HSEntry>?) {
+fun setHSHistoryPlaceholderVisibilityInverted(view: ViewGroup, history: List<HSEntry>?) {
     view.visibility = if (history == null || history.isEmpty()) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("hs_visible_if_entry_not_null")
+fun setHSVisibilityIfEntryNotNull(view: View, entry: HSEntry?) {
+    view.visibility = if (entry != null) View.VISIBLE else View.GONE
 }
 
 // Generic
@@ -76,6 +80,13 @@ fun setChildrenEnabledIfToday(view: ViewGroup, calendar: Calendar) {
 }
 
 @BindingAdapter("entry_time")
-fun formatJournalHistoryDate(view: TextView, entryDate: Calendar) {
-    view.text = formatTime(entryDate)
+fun formatJournalHistoryDate(view: TextView, entryDate: Calendar?) {
+    entryDate?.let {
+        view.text = formatTime(entryDate)
+    }
+}
+
+@BindingAdapter("enabled_if_int_not_null")
+fun setIsEnabledIfNotNull(view: View, int: Int?) {
+    view.isEnabled = int != null
 }

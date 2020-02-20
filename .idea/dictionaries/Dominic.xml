@@ -2,11 +2,14 @@
   <dictionary name="Dominic">
     <words>
       <w>carbs</w>
+      <w>constraintlayout</w>
       <w>coroutine</w>
+      <w>hungerscale</w>
       <w>ieas</w>
       <w>lato</w>
       <w>projectambrosia</w>
       <w>recyclerview</w>
+      <w>viewmodels</w>
     </words>
   </dictionary>
 </component>

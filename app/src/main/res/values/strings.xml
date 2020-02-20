@@ -22,6 +22,14 @@
     <string name="save">Save</string>
     <string name="journal_empty_history">Your journal entries will show up here!</string>
 
+    <!-- Hunger Scale -->
+    <string name="rate_your_hunger">Rate your hunger from 1 – 10</string>
+    <string name="pair_with_last_entry">Pair with last entry</string>
+    <string name="time">Time</string>
+    <string name="notes">Notes</string>
+    <string name="notes_hint">50 character max</string>
+    <string name="log">Log</string>
+
     <!-- Hunger Scale Instructions Strings -->
     <string name="got_it">Got it</string>
     <string name="what_is_hunger_scale">What is the Hunger Scale?</string>
@@ -144,7 +152,6 @@
     <string name="user_motivation_explanation_1">Research says that when you know your intentions, you’ve taken the 1st step to reaching your goal.</string>
     <string name="user_motivation_explanation_2">Tell us why you have chosen to embark on this journey with us.</string>
     <string name="user_motivation_edit_text_hint">I want to feel relaxed when I am around food…</string>
-
 
     <!-- Today All Selector -->
     <string name="today">Today</string>

@@ -28,9 +28,9 @@ class HSEntryDaoTests {
     private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val calendar = Calendar.getInstance()
-    private val entry1 = HSEntry(user.userId, calendar, 1, 4, 7)
-    private val entry2 = HSEntry(user.userId, calendar, 2, 3, 6)
-    private val entry3 = HSEntry(user.userId, calendar, 3, 5, 8)
+    private val entry1 = HSEntry(user.userId, calendar, 4, 7, "entry 1")
+    private val entry2 = HSEntry(user.userId, calendar, 3, 6, "entry 2")
+    private val entry3 = HSEntry(user.userId, calendar, 5, 8, "entry 3")
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

@@ -38,13 +38,13 @@ class HungerScaleFragment : Fragment() {
         binding.hsHistory.adapter = hsHistoryAdapter
 
         // Observe completed list
-        viewModel.completedList.observe(this, Observer {
+        viewModel.completedList.observe(viewLifecycleOwner, Observer {
             val todaySelected = viewModel.todaySelected.value ?: true
             hsHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
         })
 
         // Observe TodayAllSelector
-        binding.hungerScaleTodayAllSelector.todaySelected.observe(this, Observer {
+        binding.hungerScaleTodayAllSelector.todaySelected.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.todaySelected.value = it
             }
@@ -132,7 +132,7 @@ class HungerScaleFragment : Fragment() {
         }
 
         // Keep hungerValue variable in dialogBinding up to date
-        dialogBinding.hungerScaleValues.selectedValue.observe(this, Observer{
+        dialogBinding.hungerScaleValues.selectedValue.observe(viewLifecycleOwner, Observer{
             dialogBinding.hungerValue = it
         })
 

@@ -41,7 +41,7 @@ class PasswordFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        viewModel.navigateToCreateAccount.observe(this, Observer {
+        viewModel.navigateToCreateAccount.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.findNavController().navigate(PasswordFragmentDirections.actionPasswordFragmentToCollectUserInfoFragment())
                 viewModel.doneNavigatingToCreateAccount()

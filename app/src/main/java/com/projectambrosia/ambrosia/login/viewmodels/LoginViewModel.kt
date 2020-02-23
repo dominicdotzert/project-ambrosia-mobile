@@ -1,16 +1,19 @@
 package com.projectambrosia.ambrosia.login.viewmodels
 
+import android.app.Application
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
-import com.projectambrosia.ambrosia.utilities.isValidEmail
+import com.projectambrosia.ambrosia.network.models.ResponseError
+import com.projectambrosia.ambrosia.network.models.ResponseUserDetails
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel(application: Application, private val userRepository: UserRepository) : AndroidViewModel(application) {
 
     // Coroutine objects
     private val viewModelJob = Job()
@@ -42,15 +45,26 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     }
 
     fun onContinue() {
-        // TODO: Validate credentials with server
-        _validEmail.value = !email.value.isNullOrEmpty() && isValidEmail(email.value!!)
-        if (!validEmail.value!!) return
-
         viewModelScope.launch {
-            // TODO: Add error message for failed auth
-            if (userRepository.validateUser(email.value!!)) {
+
+            // Show spinner
+
+            val loginResult = userRepository.logUserIn(email.value!!, password.value!!)
+            if (loginResult is ResponseUserDetails) {
                 _navigateToHome.value = true
+            } else {
+                // TODO: Add error message for failed auth
+                val errorType = (loginResult as ResponseError).errorType
+                if (errorType.count() == 1 && errorType[0] == 10) {
+                    // Show invalid credentials message
+                    Toast.makeText(getApplication(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Show generic error message
+                    Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show()
+                }
             }
+
+            // Hide spinner
         }
     }
 

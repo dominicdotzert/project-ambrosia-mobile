@@ -1,18 +1,23 @@
 package com.projectambrosia.ambrosia.data.repositories
 
 import com.projectambrosia.ambrosia.data.dao.UserDao
+import com.projectambrosia.ambrosia.network.RequestManager
+import com.projectambrosia.ambrosia.network.models.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 // TODO: Write tests
-class UserRepository(private val userDao: UserDao) {
-
-    suspend fun validateUser(email: String): Boolean = withContext(Dispatchers.IO) {
-        // TODO: Add network call (and flesh out logic here)
-        // Currently just checks if email exists in local db
-        val count = userDao.userExists(email)
-        count > 0
-    }
+class UserRepository(
+    private val requestManager: RequestManager,
+    private val userDao: UserDao
+) {
 
     fun getUser(userId: Long) = userDao.getUser(userId)
+
+    // Verify credentials with network
+    suspend fun logUserIn(email: String, password: String): Response {
+        return withContext(Dispatchers.IO) {
+            requestManager.loginRequest(email, password)
+        }
+    }
 }

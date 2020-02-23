@@ -26,7 +26,7 @@ class TasksViewModel(
 
     private val _user = userRepository.getUser(1)
     val userMotivation = Transformations.map(_user) {
-        it.motivation
+        it?.motivation
     }
 
     val tasks = tasksRepository.getTasks()

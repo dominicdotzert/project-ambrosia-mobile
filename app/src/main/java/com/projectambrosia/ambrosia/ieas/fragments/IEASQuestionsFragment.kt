@@ -47,14 +47,14 @@ class IEASQuestionsFragment : Fragment() {
         binding.ieasQuestions.adapter = adapter
 
         // Update question list when user changes page
-        viewModel.currentQuestions.observe(this, Observer {
+        viewModel.currentQuestions.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
 
         // Animate progress bar
-        viewModel.progress.observe(this, Observer {
+        viewModel.progress.observe(viewLifecycleOwner, Observer {
             it?.let {
                 ObjectAnimator.ofInt(binding.ieasProgressBar, "progress", it)
                     .setDuration(300)
@@ -63,7 +63,7 @@ class IEASQuestionsFragment : Fragment() {
         })
 
         // Navigate to results page
-        viewModel.navigateToResults.observe(this, Observer {
+        viewModel.navigateToResults.observe(viewLifecycleOwner, Observer {
             if (it && !dialogOpen) {
                 showConfirmationDialog()
                 viewModel.doneNavigatingNext()
@@ -71,7 +71,7 @@ class IEASQuestionsFragment : Fragment() {
         })
 
         // Navigate back to instructions page
-        viewModel.navigateBack.observe(this, Observer {
+        viewModel.navigateBack.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.findNavController().navigateUp()
                 viewModel.doneNavigatingBack()

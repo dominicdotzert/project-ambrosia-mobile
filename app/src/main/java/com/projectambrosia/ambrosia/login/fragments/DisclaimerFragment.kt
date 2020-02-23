@@ -40,7 +40,7 @@ class DisclaimerFragment : Fragment() {
 
         setDisclaimerExplanationText(binding.disclaimerExplanation)
 
-        viewModel.navigatingToPassword.observe(this, Observer {
+        viewModel.navigatingToPassword.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment())
                 viewModel.doneNavigatingToPassword()

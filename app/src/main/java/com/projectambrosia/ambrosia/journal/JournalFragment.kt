@@ -40,16 +40,16 @@ class JournalFragment : Fragment() {
         binding.journalHistory.adapter = journalHistoryAdapter
 
         // Observe lists
-        viewModel.journalTasks.observe(this, Observer {
+        viewModel.journalTasks.observe(viewLifecycleOwner, Observer {
             journalPromptAdapter.addFreestyleAndSubmitList(it, requireActivity().application)
         })
-        viewModel.completedList.observe(this, Observer {
+        viewModel.completedList.observe(viewLifecycleOwner, Observer {
             val todaySelected = viewModel.todaySelected.value ?: true
             journalHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)
         })
 
         // Observe TodayAllSelector
-        binding.journalTodayAllSelector.todaySelected.observe(this, Observer {
+        binding.journalTodayAllSelector.todaySelected.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.todaySelected.value = it
             }

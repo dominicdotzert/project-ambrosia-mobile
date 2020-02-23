@@ -37,19 +37,19 @@ class CollectUserInfoFragment : Fragment() {
         }
 
         // Observe page change event
-        viewModel.currentPage.observe(this, Observer {
+        viewModel.currentPage.observe(viewLifecycleOwner, Observer {
             binding.userInfoViewPager.currentItem = it
         })
 
         // Observer navigation events
-        viewModel.navigateToHome.observe(this, Observer {
+        viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
             if (it) {
                 Toast.makeText(requireActivity(), "Registering User", Toast.LENGTH_SHORT).show()
                 viewModel.doneNavigatingHome()
             }
         })
 
-        viewModel.navigateBack.observe(this, Observer {
+        viewModel.navigateBack.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.findNavController().navigateUp()
                 viewModel.doneNavigatingBack()
@@ -57,7 +57,7 @@ class CollectUserInfoFragment : Fragment() {
         })
 
         // Animate progress bar
-        viewModel.progress.observe(this, Observer {
+        viewModel.progress.observe(viewLifecycleOwner, Observer {
             it?.let {
                 ObjectAnimator
                     .ofInt(binding.userInfoProgressBar, "progress", it)

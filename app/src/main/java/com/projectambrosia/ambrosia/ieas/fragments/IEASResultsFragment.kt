@@ -34,7 +34,7 @@ class IEASResultsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        viewModel.navigateToHome.observe(this, Observer {
+        viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.findNavController().popBackStack(R.id.tasksFragment, false)
                 viewModel.onDoneNavigating()

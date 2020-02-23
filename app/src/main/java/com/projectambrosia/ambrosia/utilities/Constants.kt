@@ -33,4 +33,14 @@ const val USER_MOTIVATION_PAGE = 3
 const val MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS = 5
 
 // Splash screen
-const val SPLASH_SCREEN_DELAY_TIME_MILLIS = 2000
+const val SPLASH_SCREEN_DELAY_TIME_MILLIS = 1500
+
+// SharedPreferences
+const val PREFERENCES_KEY = "Prefs"
+const val USER_ID_KEY = "user_id"
+const val REFRESH_TOKEN_KEY = "refresh_token"
+const val ACCESS_TOKEN_KEY = "access_token"
+const val ACCESS_TOKEN_CREATED_TIMESTAMP_KEY = "access_token_created_timestamp"
+
+// Authentication
+const val TOKEN_TIMEOUT_TIME_MILLIS = 600000 // Arbitrarily set to refresh every 10 minutes

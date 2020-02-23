@@ -1,9 +1,8 @@
 package com.projectambrosia.ambrosia.tasks
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -11,7 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
+import com.projectambrosia.ambrosia.network.AmbrosiaApi
+import com.projectambrosia.ambrosia.network.RequestManager
+import com.projectambrosia.ambrosia.network.models.ResponseUserDetails
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import com.projectambrosia.ambrosia.utilities.Tool
+import kotlinx.coroutines.*
 
 class TasksFragment : Fragment() {
 
@@ -31,7 +35,7 @@ class TasksFragment : Fragment() {
             navigateToTask(task)
         })
         binding.homeTodoList.adapter = todoAdapter
-        tasksViewModel.todoList.observe(this, Observer {tasks ->
+        tasksViewModel.todoList.observe(viewLifecycleOwner, Observer {tasks ->
             todoAdapter.addDatesAndSubmitList(tasks, false)
         })
 
@@ -41,17 +45,20 @@ class TasksFragment : Fragment() {
             }
         })
         binding.homeCompletedList.adapter = completedAdapter
-        tasksViewModel.completedList.observe(this, Observer { tasks ->
+        tasksViewModel.completedList.observe(viewLifecycleOwner, Observer { tasks ->
             val todaySelected = tasksViewModel.todaySelected.value ?: true
             completedAdapter.addDatesAndSubmitList(tasks, !todaySelected)
         })
 
         // Set observer on TodayAllSelector
-        binding.tasksTodayAllSelector.todaySelected.observe(this, Observer {
+        binding.tasksTodayAllSelector.todaySelected.observe(viewLifecycleOwner, Observer {
             it?.let {
                 tasksViewModel.todaySelected.value = it
             }
         })
+
+        // Enable options menu
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -66,5 +73,32 @@ class TasksFragment : Fragment() {
                 Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.debug_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.debug_menu_user_details -> {
+                val requestManager = RequestManager.getInstance(requireContext())
+                val prefs = PreferencesHelper.getInstance(requireContext())
+
+                CoroutineScope(Job() + Dispatchers.Main).launch {
+                    val result = requestManager.makeRequestWithAuth {
+                        AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
+                    }
+
+                    if (result is ResponseUserDetails) {
+                        Toast.makeText(requireContext(), "uuid: ${result.data.userId}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

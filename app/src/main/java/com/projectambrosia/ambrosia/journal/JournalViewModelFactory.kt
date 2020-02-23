@@ -7,7 +7,7 @@ import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
-import java.lang.IllegalArgumentException
+import com.projectambrosia.ambrosia.network.RequestManager
 
 class JournalViewModelFactory(
     private val application: Application
@@ -15,10 +15,15 @@ class JournalViewModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(JournalViewModel::class.java)) {
+
+            val requestManager = RequestManager.getInstance(application.applicationContext)
             val database = AmbrosiaDatabase.getInstance(application)
-            val userRepository = UserRepository(database.userDao)
+            val userRepository = UserRepository(requestManager, database.userDao)
+
             val journalRepository = JournalRepository(database.journalEntryDao, database.taskDao)
+
             val tasksRepository = TasksRepository(database.taskDao)
+
             return JournalViewModel(application, userRepository, journalRepository, tasksRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

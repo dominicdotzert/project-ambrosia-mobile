@@ -1,10 +1,7 @@
 package com.projectambrosia.ambrosia.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.projectambrosia.ambrosia.network.models.RequestLogin
-import com.projectambrosia.ambrosia.network.models.ResponseRefreshTokens
-import com.projectambrosia.ambrosia.network.models.ResponseLogin
-import com.projectambrosia.ambrosia.network.models.ResponseUserDetails
+import com.projectambrosia.ambrosia.network.models.*
 import com.projectambrosia.ambrosia.utilities.AWS_BASE_URL
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -44,4 +41,8 @@ interface AmbrosiaApiService {
     @GET("auth/refresh")
     fun refreshAccessTokenAsync(@Header("Authorization") refreshToken: String):
             Deferred<ResponseRefreshTokens>
+
+    @GET("auth/logout")
+    fun logOutUserAsync(@Header("Authorization") accessToken: String):
+            Deferred<ResponseLogout>
 }

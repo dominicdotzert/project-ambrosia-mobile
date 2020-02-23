@@ -20,4 +20,10 @@ class UserRepository(
             requestManager.loginRequest(email, password)
         }
     }
+
+    suspend fun logUserOut(): Response {
+        return withContext(Dispatchers.IO) {
+            requestManager.logoutRequest()
+        }
+    }
 }

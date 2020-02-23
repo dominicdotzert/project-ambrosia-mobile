@@ -5,4 +5,8 @@
         android:id="@+id/debug_menu_user_details"
         android:title="Check user details"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/debug_menu_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
 </menu>

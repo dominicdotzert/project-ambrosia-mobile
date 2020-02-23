@@ -1,10 +1,7 @@
 package com.projectambrosia.ambrosia.tasks
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
@@ -17,7 +14,7 @@ import kotlinx.coroutines.launch
 // TODO: Update to use proper UserId
 class TasksViewModel(
     application: Application,
-    userRepository: UserRepository,
+    private val userRepository: UserRepository,
     private val tasksRepository: TasksRepository
 ) : AndroidViewModel(application) {
 
@@ -39,6 +36,11 @@ class TasksViewModel(
     val todaySelected = MutableLiveData<Boolean>()
     val completedList = MediatorLiveData<List<Task>>()
 
+    // Navigation events
+    private val _navigateToLogin = MutableLiveData<Boolean>()
+    val navigateToLogin: LiveData<Boolean>
+        get() = _navigateToLogin
+
     init {
         // Setup completedList MediatorLiveData
         completedList.addSource(tasks) { updateCompletedList() }
@@ -51,6 +53,17 @@ class TasksViewModel(
 
     fun markTaskAsIncomplete(taskId: Long) = viewModelScope.launch {
         tasksRepository.markTaskAsIncomplete(taskId)
+    }
+
+    fun logUserOut() {
+        viewModelScope.launch {
+            userRepository.logUserOut()
+            _navigateToLogin.value = true
+        }
+    }
+
+    fun doneNavigatingToLogin() {
+        _navigateToLogin.value = false
     }
 
     override fun onCleared() {

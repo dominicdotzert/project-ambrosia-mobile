@@ -52,6 +52,19 @@ class RequestManager private constructor(context: Context) {
         }
     }
 
+    suspend fun logoutRequest(): Response {
+        return withContext(Dispatchers.IO) {
+            try {
+                val logoutResult = AmbrosiaApi.retrofitService.logOutUserAsync(prefs.accessToken!!).await()
+                prefs.clearSignedInUser()
+                logoutResult
+            } catch (e: HttpException) {
+                prefs.clearSignedInUser()
+                getResponseError(e)
+            }
+        }
+    }
+
     suspend fun refreshUserTokens(): Response {
         if (prefs.refreshToken == null) {
             prefs.clearSignedInUser()

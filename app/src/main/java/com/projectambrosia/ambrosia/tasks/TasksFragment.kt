@@ -57,6 +57,14 @@ class TasksFragment : Fragment() {
             }
         })
 
+        // Set observer on navigation events
+        tasksViewModel.navigateToLogin.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToLoginGraph())
+                tasksViewModel.doneNavigatingToLogin()
+            }
+        })
+
         // Enable options menu
         setHasOptionsMenu(true)
 
@@ -81,12 +89,10 @@ class TasksFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.debug_menu_user_details -> {
                 val requestManager = RequestManager.getInstance(requireContext())
                 val prefs = PreferencesHelper.getInstance(requireContext())
-
                 CoroutineScope(Job() + Dispatchers.Main).launch {
                     val result = requestManager.makeRequestWithAuth {
                         AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
@@ -97,6 +103,7 @@ class TasksFragment : Fragment() {
                     }
                 }
             }
+            R.id.debug_menu_logout -> tasksViewModel.logUserOut()
         }
 
         return super.onOptionsItemSelected(item)

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.projectambrosia.ambrosia.login.viewmodels.PasswordViewModel" />
+            type="com.projectambrosia.ambrosia.login.viewmodels.CreateAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +16,10 @@
         android:background="@color/backgroundOrange"
         android:clipToPadding="false"
         android:padding="@dimen/spacing_regular"
-        tools:context=".login.fragments.PasswordFragment">
+        tools:context=".login.fragments.CreateAccountFragment">
 
         <TextView
-            android:id="@+id/login_password_header"
+            android:id="@+id/create_account_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/password_welcome"
@@ -29,36 +29,49 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/login_password_text"
+            android:id="@+id/create_account_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
-            android:text="@string/create_password"
+            android:text="@string/create_credentials"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_password_header" />
+            app:layout_constraintTop_toBottomOf="@id/create_account_header" />
 
         <EditText
-            android:id="@+id/password_edit_text"
+            android:id="@+id/create_account_email_edit_text"
             style="@style/AmbrosiaEditText"
             android:layout_width="0dp"
             android:layout_height="@dimen/edit_text_height"
             android:layout_marginTop="@dimen/spacing_regular"
+            android:hint="@string/email_placeholder"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/create_account_text" />
+
+        <EditText
+            android:id="@+id/create_account_password_edit_text"
+            style="@style/AmbrosiaEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="@dimen/spacing_small"
             android:hint="@string/password_placeholder"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_password_text" />
+            app:layout_constraintTop_toBottomOf="@id/create_account_email_edit_text" />
 
         <Button
-            android:id="@+id/password_button"
+            android:id="@+id/create_account_button"
             style="@style/AmbrosiaButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height"
-            android:enabled="@{viewModel.validPassword}"
-            android:onClick="@{() -> viewModel.checkPassword()}"
+            android:enabled="@{viewModel.validCredentials}"
+            android:onClick="@{() -> viewModel.createAccount()}"
             android:text="@string/create_account"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

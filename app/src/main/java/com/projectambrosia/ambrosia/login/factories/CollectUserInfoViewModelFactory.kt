@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.login.viewmodels.CollectUserInfoViewModel
 import java.lang.IllegalArgumentException
 
-class CollectUserInfoViewModelFactory(private val application: Application) : ViewModelProvider.AndroidViewModelFactory(application) {
+class CollectUserInfoViewModelFactory(
+    private val application: Application,
+    private val email: String
+) : ViewModelProvider.AndroidViewModelFactory(application) {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CollectUserInfoViewModel::class.java)) {
-            return CollectUserInfoViewModel(application) as T
+            return CollectUserInfoViewModel(application, email) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

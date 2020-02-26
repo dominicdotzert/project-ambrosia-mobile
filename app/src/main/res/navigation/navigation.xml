@@ -110,15 +110,15 @@
             android:label="DisclaimerFragment">
             <action
                 android:id="@+id/action_disclaimerFragment_to_passwordFragment"
-                app:destination="@id/passwordFragment"
+                app:destination="@id/createAccountFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
         </fragment>
         <fragment
-            android:id="@+id/passwordFragment"
+            android:id="@+id/createAccountFragment"
             android:name="com.projectambrosia.ambrosia.login.fragments.CreateAccountFragment"
-            android:label="PasswordFragment" >
+            android:label="CreateAccountFragment">
             <action
                 android:id="@+id/action_passwordFragment_to_collectUserInfoFragment"
                 app:destination="@id/collectUserInfoFragment"
@@ -136,7 +136,11 @@
             android:id="@+id/collectUserInfoFragment"
             android:name="com.projectambrosia.ambrosia.login.fragments.CollectUserInfoFragment"
             android:label="fragment_collect_user_info"
-            tools:layout="@layout/fragment_collect_user_info" />
+            tools:layout="@layout/fragment_collect_user_info" >
+            <argument
+                android:name="email"
+                app:argType="string" />
+        </fragment>
     </navigation>
     <fragment
         android:id="@+id/splashFragment"

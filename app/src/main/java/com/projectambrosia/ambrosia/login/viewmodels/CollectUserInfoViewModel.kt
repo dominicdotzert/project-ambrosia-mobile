@@ -5,7 +5,10 @@ import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.utilities.*
 
-class CollectUserInfoViewModel(application: Application) : AndroidViewModel(application) {
+class CollectUserInfoViewModel(
+    application: Application,
+    private val email: String
+) : AndroidViewModel(application) {
 
     // View LiveData Objects
     private val _currentPage = MutableLiveData(0)

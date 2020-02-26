@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.MainActivity
 import com.projectambrosia.ambrosia.databinding.FragmentCollectUserInfoBinding
 import com.projectambrosia.ambrosia.login.CollectUserInfoViewPagerAdapter
@@ -26,7 +27,8 @@ class CollectUserInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCollectUserInfoBinding.inflate(layoutInflater, container, false)
-        val viewModel: CollectUserInfoViewModel by viewModels { CollectUserInfoViewModelFactory(requireActivity().application) }
+        val args: CollectUserInfoFragmentArgs by navArgs()
+        val viewModel: CollectUserInfoViewModel by viewModels { CollectUserInfoViewModelFactory(requireActivity().application, args.email) }
         val viewPagerAdapter = CollectUserInfoViewPagerAdapter(viewModel)
 
         binding.lifecycleOwner = this

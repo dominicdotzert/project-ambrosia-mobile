@@ -22,6 +22,7 @@ class CreateAccountViewModel : ViewModel() {
     }
 
     fun createAccount() {
+        // TODO: Make call to user repository to register user with server
         _navigateToCreateAccount.value = true
     }
 

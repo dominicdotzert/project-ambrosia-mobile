@@ -43,7 +43,10 @@ class CreateAccountFragment : Fragment() {
 
         viewModel.navigateToCreateAccount.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(CreateAccountFragmentDirections.actionPasswordFragmentToCollectUserInfoFragment())
+                this.findNavController().navigate(
+                    CreateAccountFragmentDirections
+                        .actionPasswordFragmentToCollectUserInfoFragment(viewModel.email.value!!)
+                )
                 viewModel.doneNavigatingToCreateAccount()
             }
         })

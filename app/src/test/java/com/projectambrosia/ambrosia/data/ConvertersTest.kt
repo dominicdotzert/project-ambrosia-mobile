@@ -28,22 +28,6 @@ class ConvertersTest {
     }
 
     @Test
-    fun fromTool() {
-        assertThat(Converters().fromTool(Tool.OTHER), equalTo(OTHER))
-        assertThat(Converters().fromTool(Tool.JOURNAL), equalTo(JOURNAL))
-        assertThat(Converters().fromTool(Tool.HS), equalTo(HUNGER_SCALE))
-        assertThat(Converters().fromTool(Tool.IEAS), equalTo(IEAS))
-    }
-
-    @Test
-    fun toTool() {
-        assertThat(Converters().toTool(OTHER), equalTo(Tool.OTHER))
-        assertThat(Converters().toTool(JOURNAL), equalTo(Tool.JOURNAL))
-        assertThat(Converters().toTool(HUNGER_SCALE), equalTo(Tool.HS))
-        assertThat(Converters().toTool(IEAS), equalTo(Tool.IEAS))
-    }
-
-    @Test
     fun fromBooleanArray() {
         assertThat(Converters().fromBooleanArray(booleanArrayOf(true, false, false)), equalTo("100"))
         assertThat(Converters().fromBooleanArray(BooleanArray(0)), equalTo(""))

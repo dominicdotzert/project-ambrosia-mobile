@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.projectambrosia.ambrosia.utilities.isValidEmail
+import com.projectambrosia.ambrosia.utilities.isValidPassword
 
 class CreateAccountViewModel : ViewModel() {
 
@@ -20,6 +22,10 @@ class CreateAccountViewModel : ViewModel() {
         // Setup validCredentials MediatorLiveData
         validCredentials.addSource(email) { checkCredentials() }
         validCredentials.addSource(password) { checkCredentials() }
+
+        // FIXME: Debug init values
+        email.value = "test@test.com"
+        password.value = "password1"
     }
 
     fun createAccount() {
@@ -32,19 +38,19 @@ class CreateAccountViewModel : ViewModel() {
     }
 
     private fun checkCredentials() {
-        // FIXME: Uncomment after user testing
+//        // FIXME: Uncomment after user testing
         validCredentials.value = email.value != null && !email.value.isNullOrBlank()
 
-//        var validEmail = false
-//        email.value?.trim()?.let {
-//            validEmail = isValidEmail(it)
-//        }
-//
-//        var validPassword = false
-//        password.value?.let {
-//            validPassword = isValidPassword(it)
-//        }
-//
-//        validCredentials.value = validEmail && validPassword
+        var validEmail = false
+        email.value?.trim()?.let {
+            validEmail = isValidEmail(it)
+        }
+
+        var validPassword = false
+        password.value?.let {
+            validPassword = isValidPassword(it)
+        }
+
+        validCredentials.value = validEmail && validPassword
     }
 }

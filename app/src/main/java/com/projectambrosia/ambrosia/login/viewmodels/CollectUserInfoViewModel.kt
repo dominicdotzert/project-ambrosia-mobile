@@ -4,12 +4,15 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
+import com.projectambrosia.ambrosia.network.models.ResponseError
 import com.projectambrosia.ambrosia.utilities.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class CollectUserInfoViewModel(
     application: Application,
     private val email: String,
+    private val password: String,
     private val userRepository: UserRepository
 ) : AndroidViewModel(application) {
 
@@ -79,14 +82,27 @@ class CollectUserInfoViewModel(
 
     private fun registerUser() {
         viewModelScope.launch {
-            userRepository.createUserOffline(
-                getApplication(),
+//            userRepository.createUserOffline(
+//                getApplication(),
+//                email,
+//                name.value.toString().trim(),
+//                getGoal(),
+//                motivation.value.toString().trim()
+//            )
+
+            val registerResult = userRepository.registerUser(
                 email,
+                password,
                 name.value.toString().trim(),
+                getAgeGroup(),
                 getGoal(),
                 motivation.value.toString().trim()
             )
-            _navigateToHome.value = true
+
+            if (registerResult !is ResponseError) _navigateToHome.value = true
+            else {
+                Timber.e(registerResult.message)
+            }
         }
     }
 

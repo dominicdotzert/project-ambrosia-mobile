@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.network.RequestManager
-import com.projectambrosia.ambrosia.network.models.ResponseUserDetails
+import com.projectambrosia.ambrosia.network.models.ResponseData
 import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import com.projectambrosia.ambrosia.utilities.SPLASH_SCREEN_DELAY_TIME_MILLIS
 import kotlinx.coroutines.*
@@ -41,14 +41,13 @@ class SplashFragment : Fragment() {
         coroutineScope.launch {
             // Attempt to refresh user access token (if a refresh token exists)
             var authSuccessful = false
-            // FIXME: Uncomment after user testing
-//            if (prefs.refreshToken != null) {
-//                val refreshResult = requestManager.refreshUserTokens()
-//                if (refreshResult is ResponseUserDetails) {
-//                    authSuccessful = true
-//                }
-//            }
-            if (prefs.userId != null) authSuccessful = true
+            if (prefs.refreshToken != null) {
+                val refreshResult = requestManager.refreshUserTokens()
+                if (refreshResult is ResponseData<*>) {
+                    authSuccessful = true
+                }
+            }
+//            if (prefs.userId != null) authSuccessful = true
 
             // Ensure that splashscreen is shown for constant time
             val timeElapsed = System.currentTimeMillis() - splashScreenCreated

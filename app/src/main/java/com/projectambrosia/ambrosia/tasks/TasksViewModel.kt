@@ -54,6 +54,11 @@ class TasksViewModel(
         // Setup completedList MediatorLiveData
         completedList.addSource(tasks) { updateCompletedList() }
         completedList.addSource(todaySelected) { updateCompletedList() }
+
+        // Load tasks
+//        viewModelScope.launch {
+//            tasksRepository.requestTasks()
+//        }
     }
 
     fun markTaskAsComplete(taskId: Long) = viewModelScope.launch {
@@ -64,13 +69,19 @@ class TasksViewModel(
         journalRepository.saveEntry(task.taskText, entryText, Calendar.getInstance(), task.taskId)
     }
 
+    fun requestTasks() {
+        viewModelScope.launch {
+            tasksRepository.requestTasks()
+        }
+    }
+
     fun logUserOut() {
         viewModelScope.launch {
 
             // FIXME: Remove this line and uncomment line below
-            userRepository.logUserOutOffline()
+//            userRepository.logUserOutOffline()
 
-            //userRepository.logUserOut()
+            userRepository.logUserOut()
             _navigateToLogin.value = true
         }
     }

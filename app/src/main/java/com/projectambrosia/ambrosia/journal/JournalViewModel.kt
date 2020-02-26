@@ -8,7 +8,7 @@ import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.DIALOG_OPEN_DELAY_MILLIS
-import com.projectambrosia.ambrosia.utilities.Tool
+import com.projectambrosia.ambrosia.utilities.JOURNAL
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
 import com.projectambrosia.ambrosia.utilities.isToday
 import kotlinx.coroutines.*
@@ -76,7 +76,7 @@ class JournalViewModel(
             val task = tasksRepository.getTask(taskId)
 
             task?.let {
-                if (!it.isCompleted && it.tool == Tool.JOURNAL) {
+                if (!it.isCompleted && it.tool == JOURNAL) {
                     _openDialog.value = JournalPrompt(it.taskText, it.taskId)
                 }
             }

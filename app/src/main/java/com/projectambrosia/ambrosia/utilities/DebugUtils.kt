@@ -19,10 +19,10 @@ suspend fun prepopulateDatabase(context: Context) {
         )
 
         db.taskDao.insert(
-            Task(1, DEBUG_USER_ID, Calendar.getInstance(), "Today - Journal", 1, Tool.JOURNAL, 1),
-            Task(2, DEBUG_USER_ID, Calendar.getInstance(), "Today - HS", 1, Tool.HS, 1),
-            Task(3, DEBUG_USER_ID, Calendar.getInstance(), "Today - IEAS", 1, Tool.IEAS, 1),
-            Task(4, DEBUG_USER_ID, Calendar.getInstance(), "Today - Other", 1, Tool.OTHER, 1)
+            Task(1, DEBUG_USER_ID, Calendar.getInstance(), "Today - Journal", 1, JOURNAL, 1),
+            Task(2, DEBUG_USER_ID, Calendar.getInstance(), "Today - HS", 1, HUNGER_SCALE, 1),
+            Task(3, DEBUG_USER_ID, Calendar.getInstance(), "Today - IEAS", 1, IEAS, 1),
+            Task(4, DEBUG_USER_ID, Calendar.getInstance(), "Today - Other", 1, OTHER, 1)
 //            Task(5, DEBUG_USER_ID, Calendar.getInstance(), "Today - Other - Completed", 1, Tool.OTHER, 1, true),
 
 //            Task(6, DEBUG_USER_ID, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000) }, "Yesterday - Other - Completed", 1, Tool.OTHER, 1, true),
@@ -57,10 +57,10 @@ suspend fun populateDatabaseForNewUser(context: Context, userId: String) {
 
         val today = Calendar.getInstance()
         db.taskDao.insert(
-            Task(1, userId, today, "Complete the Intuitive Eating Assessment Scale", 1, Tool.IEAS, 1),
-            Task(2, userId, today, "Describe a food you love that loves you back.", 1, Tool.JOURNAL, 1),
-            Task(3, userId, today, "Rate your hunger before and after a meal.", 1, Tool.HS, 1),
-            Task(4, userId, today, "Move your body in a way that makes you feel good.", 1, Tool.OTHER, 1)
+            Task(1, userId, today, "Complete the Intuitive Eating Assessment Scale", 1, IEAS, 1),
+            Task(2, userId, today, "Describe a food you love that loves you back.", 1, JOURNAL, 1),
+            Task(3, userId, today, "Rate your hunger before and after a meal.", 1, HUNGER_SCALE, 1),
+            Task(4, userId, today, "Move your body in a way that makes you feel good.", 1, OTHER, 1)
         )
     }
 }

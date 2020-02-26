@@ -70,8 +70,8 @@ fun setTaskIcon(imageView: ImageView, task: Task?) {
     var imageResource = R.drawable.ic_check
 
     task?.tool.let {
-        if (it == Tool.JOURNAL) imageResource = R.drawable.ic_journal_black_24dp
-        else if (it == Tool.HS) imageResource = R.drawable.ic_hunger_scale_black_24dp
+        if (it == JOURNAL) imageResource = R.drawable.ic_journal_black_24dp
+        else if (it == HUNGER_SCALE) imageResource = R.drawable.ic_hunger_scale_black_24dp
     }
 
     imageView.setImageResource(imageResource)

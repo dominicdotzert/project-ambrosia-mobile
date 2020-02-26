@@ -1,7 +1,6 @@
 package com.projectambrosia.ambrosia.data.models
 
 import androidx.room.*
-import com.projectambrosia.ambrosia.utilities.Tool
 import java.util.*
 
 @Entity(
@@ -15,7 +14,7 @@ data class Task(
     val timestamp: Calendar,
     @ColumnInfo(name = "text") val taskText: String,
     val difficulty: Int,
-    val tool: Tool,
+    val tool: Int,
     @ColumnInfo(name = "type") val taskType: Int,
     @ColumnInfo(name = "is_completed") val isCompleted: Boolean = false // TODO: Convert to timestamp: Long?
 ) {

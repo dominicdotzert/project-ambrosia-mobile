@@ -22,8 +22,9 @@ class TasksViewModelFactory(
             val database = AmbrosiaDatabase.getInstance(application)
 
             val userRepository = UserRepository(requestManager, prefs, database.userDao)
-            val tasksRepository = TasksRepository(prefs, database.taskDao)
-            val journalRepository = JournalRepository(prefs, database.journalEntryDao, database.taskDao)
+            val tasksRepository = TasksRepository(requestManager, prefs, database.taskDao)
+
+            val journalRepository = JournalRepository(requestManager, prefs, database.journalEntryDao, database.taskDao)
 
             return TasksViewModel(application, userRepository, tasksRepository, journalRepository) as T
         }

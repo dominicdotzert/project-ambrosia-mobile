@@ -2,6 +2,7 @@ package com.projectambrosia.ambrosia.network
 
 import android.content.Context
 import com.projectambrosia.ambrosia.network.models.*
+import com.projectambrosia.ambrosia.network.models.auth.*
 import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import com.projectambrosia.ambrosia.utilities.TOKEN_TIMEOUT_TIME_MILLIS
 import com.squareup.moshi.Moshi
@@ -16,16 +17,6 @@ class RequestManager private constructor(context: Context) {
 
     private val prefs = PreferencesHelper.getInstance(context)
 
-    suspend fun makeRequest(request: () -> Deferred<Response>): Response {
-        return withContext(Dispatchers.IO) {
-            try {
-                request().await()
-            } catch (e: HttpException) {
-                getResponseError(e)
-            }
-        }
-    }
-
     suspend fun makeRequestWithAuth(request: () -> Deferred<Response>): Response {
         if (accessTokenExpired()) {
             val refreshTokensResult = refreshUserTokens()
@@ -37,14 +28,48 @@ class RequestManager private constructor(context: Context) {
         return makeRequest(request)
     }
 
+    suspend fun makeNoDataRequestWithAuth(request: () -> Deferred<Unit>): Response {
+        if (accessTokenExpired()) {
+            val refreshTokensResult = refreshUserTokens()
+            if (refreshTokensResult is ResponseError) {
+                return refreshTokensResult
+            }
+        }
+
+        return makeNoDataRequest(request)
+    }
+
     suspend fun loginRequest(email: String, password: String): Response {
         return withContext(Dispatchers.IO) {
             try {
-                val loginResult = AmbrosiaApi.retrofitService.logUserInAsync(RequestLogin(email, password)).await()
+                val loginResult = AmbrosiaApi.retrofitService.logUserInAsync(
+                    RequestData(DataLogin(email, password))
+                ).await()
                 prefs.accessToken = loginResult.data.accessToken
                 prefs.refreshToken = loginResult.data.refreshToken
 
                 refreshUserTokens()
+            } catch (e: HttpException) {
+                prefs.clearSignedInUser()
+                getResponseError(e)
+            }
+        }
+    }
+
+    suspend fun registerRequest(email: String, password: String, name: String, age: Int, goal: Int, motivation: String): Response {
+        return withContext(Dispatchers.IO) {
+            try {
+                val registerResult = AmbrosiaApi.retrofitService.registerUserAsync(
+                    RequestData(
+                        DataRegisterRequest(email, password, name, age, goal, motivation)
+                    )
+                ).await()
+
+                prefs.accessToken = registerResult.data.accessToken
+                prefs.refreshToken = registerResult.data.refreshToken
+                prefs.userId = registerResult.data.uuid
+
+                refreshUserDetails()
             } catch (e: HttpException) {
                 prefs.clearSignedInUser()
                 getResponseError(e)
@@ -63,7 +88,7 @@ class RequestManager private constructor(context: Context) {
                 getResponseError(e)
             }
             catch (e: Exception) {
-                Timber.e(e.message)
+                Timber.e(e)
                 throw e
             }
         }
@@ -77,9 +102,10 @@ class RequestManager private constructor(context: Context) {
 
         return withContext(Dispatchers.IO) {
             when (val result = makeRequest { AmbrosiaApi.retrofitService.refreshAccessTokenAsync(prefs.refreshToken!!) }) {
-                is ResponseRefreshTokens -> {
-                    prefs.accessToken = result.data.accessToken
-                    prefs.refreshToken = result.data.refreshToken
+                is ResponseData<*> -> {
+                    val data = result.data as DataTokens
+                    prefs.accessToken = data.accessToken
+                    prefs.refreshToken = data.refreshToken
 
                     refreshUserDetails()
                 }
@@ -92,6 +118,27 @@ class RequestManager private constructor(context: Context) {
         }
     }
 
+    private suspend fun makeRequest(request: () -> Deferred<Response>): Response {
+        return withContext(Dispatchers.IO) {
+            try {
+                request().await()
+            } catch (e: HttpException) {
+                getResponseError(e)
+            }
+        }
+    }
+
+    private suspend fun makeNoDataRequest(request: () -> Deferred<Unit>): Response {
+        return withContext(Dispatchers.IO) {
+            try {
+                request().await()
+                ResponseMessage("Success!")
+            } catch (e: HttpException) {
+                getResponseError(e)
+            }
+        }
+    }
+
     private suspend fun refreshUserDetails() : Response {
         if (prefs.accessToken == null) {
             prefs.clearSignedInUser()
@@ -100,8 +147,9 @@ class RequestManager private constructor(context: Context) {
 
         return withContext(Dispatchers.IO) {
             when (val result = makeRequest { AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!) }) {
-                is ResponseUserDetails -> {
-                    prefs.userId = result.data.userId
+                is ResponseData<*> -> {
+                    val data = result.data as DataUserDetails
+                    prefs.userId = data.uuid
                     result
                 }
                 is ResponseError -> {

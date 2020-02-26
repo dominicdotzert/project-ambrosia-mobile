@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.ListItemTaskBinding
-import com.projectambrosia.ambrosia.utilities.Tool
+import com.projectambrosia.ambrosia.utilities.HUNGER_SCALE
+import com.projectambrosia.ambrosia.utilities.JOURNAL
 import com.projectambrosia.ambrosia.utilities.getHistoryDateString
 import com.projectambrosia.ambrosia.views.DateViewHolder
 
@@ -79,8 +80,8 @@ class TaskAdapter(
 
         private fun getTaskText(task: Task): Spanned {
             val taskText = when (task.tool) {
-                Tool.JOURNAL -> context.resources.getString(R.string.task_item_journal, task.taskText)
-                Tool.HS -> context.resources.getString(R.string.task_item_hunger_scale, task.taskText)
+                JOURNAL -> context.resources.getString(R.string.task_item_journal, task.taskText)
+                HUNGER_SCALE -> context.resources.getString(R.string.task_item_hunger_scale, task.taskText)
                 else -> context.resources.getString(R.string.task_item_action, task.taskText)
             }
 

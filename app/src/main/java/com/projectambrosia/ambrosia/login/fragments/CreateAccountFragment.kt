@@ -29,7 +29,7 @@ class CreateAccountFragment : Fragment() {
             if (it) {
                 this.findNavController().navigate(
                     CreateAccountFragmentDirections
-                        .actionPasswordFragmentToCollectUserInfoFragment(viewModel.email.value!!)
+                        .actionPasswordFragmentToCollectUserInfoFragment(viewModel.email.value!!, viewModel.password.value!!)
                 )
                 viewModel.doneNavigatingToCreateAccount()
             }

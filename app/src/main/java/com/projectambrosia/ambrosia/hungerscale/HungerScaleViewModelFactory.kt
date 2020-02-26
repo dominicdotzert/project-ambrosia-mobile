@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.repositories.HSEntryRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
+import com.projectambrosia.ambrosia.network.RequestManager
 import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import java.lang.IllegalArgumentException
 
@@ -14,10 +15,11 @@ class HungerScaleViewModelFactory(private val application: Application) : ViewMo
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HungerScaleViewModel::class.java)) {
 
+            val requestManager = RequestManager.getInstance(application)
             val prefs = PreferencesHelper.getInstance(application)
             val database = AmbrosiaDatabase.getInstance(application)
 
-            val tasksRepository = TasksRepository(prefs, database.taskDao)
+            val tasksRepository = TasksRepository(requestManager, prefs, database.taskDao)
             val hsEntryRepository = HSEntryRepository(prefs, database.hsEntryDao, database.taskDao)
 
             return HungerScaleViewModel(tasksRepository, hsEntryRepository) as T

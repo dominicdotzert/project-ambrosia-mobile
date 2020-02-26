@@ -28,7 +28,7 @@ class CollectUserInfoFragment : Fragment() {
     ): View? {
         val binding = FragmentCollectUserInfoBinding.inflate(layoutInflater, container, false)
         val args: CollectUserInfoFragmentArgs by navArgs()
-        val viewModel: CollectUserInfoViewModel by viewModels { CollectUserInfoViewModelFactory(requireActivity().application, args.email) }
+        val viewModel: CollectUserInfoViewModel by viewModels { CollectUserInfoViewModelFactory(requireActivity().application, args.email, args.password) }
         val viewPagerAdapter = CollectUserInfoViewPagerAdapter(viewModel)
 
         binding.lifecycleOwner = this

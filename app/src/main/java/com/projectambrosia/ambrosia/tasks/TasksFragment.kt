@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,7 +14,15 @@ import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.DialogActionTaskEntryBinding
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
-import com.projectambrosia.ambrosia.utilities.Tool
+import com.projectambrosia.ambrosia.network.AmbrosiaApi
+import com.projectambrosia.ambrosia.network.RequestManager
+import com.projectambrosia.ambrosia.network.models.ResponseData
+import com.projectambrosia.ambrosia.network.models.auth.DataUserDetails
+import com.projectambrosia.ambrosia.utilities.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class TasksFragment : Fragment() {
 
@@ -76,20 +85,21 @@ class TasksFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            R.id.debug_menu_user_details -> {
-//                val requestManager = RequestManager.getInstance(requireContext())
-//                val prefs = PreferencesHelper.getInstance(requireContext())
-//                CoroutineScope(Job() + Dispatchers.Main).launch {
-//                    val result = requestManager.makeRequestWithAuth {
-//                        AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
-//                    }
-//
-//                    if (result is ResponseUserDetails) {
-//                        Toast.makeText(requireContext(), "uuid: ${result.data.userId}", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            }
-            R.id.debug_menu_refresh_data -> tasksViewModel.debugRefresh()
+            R.id.debug_menu_user_details -> {
+                val requestManager = RequestManager.getInstance(requireContext())
+                val prefs = PreferencesHelper.getInstance(requireContext())
+                CoroutineScope(Job() + Dispatchers.Main).launch {
+                    val result = requestManager.makeRequestWithAuth {
+                        AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
+                    }
+
+                    if (result is ResponseData<*>) {
+                        val data = result.data as DataUserDetails
+                        Toast.makeText(requireContext(), "uuid: ${data.uuid}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            R.id.debug_menu_get_tasks -> tasksViewModel.requestTasks()
             R.id.debug_menu_logout -> tasksViewModel.logUserOut()
         }
 
@@ -99,10 +109,10 @@ class TasksFragment : Fragment() {
     // TODO: Update to use events to trigger navigation instead
     private fun navigateToTask(task: Task) {
         when (task.tool) {
-            Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
-            Tool.JOURNAL -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToJournalFragment().setTaskId(task.taskId))
-            Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-            Tool.OTHER -> if (!dialogOpen) showActionTaskDialog(task)
+            IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
+            JOURNAL -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToJournalFragment().setTaskId(task.taskId))
+            HUNGER_SCALE -> this.findNavController().navigate(R.id.hungerScaleFragment)
+            OTHER -> if (!dialogOpen) showActionTaskDialog(task)
         }
     }
 

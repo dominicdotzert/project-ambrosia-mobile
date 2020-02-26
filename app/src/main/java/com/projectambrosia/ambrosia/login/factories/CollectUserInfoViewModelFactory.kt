@@ -12,7 +12,8 @@ import java.lang.IllegalArgumentException
 
 class CollectUserInfoViewModelFactory(
     private val application: Application,
-    private val email: String
+    private val email: String,
+    private val password: String
 ) : ViewModelProvider.AndroidViewModelFactory(application) {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -23,7 +24,7 @@ class CollectUserInfoViewModelFactory(
             val database = AmbrosiaDatabase.getInstance(application)
             val userRepository = UserRepository(requestManager, prefs, database.userDao)
 
-            return CollectUserInfoViewModel(application, email, userRepository) as T
+            return CollectUserInfoViewModel(application, email, password, userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

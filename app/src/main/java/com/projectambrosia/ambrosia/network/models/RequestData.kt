@@ -1,3 +1,3 @@
 package com.projectambrosia.ambrosia.network.models
 
-abstract class Response
+class RequestData<T>(val data: T)

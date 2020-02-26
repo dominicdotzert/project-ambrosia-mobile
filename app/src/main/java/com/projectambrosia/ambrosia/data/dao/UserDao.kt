@@ -22,6 +22,8 @@ interface UserDao : BaseDao<User> {
     fun updateUserMotivation(userId: String, motivation: String)
 
     // TODO: Add tests or remove
-    @Query("SELECT id FROM users WHERE email = :email LIMIT 1")
-    fun userExists(email: String): String?
+//    @Query("SELECT id FROM users WHERE email = :email LIMIT 1")
+//    fun userExists(email: String): String?
+    @Query("SELECT id FROM users WHERE id = :userId LIMIT 1")
+    fun userExists(userId: String): String?
 }

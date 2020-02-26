@@ -1,7 +1,7 @@
 package com.projectambrosia.ambrosia.utilities
 
 // Data
-const val AWS_BASE_URL = "https://jhgn385jm8.execute-api.us-east-2.amazonaws.com/default/"
+const val AWS_BASE_URL = "https://bepg1.herokuapp.com/"
 const val DATABASE_NAME = "ambrosia-db"
 
 // Tools

@@ -1,11 +1,6 @@
 package com.projectambrosia.ambrosia.data
 
 import androidx.room.TypeConverter
-import com.projectambrosia.ambrosia.utilities.HUNGER_SCALE
-import com.projectambrosia.ambrosia.utilities.IEAS
-import com.projectambrosia.ambrosia.utilities.JOURNAL
-import com.projectambrosia.ambrosia.utilities.Tool
-import java.lang.StringBuilder
 import java.util.*
 
 class Converters {
@@ -16,20 +11,6 @@ class Converters {
     @TypeConverter
     fun timestampToCalendar(value: Long): Calendar =
         Calendar.getInstance().apply { timeInMillis = value }
-
-    // Tool enum
-    @TypeConverter
-    fun fromTool(tool: Tool): Int = tool.value
-
-    @TypeConverter
-    fun toTool(value: Int): Tool {
-        return when (value) {
-            IEAS -> Tool.IEAS
-            HUNGER_SCALE -> Tool.HS
-            JOURNAL -> Tool.JOURNAL
-            else -> Tool.OTHER
-        }
-    }
 
     // BooleanArray
     @TypeConverter

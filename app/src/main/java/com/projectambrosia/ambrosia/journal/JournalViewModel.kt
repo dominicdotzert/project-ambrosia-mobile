@@ -18,8 +18,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.*
 
-
-// TODO: Update to use proper UserId
 class JournalViewModel(
     application: Application,
     userRepository: UserRepository,
@@ -31,7 +29,7 @@ class JournalViewModel(
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     // Load quote
-    private val _user = userRepository.getUser(1)
+    private val _user = userRepository.getCurrentUser()
     val userMotivation = Transformations.map(_user) {
         application.resources.getString(R.string.quote_body, it.motivation)
     }
@@ -41,13 +39,13 @@ class JournalViewModel(
     }
 
     // Load active prompts
-    private val _journalTasks = journalRepository.loadPrompts(1)
+    private val _journalTasks = journalRepository.loadPrompts()
     val journalTasks = Transformations.map(_journalTasks) {
         it.map { task -> JournalPrompt(task.taskText, task.taskId) }
     }
 
     // Load history
-    val entryHistory = journalRepository.loadHistory(1)
+    val entryHistory = journalRepository.loadHistory()
     val todaySelected = MutableLiveData<Boolean>()
     val completedList = MediatorLiveData<List<JournalEntry>>()
 
@@ -58,8 +56,7 @@ class JournalViewModel(
 
     fun savePrompt(prompt: JournalPrompt, entryText: String) {
         viewModelScope.launch {
-            val entry = JournalEntry(1, Calendar.getInstance(), prompt.promptText, entryText, prompt.taskId)
-            journalRepository.saveEntry(entry)
+            journalRepository.saveEntry(prompt.promptText, entryText, Calendar.getInstance(), prompt.taskId)
 
             // TODO: Pending group decision, remove this.
             prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }

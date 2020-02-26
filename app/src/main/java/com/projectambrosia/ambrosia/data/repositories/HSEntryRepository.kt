@@ -3,16 +3,22 @@ package com.projectambrosia.ambrosia.data.repositories
 import androidx.lifecycle.LiveData
 import com.projectambrosia.ambrosia.data.dao.HSEntryDao
 import com.projectambrosia.ambrosia.data.models.HSEntry
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
-class HSEntryRepository(private val hsEntryDao: HSEntryDao) {
-    fun loadHistory(userId: Long): LiveData<List<HSEntry>> {
-        return hsEntryDao.getEntries(userId)
+class HSEntryRepository(
+    private val prefs: PreferencesHelper,
+    private val hsEntryDao: HSEntryDao
+) {
+    fun loadHistory(): LiveData<List<HSEntry>> {
+        return hsEntryDao.getEntries(prefs.userId!!)
     }
 
-    suspend fun saveEntry(entry: HSEntry) {
+    suspend fun saveEntry(value: Int, timestamp: Calendar, label: String) {
         withContext(Dispatchers.IO) {
+            val entry = HSEntry(prefs.userId!!, timestamp, value, null, label)
             hsEntryDao.insert(entry)
         }
     }

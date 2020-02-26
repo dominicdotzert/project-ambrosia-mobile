@@ -9,7 +9,7 @@ import java.util.*
     indices = [Index("user_id")]
 )
 data class IEASResults(
-    @ColumnInfo(name = "user_id") val userId: Long,
+    @ColumnInfo(name = "user_id") val userId: String,
     val results: BooleanArray,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
     @ColumnInfo(name = "task_id") val taskId: Long

@@ -21,10 +21,14 @@ class UserDaoTests {
 
     private lateinit var database: AmbrosiaDatabase
     private lateinit var userDao: UserDao
-    
-    private val user1 = User(1, "email_1", "user_a", 1, "motivation_1", Calendar.getInstance())
-    private val user2 = User(2, "email_2", "user_a", 2, "motivation_2", Calendar.getInstance())
-    private val user3 = User(3, "email_3", "user_a", 3, "motivation_3", Calendar.getInstance())
+
+    private val userId1 = "09fc3b6f-2882-4fde-9e3b-65a3620ce52e"
+    private val userId2 = "fc0468bf-fae2-4b4f-b573-ec250418a871"
+    private val userId3 = "0bc23913-1b95-4300-bfb5-e9d3c989f609"
+
+    private val user1 = User(userId1, "email_1", "user_a", 1, "motivation_1", Calendar.getInstance())
+    private val user2 = User(userId2, "email_2", "user_a", 2, "motivation_2", Calendar.getInstance())
+    private val user3 = User(userId3, "email_3", "user_a", 3, "motivation_3", Calendar.getInstance())
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -55,21 +59,21 @@ class UserDaoTests {
 
     @Test
     fun testGetUser() {
-        val user = getValue(userDao.getUser(2))
+        val user = getValue(userDao.getUser(userId2))
 
         assertThat(user, equalTo(user2))
     }
 
     @Test
     fun testGetUserName() {
-        val userName = getValue(userDao.getUserName(1))
+        val userName = getValue(userDao.getUserName(userId1))
 
         assertThat(userName, equalTo(user1.name))
     }
 
     @Test
     fun testGetUserMotivation() {
-        val motivation = getValue(userDao.getUserMotivation(2))
+        val motivation = getValue(userDao.getUserMotivation(userId2))
 
         assertThat(motivation, equalTo(user2.motivation))
     }
@@ -77,16 +81,17 @@ class UserDaoTests {
     @Test
     fun testUpdateUserMotivation() {
         val testString = "test"
-        userDao.updateUserMotivation(2, testString)
+        userDao.updateUserMotivation(userId2, testString)
 
-        val user = getValue(userDao.getUser(2))
+        val user = getValue(userDao.getUser(userId2))
 
         assertThat(user.motivation, equalTo(testString))
     }
 
     @Test
     fun testAddUser() {
-        val user4 = User(4, "email_4", "user_a", 4, "motivation_4", Calendar.getInstance())
+        val userId4 = "f591e16d-65c2-4167-839b-1fe35bde3dba"
+        val user4 = User(userId4, "email_4", "user_a", 4, "motivation_4", Calendar.getInstance())
         userDao.insert(user4)
 
         val users = userDao.getUsers()
@@ -102,17 +107,17 @@ class UserDaoTests {
         val newGoal = 100
         val newMotivation = "New Motivation"
 
-        val user = User(1, newEmail, newName, newGoal, newMotivation, Calendar.getInstance())
+        val user = User(userId1, newEmail, newName, newGoal, newMotivation, Calendar.getInstance())
         userDao.update(user)
 
-        val updatedUser = getValue(userDao.getUser(1))
+        val updatedUser = getValue(userDao.getUser(userId1))
 
         assertThat(user, equalTo(updatedUser))
     }
 
     @Test
     fun testDeleteUser() {
-        val userToDelete = getValue(userDao.getUser(3))
+        val userToDelete = getValue(userDao.getUser(userId3))
         userDao.delete(userToDelete)
 
         val users = userDao.getUsers()

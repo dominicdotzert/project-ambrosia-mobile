@@ -7,5 +7,5 @@ import com.projectambrosia.ambrosia.data.models.JournalEntry
 @Dao
 interface JournalEntryDao : BaseDao<JournalEntry> {
     @Query("SELECT * FROM journal_entries WHERE user_id = :userId ORDER BY timestamp DESC")
-    fun getJournalEntries(userId: Long): LiveData<List<JournalEntry>>
+    fun getJournalEntries(userId: String): LiveData<List<JournalEntry>>
 }

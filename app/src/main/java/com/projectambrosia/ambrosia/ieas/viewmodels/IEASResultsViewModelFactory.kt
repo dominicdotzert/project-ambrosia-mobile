@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.repositories.IEASRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import java.lang.IllegalArgumentException
 
 class IEASResultsViewModelFactory(
@@ -16,9 +17,13 @@ class IEASResultsViewModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(IEASResultsViewModel::class.java)) {
+
+            val prefs = PreferencesHelper.getInstance(application)
             val database = AmbrosiaDatabase.getInstance(application)
-            val tasksRepository = TasksRepository(database.taskDao)
-            val ieasRepository = IEASRepository(database.ieasResultsDao)
+
+            val tasksRepository = TasksRepository(prefs, database.taskDao)
+            val ieasRepository = IEASRepository(prefs, database.ieasResultsDao)
+
             return IEASResultsViewModel(
                 tasksRepository,
                 ieasRepository,

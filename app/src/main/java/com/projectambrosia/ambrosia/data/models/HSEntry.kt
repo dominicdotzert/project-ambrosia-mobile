@@ -9,7 +9,7 @@ import java.util.*
     indices = [Index("user_id")]
 )
 data class HSEntry(
-    @ColumnInfo(name = "user_id") val userId: Long,
+    @ColumnInfo(name = "user_id") val userId: String,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
     val before: Int,
     val after: Int?,

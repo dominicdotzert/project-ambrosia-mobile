@@ -7,6 +7,7 @@ import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.network.RequestManager
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 
 class TasksViewModelFactory(
     private val application: Application
@@ -16,10 +17,11 @@ class TasksViewModelFactory(
         if (modelClass.isAssignableFrom(TasksViewModel::class.java)) {
 
             val requestManager = RequestManager.getInstance(application.applicationContext)
+            val prefs = PreferencesHelper.getInstance(application)
             val database = AmbrosiaDatabase.getInstance(application)
-            val userRepository = UserRepository(requestManager, database.userDao)
 
-            val tasksRepository = TasksRepository(database.taskDao)
+            val userRepository = UserRepository(requestManager, prefs, database.userDao)
+            val tasksRepository = TasksRepository(prefs, database.taskDao)
 
             return TasksViewModel(application, userRepository, tasksRepository) as T
         }

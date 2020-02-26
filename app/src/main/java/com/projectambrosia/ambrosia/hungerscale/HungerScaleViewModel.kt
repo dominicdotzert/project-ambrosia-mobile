@@ -10,14 +10,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
-// TODO: Update to use proper UserId
 class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : ViewModel() {
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     // Load history
-    val entryHistory = hsEntryRepository.loadHistory(1)
+    val entryHistory = hsEntryRepository.loadHistory()
     val todaySelected = MutableLiveData<Boolean>()
     val completedList = MediatorLiveData<List<HSEntry>>()
 
@@ -27,9 +27,9 @@ class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : V
         completedList.addSource(todaySelected) { updateHistoryList() }
     }
 
-    fun saveEntry(entry: HSEntry) {
+    fun saveEntry(value: Int, timestamp: Calendar, label: String) {
         viewModelScope.launch {
-            hsEntryRepository.saveEntry(entry)
+            hsEntryRepository.saveEntry(value, timestamp, label)
         }
     }
 

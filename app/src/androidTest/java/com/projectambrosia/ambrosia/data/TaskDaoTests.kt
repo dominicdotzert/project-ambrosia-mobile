@@ -29,7 +29,8 @@ class TaskDaoTests {
     private val today = Calendar.getInstance().apply { timeInMillis = 1520000000000 }
     private val yesterday = Calendar.getInstance().apply { timeInMillis = 1500000000000 }
 
-    private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
+    private val userId = "09fc3b6f-2882-4fde-9e3b-65a3620ce52e"
+    private val user = User(userId, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val dailyTask1 = Task(1, user.userId, today, "task 1", 1, Tool.JOURNAL, 1)
     private val dailyTask2 = Task(2, user.userId, today, "task 2", 1, Tool.HS, 1)
@@ -60,7 +61,7 @@ class TaskDaoTests {
 
     @Test
     fun testGetTasks() {
-        val allTasks = getValue(taskDao.getTasks())
+        val allTasks = getValue(taskDao.getTasks(userId))
 
         assertThat(allTasks.size, equalTo(6))
         assertThat(allTasks[0], equalTo(dailyTask1))
@@ -73,7 +74,7 @@ class TaskDaoTests {
 
     @Test
     fun testGetTasksSince() {
-        val dailyTasks = getValue(taskDao.getTasksSince(1510000000000))
+        val dailyTasks = getValue(taskDao.getTasksSince(userId, 1510000000000))
 
         assertThat(dailyTasks.size, equalTo(3))
         assertThat(dailyTasks[0], equalTo(dailyTask1))
@@ -84,21 +85,21 @@ class TaskDaoTests {
     @Test
     fun testTaskDeletesOnUserDelete() {
         userDao.delete(user)
-        val tasks = getValue(taskDao.getTasks())
+        val tasks = getValue(taskDao.getTasks(userId))
         assertThat(tasks.size, equalTo(0))
     }
 
     @Test
     fun testUpdateTaskIsCompleted() {
-        taskDao.updateTaskIsCompleted(1)
-        val tasks = getValue(taskDao.getTasks())
+        taskDao.updateTaskIsCompleted(userId, 1)
+        val tasks = getValue(taskDao.getTasks(userId))
         assertThat(tasks[0].isCompleted, equalTo(true))
     }
 
     @Test
     fun testUpdateTaskIsIncomplete() {
-        taskDao.updateTaskIsIncomplete(4)
-        val tasks = getValue(taskDao.getTasks())
+        taskDao.updateTaskIsIncomplete(userId, 4)
+        val tasks = getValue(taskDao.getTasks(userId))
         assertThat(tasks[3].isCompleted, equalTo(false))
     }
 }

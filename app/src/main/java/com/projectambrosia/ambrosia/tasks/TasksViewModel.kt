@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-// TODO: Update to use proper UserId
 class TasksViewModel(
     application: Application,
     private val userRepository: UserRepository,
@@ -21,7 +20,7 @@ class TasksViewModel(
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _user = userRepository.getUser(1)
+    private val _user = userRepository.getCurrentUser()
     val userMotivation = Transformations.map(_user) {
         it?.motivation
     }
@@ -29,7 +28,7 @@ class TasksViewModel(
     val tasks = tasksRepository.getTasks()
 
     val todoList = Transformations.map(tasks) {
-        it.filter { task -> !task.isCompleted }
+        it.filter { task -> !task.isCompleted && task.timestamp.isToday() }
     }
 
     // TODO: Order by timestamp
@@ -73,7 +72,7 @@ class TasksViewModel(
 
     private fun updateCompletedList() {
         completedList.value = when (todaySelected.value) {
-            false -> tasks.value?.filter { task -> task.isCompleted }
+            false -> tasks.value?.filter { task -> task.isCompleted || !task.timestamp.isToday() }
             else -> tasks.value?.filter { task -> task.isCompleted && task.timestamp.isToday() }
         }
     }

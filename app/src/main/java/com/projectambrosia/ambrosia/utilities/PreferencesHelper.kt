@@ -17,8 +17,9 @@ class PreferencesHelper private constructor(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE)
 
+    // FIXME: REMOVE DEBUG LOGIC
     var userId: String?
-        get() = prefs.getString(USER_ID_KEY, null)
+        get() = if (!prefs.getString(USER_ID_KEY, null).isNullOrEmpty()) DEBUG_USER_ID else null
         set(userId) = prefs.edit().putString(USER_ID_KEY, userId).apply()
 
     var refreshToken: String?

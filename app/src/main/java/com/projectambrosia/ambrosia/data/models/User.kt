@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity(tableName = "users")
 data class User(
-    @PrimaryKey @ColumnInfo(name = "id") val userId: Long, // TODO: Refactor to be String
+    @PrimaryKey @ColumnInfo(name = "id") val userId: String,
     val email: String,
     val name: String,
     val goal: Int,

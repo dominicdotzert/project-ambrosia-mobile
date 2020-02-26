@@ -25,7 +25,8 @@ class HSEntryDaoTests {
     private lateinit var userDao: UserDao
     private lateinit var hsEntryDao: HSEntryDao
 
-    private val user = User(1, "email", "name", 1, "motivation", Calendar.getInstance())
+    private val userId = "09fc3b6f-2882-4fde-9e3b-65a3620ce52e"
+    private val user = User(userId, "email", "name", 1, "motivation", Calendar.getInstance())
 
     private val calendar = Calendar.getInstance()
     private val entry1 = HSEntry(user.userId, calendar, 4, 7, "entry 1")

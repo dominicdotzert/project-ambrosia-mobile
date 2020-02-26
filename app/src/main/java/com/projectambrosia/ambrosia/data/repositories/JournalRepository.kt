@@ -5,23 +5,31 @@ import com.projectambrosia.ambrosia.data.dao.JournalEntryDao
 import com.projectambrosia.ambrosia.data.dao.TaskDao
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
 // TODO: Write tests
-class JournalRepository(private val journalEntryDao: JournalEntryDao, private val  taskDao: TaskDao) {
-    suspend fun saveEntry(journalEntry: JournalEntry) {
+class JournalRepository(
+    private val prefs: PreferencesHelper,
+    private val journalEntryDao: JournalEntryDao,
+    private val  taskDao: TaskDao
+) {
+
+    suspend fun saveEntry(promptText: String, entryText: String, timestamp: Calendar, taskId: Long?) {
         // TODO: Add network call
         withContext(Dispatchers.IO) {
-            journalEntryDao.insert(journalEntry)
+            val entry = JournalEntry(prefs.userId!!, timestamp, promptText, entryText, taskId)
+            journalEntryDao.insert(entry)
         }
     }
 
-    fun loadPrompts(userId: Long): LiveData<List<Task>> {
-        return taskDao.getJournalTasks(userId)
+    fun loadPrompts(): LiveData<List<Task>> {
+        return taskDao.getJournalTasks(prefs.userId!!)
     }
 
-    fun loadHistory(userId: Long): LiveData<List<JournalEntry>> {
-        return journalEntryDao.getJournalEntries(userId)
+    fun loadHistory(): LiveData<List<JournalEntry>> {
+        return journalEntryDao.getJournalEntries(prefs.userId!!)
     }
 }

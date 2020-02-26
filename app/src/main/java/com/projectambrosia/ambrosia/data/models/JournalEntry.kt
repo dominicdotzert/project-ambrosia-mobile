@@ -9,7 +9,7 @@ import java.util.*
     indices = [Index("user_id")]
 )
 data class JournalEntry(
-    @ColumnInfo(name = "user_id") val userId: Long,
+    @ColumnInfo(name = "user_id") val userId: String,
     @ColumnInfo(name = "timestamp") val entryDate: Calendar,
     @ColumnInfo(name = "prompt") val promptText: String,
     @ColumnInfo(name = "text") val entryText: String,

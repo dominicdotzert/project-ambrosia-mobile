@@ -27,6 +27,7 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     val validEmail: LiveData<Boolean>
         get() = _validEmail
 
+    // Navigation events
     private val _navigateToHome = MutableLiveData<Boolean>()
     val navigateToHome: LiveData<Boolean>
         get() = _navigateToHome

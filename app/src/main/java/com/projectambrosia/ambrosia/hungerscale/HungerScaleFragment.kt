@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.projectambrosia.ambrosia.R
-import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.databinding.DialogHungerScaleBinding
 import com.projectambrosia.ambrosia.databinding.DialogHungerScaleHelpBinding
 import com.projectambrosia.ambrosia.databinding.FragmentHungerScaleBinding
@@ -148,8 +147,7 @@ class HungerScaleFragment : Fragment() {
             if (dialogBinding.previousEntry?.after == null && dialogBinding.hungerScalePairCheckbox.isChecked) {
                 viewModel.savePairedEntry(dialogBinding.previousEntry!!, dialogBinding.hungerValue!!)
             } else {
-                val entry = HSEntry(1, Calendar.getInstance(), dialogBinding.hungerValue!!, null, dialogBinding.hungerScaleNotesEditText.text.toString())
-                viewModel.saveEntry(entry)
+                viewModel.saveEntry(dialogBinding.hungerValue!!, Calendar.getInstance(), dialogBinding.hungerScaleNotesEditText.text.toString())
             }
             dialog.dismiss()
         }

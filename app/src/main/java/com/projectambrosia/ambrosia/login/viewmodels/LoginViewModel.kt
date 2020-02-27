@@ -36,7 +36,7 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     val navigateToSignUp: LiveData<Boolean>
         get() = _navigateToSignUp
 
-    // TODO: Debug block. Remove.
+    // FIXME: Debug block. Remove.
     init {
         email.value = "test@test.com"
     }
@@ -46,6 +46,22 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     }
 
     fun onContinue() {
+        // FIXME: Remove when server is ready
+        var loggedIn = false
+        if (!email.value.toString().isBlank()) {
+            viewModelScope.launch {
+                if (userRepository.logUserInOffline(email.value!!.toString())) {
+                    loggedIn = true
+                }
+                when (loggedIn) {
+                    false -> Toast.makeText(getApplication(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+                    true -> _navigateToHome.value = true
+                }
+            }
+        }
+
+        return
+
         viewModelScope.launch {
 
             // Show spinner

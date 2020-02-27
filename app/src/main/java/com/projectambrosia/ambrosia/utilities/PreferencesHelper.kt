@@ -19,7 +19,8 @@ class PreferencesHelper private constructor(context: Context) {
 
     // FIXME: REMOVE DEBUG LOGIC
     var userId: String?
-        get() = if (!prefs.getString(USER_ID_KEY, null).isNullOrEmpty()) DEBUG_USER_ID else null
+//        get() = if (!prefs.getString(USER_ID_KEY, null).isNullOrEmpty()) DEBUG_USER_ID else null
+        get() = prefs.getString(USER_ID_KEY, null)
         set(userId) = prefs.edit().putString(USER_ID_KEY, userId).apply()
 
     var refreshToken: String?

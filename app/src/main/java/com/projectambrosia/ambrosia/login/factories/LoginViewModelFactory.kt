@@ -14,7 +14,7 @@ class LoginViewModelFactory(private val application: Application) : ViewModelPro
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
 
-            val requestManager = RequestManager.getInstance(application.applicationContext)
+            val requestManager = RequestManager.getInstance(application)
             val prefs = PreferencesHelper.getInstance(application)
             val database = AmbrosiaDatabase.getInstance(application)
             val userRepository = UserRepository(requestManager, prefs, database.userDao)

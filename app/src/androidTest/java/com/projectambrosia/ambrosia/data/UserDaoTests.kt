@@ -126,10 +126,10 @@ class UserDaoTests {
 
     @Test
     fun testUserExists() {
-        val user1 = userDao.userExists("email_1")
-        val nonexistentUser = userDao.userExists("invalid_email")
+        val user1Id = userDao.userExists("email_1")
+        val nonexistentUserId = userDao.userExists("invalid_email")
 
-        assertThat(user1, equalTo(1))
-        assertThat(nonexistentUser, equalTo(0))
+        assertThat(user1Id, equalTo(userId1))
+        assertThat(nonexistentUserId.isNullOrEmpty(), equalTo(true))
     }
 }

@@ -3,11 +3,14 @@ package com.projectambrosia.ambrosia.login.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.*
+import kotlinx.coroutines.launch
 
 class CollectUserInfoViewModel(
     application: Application,
-    private val email: String
+    private val email: String,
+    private val userRepository: UserRepository
 ) : AndroidViewModel(application) {
 
     // View LiveData Objects
@@ -28,29 +31,11 @@ class CollectUserInfoViewModel(
 
     val buttonEnabled = MediatorLiveData<Boolean>()
 
-    val ageRadioButtonId = MutableLiveData<Int>()
-    val goalRadioButtonId = MutableLiveData<Int>()
-
     // User Info LiveData Objects
     val name = MutableLiveData<String>("Name")
+    val ageRadioButtonId = MutableLiveData<Int>()
+    val goalRadioButtonId = MutableLiveData<Int>()
     val motivation = MutableLiveData<String>()
-    private val ageGroup = Transformations.map(ageRadioButtonId) {
-        when (it) {
-            R.id.user_age_radio_button_1 -> UNDER_18
-            R.id.user_age_radio_button_2 -> BETWEEN_18_TO_25
-            R.id.user_age_radio_button_3 -> OVER_25
-            else -> 0
-        }
-    }
-    private val goal = Transformations.map(goalRadioButtonId) {
-        when (it) {
-            R.id.user_goal_radio_button_1 -> UNCONDITIONAL_PERMISSION_TO_EAT
-            R.id.user_goal_radio_button_2 -> EATING_FOR_PHYSICAL_NOT_EMOTIONAL_REASONS
-            R.id.user_goal_radio_button_3 -> RELIANCE_ON_INTERNAL_HUNGER_AND_SATIETY_CUES
-            R.id.user_goal_radio_button_4 -> BODY_FOOD_CHOICE_CONGRUENCE
-            else -> 0
-        }
-    }
 
     // Navigation Events
     private val _navigateToHome = MutableLiveData<Boolean>()
@@ -93,7 +78,16 @@ class CollectUserInfoViewModel(
     }
 
     private fun registerUser() {
-        _navigateToHome.value = true
+        viewModelScope.launch {
+            userRepository.createUserOffline(
+                getApplication(),
+                email,
+                name.value.toString(),
+                getGoal(),
+                motivation.value.toString()
+            )
+            _navigateToHome.value = true
+        }
     }
 
     private fun updateButtonEnabled() {
@@ -103,6 +97,25 @@ class CollectUserInfoViewModel(
             USER_GOAL_PAGE -> goalRadioButtonId.value != null
             USER_MOTIVATION_PAGE -> !motivation.value.isNullOrBlank()
             else -> false
+        }
+    }
+
+    private fun getAgeGroup(): Int {
+        return when (ageRadioButtonId.value) {
+            R.id.user_age_radio_button_1 -> UNDER_18
+            R.id.user_age_radio_button_2 -> BETWEEN_18_TO_25
+            R.id.user_age_radio_button_3 -> OVER_25
+            else -> 0
+        }
+    }
+
+    private fun getGoal(): Int {
+        return when (goalRadioButtonId.value) {
+            R.id.user_goal_radio_button_1 -> UNCONDITIONAL_PERMISSION_TO_EAT
+            R.id.user_goal_radio_button_2 -> EATING_FOR_PHYSICAL_NOT_EMOTIONAL_REASONS
+            R.id.user_goal_radio_button_3 -> RELIANCE_ON_INTERNAL_HUNGER_AND_SATIETY_CUES
+            R.id.user_goal_radio_button_4 -> BODY_FOOD_CHOICE_CONGRUENCE
+            else -> 0
         }
     }
 }

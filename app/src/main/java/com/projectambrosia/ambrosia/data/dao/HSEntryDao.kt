@@ -13,4 +13,8 @@ interface HSEntryDao : BaseDao<HSEntry> {
     // TODO: Add test
     @Query("UPDATE hs_entries SET `after` = :after WHERE id = :entryId")
     fun updateAfterValue(entryId: Long, after: Int)
+
+    // FIXME: Remove this
+    @Query("DELETE FROM hs_entries WHERE user_id = :userId")
+    fun deleteEntriesForUser(userId: String)
 }

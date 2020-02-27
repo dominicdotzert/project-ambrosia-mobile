@@ -45,14 +45,14 @@ abstract class AmbrosiaDatabase : RoomDatabase() {
                     DATABASE_NAME
                 )
                     .fallbackToDestructiveMigration()
-                    .addCallback(object : Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            MainScope().launch {
-                                prepopulateDatabase(context)
-                            }
-                        }
-                    })
+//                    .addCallback(object : Callback() {
+//                        override fun onCreate(db: SupportSQLiteDatabase) {
+//                            super.onCreate(db)
+//                            MainScope().launch {
+//                                prepopulateDatabase(context)
+//                            }
+//                        }
+//                    })
                     .build()
                     .also { INSTANCE = it }
             }

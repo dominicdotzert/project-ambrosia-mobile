@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-const val DEBUG_USER_ID = "d9b3ceaa-e989-4cc0-ac3c-ddcae7b12b74\""
+const val DEBUG_USER_ID = "d9b3ceaa-e989-4cc0-ac3c-ddcae7b12b74"
 
 suspend fun prepopulateDatabase(context: Context) {
     withContext(Dispatchers.IO) {
@@ -50,5 +50,29 @@ suspend fun prepopulateDatabase(context: Context) {
 //            HSEntry(DEBUG_USER_ID, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*2) }, 5, 8, "hs entry 5"),
 //            HSEntry(DEBUG_USER_ID, Calendar.getInstance().apply { timeInMillis = timeInMillis.minus(86400000*3) }, 4, 7, "hs entry 6")
 //        )
+    }
+}
+
+suspend fun populateDatabaseForNewUser(context: Context, userId: String) {
+    withContext(Dispatchers.IO) {
+        val db = AmbrosiaDatabase.getInstance(context)
+
+        db.taskDao.insert(
+            Task(1, userId, Calendar.getInstance(), "Complete the Intuitive Eating Assessment Scale", 1, Tool.IEAS, 1),
+            Task(2, userId, Calendar.getInstance(), "Prompt: Describe how your lunch actually tasted in your mouth", 1, Tool.JOURNAL, 1),
+            Task(3, userId, Calendar.getInstance(), "Chose a meal or snack, and use the hunger scale", 1, Tool.HS, 1)
+        )
+    }
+}
+
+suspend fun refreshDatabaseForUser(context: Context, userId: String) {
+    withContext(Dispatchers.IO) {
+        val db = AmbrosiaDatabase.getInstance(context)
+
+        db.taskDao.removeTasksForUser(userId)
+        db.journalEntryDao.deleteEntriesForUser(userId)
+        db.hsEntryDao.deleteEntriesForUser(userId)
+
+        populateDatabaseForNewUser(context, userId)
     }
 }

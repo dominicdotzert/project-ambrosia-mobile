@@ -88,19 +88,20 @@ class TasksFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.debug_menu_user_details -> {
-                val requestManager = RequestManager.getInstance(requireContext())
-                val prefs = PreferencesHelper.getInstance(requireContext())
-                CoroutineScope(Job() + Dispatchers.Main).launch {
-                    val result = requestManager.makeRequestWithAuth {
-                        AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
-                    }
-
-                    if (result is ResponseUserDetails) {
-                        Toast.makeText(requireContext(), "uuid: ${result.data.userId}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+//            R.id.debug_menu_user_details -> {
+//                val requestManager = RequestManager.getInstance(requireContext())
+//                val prefs = PreferencesHelper.getInstance(requireContext())
+//                CoroutineScope(Job() + Dispatchers.Main).launch {
+//                    val result = requestManager.makeRequestWithAuth {
+//                        AmbrosiaApi.retrofitService.getUserDetailsAsync(prefs.accessToken!!)
+//                    }
+//
+//                    if (result is ResponseUserDetails) {
+//                        Toast.makeText(requireContext(), "uuid: ${result.data.userId}", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+            R.id.debug_menu_refresh_data -> tasksViewModel.debugRefresh()
             R.id.debug_menu_logout -> tasksViewModel.logUserOut()
         }
 

@@ -6,10 +6,8 @@ import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.isToday
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.projectambrosia.ambrosia.utilities.refreshDatabaseForUser
+import kotlinx.coroutines.*
 
 class TasksViewModel(
     application: Application,
@@ -56,13 +54,25 @@ class TasksViewModel(
 
     fun logUserOut() {
         viewModelScope.launch {
-            userRepository.logUserOut()
+
+            // FIXME: Remove this line and uncomment line below
+            userRepository.logUserOutOffline()
+
+            //userRepository.logUserOut()
             _navigateToLogin.value = true
         }
     }
 
     fun doneNavigatingToLogin() {
         _navigateToLogin.value = false
+    }
+
+    // FIXME: Remove this after user testing
+    fun debugRefresh() {
+        viewModelScope.launch {
+            val userId = userRepository.getUserId()
+            userId?.let { refreshDatabaseForUser(getApplication(), it) }
+        }
     }
 
     override fun onCleared() {

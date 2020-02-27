@@ -41,12 +41,14 @@ class SplashFragment : Fragment() {
         coroutineScope.launch {
             // Attempt to refresh user access token (if a refresh token exists)
             var authSuccessful = false
-            if (prefs.refreshToken != null) {
-                val refreshResult = requestManager.refreshUserTokens()
-                if (refreshResult is ResponseUserDetails) {
-                    authSuccessful = true
-                }
-            }
+            // FIXME: Uncomment after user testing
+//            if (prefs.refreshToken != null) {
+//                val refreshResult = requestManager.refreshUserTokens()
+//                if (refreshResult is ResponseUserDetails) {
+//                    authSuccessful = true
+//                }
+//            }
+            if (prefs.userId != null) authSuccessful = true
 
             // Ensure that splashscreen is shown for constant time
             val timeElapsed = System.currentTimeMillis() - splashScreenCreated

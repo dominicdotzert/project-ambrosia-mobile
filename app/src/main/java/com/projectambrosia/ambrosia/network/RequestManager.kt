@@ -62,6 +62,10 @@ class RequestManager private constructor(context: Context) {
                 prefs.clearSignedInUser()
                 getResponseError(e)
             }
+            catch (e: Exception) {
+                Timber.e(e.message)
+                throw e
+            }
         }
     }
 

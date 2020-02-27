@@ -32,8 +32,8 @@ class TasksFragment : Fragment() {
 
         // Set RecyclerView adapters and observe lists
         val todoAdapter = TaskAdapter(
-            TaskListener { task -> task?.taskId?.let { tasksViewModel.markTaskAsComplete(it) }},
-            TaskListener { task -> navigateToTask(task) }
+            TaskListener { task -> task?.taskId?.let { tasksViewModel.markTaskAsComplete(it) } },
+            TaskListener { task -> task?.let { navigateToTask(it) } }
         )
         binding.homeTodoList.adapter = todoAdapter
         tasksViewModel.todoList.observe(viewLifecycleOwner, Observer {tasks ->
@@ -42,7 +42,7 @@ class TasksFragment : Fragment() {
 
         val completedAdapter = TaskAdapter(
             TaskListener { task -> task?.let { tasksViewModel.markTaskAsIncomplete(task.taskId) } },
-            TaskListener { navigateToTask(null) }
+            TaskListener { task -> task?.let { navigateToTask(it) } }
         )
         binding.homeCompletedList.adapter = completedAdapter
         tasksViewModel.completedList.observe(viewLifecycleOwner, Observer { tasks ->
@@ -72,14 +72,12 @@ class TasksFragment : Fragment() {
     }
 
     // TODO: Update to use events to trigger navigation instead
-    private fun navigateToTask(task: Task?) {
-        task?.let {
-            when (task.tool) {
-                Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
-                Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
-                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-                Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
-            }
+    private fun navigateToTask(task: Task) {
+        when (task.tool) {
+            Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
+            Tool.JOURNAL -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToJournalFragment().setTaskId(task.taskId))
+            Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
+            Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
         }
     }
 

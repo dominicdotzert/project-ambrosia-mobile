@@ -11,6 +11,10 @@ interface TaskDao : BaseDao<Task> {
     @Query("SELECT * FROM tasks WHERE user_id = :userId ORDER BY timestamp DESC")
     fun getTasks(userId: String) : LiveData<List<Task>>
 
+    // TODO: Add test
+    @Query("SELECT * FROM tasks WHERE user_id = :userId AND id = :taskId LIMIT 1")
+    fun getTask(userId: String, taskId: Long) : Task?
+
     @Query("SELECT * FROM tasks WHERE user_id = :userId AND timestamp > :timeInMillis")
     fun getTasksSince(userId: String, timeInMillis: Long): LiveData<List<Task>>
 

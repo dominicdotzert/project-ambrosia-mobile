@@ -12,6 +12,10 @@ class TasksRepository(
 ) {
     fun getTasks() = taskDao.getTasks(prefs.userId!!)
 
+    suspend fun getTask(taskId: Long) = withContext(Dispatchers.IO) {
+        taskDao.getTask(prefs.userId!!, taskId)
+    }
+
     suspend fun markTaskAsComplete(taskId: Long) = withContext(Dispatchers.IO) {
         // TODO: Add network call
         taskDao.updateTaskIsCompleted(prefs.userId!!, taskId)

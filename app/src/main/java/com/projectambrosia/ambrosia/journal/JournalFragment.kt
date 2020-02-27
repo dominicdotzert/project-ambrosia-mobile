@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.DialogJournalEntryBinding
 import com.projectambrosia.ambrosia.databinding.FragmentJournalBinding
@@ -27,6 +28,8 @@ class JournalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentJournalBinding.inflate(inflater, container, false)
+        val args: JournalFragmentArgs by navArgs()
+
         val journalPromptAdapter = JournalPromptAdapter(JournalPromptListener { prompt ->
             if (!dialogOpen) {
                 showJournalPopup(prompt)
@@ -54,6 +57,18 @@ class JournalFragment : Fragment() {
                 viewModel.todaySelected.value = it
             }
         })
+
+        // Observe navigation events
+        viewModel.openDialog.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                showJournalPopup(it)
+                viewModel.doneOpeningJournalDialog()
+            }
+        })
+
+        if (args.taskId != -1L) {
+            viewModel.openJournalDialog(args.taskId)
+        }
 
         return binding.root
     }

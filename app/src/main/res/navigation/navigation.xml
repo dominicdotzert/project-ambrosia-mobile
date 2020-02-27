@@ -22,6 +22,12 @@
             app:destination="@id/loginGraph"
             app:popUpTo="@+id/tasksFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_tasksFragment_to_journalFragment"
+            app:destination="@id/journalFragment" >
+            <argument android:defaultValue="-1L"
+                android:name="taskId" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/hungerScaleFragment"
@@ -32,7 +38,12 @@
         android:id="@+id/journalFragment"
         android:name="com.projectambrosia.ambrosia.journal.JournalFragment"
         android:label="fragment_journal"
-        tools:layout="@layout/fragment_journal" />
+        tools:layout="@layout/fragment_journal" >
+        <argument
+            android:name="taskId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
     <navigation
         android:id="@+id/ieasGraph"
         app:startDestination="@id/IEASInstructionsFragment" >

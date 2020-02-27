@@ -1,15 +1,13 @@
 package com.projectambrosia.ambrosia.journal
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
+import com.projectambrosia.ambrosia.utilities.Tool
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
 import com.projectambrosia.ambrosia.utilities.isToday
 import kotlinx.coroutines.CoroutineScope
@@ -49,6 +47,11 @@ class JournalViewModel(
     val todaySelected = MutableLiveData<Boolean>()
     val completedList = MediatorLiveData<List<JournalEntry>>()
 
+    // Navigation Events
+    private val _openDialog = MutableLiveData<JournalPrompt>()
+    val openDialog: LiveData<JournalPrompt>
+        get() = _openDialog
+
     init {
         completedList.addSource(entryHistory) { updateHistoryList() }
         completedList.addSource(todaySelected) { updateHistoryList() }
@@ -59,6 +62,22 @@ class JournalViewModel(
             journalRepository.saveEntry(prompt.promptText, entryText, Calendar.getInstance(), prompt.taskId)
 //            prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
         }
+    }
+
+    fun openJournalDialog(taskId: Long) {
+        viewModelScope.launch {
+            val task = tasksRepository.getTask(taskId)
+
+            task?.let {
+                if (!it.isCompleted && it.tool == Tool.JOURNAL) {
+                    _openDialog.value = JournalPrompt(it.taskText, it.taskId)
+                }
+            }
+        }
+    }
+
+    fun doneOpeningJournalDialog() {
+        _openDialog.value = null
     }
 
     override fun onCleared() {

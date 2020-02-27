@@ -57,11 +57,13 @@ class HungerScaleFragment : Fragment() {
         }
 
         // Set OnClickListener on hunger scale control
-        binding.hungerScaleControl.setOnClickListener {
-            if (!hsDialogOpen) {
-                showHSDialog()
+        binding.hungerScaleControlValues.selectedValue.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (!hsDialogOpen) {
+                    showHSDialog(it)
+                }
             }
-        }
+        })
 
         return binding.root
     }
@@ -105,7 +107,7 @@ class HungerScaleFragment : Fragment() {
         }
     }
 
-    private fun showHSDialog() {
+    private fun showHSDialog(selectedValue: Int) {
         hsDialogOpen = true
 
         val dialogBuilder = AlertDialog.Builder(requireActivity())
@@ -119,6 +121,9 @@ class HungerScaleFragment : Fragment() {
 //            attributes.windowAnimations = R.style.DialogAnimation
         }
         dialog.show()
+
+        // Set user's selected value
+        dialogBinding.hungerScaleValues.selectValue(selectedValue)
 
         // Show/hide previous entry views if the previous entry is recent and missing the after value.
         viewModel.completedList.value?.firstOrNull()?.let {

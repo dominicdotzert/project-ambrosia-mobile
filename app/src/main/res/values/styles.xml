@@ -140,6 +140,11 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="AmbrosiaCardView" parent="CardView">
+        <item name="cardCornerRadius">@dimen/corner_radius</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/scale_in</item>
         <item name="android:windowExitAnimation">@anim/scale_out</item>

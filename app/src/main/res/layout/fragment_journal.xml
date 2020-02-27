@@ -118,11 +118,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/journal_empty_history_card"
+                style="@style/AmbrosiaCardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_regular"
                 android:layout_marginBottom="@dimen/spacing_small"
-                app:cardCornerRadius="@dimen/corner_radius"
                 app:journal_entry_history_placeholder_visibility="@{journalViewModel.completedList}"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"

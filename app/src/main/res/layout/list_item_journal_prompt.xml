@@ -14,11 +14,11 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        style="@style/AmbrosiaCardView"
         android:layout_width="@dimen/journal_card_width"
         android:layout_height="@dimen/journal_card_height"
         android:layout_margin="@dimen/spacing_small"
-        android:background="@color/backgroundDarkOrange"
-        app:cardCornerRadius="@dimen/corner_radius">
+        android:background="@color/backgroundDarkOrange">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

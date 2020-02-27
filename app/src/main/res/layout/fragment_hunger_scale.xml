@@ -32,11 +32,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/hunger_scale_control"
+                style="@style/AmbrosiaCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_regular"
                 android:background="@color/backgroundOrange"
-                app:cardCornerRadius="@dimen/corner_radius"
                 app:layout_constraintTop_toBottomOf="@id/hunger_scale_header">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

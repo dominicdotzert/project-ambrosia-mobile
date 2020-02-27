@@ -100,6 +100,29 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/hunger_scale_completed_header" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hs_empty_history_card"
+                style="@style/AmbrosiaCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:hs_history_placeholder_visibility="@{hungerScaleViewModel.completedList}"
+                app:layout_constraintTop_toBottomOf="@id/hunger_scale_completed_header">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/backgroundGrey"
+                    android:padding="@dimen/spacing_regular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hs_empty_history"
+                        android:textAppearance="@style/TextAppearance.BodyText" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hs_history"
                 android:layout_width="match_parent"

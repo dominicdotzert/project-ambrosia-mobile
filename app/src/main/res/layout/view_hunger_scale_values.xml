@@ -9,7 +9,9 @@
         android:id="@+id/hunger_scale_value_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_small"
+        android:paddingEnd="@dimen/spacing_small">
 
         <RadioButton
             android:id="@+id/hunger_scale_value_1"

@@ -52,7 +52,6 @@
             android:layout_height="@dimen/hunger_scale_value_side"
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/background_hs_values"
-            android:foreground="@drawable/foreground_hs_values"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/hunger_scale_instruction_header" />
 

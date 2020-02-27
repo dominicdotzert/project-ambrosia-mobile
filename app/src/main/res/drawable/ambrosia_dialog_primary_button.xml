@@ -12,6 +12,12 @@
             <solid android:color="@color/salmon"/>
         </shape>
     </item>
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/corner_radius_secondary"/>
+            <solid android:color="@color/backgroundSalmon"/>
+        </shape>
+    </item>
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/corner_radius_secondary"/>

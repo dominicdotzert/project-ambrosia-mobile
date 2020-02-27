@@ -2,6 +2,7 @@ package com.projectambrosia.ambrosia.utilities
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.children
 import androidx.databinding.BindingAdapter
@@ -42,6 +43,11 @@ fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
 @BindingAdapter("task_list_placeholder_visibility_inverted")
 fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("task_chevron_visibility")
+fun setTaskChevronVisibility(chevron: ImageView, task: Task?) {
+    chevron.visibility = if (task?.tool?.value == OTHER) View.GONE else View.VISIBLE
 }
 
 // Hunger Scale

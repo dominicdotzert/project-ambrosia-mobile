@@ -45,7 +45,7 @@ class IEASResultsViewModel(
 
     init {
         viewModelScope.launch {
-            tasksRepository.markTaskAsComplete(taskId) // TODO: Pending group decision, remove this.
+            //tasksRepository.markTaskAsComplete(taskId)
             ieasRepository.saveResults(taskId, responses)
         }
     }

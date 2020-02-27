@@ -15,7 +15,8 @@ private const val ITEM_VIEW_TYPE_TASK = 0
 private const val ITEM_VIEW_TYPE_DATE = 1
 
 class TaskAdapter(
-    private val taskListener: TaskListener
+    private val checkListener: TaskListener,
+    private val clickListener: TaskListener
 ) : ListAdapter<TaskAdapterItem, RecyclerView.ViewHolder>(TaskAdapterItemDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
@@ -37,7 +38,7 @@ class TaskAdapter(
         when (holder) {
             is TaskViewHolder -> {
                 val taskItem = getItem(position) as TaskAdapterItem.TaskItem
-                holder.bind(taskItem.task, taskListener)
+                holder.bind(taskItem.task, checkListener, clickListener)
             }
             is DateViewHolder -> {
                 val dateItem = getItem(position) as TaskAdapterItem.DateItem
@@ -64,9 +65,10 @@ class TaskAdapter(
 
     class TaskViewHolder private constructor(val binding: ListItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Task, taskListener: TaskListener) {
+        fun bind(item: Task, checkListener: TaskListener, clickListener: TaskListener) {
             binding.task = item
-            binding.clickListener = taskListener
+            binding.checkListener = checkListener
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 

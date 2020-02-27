@@ -57,9 +57,7 @@ class JournalViewModel(
     fun savePrompt(prompt: JournalPrompt, entryText: String) {
         viewModelScope.launch {
             journalRepository.saveEntry(prompt.promptText, entryText, Calendar.getInstance(), prompt.taskId)
-
-            // TODO: Pending group decision, remove this.
-            prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
+//            prompt.taskId?.let { tasksRepository.markTaskAsComplete(it) }
         }
     }
 

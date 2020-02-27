@@ -31,19 +31,19 @@ class TasksFragment : Fragment() {
         binding.taskViewModel = tasksViewModel
 
         // Set RecyclerView adapters and observe lists
-        val todoAdapter = TaskAdapter(TaskListener { task ->
-            navigateToTask(task)
-        })
+        val todoAdapter = TaskAdapter(
+            TaskListener { task -> task?.taskId?.let { tasksViewModel.markTaskAsComplete(it) }},
+            TaskListener { task -> navigateToTask(task) }
+        )
         binding.homeTodoList.adapter = todoAdapter
         tasksViewModel.todoList.observe(viewLifecycleOwner, Observer {tasks ->
             todoAdapter.addDatesAndSubmitList(tasks, false)
         })
 
-        val completedAdapter = TaskAdapter(TaskListener { task ->
-            task?.let {
-                tasksViewModel.markTaskAsIncomplete(task.taskId)
-            }
-        })
+        val completedAdapter = TaskAdapter(
+            TaskListener { task -> task?.let { tasksViewModel.markTaskAsIncomplete(task.taskId) } },
+            TaskListener { navigateToTask(null) }
+        )
         binding.homeCompletedList.adapter = completedAdapter
         tasksViewModel.completedList.observe(viewLifecycleOwner, Observer { tasks ->
             val todaySelected = tasksViewModel.todaySelected.value ?: true
@@ -76,8 +76,8 @@ class TasksFragment : Fragment() {
         task?.let {
             when (task.tool) {
                 Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
-                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
                 Tool.JOURNAL -> this.findNavController().navigate(R.id.journalFragment)
+                Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
                 Tool.OTHER -> tasksViewModel.markTaskAsComplete(task.taskId)
             }
         }

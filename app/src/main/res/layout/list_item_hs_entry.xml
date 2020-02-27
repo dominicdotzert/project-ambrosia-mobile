@@ -31,50 +31,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- TODO: Replace TextView grouping with custom view -->
             <TextView
-                android:id="@+id/before_label"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_regular"
-                android:text="BEFORE:"
-                android:textAppearance="@style/TextAppearance.EntryHeader"
-                app:layout_constraintStart_toEndOf="@id/hs_entry_time"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/before_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:text="@{Integer.toString(entry.before)}"
-                android:textAppearance="@style/TextAppearance.EntryHeader"
-                app:layout_constraintStart_toEndOf="@id/before_label"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/after_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_regular"
-                android:text="AFTER:"
-                android:textAppearance="@style/TextAppearance.EntryHeader"
-                app:layout_constraintStart_toEndOf="@id/before_value"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/after_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:text="@{Integer.toString(entry.after)}"
-                android:textAppearance="@style/TextAppearance.EntryHeader"
-                app:layout_constraintStart_toEndOf="@id/after_label"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_medium"
                 android:text="@{entry.label}"
                 android:textAppearance="@style/TextAppearance.ItalicBodyText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/hs_entry_time"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.projectambrosia.ambrosia.views.HungerScaleHistory
+                android:id="@+id/hs_entry_values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:entry="@{entry}"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hs_entry_time" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

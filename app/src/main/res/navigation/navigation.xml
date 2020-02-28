@@ -137,12 +137,6 @@
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
         </fragment>
-        <action
-            android:id="@+id/action_global_tasksFragment"
-            app:destination="@id/tasksFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:popUpTo="@+id/loginGraph"
-            app:popUpToInclusive="true" />
         <fragment
             android:id="@+id/collectUserInfoFragment"
             android:name="com.projectambrosia.ambrosia.login.fragments.CollectUserInfoFragment"
@@ -152,6 +146,12 @@
                 android:name="email"
                 app:argType="string" />
         </fragment>
+        <action
+            android:id="@+id/action_global_loadingFragment"
+            app:destination="@id/loadingFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:popUpTo="@+id/loginGraph"
+            app:popUpToInclusive="true" />
     </navigation>
     <fragment
         android:id="@+id/splashFragment"
@@ -167,6 +167,17 @@
             android:id="@+id/action_splashFragment_to_tasksFragment"
             app:destination="@id/tasksFragment"
             app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.projectambrosia.ambrosia.login.fragments.LoadingFragment"
+        android:label="LoadingFragment" >
+        <action
+            android:id="@+id/action_loadingFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:popUpTo="@+id/loadingFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

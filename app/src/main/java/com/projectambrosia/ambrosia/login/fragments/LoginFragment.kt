@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
 
         viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(LoginFragmentDirections.actionGlobalTasksFragment())
+                this.findNavController().navigate(LoginFragmentDirections.actionGlobalLoadingFragment())
                 viewModel.doneNavigatingToLogin()
             }
         })

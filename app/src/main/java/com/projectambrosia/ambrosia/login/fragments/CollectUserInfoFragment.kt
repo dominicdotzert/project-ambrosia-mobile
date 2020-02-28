@@ -47,7 +47,7 @@ class CollectUserInfoFragment : Fragment() {
         viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
             if (it) {
 //                Toast.makeText(requireActivity(), "Registering User", Toast.LENGTH_SHORT).show()
-                this.findNavController().navigate(LoginGraphDirections.actionGlobalTasksFragment())
+                this.findNavController().navigate(LoginGraphDirections.actionGlobalLoadingFragment())
                 viewModel.doneNavigatingHome()
             }
         })

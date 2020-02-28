@@ -31,16 +31,19 @@ class CreateAccountViewModel : ViewModel() {
     }
 
     private fun checkCredentials() {
-        var validEmail = false
-        email.value?.let {
-            validEmail = isValidEmail(it)
-        }
+        // FIXME: Uncomment after user testing
+        validCredentials.value = email.value != null && !email.value.isNullOrBlank()
 
-        var validPassword = false
-        password.value?.let {
-            validPassword = isValidPassword(it)
-        }
-
-        validCredentials.value = validEmail && validPassword
+//        var validEmail = false
+//        email.value?.let {
+//            validEmail = isValidEmail(it)
+//        }
+//
+//        var validPassword = false
+//        password.value?.let {
+//            validPassword = isValidPassword(it)
+//        }
+//
+//        validCredentials.value = validEmail && validPassword
     }
 }

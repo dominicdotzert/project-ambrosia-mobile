@@ -1,15 +1,14 @@
 package com.projectambrosia.ambrosia.hungerscale
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.repositories.HSEntryRepository
+import com.projectambrosia.ambrosia.utilities.DIALOG_OPEN_DELAY_MILLIS
 import com.projectambrosia.ambrosia.utilities.isToday
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 
 class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : ViewModel() {
@@ -20,6 +19,10 @@ class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : V
     val entryHistory = hsEntryRepository.loadHistory()
     val todaySelected = MutableLiveData<Boolean>()
     val completedList = MediatorLiveData<List<HSEntry>>()
+
+    private val _openHelpDialog = MutableLiveData<Boolean>()
+    val openHelpDialog: LiveData<Boolean>
+        get() = _openHelpDialog
 
     init {
         // Setup completedList MediatorLiveData
@@ -37,6 +40,17 @@ class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : V
         viewModelScope.launch {
             hsEntryRepository.addAfterValue(entry, after)
         }
+    }
+
+    fun showHelpDialog() {
+        viewModelScope.launch {
+            delay(DIALOG_OPEN_DELAY_MILLIS)
+            _openHelpDialog.value = true
+        }
+    }
+
+    fun doneOpeningHelpDialog() {
+        _openHelpDialog.value = false
     }
 
     override fun onCleared() {

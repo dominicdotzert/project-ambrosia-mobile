@@ -7,6 +7,7 @@ import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
+import com.projectambrosia.ambrosia.utilities.DIALOG_OPEN_DELAY_MILLIS
 import com.projectambrosia.ambrosia.utilities.Tool
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
 import com.projectambrosia.ambrosia.utilities.isToday
@@ -63,7 +64,7 @@ class JournalViewModel(
 
     fun openJournalDialog(taskId: Long) {
         viewModelScope.launch {
-            delay(150)
+            delay(DIALOG_OPEN_DELAY_MILLIS)
 
             val task = tasksRepository.getTask(taskId)
 

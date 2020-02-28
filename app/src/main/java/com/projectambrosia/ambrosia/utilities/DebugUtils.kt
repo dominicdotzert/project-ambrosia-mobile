@@ -67,6 +67,9 @@ suspend fun populateDatabaseForNewUser(context: Context, userId: String) {
 
 suspend fun refreshDatabaseForUser(context: Context, userId: String) {
     withContext(Dispatchers.IO) {
+        val prefs = PreferencesHelper.getInstance(context)
+        prefs.firstTimeUser = true
+
         val db = AmbrosiaDatabase.getInstance(context)
 
         db.taskDao.removeTasksForUser(userId)

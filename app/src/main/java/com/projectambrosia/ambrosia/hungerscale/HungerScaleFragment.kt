@@ -15,6 +15,7 @@ import com.projectambrosia.ambrosia.databinding.DialogHungerScaleBinding
 import com.projectambrosia.ambrosia.databinding.DialogHungerScaleHelpBinding
 import com.projectambrosia.ambrosia.databinding.FragmentHungerScaleBinding
 import com.projectambrosia.ambrosia.utilities.MAX_TIME_BETWEEN_HS_PAIRS_IN_HOURS
+import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import java.util.*
 
 class HungerScaleFragment : Fragment() {
@@ -64,6 +65,19 @@ class HungerScaleFragment : Fragment() {
                 }
             }
         })
+
+        viewModel.openHelpDialog.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                showHelpPopup()
+                viewModel.doneOpeningHelpDialog()
+            }
+        })
+
+        val prefs = PreferencesHelper.getInstance(requireContext())
+        if (prefs.firstTimeUser) {
+            prefs.firstTimeUser = false
+            viewModel.showHelpDialog()
+        }
 
         return binding.root
     }

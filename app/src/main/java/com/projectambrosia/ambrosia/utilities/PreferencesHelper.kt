@@ -43,7 +43,12 @@ class PreferencesHelper private constructor(context: Context) {
         get() = prefs.getLong(ACCESS_TOKEN_CREATED_TIMESTAMP_KEY, -1)
         private set(accessTokenCreatedTimestamp) = prefs.edit().putLong(ACCESS_TOKEN_CREATED_TIMESTAMP_KEY, accessTokenCreatedTimestamp).apply()
 
+    var firstTimeUser: Boolean
+        get() = prefs.getBoolean(FIRST_TIME_USER, true)
+        set(firstTimeUser) = prefs.edit().putBoolean(FIRST_TIME_USER, firstTimeUser).apply()
+
     fun clearSignedInUser() {
+        firstTimeUser = true
         accessToken = null
         refreshToken = null
         userId = null

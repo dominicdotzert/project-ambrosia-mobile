@@ -41,6 +41,10 @@ const val USER_ID_KEY = "user_id"
 const val REFRESH_TOKEN_KEY = "refresh_token"
 const val ACCESS_TOKEN_KEY = "access_token"
 const val ACCESS_TOKEN_CREATED_TIMESTAMP_KEY = "access_token_created_timestamp"
+const val FIRST_TIME_USER = "first_time_user"
 
 // Authentication
 const val TOKEN_TIMEOUT_TIME_MILLIS = 600000 // Arbitrarily set to refresh every 10 minutes
+
+// Dialogs
+const val DIALOG_OPEN_DELAY_MILLIS = 150L

@@ -32,7 +32,7 @@ class CollectUserInfoViewModel(
     val buttonEnabled = MediatorLiveData<Boolean>()
 
     // User Info LiveData Objects
-    val name = MutableLiveData<String>("Name")
+    val name = MutableLiveData<String>()
     val ageRadioButtonId = MutableLiveData<Int>()
     val goalRadioButtonId = MutableLiveData<Int>()
     val motivation = MutableLiveData<String>()

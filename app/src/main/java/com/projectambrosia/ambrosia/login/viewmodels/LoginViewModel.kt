@@ -36,11 +36,6 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     val navigateToSignUp: LiveData<Boolean>
         get() = _navigateToSignUp
 
-    // FIXME: Debug block. Remove.
-    init {
-        email.value = "test@test.com"
-    }
-
     fun createAccount() {
         _navigateToSignUp.value = true
     }

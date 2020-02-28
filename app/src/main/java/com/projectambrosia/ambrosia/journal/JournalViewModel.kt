@@ -10,10 +10,7 @@ import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.utilities.Tool
 import com.projectambrosia.ambrosia.utilities.formatQuoteDate
 import com.projectambrosia.ambrosia.utilities.isToday
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 
 class JournalViewModel(
@@ -66,6 +63,8 @@ class JournalViewModel(
 
     fun openJournalDialog(taskId: Long) {
         viewModelScope.launch {
+            delay(150)
+
             val task = tasksRepository.getTask(taskId)
 
             task?.let {

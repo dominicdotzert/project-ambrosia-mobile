@@ -47,4 +47,4 @@ const val FIRST_TIME_USER = "first_time_user"
 const val TOKEN_TIMEOUT_TIME_MILLIS = 600000 // Arbitrarily set to refresh every 10 minutes
 
 // Dialogs
-const val DIALOG_OPEN_DELAY_MILLIS = 150L
+const val DIALOG_OPEN_DELAY_MILLIS = 300L

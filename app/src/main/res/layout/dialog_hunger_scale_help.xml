@@ -5,7 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/dialog_round_white">
+        android:background="@drawable/dialog_round_white"
+        android:clipToPadding="false">
 
         <ScrollView
             android:layout_width="match_parent"

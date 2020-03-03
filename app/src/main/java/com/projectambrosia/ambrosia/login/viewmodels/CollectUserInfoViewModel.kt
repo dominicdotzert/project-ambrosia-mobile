@@ -19,7 +19,7 @@ class CollectUserInfoViewModel(
         get() = _currentPage
 
     val progress = Transformations.map(_currentPage) {
-        (it + 1) * 20
+        it * 25
     }
 
     val buttonText = Transformations.map(_currentPage) {

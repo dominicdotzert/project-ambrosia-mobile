@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.databinding.DialogDisclaimerBinding
 import com.projectambrosia.ambrosia.databinding.DialogDisclaimerResultsBinding
@@ -35,6 +36,8 @@ class DisclaimerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentLoginDisclaimerBinding.inflate(inflater, container, false)
+        val args: DisclaimerFragmentArgs by navArgs()
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -42,7 +45,7 @@ class DisclaimerFragment : Fragment() {
 
         viewModel.navigatingToPassword.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment())
+                this.findNavController().navigate(DisclaimerFragmentDirections.actionDisclaimerFragmentToPasswordFragment(args.email, args.password))
                 viewModel.doneNavigatingToPassword()
             }
         })

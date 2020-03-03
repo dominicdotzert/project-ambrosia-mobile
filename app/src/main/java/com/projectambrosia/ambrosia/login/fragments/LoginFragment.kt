@@ -17,7 +17,6 @@ class LoginFragment : Fragment() {
 
 //    private var originalMode: Int? = null
 //
-//    // TODO: Fix screen for keyboard and small screen
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //        activity?.window?.attributes?.apply {
@@ -53,7 +52,7 @@ class LoginFragment : Fragment() {
 
         viewModel.navigateToSignUp.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.email.value, viewModel.password.value))
                 viewModel.doneNavigatingToSignUp()
             }
         })

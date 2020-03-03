@@ -8,26 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.projectambrosia.ambrosia.databinding.FragmentLoginCreateAccountBinding
-import com.projectambrosia.ambrosia.login.factories.PasswordViewModelFactory
+import com.projectambrosia.ambrosia.login.factories.CreateAccountViewModelFactory
 import com.projectambrosia.ambrosia.login.viewmodels.CreateAccountViewModel
 
 class CreateAccountFragment : Fragment() {
-
-//    private var originalMode: Int? = null
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        activity?.window?.attributes?.apply {
-//            originalMode = softInputMode
-//            softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
-////        }
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        activity?.window?.attributes?.softInputMode = originalMode
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +21,8 @@ class CreateAccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentLoginCreateAccountBinding.inflate(inflater, container, false)
-        val viewModel: CreateAccountViewModel by viewModels { PasswordViewModelFactory() }
+        val args: CreateAccountFragmentArgs by navArgs()
+        val viewModel: CreateAccountViewModel by viewModels { CreateAccountViewModelFactory(args.email, args.password) }
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel

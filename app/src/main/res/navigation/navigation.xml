@@ -114,6 +114,14 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <argument
+                android:name="email"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="password"
+                app:argType="string"
+                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/disclaimerFragment"
@@ -125,6 +133,14 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <argument
+                android:name="email"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="password"
+                app:argType="string"
+                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/createAccountFragment"
@@ -136,6 +152,14 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <argument
+                android:name="email"
+                app:argType="string"
+                app:nullable="true" />
+            <argument
+                android:name="password"
+                app:argType="string"
+                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/collectUserInfoFragment"

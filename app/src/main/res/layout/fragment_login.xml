@@ -28,6 +28,7 @@
                 android:id="@+id/ambrosia_logo"
                 android:layout_width="@dimen/logo_side_length"
                 android:layout_height="@dimen/logo_side_length"
+                android:layout_marginTop="@dimen/spacing_regular"
                 android:src="@drawable/ic_ambrosia_logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

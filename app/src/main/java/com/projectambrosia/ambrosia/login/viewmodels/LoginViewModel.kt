@@ -43,10 +43,10 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     fun onContinue() {
         // FIXME: Remove when server is ready
         var loggedIn = false
-        email.value?.let {
+        email.value?.trim()?.let {
             if (it.isNotBlank()) {
                 viewModelScope.launch {
-                    if (userRepository.logUserInOffline(email.value!!.toString())) {
+                    if (userRepository.logUserInOffline(it)) {
                         loggedIn = true
                     }
                     when (loggedIn) {
@@ -64,7 +64,7 @@ class LoginViewModel(application: Application, private val userRepository: UserR
 
             // Show spinner
 
-            val loginResult = userRepository.logUserIn(email.value!!, password.value!!)
+            val loginResult = userRepository.logUserIn(email.value!!.trim(), password.value!!)
             if (loginResult is ResponseUserDetails) {
                 _navigateToHome.value = true
             } else {

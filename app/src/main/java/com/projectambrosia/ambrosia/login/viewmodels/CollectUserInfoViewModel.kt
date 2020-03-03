@@ -82,9 +82,9 @@ class CollectUserInfoViewModel(
             userRepository.createUserOffline(
                 getApplication(),
                 email,
-                name.value.toString(),
+                name.value.toString().trim(),
                 getGoal(),
-                motivation.value.toString()
+                motivation.value.toString().trim()
             )
             _navigateToHome.value = true
         }

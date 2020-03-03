@@ -36,7 +36,7 @@ class CreateAccountViewModel(emailFromLogin: String?, passwordFromLogin: String?
         validCredentials.value = email.value != null && !email.value.isNullOrBlank()
 
 //        var validEmail = false
-//        email.value?.let {
+//        email.value?.trim()?.let {
 //            validEmail = isValidEmail(it)
 //        }
 //

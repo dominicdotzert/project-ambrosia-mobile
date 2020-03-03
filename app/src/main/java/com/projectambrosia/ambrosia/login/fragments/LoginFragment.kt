@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
 
         viewModel.navigateToSignUp.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.email.value, viewModel.password.value))
+                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.email.value?.trim(), viewModel.password.value))
                 viewModel.doneNavigatingToSignUp()
             }
         })

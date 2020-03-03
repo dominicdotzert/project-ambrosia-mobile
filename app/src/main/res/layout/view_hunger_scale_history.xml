@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,106 +13,146 @@
     <merge
         android:background="@color/backgroundDarkOrange"
         android:orientation="horizontal"
-        tools:parentTag="android.widget.LinearLayout">
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <TextView
             android:id="@+id/value_1"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="1"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/value_2"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="2"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_1" />
 
         <TextView
             android:id="@+id/value_3"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="3"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_2" />
 
         <TextView
             android:id="@+id/value_4"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="4"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_3" />
 
         <TextView
             android:id="@+id/value_5"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="5"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_4" />
 
         <TextView
             android:id="@+id/value_6"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="6"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_5" />
 
         <TextView
             android:id="@+id/value_7"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="7"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_6" />
 
         <TextView
             android:id="@+id/value_8"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="8"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_7" />
 
         <TextView
             android:id="@+id/value_9"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="9"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/value_10"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_8" />
 
         <TextView
             android:id="@+id/value_10"
             android:layout_width="0dp"
-            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="10"
-            android:textAppearance="@style/TextAppearance.BodyText" />
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/value_9" />
     </merge>
 </layout>

@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.databinding.ViewHungerScaleHistoryBinding
@@ -20,7 +20,7 @@ class HungerScaleHistory @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-) : LinearLayout(context, attrs, defStyle) {
+) : ConstraintLayout(context, attrs, defStyle) {
 
     private val binding: ViewHungerScaleHistoryBinding =
         ViewHungerScaleHistoryBinding.inflate(LayoutInflater.from(context), this, true)

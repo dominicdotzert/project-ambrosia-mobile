@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
+import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.utilities.isToday
 import com.projectambrosia.ambrosia.utilities.refreshDatabaseForUser
 import kotlinx.coroutines.*
@@ -19,8 +20,16 @@ class TasksViewModel(
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _user = userRepository.getCurrentUser()
-    val userMotivation = Transformations.map(_user) {
-        it?.motivation
+    val userGoal = Transformations.map(_user) {
+        it?.let {
+            when (it.goal) {
+                1 -> application.resources.getString(R.string.user_goal_1)
+                2 -> application.resources.getString(R.string.user_goal_2)
+                3 -> application.resources.getString(R.string.user_goal_3)
+                4 -> application.resources.getString(R.string.user_goal_4)
+                else -> ""
+            }
+        }
     }
 
     val tasks = tasksRepository.getTasks()

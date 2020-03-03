@@ -10,7 +10,7 @@ class IEASQuestionsViewModel(application: Application) : AndroidViewModel(applic
     // Progress
     private val _currentPage = MutableLiveData(1)
     val progress: LiveData<Int> = Transformations.map(_currentPage) {
-        it * 25
+        (it-1) * 25
     }
 
     // Button text

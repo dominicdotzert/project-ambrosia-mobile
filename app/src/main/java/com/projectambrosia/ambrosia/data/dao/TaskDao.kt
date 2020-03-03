@@ -8,7 +8,8 @@ import com.projectambrosia.ambrosia.utilities.JOURNAL
 
 @Dao
 interface TaskDao : BaseDao<Task> {
-    @Query("SELECT * FROM tasks WHERE user_id = :userId ORDER BY timestamp DESC")
+    // TODO: Update test to check ordering
+    @Query("SELECT * FROM tasks WHERE user_id = :userId ORDER BY timestamp DESC, id ASC")
     fun getTasks(userId: String) : LiveData<List<Task>>
 
     // TODO: Add test

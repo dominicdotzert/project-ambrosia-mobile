@@ -2,8 +2,6 @@ package com.projectambrosia.ambrosia.utilities
 
 import android.content.Context
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
-import com.projectambrosia.ambrosia.data.models.HSEntry
-import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.models.User
 import kotlinx.coroutines.Dispatchers
@@ -57,10 +55,11 @@ suspend fun populateDatabaseForNewUser(context: Context, userId: String) {
     withContext(Dispatchers.IO) {
         val db = AmbrosiaDatabase.getInstance(context)
 
+        val today = Calendar.getInstance()
         db.taskDao.insert(
-            Task(1, userId, Calendar.getInstance(), "Complete the Intuitive Eating Assessment Scale", 1, Tool.IEAS, 1),
-            Task(2, userId, Calendar.getInstance(), "Prompt: Describe how your lunch actually tasted in your mouth", 1, Tool.JOURNAL, 1),
-            Task(3, userId, Calendar.getInstance(), "Chose a meal or snack, and use the hunger scale", 1, Tool.HS, 1)
+            Task(1, userId, today, "Complete the Intuitive Eating Assessment Scale", 1, Tool.IEAS, 1),
+            Task(2, userId, today, "Prompt: Describe how your lunch actually tasted in your mouth", 1, Tool.JOURNAL, 1),
+            Task(3, userId, today, "Chose a meal or snack, and use the hunger scale", 1, Tool.HS, 1)
         )
     }
 }

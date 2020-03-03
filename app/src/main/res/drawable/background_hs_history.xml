@@ -4,7 +4,10 @@
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="@color/backgroundOrange" />
+                    <size
+                        android:width="@dimen/hs_history_side_length"
+                        android:height="@dimen/hs_history_side_length" />
+                    <solid android:color="@color/backgroundDarkOrange" />
                 </shape>
             </item>
         </layer-list>
@@ -13,14 +16,21 @@
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
+                    <size
+                        android:width="@dimen/hs_history_side_length"
+                        android:height="@dimen/hs_history_side_length" />
                     <solid android:color="@color/backgroundOrange" />
-                </shape>
-            </item>
-            <item>
-                <shape android:shape="oval">
-                    <solid android:color="@color/salmon" />
                 </shape>
             </item>
         </layer-list>
     </item>
+    <item
+        android:drawable="@drawable/background_hs_history_left_selected"
+        android:maxLevel="2" />
+    <item
+        android:drawable="@drawable/background_hs_history_right_selected"
+        android:maxLevel="3" />
+    <item
+        android:drawable="@drawable/background_hs_history_selected"
+        android:maxLevel="4" />
 </level-list>

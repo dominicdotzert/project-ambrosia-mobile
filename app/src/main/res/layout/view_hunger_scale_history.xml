@@ -16,8 +16,9 @@
 
         <TextView
             android:id="@+id/value_1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="1"
@@ -25,8 +26,9 @@
 
         <TextView
             android:id="@+id/value_2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="2"
@@ -34,8 +36,9 @@
 
         <TextView
             android:id="@+id/value_3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="3"
@@ -43,8 +46,9 @@
 
         <TextView
             android:id="@+id/value_4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="4"
@@ -52,8 +56,9 @@
 
         <TextView
             android:id="@+id/value_5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="5"
@@ -61,8 +66,9 @@
 
         <TextView
             android:id="@+id/value_6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="6"
@@ -70,8 +76,9 @@
 
         <TextView
             android:id="@+id/value_7"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="7"
@@ -79,8 +86,9 @@
 
         <TextView
             android:id="@+id/value_8"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="8"
@@ -88,8 +96,9 @@
 
         <TextView
             android:id="@+id/value_9"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="9"
@@ -97,8 +106,9 @@
 
         <TextView
             android:id="@+id/value_10"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/hs_history_side_length"
+            android:layout_weight="1"
             android:background="@drawable/background_hs_history"
             android:gravity="center"
             android:text="10"

@@ -43,12 +43,10 @@
 
             <com.projectambrosia.ambrosia.views.HungerScaleHistory
                 android:id="@+id/hs_entry_values"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_medium"
                 app:entry="@{entry}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hs_entry_time" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

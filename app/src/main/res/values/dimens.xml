@@ -22,4 +22,7 @@
     <dimen name="hunger_scale_value_side">40dp</dimen>
 
     <dimen name="logo_side_length">100dp</dimen>
+
+    <dimen name="hs_history_side_length">24dp</dimen>
+    <dimen name="hs_history_side_length_half">12dp</dimen>
 </resources>

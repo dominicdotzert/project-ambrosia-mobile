@@ -45,7 +45,7 @@ class IEASResultsViewModel(
 
     init {
         viewModelScope.launch {
-            //tasksRepository.markTaskAsComplete(taskId)
+            tasksRepository.markTaskAsComplete(taskId)
             ieasRepository.saveResults(taskId, responses)
         }
     }

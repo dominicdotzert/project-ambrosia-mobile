@@ -9,44 +9,43 @@
             type="com.projectambrosia.ambrosia.login.viewmodels.CollectUserInfoViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundOrange"
         android:clipToPadding="false"
-        android:padding="@dimen/spacing_regular">
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="insideInset">
 
-        <TextView
-            android:id="@+id/user_goal_header"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_goal_header"
-            android:textAppearance="@style/TextAppearance.PageHeader"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/user_goal_explanation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_regular"
-            android:text="@string/user_goal_explanation"
-            android:textAppearance="@style/TextAppearance.LargeBodyText"
-            app:layout_constraintTop_toBottomOf="@id/user_goal_header" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@color/backgroundOrange"
             android:clipToPadding="false"
-            android:fadeScrollbars="false"
-            android:scrollbarStyle="insideInset"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_goal_explanation">
+            android:padding="@dimen/spacing_regular">
+
+            <TextView
+                android:id="@+id/user_goal_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_goal_header"
+                android:textAppearance="@style/TextAppearance.PageHeader"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/user_goal_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/user_goal_explanation"
+                android:textAppearance="@style/TextAppearance.LargeBodyText"
+                app:layout_constraintTop_toBottomOf="@id/user_goal_header" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@={viewModel.goalRadioButtonId}">
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:checkedButton="@={viewModel.goalRadioButtonId}"
+                app:layout_constraintTop_toBottomOf="@id/user_goal_explanation">
 
                 <RadioButton
                     android:id="@+id/user_goal_radio_button_1"
@@ -79,6 +78,6 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:text="@string/user_goal_4" />
             </RadioGroup>
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

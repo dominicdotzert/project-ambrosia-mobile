@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
                 app:layout_constraintTop_toTopOf="@id/home_heading_completed"
-                app:task_list_placeholder_visibility_inverted="@{taskViewModel.tasks}" />
+                app:task_list_selector_visibility="@{taskViewModel.tasks}" />
 
             <LinearLayout
                 android:id="@+id/tasks_empty_completed_list"

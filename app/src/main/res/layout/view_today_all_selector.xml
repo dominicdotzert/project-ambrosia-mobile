@@ -11,8 +11,7 @@
         android:id="@+id/selector_today_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_very_small"
-        android:paddingEnd="@dimen/spacing_very_small"
+        android:layout_marginEnd="@dimen/spacing_small"
         android:text="@string/today"
         android:textAppearance="@style/TextAppearance.MinorHeader"
         app:layout_constraintStart_toStartOf="parent" />
@@ -40,8 +39,7 @@
         android:id="@+id/selector_all_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_very_small"
-        android:paddingEnd="@dimen/spacing_very_small"
+        android:layout_marginStart="@dimen/spacing_small"
         android:text="@string/all"
         android:textAppearance="@style/TextAppearance.MinorHeader"
         app:layout_constraintStart_toEndOf="@id/selector_today_label" />

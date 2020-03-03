@@ -89,7 +89,7 @@
                 android:id="@+id/hunger_scale_today_all_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:hs_history_placeholder_visibility_inverted="@{hungerScaleViewModel.entryHistory}"
+                app:hs_history_selector_visibility="@{hungerScaleViewModel.entryHistory}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/hunger_scale_completed_header" />
 

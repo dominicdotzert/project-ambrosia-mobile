@@ -29,9 +29,13 @@ fun setJournalHistoryPlaceholderVisibility(view: ViewGroup, prompts: List<Journa
     view.visibility = if (prompts == null || prompts.isEmpty()) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("journal_entry_history_placeholder_visibility_inverted")
+@BindingAdapter("journal_entry_history_selector_visibility")
 fun setJournalHistoryPlaceholderVisibilityInverted(view: ViewGroup, prompts: List<JournalEntry>?) {
-    view.visibility = if (prompts == null || prompts.isEmpty()) View.GONE else View.VISIBLE
+    view.visibility =
+        if (prompts == null || prompts.isEmpty() || prompts.none { prompt -> !prompt.entryDate.isToday() })
+            View.GONE
+        else
+            View.VISIBLE
 }
 
 // Tasks
@@ -40,9 +44,13 @@ fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("task_list_placeholder_visibility_inverted")
+@BindingAdapter("task_list_selector_visibility")
 fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?) {
-    view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
+    view.visibility =
+        if (tasks == null || tasks.isEmpty() || tasks.none { task -> !task.timestamp.isToday() })
+            View.GONE
+        else
+            View.VISIBLE
 }
 
 @BindingAdapter("task_chevron_visibility")
@@ -56,9 +64,13 @@ fun setHSHistoryPlaceholderVisibility(view: ViewGroup, history: List<HSEntry>?) 
     view.visibility = if (history == null || history.isEmpty()) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("hs_history_placeholder_visibility_inverted")
+@BindingAdapter("hs_history_selector_visibility")
 fun setHSHistoryPlaceholderVisibilityInverted(view: ViewGroup, history: List<HSEntry>?) {
-    view.visibility = if (history == null || history.isEmpty()) View.GONE else View.VISIBLE
+    view.visibility =
+        if (history == null || history.isEmpty() || history.none { entry -> !entry.entryDate.isToday() })
+            View.GONE
+        else
+            View.VISIBLE
 }
 
 @BindingAdapter("hs_visible_if_entry_not_null")

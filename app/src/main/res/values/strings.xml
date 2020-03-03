@@ -8,6 +8,7 @@
     <!-- Tasks Strings -->
     <string name="tasks_goals_header">Goal</string>
     <string name="tasks_todo_header">TO-DO</string>
+    <string name="tasks_todo_list_empty">You\'ve completed all your tasks today!</string>
     <string name="tasks_completed_header">Completed</string>
     <string name="tasks_completed_list_empty">Your completed tasks will show up here!</string>
 

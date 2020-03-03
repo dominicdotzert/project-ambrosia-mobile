@@ -30,7 +30,7 @@ fun setJournalHistoryPlaceholderVisibility(view: ViewGroup, prompts: List<Journa
 }
 
 @BindingAdapter("journal_entry_history_selector_visibility")
-fun setJournalHistoryPlaceholderVisibilityInverted(view: ViewGroup, prompts: List<JournalEntry>?) {
+fun setJournalHistorySelectorVisibility(view: ViewGroup, prompts: List<JournalEntry>?) {
     view.visibility =
         if (prompts == null || prompts.isEmpty() || prompts.none { prompt -> !prompt.entryDate.isToday() })
             View.GONE
@@ -40,12 +40,17 @@ fun setJournalHistoryPlaceholderVisibilityInverted(view: ViewGroup, prompts: Lis
 
 // Tasks
 @BindingAdapter("task_list_placeholder_visibility")
-fun setTaskListPlaceholderVisibility(view: ViewGroup, tasks: List<Task>?) {
+fun setTaskListPlaceholderVisibility(view: View, tasks: List<Task>?) {
     view.visibility = if (tasks == null || tasks.isEmpty()) View.VISIBLE else View.GONE
 }
 
+@BindingAdapter("task_list_placeholder_visibility_inverted")
+fun setTaskListPlaceholderVisibilityInverted(view: View, tasks: List<Task>?) {
+    view.visibility = if (tasks == null || tasks.isEmpty()) View.GONE else View.VISIBLE
+}
+
 @BindingAdapter("task_list_selector_visibility")
-fun setTaskListPlaceholderVisibilityInverted(view: ViewGroup, tasks: List<Task>?) {
+fun setTaskListSelectorVisibility(view: ViewGroup, tasks: List<Task>?) {
     view.visibility =
         if (tasks == null || tasks.isEmpty() || tasks.none { task -> !task.timestamp.isToday() })
             View.GONE
@@ -65,7 +70,7 @@ fun setHSHistoryPlaceholderVisibility(view: ViewGroup, history: List<HSEntry>?) 
 }
 
 @BindingAdapter("hs_history_selector_visibility")
-fun setHSHistoryPlaceholderVisibilityInverted(view: ViewGroup, history: List<HSEntry>?) {
+fun setHSHistorySelectorVisibility(view: ViewGroup, history: List<HSEntry>?) {
     view.visibility =
         if (history == null || history.isEmpty() || history.none { entry -> !entry.entryDate.isToday() })
             View.GONE

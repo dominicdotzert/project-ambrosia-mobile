@@ -49,7 +49,7 @@
         <com.projectambrosia.ambrosia.views.HungerScaleValues
             android:id="@+id/hunger_scale_values"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/hunger_scale_value_side"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/background_hs_values"
             android:orientation="horizontal"

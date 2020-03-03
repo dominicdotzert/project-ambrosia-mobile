@@ -3,7 +3,7 @@ package com.projectambrosia.ambrosia.views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.projectambrosia.ambrosia.R
@@ -13,7 +13,7 @@ class HungerScaleValues @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-) : LinearLayout(context, attrs, defStyle){
+) : ConstraintLayout(context, attrs, defStyle){
 
     private val _selectedValue = MutableLiveData<Int>()
     val selectedValue: LiveData<Int>
@@ -32,13 +32,13 @@ class HungerScaleValues @JvmOverloads constructor(
         }
 
         if (selectable) {
-            hunger_scale_value_group.setOnCheckedChangeListener { _, i ->
+            hunger_scale_value_group.SetOnCheckedChangeListener { _, i ->
                 _selectedValue.value = getValueFromRadioButtonId(i)
             }
         } else {
-            hunger_scale_value_group.setOnCheckedChangeListener { _, i ->
+            hunger_scale_value_group.SetOnCheckedChangeListener { _, i ->
                 _selectedValue.value = getValueFromRadioButtonId(i)
-                if (i != -1) hunger_scale_value_group.clearCheck()
+                if (i != -1) hunger_scale_value_group.ClearCheck()
             }
         }
     }
@@ -58,7 +58,7 @@ class HungerScaleValues @JvmOverloads constructor(
             else -> -1
         }
 
-        hunger_scale_value_group.check(idToCheck)
+        hunger_scale_value_group.Check(idToCheck)
     }
 
     private fun getValueFromRadioButtonId(id: Int): Int? {

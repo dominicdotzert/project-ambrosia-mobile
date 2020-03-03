@@ -138,7 +138,7 @@
         <item name="android:button">@android:color/transparent</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:maxLines">1</item>
     </style>
 

@@ -1,127 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    tools:parentTag="android.widget.LinearLayout">
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-    <!-- TODO: Polish this view. Revisit method of evenly distributing and setting width/height -->
-    <RadioGroup
+    <RadioButton
+        android:id="@+id/hunger_scale_value_1"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="1"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_2"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="2"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_3"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="3"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_4"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="4"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_5"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="5"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_6"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="6"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_5"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_7"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="7"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_6"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_8"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="8"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_7"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_9"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="9"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/hunger_scale_value_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_8"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RadioButton
+        android:id="@+id/hunger_scale_value_10"
+        style="@style/AmbrosiaHungerScaleValueRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="10"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/hunger_scale_value_9"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <com.projectambrosia.ambrosia.views.blRadioGroup
         android:id="@+id/hunger_scale_value_group"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/spacing_small"
-        android:paddingEnd="4dp">
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_1"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="1"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_2"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="2"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_3"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="3"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_4"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="4"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_5"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="5"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_6"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="6"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_7"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="7"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_8"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="8"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_9"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text="9"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/hunger_scale_value_10"
-            style="@style/AmbrosiaHungerScaleValueRadioButton"
-            android:layout_width="@dimen/hunger_scale_value_side"
-            android:layout_height="@dimen/hunger_scale_value_side"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="10"
-            android:textSize="10sp"
-            tools:ignore="HardcodedText" />
-    </RadioGroup>
+        android:visibility="gone"
+        app:constraint_referenced_ids="hunger_scale_value_1,hunger_scale_value_2,hunger_scale_value_3,hunger_scale_value_4,hunger_scale_value_5,hunger_scale_value_6,hunger_scale_value_7,hunger_scale_value_8,hunger_scale_value_9,hunger_scale_value_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </merge>

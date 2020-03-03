@@ -86,9 +86,9 @@
     <string name="ieas_question_12">When I am bored, I do NOT eat just for something to do.</string>
     <string name="ieas_question_13">When I am lonely, I do NOT turn to food for comfort.</string>
     <string name="ieas_question_14">I find other ways to cope with stress and anxiety than by eating.</string>
-    <string name="ieas_question_15">I trust my body to tell me when to eat.</string>
-    <string name="ieas_question_16">I trust my body to tell me what to eat.</string>
-    <string name="ieas_question_17">I trust my body to tell me how much to eat.</string>
+    <string name="ieas_question_15">I trust my body to tell me WHEN to eat.</string>
+    <string name="ieas_question_16">I trust my body to tell me WHAT to eat.</string>
+    <string name="ieas_question_17">I trust my body to tell me HOW MUCH to eat.</string>
     <string name="ieas_question_18">I rely on my hunger signals to tell me when to eat.</string>
     <string name="ieas_question_19">I rely on my fullness (satiety) signals to tell me when to stop eating.</string>
     <string name="ieas_question_20">I trust my body to tell me when to stop eating.</string>

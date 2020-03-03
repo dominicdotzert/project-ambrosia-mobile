@@ -20,7 +20,7 @@
         <action
             android:id="@+id/action_tasksFragment_to_loginGraph"
             app:destination="@id/loginGraph"
-            app:popUpTo="@+id/tasksFragment"
+            app:popUpTo="@id/tasksFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_tasksFragment_to_journalFragment"
@@ -150,7 +150,7 @@
             android:id="@+id/action_global_loadingFragment"
             app:destination="@id/loadingFragment"
             app:enterAnim="@anim/fragment_fade_enter"
-            app:popUpTo="@+id/loginGraph"
+            app:popUpTo="@id/loginGraph"
             app:popUpToInclusive="true" />
     </navigation>
     <fragment
@@ -161,12 +161,12 @@
         <action
             android:id="@+id/action_splashFragment_to_loginGraph"
             app:destination="@id/loginGraph"
-            app:popUpTo="@+id/splashFragment"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_tasksFragment"
             app:destination="@id/tasksFragment"
-            app:popUpTo="@+id/splashFragment"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -177,7 +177,7 @@
             android:id="@+id/action_loadingFragment_to_tasksFragment"
             app:destination="@id/tasksFragment"
             app:enterAnim="@anim/fragment_fade_enter"
-            app:popUpTo="@+id/loadingFragment"
+            app:popUpTo="@id/loadingFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

@@ -12,8 +12,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:paddingBottom="?attr/actionBarSize">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -138,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_medium"
                 android:orientation="horizontal"
+                android:paddingBottom="@dimen/spacing_small"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
                 app:layout_constraintTop_toBottomOf="@id/home_heading_completed"

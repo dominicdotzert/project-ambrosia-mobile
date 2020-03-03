@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
         android:clipToPadding="false"
+        android:paddingTop="?android:attr/actionBarSize"
         tools:context=".login.fragments.CollectUserInfoFragment">
 
         <androidx.constraintlayout.widget.Guideline

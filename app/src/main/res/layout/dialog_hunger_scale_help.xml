@@ -2,117 +2,112 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_regular"
         android:background="@drawable/dialog_round_white"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/hunger_scale_help_close_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_regular"
-            app:layout_constraintBottom_toTopOf="@id/hunger_scale_help_close_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:clipToPadding="false"
+            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/hs_instructions_header"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="@string/what_is_hunger_scale"
+                android:textAppearance="@style/TextAppearance.HelpHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/hs_instructions_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/what_is_hunger_scale"
-                    android:textAppearance="@style/TextAppearance.HelpHeader"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/hs_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/hunger_scale_explanation"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_instructions_header" />
 
-                <TextView
-                    android:id="@+id/hs_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:text="@string/hunger_scale_explanation"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hs_instructions_header" />
+            <TextView
+                android:id="@+id/hs_how_to_use_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/how_to_use_header"
+                android:textAppearance="@style/TextAppearance.HelpHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_description" />
 
-                <TextView
-                    android:id="@+id/hs_how_to_use_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
-                    android:text="@string/how_to_use_header"
-                    android:textAppearance="@style/TextAppearance.HelpHeader"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hs_description" />
+            <TextView
+                android:id="@+id/hs_how_to_use_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/how_to_use_instruction"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_how_to_use_header" />
 
-                <TextView
-                    android:id="@+id/hs_how_to_use_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:text="@string/how_to_use_instruction"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hs_how_to_use_header" />
+            <TextView
+                android:id="@+id/hs_scale_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/scale"
+                android:textAppearance="@style/TextAppearance.HelpHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_how_to_use_description" />
 
-                <TextView
-                    android:id="@+id/hs_scale_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
-                    android:text="@string/scale"
-                    android:textAppearance="@style/TextAppearance.HelpHeader"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hs_how_to_use_description" />
+            <TextView
+                android:id="@+id/scale_indices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_scale_header" />
 
-                <TextView
-                    android:id="@+id/scale_indices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hs_scale_header" />
+            <TextView
+                android:id="@+id/scale_values"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_regular"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                app:layout_constraintStart_toEndOf="@id/scale_indices"
+                app:layout_constraintTop_toBottomOf="@id/hs_scale_header" />
 
-                <TextView
-                    android:id="@+id/scale_values"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_regular"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    app:layout_constraintStart_toEndOf="@id/scale_indices"
-                    app:layout_constraintTop_toBottomOf="@id/hs_scale_header" />
+            <TextView
+                android:id="@+id/hs_reopen_help_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/help_conclusion"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scale_indices" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_regular"
-                    android:text="@string/help_conclusion"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/scale_indices" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </ScrollView>
-
-        <Button
-            android:id="@+id/hunger_scale_help_close_button"
-            style="@style/AmbrosiaDialogPrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/secondary_button_height"
-            android:text="@string/got_it"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/hunger_scale_help_close_button"
+                style="@style/AmbrosiaDialogPrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/secondary_button_height"
+                android:layout_marginTop="@dimen/spacing_regular"
+                android:text="@string/got_it"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hs_reopen_help_instructions" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

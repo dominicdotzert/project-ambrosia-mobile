@@ -43,14 +43,17 @@ class LoginViewModel(application: Application, private val userRepository: UserR
     fun onContinue() {
         // FIXME: Remove when server is ready
         var loggedIn = false
-        if (!email.value.toString().isBlank()) {
-            viewModelScope.launch {
-                if (userRepository.logUserInOffline(email.value!!.toString())) {
-                    loggedIn = true
-                }
-                when (loggedIn) {
-                    false -> Toast.makeText(getApplication(), "Invalid credentials", Toast.LENGTH_SHORT).show()
-                    true -> _navigateToHome.value = true
+        email.value?.let {
+            if (it.isNotBlank()) {
+                viewModelScope.launch {
+                    if (userRepository.logUserInOffline(email.value!!.toString())) {
+                        loggedIn = true
+                    }
+                    when (loggedIn) {
+//                        false -> Toast.makeText(getApplication(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+                        false -> _validEmail.value = false
+                        true -> _navigateToHome.value = true
+                    }
                 }
             }
         }

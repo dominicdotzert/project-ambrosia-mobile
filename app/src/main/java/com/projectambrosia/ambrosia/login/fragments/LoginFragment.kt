@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,21 +15,21 @@ import com.projectambrosia.ambrosia.login.viewmodels.LoginViewModel
 
 class LoginFragment : Fragment() {
 
-    private var originalMode: Int? = null
-
-    // TODO: Fix screen for keyboard and small screen
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.window?.attributes?.apply {
-            originalMode = softInputMode
-            softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        activity?.window?.attributes?.softInputMode = originalMode
-    }
+//    private var originalMode: Int? = null
+//
+//    // TODO: Fix screen for keyboard and small screen
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        activity?.window?.attributes?.apply {
+//            originalMode = softInputMode
+//            softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+//        }
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        activity?.window?.attributes?.softInputMode = originalMode
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

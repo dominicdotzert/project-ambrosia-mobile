@@ -8,7 +8,10 @@
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
         android:clipToPadding="false"
-        android:padding="@dimen/spacing_regular"
+        android:paddingStart="@dimen/spacing_regular"
+        android:paddingTop="?android:attr/actionBarSize"
+        android:paddingEnd="@dimen/spacing_regular"
+        android:paddingBottom="@dimen/spacing_regular"
         tools:context=".ieas.fragments.IEASInstructionsFragment">
 
         <TextView

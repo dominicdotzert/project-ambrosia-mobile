@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/lightOrange</item>
         <item name="colorPrimaryDark">@color/darkOrange</item>
         <item name="colorAccent">@color/salmon</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
     </style>
 
     <style name="TextAppearance.Heading" parent="TextAppearance.MaterialComponents.Subtitle1">
@@ -137,7 +138,8 @@
         <item name="android:button">@android:color/transparent</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="AmbrosiaCardView" parent="CardView">

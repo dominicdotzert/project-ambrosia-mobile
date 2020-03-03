@@ -1,8 +1,8 @@
 package com.projectambrosia.ambrosia
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -40,8 +40,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.journalFragment,
                 R.id.hungerScaleFragment,
                 R.id.IEASResultsFragment,
-                R.id.loginFragment)
+                R.id.loginFragment,
+                R.id.splashFragment,
+                R.id.loadingFragment)
         )
+
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }

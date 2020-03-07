@@ -105,7 +105,7 @@
     <string name="invalid_credentials">Invalid credentials.</string>
     <!-- Welcome -->
     <string name="welcome">Welcome!</string>
-    <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to monitor your progress.]]></string>
+    <string name="sign_up_welcome_message_1"><![CDATA[To provide you with relevant tools in your Intuitive Eating journey, we will be using <i>machine learning</i> to create tailored tasks that will be updated each day.]]></string>
     <string name="sign_up_welcome_message_2">If you’re okay with this, please continue to the disclaimer!</string>
     <string name="ie_credit">Tools adapted from Evelyn Tribole and Elyse Resch’s model of Intuitive Eating</string>
     <!-- Disclaimer -->
@@ -144,16 +144,16 @@
     <string name="user_age_over_25">Over 25</string>
     <!-- Goal -->
     <string name="user_goal_header">How can we help you feel your best?</string>
-    <string name="user_goal_explanation">Select a goal that we can help you achieve. We’ll create a plan for you!</string>
-    <string name="user_goal_1">I want to improve my ability to honour my hunger and satiety.</string>
-    <string name="user_goal_2">I want to learn to integrate my fear foods back into my intake.</string>
+    <string name="user_goal_explanation">Select just one goal. We will create your first 12-week plan for you!</string>
+    <string name="user_goal_1">I want to improve my ability to honour my hunger and satiation.</string>
+    <string name="user_goal_2">I want to reintegrate foods that I fear to eat into my intake.</string>
     <string name="user_goal_3">I want to get better at detaching eating from emotional reasons.</string>
     <string name="user_goal_4">I want to learn to eat in a way that supports my physical health.</string>
     <!-- Motivation -->
     <string name="user_motivation_header">Tell us why</string>
     <string name="user_motivation_explanation_1">Research says that when you know your intentions, you’ve taken the 1st step to reaching your goal.</string>
     <string name="user_motivation_explanation_2">Tell us why you have chosen to embark on this journey with us.</string>
-    <string name="user_motivation_edit_text_hint">I want to feel relaxed when I am around food…</string>
+    <string name="user_motivation_edit_text_hint">Start typing…</string>
 
     <!-- Today All Selector -->
     <string name="today">Today</string>

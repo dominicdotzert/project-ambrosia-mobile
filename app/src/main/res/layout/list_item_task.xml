@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_small"
             android:src="@drawable/ic_chevron_right"
+            android:tint="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:task_chevron_visibility="@{task}" />

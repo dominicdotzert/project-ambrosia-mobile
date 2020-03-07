@@ -102,7 +102,7 @@ class TasksFragment : Fragment() {
             Tool.IEAS -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToIEASInstructionsFragment(task.taskId))
             Tool.JOURNAL -> this.findNavController().navigate(TasksFragmentDirections.actionTasksFragmentToJournalFragment().setTaskId(task.taskId))
             Tool.HS -> this.findNavController().navigate(R.id.hungerScaleFragment)
-            Tool.OTHER -> showActionTaskDialog(task)
+            Tool.OTHER -> if (!dialogOpen) showActionTaskDialog(task)
         }
     }
 

@@ -40,7 +40,7 @@
             android:id="@+id/task_dialog_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/action"
+            android:text="@string/task"
             android:textAppearance="@style/TextAppearance.EntryHeader"
             app:layout_constraintEnd_toEndOf="@id/right_wall_task_dialog"
             app:layout_constraintStart_toStartOf="@id/left_wall_task_dialog"

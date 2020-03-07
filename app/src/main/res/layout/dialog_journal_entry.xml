@@ -41,19 +41,18 @@
             android:id="@+id/journal_dialog_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/spacing_regular"
+            android:text="@string/task"
             android:textAppearance="@style/TextAppearance.EntryHeader"
-            app:freestyle_text="@{@string/freestyle}"
-            app:journal_prompt_task="@{prompt.taskId}"
+            app:journal_task_label_visibility="@{prompt}"
             app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"
             app:layout_constraintStart_toStartOf="@id/left_wall_journal_dialog"
-            app:layout_constraintTop_toTopOf="parent"
-            app:prompt_text="@{@string/prompt}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/journal_dialog_prompt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_regular"
             android:text="@{prompt.promptText}"
             android:textAppearance="@style/TextAppearance.BodyText"
             app:layout_constraintEnd_toEndOf="@id/right_wall_journal_dialog"

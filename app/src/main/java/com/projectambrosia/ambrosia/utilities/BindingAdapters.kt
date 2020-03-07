@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.children
 import androidx.databinding.BindingAdapter
+import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
@@ -58,9 +59,29 @@ fun setTaskListSelectorVisibility(view: ViewGroup, tasks: List<Task>?) {
             View.VISIBLE
 }
 
+@BindingAdapter("task_icon_src")
+fun setTaskIcon(imageView: ImageView, task: Task?) {
+    var imageResource = R.drawable.ic_check
+
+    task?.tool.let {
+        if (it == Tool.JOURNAL) imageResource = R.drawable.ic_journal_black_24dp
+        else if (it == Tool.HS) imageResource = R.drawable.ic_hunger_scale_black_24dp
+    }
+
+    imageView.setImageResource(imageResource)
+}
+
 @BindingAdapter("task_chevron_visibility")
 fun setTaskChevronVisibility(chevron: ImageView, task: Task?) {
-    chevron.visibility = if (task?.tool?.value == OTHER) View.GONE else View.VISIBLE
+    chevron.visibility = if (task?.isClickable() == true) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("disable_children_if_in_history")
+fun setChildrenEnabledIfTaskIsClickable(view: ViewGroup, task: Task?) {
+    val tasksEnabled = task?.isClickable() ?: true
+    for (child in view.children) {
+        child.isEnabled = tasksEnabled
+    }
 }
 
 // Hunger Scale
@@ -99,14 +120,6 @@ fun setViewVisibilityInverted(view: View, bool: Boolean, setInvisible: Boolean =
         !bool -> View.VISIBLE
         setInvisible -> View.INVISIBLE
         else -> View.GONE
-    }
-}
-
-@BindingAdapter("children_enabled_if_today")
-fun setChildrenEnabledIfToday(view: ViewGroup, calendar: Calendar) {
-    val isToday = calendar.isToday()
-    for (child in view.children) {
-        child.isEnabled = isToday
     }
 }
 

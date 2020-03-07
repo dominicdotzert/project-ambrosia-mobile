@@ -2,7 +2,6 @@ package com.projectambrosia.ambrosia.tasks
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -10,12 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.FragmentTasksBinding
-import com.projectambrosia.ambrosia.network.AmbrosiaApi
-import com.projectambrosia.ambrosia.network.RequestManager
-import com.projectambrosia.ambrosia.network.models.ResponseUserDetails
-import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import com.projectambrosia.ambrosia.utilities.Tool
-import kotlinx.coroutines.*
 
 class TasksFragment : Fragment() {
 
@@ -32,7 +26,6 @@ class TasksFragment : Fragment() {
 
         // Set RecyclerView adapters and observe lists
         val todoAdapter = TaskAdapter(
-            TaskListener { task -> task?.taskId?.let { tasksViewModel.markTaskAsComplete(it) } },
             TaskListener { task -> task?.let { navigateToTask(it) } }
         )
         binding.homeTodoList.adapter = todoAdapter
@@ -41,8 +34,7 @@ class TasksFragment : Fragment() {
         })
 
         val completedAdapter = TaskAdapter(
-            TaskListener { task -> task?.let { tasksViewModel.markTaskAsIncomplete(task.taskId) } },
-            TaskListener { task -> task?.let { navigateToTask(it) } }
+            TaskListener { }
         )
         binding.homeCompletedList.adapter = completedAdapter
         tasksViewModel.completedList.observe(viewLifecycleOwner, Observer { tasks ->

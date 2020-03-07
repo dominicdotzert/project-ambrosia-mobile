@@ -146,35 +146,18 @@
                 app:layout_constraintTop_toTopOf="@id/home_heading_completed"
                 app:task_list_selector_visibility="@{taskViewModel.tasks}" />
 
-            <LinearLayout
+            <TextView
                 android:id="@+id/tasks_empty_completed_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_medium"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/spacing_small"
+                android:text="@string/tasks_completed_list_empty"
+                android:textAppearance="@style/TextAppearance.BodyText"
+                android:textColor="@color/greyTextColor"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
                 app:layout_constraintTop_toBottomOf="@id/home_heading_completed"
-                app:task_list_placeholder_visibility="@{taskViewModel.completedList}">
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_regular"
-                    android:checked="true"
-                    android:enabled="false"
-                    android:minWidth="20dp"
-                    android:minHeight="20dp" />
-
-                <!-- TODO: Fix weird spacing -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tasks_completed_list_empty"
-                    android:textAppearance="@style/TextAppearance.BodyText"
-                    android:textColor="@color/greyTextColor" />
-            </LinearLayout>
+                app:task_list_placeholder_visibility="@{taskViewModel.completedList}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_completed_list"

@@ -9,10 +9,6 @@
             type="com.projectambrosia.ambrosia.data.models.Task" />
 
         <variable
-            name="checkListener"
-            type="com.projectambrosia.ambrosia.tasks.TaskListener" />
-
-        <variable
             name="clickListener"
             type="com.projectambrosia.ambrosia.tasks.TaskListener" />
     </data>
@@ -20,19 +16,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:children_enabled_if_today="@{task.timestamp}">
+        app:disable_children_if_in_history="@{task}">
 
-        <CheckBox
-            android:id="@+id/task_check_box"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/task_icon"
+            android:layout_width="@dimen/task_icon_side_length"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_small"
-            android:checked="@{task.completed}"
-            android:minWidth="20dp"
-            android:minHeight="20dp"
+            android:tint="@color/greyTextColor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:task_icon_src="@{task}" />
 
         <TextView
             android:id="@+id/task_text"
@@ -43,9 +37,10 @@
             android:layout_marginBottom="@dimen/spacing_small"
             android:text="@{task.taskText}"
             android:textAppearance="@style/TextAppearance.BodyText"
+            android:textColor="@color/list_item_task_text_colour"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/task_chevron"
-            app:layout_constraintStart_toEndOf="@id/task_check_box"
+            app:layout_constraintStart_toEndOf="@id/task_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -53,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_small"
-            android:src="@drawable/ic_chevron_right_black_24dp"
+            android:src="@drawable/ic_chevron_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:task_chevron_visibility="@{task}" />
@@ -62,21 +57,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="?attr/selectableItemBackground"
-            android:onClick="@{() -> checkListener.onClick(task)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/task_check_box"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="?attr/selectableItemBackground"
             android:onClick="@{() -> clickListener.onClick(task)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/task_check_box"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

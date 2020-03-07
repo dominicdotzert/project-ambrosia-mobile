@@ -129,8 +129,8 @@ class TasksFragment : Fragment() {
                 tasksViewModel.markTaskAsComplete(task.taskId)
                 if (dialogBinding.taskDialogEntry.text.isNotBlank()) {
                     tasksViewModel.saveReflectiveEntry(task, dialogBinding.taskDialogEntry.text.toString())
-                    dialog.dismiss()
                 }
+                dialog.dismiss()
             }
 
             dialog.setOnDismissListener {

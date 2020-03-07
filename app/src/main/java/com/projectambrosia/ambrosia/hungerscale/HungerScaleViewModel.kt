@@ -1,19 +1,26 @@
 package com.projectambrosia.ambrosia.hungerscale
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.repositories.HSEntryRepository
+import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.utilities.DIALOG_OPEN_DELAY_MILLIS
 import com.projectambrosia.ambrosia.utilities.isToday
 import kotlinx.coroutines.*
 import java.util.*
 
-class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : ViewModel() {
+class HungerScaleViewModel(
+    private val tasksRepository: TasksRepository,
+    private val hsEntryRepository: HSEntryRepository
+) : ViewModel() {
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    // Load hunger scale tasks
+    private val _hsTasks = hsEntryRepository.loadHungerScaleTasks()
+    val currentTask = Transformations.map(_hsTasks) {
+        it.firstOrNull()
+    }
 
     // Load history
     val entryHistory = hsEntryRepository.loadHistory()
@@ -33,12 +40,14 @@ class HungerScaleViewModel(private val hsEntryRepository: HSEntryRepository) : V
     fun saveEntry(value: Int, timestamp: Calendar, label: String) {
         viewModelScope.launch {
             hsEntryRepository.saveEntry(value, timestamp, label)
+            currentTask.value?.let { tasksRepository.markTaskAsComplete(currentTask.value!!.taskId) }
         }
     }
 
     fun savePairedEntry(entry: HSEntry, after: Int) {
         viewModelScope.launch {
             hsEntryRepository.addAfterValue(entry, after)
+            currentTask.value?.let { tasksRepository.markTaskAsComplete(currentTask.value!!.taskId) }
         }
     }
 

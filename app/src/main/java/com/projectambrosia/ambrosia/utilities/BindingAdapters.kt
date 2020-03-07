@@ -110,6 +110,17 @@ fun setHSVisibilityIfEntryNotNull(view: View, entry: HSEntry?) {
     view.visibility = if (entry != null) View.VISIBLE else View.GONE
 }
 
+@BindingAdapter("hs_header_text")
+fun setHSHeaderText(view: TextView, task: Task?) {
+    val textId = if (task == null) R.string.rate_your_hunger else R.string.task
+    view.setText(textId)
+}
+
+@BindingAdapter("hs_task_text_visibility")
+fun setHSTaskTextVisibility(view: View, task: Task?) {
+    view.visibility = if (task == null) View.GONE else View.VISIBLE
+}
+
 // Generic
 @BindingAdapter("visibility_adapter", "set_invisible")
 fun setViewVisibility(view: View, bool: Boolean, setInvisible: Boolean = false) {

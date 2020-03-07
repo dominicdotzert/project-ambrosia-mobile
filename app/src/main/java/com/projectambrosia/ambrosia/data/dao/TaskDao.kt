@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.projectambrosia.ambrosia.data.models.Task
+import com.projectambrosia.ambrosia.utilities.HUNGER_SCALE
 import com.projectambrosia.ambrosia.utilities.JOURNAL
 
 @Dao
@@ -27,6 +28,9 @@ interface TaskDao : BaseDao<Task> {
 
     @Query("SELECT * FROM tasks WHERE user_id = :userId AND is_completed = 0 AND tool = $JOURNAL")
     fun getJournalTasks(userId: String): LiveData<List<Task>>
+
+    @Query("SELECT * FROM tasks WHERE user_id = :userId AND is_completed = 0 AND tool = $HUNGER_SCALE")
+    fun getHungerScaleTasks(userId: String): LiveData<List<Task>>
 
     // FIXME: Remove later
     @Query("DELETE FROM tasks WHERE user_id = :userId")

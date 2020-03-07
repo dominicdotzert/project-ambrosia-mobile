@@ -22,50 +22,32 @@
             android:background="@color/backgroundDarkOrange"
             android:padding="@dimen/spacing_regular">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/center_journal_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
             <TextView
-                android:id="@+id/journal_history_header"
+                android:id="@+id/journal_history_timestamp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.EntryHeader"
-                app:freestyle_text="@{@string/freestyle}"
-                app:journal_prompt_task="@{entry.taskId}"
-                app:layout_constraintEnd_toEndOf="@id/center_journal_history"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:prompt_text="@{@string/prompt}" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="end"
                 android:textAppearance="@style/TextAppearance.EntryHeader"
                 app:entry_time="@{entry.entryDate}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/center_journal_history"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/journal_history_prompt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_regular"
+                android:layout_marginTop="@dimen/spacing_medium"
                 android:text="@{entry.promptText}"
                 android:textAppearance="@style/TextAppearance.BodyText"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/journal_history_header" />
+                app:layout_constraintTop_toBottomOf="@id/journal_history_timestamp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_regular"
+                android:layout_marginTop="@dimen/spacing_medium"
                 android:text="@{entry.entryText}"
                 android:textAppearance="@style/TextAppearance.BodyText"
                 android:textStyle="italic"

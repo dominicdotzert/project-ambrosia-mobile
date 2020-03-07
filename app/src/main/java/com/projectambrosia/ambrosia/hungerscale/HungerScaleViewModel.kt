@@ -40,7 +40,7 @@ class HungerScaleViewModel(
     fun saveEntry(value: Int, timestamp: Calendar, label: String) {
         viewModelScope.launch {
             hsEntryRepository.saveEntry(value, timestamp, label)
-            currentTask.value?.let { tasksRepository.markTaskAsComplete(currentTask.value!!.taskId) }
+//            currentTask.value?.let { tasksRepository.markTaskAsComplete(currentTask.value!!.taskId) }
         }
     }
 

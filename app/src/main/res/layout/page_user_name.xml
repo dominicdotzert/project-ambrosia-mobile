@@ -40,7 +40,7 @@
             android:layout_height="@dimen/edit_text_height"
             android:layout_marginTop="@dimen/spacing_regular"
             android:hint="@string/user_name_edit_text_hint"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:text="@={viewModel.name}"
             app:layout_constraintTop_toBottomOf="@id/user_name_explanation" />
 

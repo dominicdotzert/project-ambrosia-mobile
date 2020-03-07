@@ -50,6 +50,7 @@
             android:layout_marginTop="@dimen/spacing_regular"
             android:gravity="top|start"
             android:hint="@string/user_motivation_edit_text_hint"
+            android:inputType="textCapSentences"
             android:text="@={viewModel.motivation}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/user_motivation_explanation_2" />

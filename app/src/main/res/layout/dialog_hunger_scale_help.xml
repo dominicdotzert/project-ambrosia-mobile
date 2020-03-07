@@ -20,33 +20,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/hs_instructions_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/what_is_hunger_scale"
-                android:textAppearance="@style/TextAppearance.HelpHeader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/hs_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:text="@string/hunger_scale_explanation"
-                android:textAppearance="@style/TextAppearance.BodyText"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hs_instructions_header" />
-
-            <TextView
                 android:id="@+id/hs_how_to_use_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_regular"
                 android:text="@string/how_to_use_header"
                 android:textAppearance="@style/TextAppearance.HelpHeader"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hs_description" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/hs_how_to_use_description"

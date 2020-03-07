@@ -34,9 +34,7 @@
 
     <!-- Hunger Scale Instructions Strings -->
     <string name="got_it">Got it</string>
-    <string name="what_is_hunger_scale">What is the Hunger Scale?</string>
-    <string name="hunger_scale_explanation">The use of the Hunger Scale can help you become more tuned into your feelings of hunger and ultimately more in control of your eating habits.</string>
-    <string name="how_to_use_header">How to use</string>
+    <string name="how_to_use_header">How to use the hunger scale</string>
     <string name="how_to_use_instruction">Attempt to start eating when you feel you are at a 3 and stop eating at a 7. This range generally makes people feel the most comfortable.</string>
     <string name="scale">Scale</string>
     <string name="hs_level_1">Ravenous</string>

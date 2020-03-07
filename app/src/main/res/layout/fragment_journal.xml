@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_regular"
                 android:text="@string/title_journal"
-                android:textAppearance="@style/TextAppearance.Heading"
+                android:textAppearance="@style/TextAppearance.MainPageHeader"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"
                 app:layout_constraintTop_toBottomOf="@id/journal_divider" />

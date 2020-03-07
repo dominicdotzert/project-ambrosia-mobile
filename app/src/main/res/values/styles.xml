@@ -49,6 +49,14 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <style name="TextAppearance.MainPageHeader" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextAppearance.MinorHeader" parent="TextAppearance.BodyText">
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>

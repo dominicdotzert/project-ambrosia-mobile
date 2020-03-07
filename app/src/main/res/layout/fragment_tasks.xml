@@ -49,6 +49,7 @@
                 android:layout_marginTop="@dimen/spacing_regular"
                 android:text="@string/tasks_goals_header"
                 android:textAppearance="@style/TextAppearance.Heading"
+                android:textColor="@color/greyTextColor"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,11 +93,11 @@
                 app:layout_constraintTop_toBottomOf="@id/home_calendar_placeholder" />
 
             <TextView
-                android:id="@+id/home_heading_todo"
+                android:id="@+id/home_heading_tasks"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/tasks_todo_header"
+                android:text="@string/tasks_tasks_header"
                 android:textAppearance="@style/TextAppearance.Heading"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_tasks"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
@@ -111,7 +112,7 @@
                 android:textAppearance="@style/TextAppearance.BodyText"
                 android:textColor="@color/greyTextColor"
                 app:layout_constraintStart_toStartOf="@id/left_wall_tasks"
-                app:layout_constraintTop_toBottomOf="@id/home_heading_todo"
+                app:layout_constraintTop_toBottomOf="@id/home_heading_tasks"
                 app:task_list_placeholder_visibility="@{taskViewModel.todoList}" />
 
             <androidx.recyclerview.widget.RecyclerView

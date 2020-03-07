@@ -29,22 +29,28 @@ class JournalFragment : Fragment() {
         val binding = FragmentJournalBinding.inflate(inflater, container, false)
         val args: JournalFragmentArgs by navArgs()
 
-        val journalPromptAdapter = JournalPromptAdapter(JournalPromptListener { prompt ->
-            if (!dialogOpen) {
-                showJournalPopup(prompt)
-            }
-        })
+//        val journalPromptAdapter = JournalPromptAdapter(JournalPromptListener { prompt ->
+//            if (!dialogOpen) {
+//                showJournalPopup(prompt)
+//            }
+//        })
         val journalHistoryAdapter = JournalHistoryAdapter()
 
         binding.lifecycleOwner = this
         binding.journalViewModel = viewModel
-        binding.journalPromptList.adapter = journalPromptAdapter
+//        binding.journalPromptList.adapter = journalPromptAdapter
         binding.journalHistory.adapter = journalHistoryAdapter
 
+        binding.journalPromptCardView.setOnClickListener {
+            if (!dialogOpen) {
+                viewModel.currentPrompt.value?.let { showJournalPopup(it) }
+            }
+        }
+
         // Observe lists
-        viewModel.journalTasks.observe(viewLifecycleOwner, Observer {
-            journalPromptAdapter.addFreestyleAndSubmitList(it, requireActivity().application)
-        })
+//        viewModel.journalTasks.observe(viewLifecycleOwner, Observer {
+//            journalPromptAdapter.addFreestyleAndSubmitList(it, requireActivity().application)
+//        })
         viewModel.completedList.observe(viewLifecycleOwner, Observer {
             val todaySelected = viewModel.todaySelected.value ?: true
             journalHistoryAdapter.addDatesAndSubmitList(it, !todaySelected)

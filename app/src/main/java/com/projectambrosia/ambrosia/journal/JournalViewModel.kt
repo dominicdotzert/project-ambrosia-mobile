@@ -36,8 +36,15 @@ class JournalViewModel(
 
     // Load active prompts
     private val _journalTasks = journalRepository.loadPrompts()
-    val journalTasks = Transformations.map(_journalTasks) {
-        it.map { task -> JournalPrompt(task.taskText, task.taskId) }
+//    val journalTasks = Transformations.map(_journalTasks) {
+//        it.map { task -> JournalPrompt(task.taskText, task.taskId) }
+//    }
+    val currentPrompt = Transformations.map(_journalTasks) {
+        if (it.isNullOrEmpty()) JournalPrompt(getApplication<Application>().resources.getString(R.string.freestyle_new))
+        else {
+            val task = it.first()
+            JournalPrompt(task.taskText, task.taskId)
+        }
     }
 
     // Load history

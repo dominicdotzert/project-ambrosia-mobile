@@ -81,19 +81,68 @@
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"
                 app:layout_constraintTop_toBottomOf="@id/journal_divider" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/journal_prompt_list"
+            <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--    android:id="@+id/journal_prompt_list"-->
+            <!--    android:layout_width="0dp"-->
+            <!--    android:layout_height="wrap_content"-->
+            <!--    android:layout_marginTop="@dimen/spacing_regular"-->
+            <!--    android:clipToPadding="false"-->
+            <!--    android:orientation="horizontal"-->
+            <!--    android:paddingStart="@dimen/spacing_medium"-->
+            <!--    android:paddingEnd="@dimen/spacing_medium"-->
+            <!--    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+            <!--    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--    app:layout_constraintStart_toStartOf="parent"-->
+            <!--    app:layout_constraintTop_toBottomOf="@id/journal_heading" />-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/journal_prompt_card_view"
+                style="@style/AmbrosiaCardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_regular"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/spacing_medium"
-                android:paddingEnd="@dimen/spacing_medium"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/journal_heading" />
+                app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
+                app:layout_constraintStart_toStartOf="@id/left_wall_journal"
+                app:layout_constraintTop_toBottomOf="@id/journal_heading">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/backgroundDarkOrange"
+                    android:clipToPadding="false"
+                    android:padding="@dimen/spacing_regular">
+
+                    <TextView
+                        android:id="@+id/journal_prompt_task_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/spacing_regular"
+                        android:text="@string/task"
+                        android:textAppearance="@style/TextAppearance.EntryHeader"
+                        app:journal_task_label_visibility="@{journalViewModel.currentPrompt}"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/journal_prompt_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{journalViewModel.currentPrompt.promptText}"
+                        android:textAppearance="@style/TextAppearance.BodyText"
+                        app:layout_constraintTop_toBottomOf="@id/journal_prompt_task_label" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:background="@drawable/background_hs_values"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_small"
+                        android:paddingBottom="@dimen/spacing_small"
+                        android:text="@string/start_typing_placeholder"
+                        android:textAppearance="@style/TextAppearance.GreyBodyText"
+                        app:layout_constraintTop_toBottomOf="@id/journal_prompt_text" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/journal_completed_heading"
@@ -104,7 +153,7 @@
                 android:textAppearance="@style/TextAppearance.Heading"
                 app:layout_constraintEnd_toEndOf="@id/right_wall_journal"
                 app:layout_constraintStart_toStartOf="@id/left_wall_journal"
-                app:layout_constraintTop_toBottomOf="@id/journal_prompt_list" />
+                app:layout_constraintTop_toBottomOf="@id/journal_prompt_card_view" />
 
             <com.projectambrosia.ambrosia.views.TodayAllSelector
                 android:id="@+id/journal_today_all_selector"

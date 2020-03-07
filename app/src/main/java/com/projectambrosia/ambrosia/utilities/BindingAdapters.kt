@@ -10,6 +10,7 @@ import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.HSEntry
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.Task
+import com.projectambrosia.ambrosia.journal.JournalPrompt
 import com.projectambrosia.ambrosia.views.IEASResultView
 import java.util.*
 
@@ -37,6 +38,11 @@ fun setJournalHistorySelectorVisibility(view: ViewGroup, prompts: List<JournalEn
             View.GONE
         else
             View.VISIBLE
+}
+
+@BindingAdapter("journal_task_label_visibility")
+fun setJournalTaskLabelVisibility(view: View, prompt: JournalPrompt?) {
+    view.visibility = if (prompt?.taskId == null) View.GONE else View.VISIBLE
 }
 
 // Tasks

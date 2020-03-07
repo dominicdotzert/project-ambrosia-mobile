@@ -47,7 +47,7 @@
             android:gravity="center"
             android:text="@string/ieas_credit"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.CreditText"
+            android:textAppearance="@style/TextAppearance.GreyBodyText"
             app:layout_constraintBottom_toTopOf="@id/ieas_start_button" />
 
         <Button

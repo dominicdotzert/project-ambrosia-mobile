@@ -51,7 +51,7 @@
             android:layout_marginBottom="@dimen/spacing_medium"
             android:text="@string/ie_credit"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.CreditText"
+            android:textAppearance="@style/TextAppearance.GreyBodyText"
             app:layout_constraintBottom_toTopOf="@id/login_welcome_continue_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

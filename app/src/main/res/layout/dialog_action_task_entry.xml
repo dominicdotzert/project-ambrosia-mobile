@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="task"
+            type="com.projectambrosia.ambrosia.data.models.Task" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_round_journal"
+        android:clipToPadding="false">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_wall_task_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_wall_task_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_regular" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_task_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/task_dialog_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/action"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_task_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_task_dialog"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/task_dialog_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@{task.taskText}"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_task_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_task_dialog"
+            app:layout_constraintTop_toBottomOf="@id/task_dialog_header" />
+
+        <EditText
+            android:id="@+id/task_dialog_entry"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/journal_dialog_entry_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:background="@android:color/white"
+            android:gravity="top|start"
+            android:hint="@string/task_dialog_hint"
+            android:padding="@dimen/spacing_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_dialog_text" />
+
+        <Button
+            android:id="@+id/task_dialog_cancel_button"
+            style="@style/AmbrosiaDialogSecondaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toEndOf="@id/center_task_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_task_dialog"
+            app:layout_constraintTop_toBottomOf="@id/task_dialog_entry" />
+
+        <Button
+            android:id="@+id/task_dialog_save_button"
+            style="@style/AmbrosiaDialogPrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/secondary_button_height"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_regular"
+            android:text="@string/task_dialog_mark_as_complete"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_task_dialog"
+            app:layout_constraintStart_toStartOf="@id/center_task_dialog"
+            app:layout_constraintTop_toBottomOf="@id/task_dialog_entry" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:breakStrategy="balanced"
+            android:gravity="center"
+            android:text="@string/task_dialog_warning"
+            android:textAppearance="@style/TextAppearance.GreyBodyText"
+            app:layout_constraintEnd_toEndOf="@id/right_wall_task_dialog"
+            app:layout_constraintStart_toStartOf="@id/left_wall_task_dialog"
+            app:layout_constraintTop_toBottomOf="@id/task_dialog_cancel_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

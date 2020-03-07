@@ -6,14 +6,17 @@ import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.R
+import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.utilities.isToday
 import com.projectambrosia.ambrosia.utilities.refreshDatabaseForUser
 import kotlinx.coroutines.*
+import java.util.*
 
 class TasksViewModel(
     application: Application,
     private val userRepository: UserRepository,
-    private val tasksRepository: TasksRepository
+    private val tasksRepository: TasksRepository,
+    private val journalRepository: JournalRepository
 ) : AndroidViewModel(application) {
 
     private val viewModelJob = Job()
@@ -57,8 +60,8 @@ class TasksViewModel(
         tasksRepository.markTaskAsComplete(taskId)
     }
 
-    fun markTaskAsIncomplete(taskId: Long) = viewModelScope.launch {
-        tasksRepository.markTaskAsIncomplete(taskId)
+    fun saveReflectiveEntry(task: Task, entryText: String) = viewModelScope.launch {
+        journalRepository.saveEntry(task.taskText, entryText, Calendar.getInstance(), task.taskId)
     }
 
     fun logUserOut() {

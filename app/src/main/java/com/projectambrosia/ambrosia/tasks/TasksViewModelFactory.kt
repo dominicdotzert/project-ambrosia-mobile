@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
+import com.projectambrosia.ambrosia.data.repositories.JournalRepository
 import com.projectambrosia.ambrosia.data.repositories.TasksRepository
 import com.projectambrosia.ambrosia.data.repositories.UserRepository
 import com.projectambrosia.ambrosia.network.RequestManager
@@ -22,8 +23,9 @@ class TasksViewModelFactory(
 
             val userRepository = UserRepository(requestManager, prefs, database.userDao)
             val tasksRepository = TasksRepository(prefs, database.taskDao)
+            val journalRepository = JournalRepository(prefs, database.journalEntryDao, database.taskDao)
 
-            return TasksViewModel(application, userRepository, tasksRepository) as T
+            return TasksViewModel(application, userRepository, tasksRepository, journalRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

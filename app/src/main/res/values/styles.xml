@@ -38,7 +38,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextAppearance.CreditText" parent="TextAppearance.BodyText">
+    <style name="TextAppearance.GreyBodyText" parent="TextAppearance.BodyText">
         <item name="android:textColor">@color/greyTextColor</item>
     </style>
 

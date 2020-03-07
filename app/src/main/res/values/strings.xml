@@ -14,6 +14,10 @@
     <string name="task_item_journal"><![CDATA[<b>Journal:</b> %s]]></string>
     <string name="task_item_hunger_scale"><![CDATA[<b>Hunger Scale:</b> %s]]></string>
     <string name="task_item_action"><![CDATA[<b>Action:</b> %s]]></string>
+    <string name="action">Action</string>
+    <string name="task_dialog_hint">Optional: Reflect here…</string>
+    <string name="task_dialog_mark_as_complete">Mark as complete</string>
+    <string name="task_dialog_warning">You will not be able to undo this action after you “mark as complete”.</string>
 
     <!-- Journal Strings -->
     <string name="quote_body">\"%s\"</string>

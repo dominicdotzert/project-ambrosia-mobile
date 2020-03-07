@@ -84,6 +84,39 @@
                         android:orientation="horizontal"
                         app:layout_constraintTop_toBottomOf="@id/hunger_scale_task_text"
                         app:selectable="false" />
+
+                    <TextView
+                        android:id="@+id/hunger_scale_starved_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="@string/starved"
+                        android:textAppearance="@style/TextAppearance.EntryHeader"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hunger_scale_control_values" />
+
+                    <View
+                        android:id="@+id/hs_arrow_body"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@color/darkGrey"
+                        app:layout_constraintBottom_toBottomOf="@id/hunger_scale_starved_label"
+                        app:layout_constraintEnd_toStartOf="@id/hunger_scale_stuffed_label"
+                        app:layout_constraintStart_toEndOf="@id/hunger_scale_starved_label"
+                        app:layout_constraintTop_toTopOf="@id/hunger_scale_starved_label"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <TextView
+                        android:id="@+id/hunger_scale_stuffed_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="@string/stuffed"
+                        android:textAppearance="@style/TextAppearance.EntryHeader"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hunger_scale_control_values" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

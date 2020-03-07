@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="task"
+            type="com.projectambrosia.ambrosia.data.models.Task" />
+
+        <variable
             name="hungerValue"
             type="Integer" />
 
@@ -26,24 +30,35 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <TextView
-            android:id="@+id/hunger_scale_card_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rate_your_hunger"
-            android:textAppearance="@style/TextAppearance.EntryHeader"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
             android:id="@+id/hunger_scale_help_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_small"
             android:src="@drawable/ic_help_outline_black_20dp"
-            app:layout_constraintBottom_toBottomOf="@id/hunger_scale_card_header"
-            app:layout_constraintStart_toEndOf="@id/hunger_scale_card_header"
-            app:layout_constraintTop_toTopOf="@id/hunger_scale_card_header" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hunger_scale_dialog_card_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:hs_header_text="@{task}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hunger_scale_dialog_task_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@{task.taskText}"
+            android:textAppearance="@style/TextAppearance.BodyText"
+            app:hs_task_text_visibility="@{task}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_dialog_card_header" />
 
         <!-- TODO: Look into binding directly to the hungerValue variable -->
         <com.projectambrosia.ambrosia.views.HungerScaleValues
@@ -53,7 +68,40 @@
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/background_hs_values"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/hunger_scale_card_header" />
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_dialog_task_text" />
+
+        <TextView
+            android:id="@+id/hunger_scale_dialog_starved_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/starved"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_values" />
+
+        <View
+            android:id="@+id/hs_dialog_arrow_body"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@color/darkGrey"
+            app:layout_constraintBottom_toBottomOf="@id/hunger_scale_dialog_starved_label"
+            app:layout_constraintEnd_toStartOf="@id/hunger_scale_dialog_stuffed_label"
+            app:layout_constraintStart_toEndOf="@id/hunger_scale_dialog_starved_label"
+            app:layout_constraintTop_toTopOf="@id/hunger_scale_dialog_stuffed_label"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/hunger_scale_dialog_stuffed_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/stuffed"
+            android:textAppearance="@style/TextAppearance.EntryHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_values" />
 
         <!-- TODO: Revisit SeekBar customization -->
         <!--        <SeekBar-->
@@ -77,7 +125,7 @@
             android:textAppearance="@style/TextAppearance.EntryHeader"
             app:hs_visible_if_entry_not_null="@{previousEntry}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hunger_scale_values" />
+            app:layout_constraintTop_toBottomOf="@id/hunger_scale_dialog_starved_label" />
 
         <CheckBox
             android:id="@+id/hunger_scale_pair_checkbox"

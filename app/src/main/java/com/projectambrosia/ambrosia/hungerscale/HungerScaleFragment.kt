@@ -138,6 +138,7 @@ class HungerScaleFragment : Fragment() {
 
         // Set user's selected value
         dialogBinding.hungerScaleValues.selectValue(selectedValue)
+        dialogBinding.task = viewModel.currentTask.value
 
         // Show/hide previous entry views if the previous entry is recent and missing the after value.
         viewModel.completedList.value?.firstOrNull()?.let {

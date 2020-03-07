@@ -40,6 +40,8 @@
     <string name="notes_hint">50 character max</string>
     <string name="log">Log</string>
     <string name="hs_empty_history">Your hunger scale entries will show up here!</string>
+    <string name="starved">Starved</string>
+    <string name="stuffed">Stuffed</string>
 
     <!-- Hunger Scale Instructions Strings -->
     <string name="got_it">Got it</string>

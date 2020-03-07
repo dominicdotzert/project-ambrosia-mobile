@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:textAppearance="@style/TextAppearance.PageHeader"
-            android:textColor="@color/salmon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

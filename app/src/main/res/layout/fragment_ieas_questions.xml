@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundOrange"
+        android:clipToPadding="false"
         android:paddingStart="@dimen/spacing_regular"
         android:paddingTop="?android:attr/actionBarSize"
         android:paddingEnd="@dimen/spacing_regular"
@@ -33,7 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
-            android:text="@string/ieas_questions_instructions"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintTop_toBottomOf="@id/ieas_progress_bar" />
 

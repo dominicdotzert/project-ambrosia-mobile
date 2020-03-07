@@ -27,7 +27,7 @@ class IEASInstructionsFragment : Fragment() {
 
         // Set text colour
         val instructionsColour = String.format("#%06X", 0xFFFFFF and resources.getColor(salmon, null))
-        val instructionsText = resources.getString(R.string.ieas_full_instructions_2, instructionsColour, instructionsColour)
+        val instructionsText = resources.getString(R.string.ieas_full_instructions_2, instructionsColour)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             binding.ieasInstructions2.text = Html.fromHtml(instructionsText, Html.FROM_HTML_MODE_COMPACT)
         } else {

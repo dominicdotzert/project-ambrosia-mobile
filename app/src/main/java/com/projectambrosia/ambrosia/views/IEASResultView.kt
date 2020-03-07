@@ -36,5 +36,11 @@ class IEASResultView  @JvmOverloads constructor(
             @Suppress("DEPRECATION")
             ieas_result_percentage.text = Html.fromHtml(percentageHtmlString)
         }
+
+        if (percentage >= 50) {
+            ieas_result_percentage.setTextColor(context.resources.getColor(R.color.green, null))
+        } else {
+            ieas_result_percentage.setTextColor(context.resources.getColor(R.color.salmon, null))
+        }
     }
 }

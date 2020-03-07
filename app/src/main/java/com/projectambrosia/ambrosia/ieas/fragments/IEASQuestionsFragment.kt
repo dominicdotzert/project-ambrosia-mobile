@@ -4,7 +4,9 @@ import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +47,15 @@ class IEASQuestionsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.ieasQuestions.adapter = adapter
+
+        // Set instruction text
+        val instructionsText = resources.getString(R.string.ieas_questions_instructions)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            binding.ieasQuestionsInstruction.text = Html.fromHtml(instructionsText, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            @Suppress("DEPRECATION")
+            binding.ieasQuestionsInstruction.text = Html.fromHtml(instructionsText)
+        }
 
         // Update question list when user changes page
         viewModel.currentQuestions.observe(viewLifecycleOwner, Observer {
@@ -115,6 +126,7 @@ class IEASQuestionsFragment : Fragment() {
         dialogBuilder.setView(dialogBinding.root)
 
         val dialog = dialogBuilder.create()
+        dialog.setCanceledOnTouchOutside(false)
         dialog.window?.apply {
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             attributes.windowAnimations = R.style.DialogAnimation

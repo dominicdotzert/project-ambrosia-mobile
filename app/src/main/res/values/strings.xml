@@ -54,15 +54,15 @@
     <!-- IEAS Strings -->
     <string name="ieas_full_name">Intuitive Eating Assessment Scale</string>
     <string name="ieas_full_instructions_1">This quiz will assess whether you are an Intuitive Eater, or perhaps where you might need some work.</string>
-    <string name="ieas_full_instructions_2"><![CDATA[There will be <font color=%s>4 sections</font>, and you will answer a total of <font color=%s>23 questions</font>.]]></string>
+    <string name="ieas_full_instructions_2"><![CDATA[There will be <font color=%s>4 sections</font>, and you will see your results afterwards.]]></string>
     <string name="ieas_credit">Assessment adapted from Tracy Tylka</string>
     <string name="lets_go">Let\'s go</string>
-    <string name="ieas_questions_instructions">Please check off all that apply</string>
+    <string name="ieas_questions_instructions"><![CDATA[Does it <i>mostly</i> apply?]]></string>
     <string name="next">Next</string>
     <string name="ieas_results_confirmation_dialog_header">Just to make sure</string>
     <string name="ieas_results_confirmation_dialog_label">By tapping complete, you will no longer be able to adjust your answers and you will be shown your results.</string>
     <string name="results">Results</string>
-    <string name="results_explanation">High percentages suggest areas that might need more work :)</string>
+    <string name="results_explanation">Low percentages suggest areas that might need more work :)</string>
     <string name="back_to_home">Back to home</string>
     <string name="ieas_percentage"><![CDATA[%d<small>%%</small>]]></string>
     <!-- TODO: Extract to string array -->
@@ -74,19 +74,19 @@
     <!-- IEAS Questions -->
     <!-- TODO: Extract to string array -->
     <string name="ieas_question_1">I try to avoid certain foods high in fat, carbs, or calories.</string>
-    <string name="ieas_question_2">I have forbidden foods that I don’t allow myself to eat. </string>
+    <string name="ieas_question_2">If I am craving a certain food, I don’t allow myself to have it.</string>
     <string name="ieas_question_3">I get mad at myself for eating something unhealthy.</string>
-    <string name="ieas_question_4">If I am craving a certain food, I allow myself to have it.</string>
-    <string name="ieas_question_5">I allow myself to eat what food I desire at the moment.</string>
-    <string name="ieas_question_6">I do NOT follow eating rules or dieting plans that dictate what, when, and/or how much to eat.</string>
+    <string name="ieas_question_4">I have forbidden foods that I don’t allow myself to eat. </string>
+    <string name="ieas_question_5">I don’t allow myself to eat what food I desire at the moment.</string>
+    <string name="ieas_question_6">I follow eating rules or diet plans that dictate what, when, and how to eat.</string>
     <string name="ieas_question_7">I find myself eating when I’m feeling emotional (e.g., anxious, depressed, sad), even when I’m not physically hungry.</string>
     <string name="ieas_question_8">I find myself eating when I am lonely, even when I’m not physically hungry.</string>
     <string name="ieas_question_9">I use food to help me soothe my negative emotions.</string>
     <string name="ieas_question_10">I find myself eating when I am stressed out, even when I’m not physically hungry.</string>
-    <string name="ieas_question_11">I am able to cope with my negative emotions (e.g., anxiety, sadness) without turning to food for comfort. </string>
-    <string name="ieas_question_12">When I am bored, I do NOT eat just for something to do.</string>
-    <string name="ieas_question_13">When I am lonely, I do NOT turn to food for comfort.</string>
-    <string name="ieas_question_14">I find other ways to cope with stress and anxiety than by eating.</string>
+    <string name="ieas_question_11">I am not able to cope with my negative emotions (e.g., anxiety and sadness) without turning to food for comfort.</string>
+    <string name="ieas_question_12">When I am bored, I eat just for something to do.</string>
+    <string name="ieas_question_13">When I am lonely, I turn to food for comfort.</string>
+    <string name="ieas_question_14">I find difficulty finding ways to cope with stress and anxiety, other than by eating.</string>
     <string name="ieas_question_15">I trust my body to tell me WHEN to eat.</string>
     <string name="ieas_question_16">I trust my body to tell me WHAT to eat.</string>
     <string name="ieas_question_17">I trust my body to tell me HOW MUCH to eat.</string>

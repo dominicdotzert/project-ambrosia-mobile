@@ -5,10 +5,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CreateAccountViewModel(emailFromLogin: String?, passwordFromLogin: String?) : ViewModel() {
+class CreateAccountViewModel : ViewModel() {
 
-    val email = MutableLiveData<String>(emailFromLogin)
-    val password = MutableLiveData<String>(passwordFromLogin)
+    val email = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
     val validCredentials = MediatorLiveData<Boolean>()
     // TODO: Add error message for invalid credentials
 

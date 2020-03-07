@@ -28,11 +28,10 @@
                 android:id="@+id/ambrosia_logo"
                 android:layout_width="@dimen/logo_side_length"
                 android:layout_height="@dimen/logo_side_length"
-                android:layout_marginTop="@dimen/spacing_regular"
                 android:src="@drawable/ic_ambrosia_logo"
+                app:layout_constraintBottom_toTopOf="@id/ambrosia_app_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/ambrosia_app_name"
@@ -40,9 +39,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
+                app:layout_constraintBottom_toTopOf="@id/login_create_account_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ambrosia_logo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/ambrosia_description_label"
@@ -57,84 +57,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ambrosia_app_name" />
 
-            <TextView
-                android:id="@+id/login_error_text"
-                style="@style/TextAppearance.ErrorText"
+            <Button
+                android:id="@+id/login_create_account_button"
+                style="@style/AmbrosiaButtonSecondary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:text="@string/invalid_credentials"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_regular"
+                android:onClick="@{() -> viewModel.createAccount()}"
+                android:text="@string/create_account"
+                app:layout_constraintBottom_toTopOf="@id/login_sign_in_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ambrosia_description_label"
-                app:set_invisible="@{true}"
-                app:visibility_adapter_inverted="@{viewModel.validEmail}" />
-
-            <EditText
-                android:id="@+id/login_email_edit_text"
-                style="@style/AmbrosiaEditText"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edit_text_height"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:autofillHints="emailAddress"
-                android:hint="@string/email_placeholder"
-                android:inputType="textEmailAddress"
-                android:text="@={viewModel.email}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_error_text" />
-
-            <EditText
-                android:id="@+id/login_password_edit_text"
-                style="@style/AmbrosiaEditText"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edit_text_height"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:hint="@string/password_placeholder"
-                android:inputType="textPassword"
-                android:text="@={viewModel.password}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_email_edit_text" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/login_continue_button"
+                android:id="@+id/login_sign_in_button"
                 style="@style/AmbrosiaButton"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/button_height"
-                android:layout_marginTop="@dimen/spacing_regular"
-                android:onClick="@{() -> viewModel.onContinue()}"
+                android:onClick="@{() -> viewModel.signIn()}"
                 android:text="@string/sign_in"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_password_edit_text" />
-
-            <TextView
-                android:id="@+id/login_create_account_text"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="@dimen/spacing_regular"
-                android:gravity="center"
-                android:text="@string/create_account"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.LargeBodyText"
-                android:textColor="@color/darkSalmon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_continue_button" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:background="?attr/selectableItemBackground"
-                android:onClick="@{() -> viewModel.createAccount()}"
-                android:padding="@dimen/spacing_small"
-                app:layout_constraintBottom_toBottomOf="@id/login_create_account_text"
-                app:layout_constraintEnd_toEndOf="@id/login_create_account_text"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/login_create_account_text"
-                app:layout_constraintTop_toTopOf="@id/login_create_account_text"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

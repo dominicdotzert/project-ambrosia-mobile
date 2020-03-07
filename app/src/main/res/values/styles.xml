@@ -76,6 +76,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="AmbrosiaButtonSecondary" parent="AmbrosiaButton">
+        <item name="android:background">@drawable/ambrosia_button_secondary</item>
+        <item name="android:textColor">@color/lightOrange</item>
+    </style>
+
     <style name="AmbrosiaDialogPrimaryButton" parent="AmbrosiaButton">
         <item name="android:background">@drawable/ambrosia_dialog_primary_button</item>
         <item name="android:textAllCaps">true</item>

@@ -103,6 +103,12 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
+            <action
+                android:id="@+id/action_loginFragment_to_signInFragment"
+                app:destination="@id/signInFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/fragment_fade_exit"
+                app:popExitAnim="@anim/slide_out_right" />
         </fragment>
         <fragment
             android:id="@+id/welcomeFragment"
@@ -114,14 +120,6 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
-            <argument
-                android:name="email"
-                app:argType="string"
-                app:nullable="true" />
-            <argument
-                android:name="password"
-                app:argType="string"
-                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/disclaimerFragment"
@@ -133,14 +131,6 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
-            <argument
-                android:name="email"
-                app:argType="string"
-                app:nullable="true" />
-            <argument
-                android:name="password"
-                app:argType="string"
-                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/createAccountFragment"
@@ -152,14 +142,6 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/fragment_fade_exit"
                 app:popExitAnim="@anim/slide_out_right" />
-            <argument
-                android:name="email"
-                app:argType="string"
-                app:nullable="true" />
-            <argument
-                android:name="password"
-                app:argType="string"
-                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/collectUserInfoFragment"
@@ -176,6 +158,11 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:popUpTo="@id/loginGraph"
             app:popUpToInclusive="true" />
+        <fragment
+            android:id="@+id/signInFragment"
+            android:name="com.projectambrosia.ambrosia.login.fragments.SignInFragment"
+            android:label="fragment_sign_in"
+            tools:layout="@layout/fragment_sign_in" />
     </navigation>
     <fragment
         android:id="@+id/splashFragment"

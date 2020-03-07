@@ -97,9 +97,11 @@
 
     <!-- Login Flow -->
     <!-- Login -->
-    <string name="ambrosia_description">The tool to becoming the ultimate Intuitive Eater</string>
+    <string name="ambrosia_description">The tool for becoming the ultimate Intuitive Eater</string>
+    <!-- Sign In -->
+    <string name="welcome_back">Welcome back!</string>
+    <string name="enter_credentials">Enter your email and password below.</string>
     <string name="email_placeholder">Email address</string>
-    <string name="continue_label">Continue</string>
     <string name="invalid_credentials">Invalid credentials.</string>
     <!-- Welcome -->
     <string name="welcome">Welcome!</string>
@@ -123,8 +125,8 @@
     <string name="disclaimer_results_text_1">We advise you for now not to use our app because we are unable to support you in the areas you indicated.</string>
     <string name="disclaimer_results_text_2">Please consult a dietitian or medical professional before further use.</string>
     <string name="exit_app">Exit App</string>
-    <!-- Password -->
-    <string name="password_welcome">Hello, you\'re new!</string>
+    <!-- Create Account -->
+    <string name="hello_you_are_new">Hello, you\'re new!</string>
     <string name="create_credentials">Enter a valid email and a password that includes a symbol or a number and is 8 or more characters long.</string>
     <string name="password_placeholder">Password</string>
     <string name="create_account">Create account</string>

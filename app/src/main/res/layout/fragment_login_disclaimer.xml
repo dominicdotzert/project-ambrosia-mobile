@@ -76,7 +76,7 @@
             style="@style/AmbrosiaButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height"
-            android:text="@string/continue_label"
+            android:text="@string/next"
             app:enabled="@{viewModel.accept}"
             android:onClick="@{() -> viewModel.navigateToPassword()}"
             app:layout_constraintBottom_toBottomOf="parent"

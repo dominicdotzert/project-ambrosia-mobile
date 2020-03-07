@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.projectambrosia.ambrosia.login.viewmodels.CreateAccountViewModel" />
+            type="com.projectambrosia.ambrosia.login.viewmodels.SignInViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,13 +19,13 @@
         android:paddingTop="?android:attr/actionBarSize"
         android:paddingEnd="@dimen/spacing_regular"
         android:paddingBottom="@dimen/spacing_regular"
-        tools:context=".login.fragments.CreateAccountFragment">
+        tools:context=".login.fragments.SignInFragment">
 
         <TextView
-            android:id="@+id/create_account_header"
+            android:id="@+id/sign_in_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/hello_you_are_new"
+            android:text="@string/welcome_back"
             android:textAppearance="@style/TextAppearance.PageHeader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,11 +36,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_regular"
-            android:text="@string/create_credentials"
+            android:text="@string/enter_credentials"
             android:textAppearance="@style/TextAppearance.LargeBodyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/create_account_header" />
+            app:layout_constraintTop_toBottomOf="@id/sign_in_header" />
 
         <EditText
             android:id="@+id/create_account_email_edit_text"
@@ -68,14 +68,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/create_account_email_edit_text" />
 
+        <TextView
+            android:id="@+id/sign_in_error_text"
+            style="@style/TextAppearance.ErrorText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/invalid_credentials"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/create_account_password_edit_text"
+            app:set_invisible="@{true}"
+            app:visibility_adapter="@{viewModel.error}" />
+
         <Button
             android:id="@+id/create_account_button"
             style="@style/AmbrosiaButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height"
-            android:enabled="@{viewModel.validCredentials}"
-            android:onClick="@{() -> viewModel.createAccount()}"
-            android:text="@string/create_account"
+            android:onClick="@{() -> viewModel.onNext()}"
+            android:text="@string/sign_in"
+            app:enabled_inverted="@{viewModel.error}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

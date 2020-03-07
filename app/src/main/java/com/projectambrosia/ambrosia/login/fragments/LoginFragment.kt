@@ -1,6 +1,5 @@
 package com.projectambrosia.ambrosia.login.fragments
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.projectambrosia.ambrosia.databinding.FragmentLoginBinding
-import com.projectambrosia.ambrosia.login.factories.LoginViewModelFactory
 import com.projectambrosia.ambrosia.login.viewmodels.LoginViewModel
 
 class LoginFragment : Fragment() {
@@ -36,23 +34,21 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding =  FragmentLoginBinding.inflate(inflater, container, false)
-        val viewModel: LoginViewModel by viewModels { LoginViewModelFactory(requireActivity().application) }
+        val viewModel: LoginViewModel by viewModels()
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.loginCreateAccountText.paintFlags = binding.loginCreateAccountText.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-        viewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToSignIn.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(LoginFragmentDirections.actionGlobalLoadingFragment())
-                viewModel.doneNavigatingToLogin()
+                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignInFragment())
+                viewModel.doneNavigatingToSignIn()
             }
         })
 
         viewModel.navigateToSignUp.observe(viewLifecycleOwner, Observer {
             if (it) {
-                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.email.value?.trim(), viewModel.password.value))
+                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
                 viewModel.doneNavigatingToSignUp()
             }
         })

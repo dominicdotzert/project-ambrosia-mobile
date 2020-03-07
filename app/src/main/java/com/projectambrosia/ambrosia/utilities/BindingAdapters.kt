@@ -84,14 +84,22 @@ fun setHSVisibilityIfEntryNotNull(view: View, entry: HSEntry?) {
 }
 
 // Generic
+@BindingAdapter("visibility_adapter", "set_invisible")
+fun setViewVisibility(view: View, bool: Boolean, setInvisible: Boolean = false) {
+    view.visibility = when {
+        bool -> View.VISIBLE
+        setInvisible -> View.INVISIBLE
+        else -> View.GONE
+    }
+}
+
 @BindingAdapter("visibility_adapter_inverted", "set_invisible")
-fun setViewVisibility(view: View, isVisible: Boolean, setInvisible: Boolean = false) {
-    if (!isVisible)
-        view.visibility = View.VISIBLE
-    else if (setInvisible)
-        view.visibility = View.INVISIBLE
-    else
-        view.visibility = View.GONE
+fun setViewVisibilityInverted(view: View, bool: Boolean, setInvisible: Boolean = false) {
+    view.visibility = when {
+        !bool -> View.VISIBLE
+        setInvisible -> View.INVISIBLE
+        else -> View.GONE
+    }
 }
 
 @BindingAdapter("children_enabled_if_today")
@@ -112,4 +120,9 @@ fun formatJournalHistoryDate(view: TextView, entryDate: Calendar?) {
 @BindingAdapter("enabled_if_int_not_null")
 fun setIsEnabledIfNotNull(view: View, int: Int?) {
     view.isEnabled = int != null
+}
+
+@BindingAdapter("enabled_inverted")
+fun setEnabledInverted(view: View, bool: Boolean) {
+    view.isEnabled = !bool
 }

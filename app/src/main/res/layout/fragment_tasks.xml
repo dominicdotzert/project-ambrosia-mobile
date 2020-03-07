@@ -12,7 +12,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/spacing_regular">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

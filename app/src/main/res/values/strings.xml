@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Ambrosia</string>
 
-    <string name="title_home">Home</string>
+    <string name="title_tasks">Tasks</string>
     <string name="title_journal">Journal</string>
     <string name="title_hunger_scale">Hunger Scale</string>
 

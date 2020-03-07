@@ -5,7 +5,7 @@
     <item
         android:id="@+id/tasksFragment"
         android:icon="@drawable/ic_check"
-        android:title="@string/title_home" />
+        android:title="@string/title_tasks" />
     <item
         android:id="@+id/journalFragment"
         android:icon="@drawable/ic_journal_black_24dp"

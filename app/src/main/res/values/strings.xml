@@ -36,8 +36,8 @@
     <string name="rate_your_hunger">Rate your hunger from 1 – 10</string>
     <string name="pair_with_last_entry">Pair with last entry</string>
     <string name="time">Time</string>
-    <string name="notes">Notes</string>
-    <string name="notes_hint">50 character max</string>
+    <string name="notes">Food</string>
+    <string name="notes_hint">Describe your meal or snack</string>
     <string name="log">Log</string>
     <string name="hs_empty_history">Your hunger scale entries will show up here!</string>
     <string name="starved">Starved</string>

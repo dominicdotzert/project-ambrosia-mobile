@@ -11,6 +11,9 @@
     <string name="tasks_todo_list_empty">You\'ve completed all your tasks today!</string>
     <string name="tasks_completed_header">History</string>
     <string name="tasks_completed_list_empty">Your completed tasks will show up here!</string>
+    <string name="task_item_journal"><![CDATA[<b>Journal:</b> %s]]></string>
+    <string name="task_item_hunger_scale"><![CDATA[<b>Hunger Scale:</b> %s]]></string>
+    <string name="task_item_action"><![CDATA[<b>Action:</b> %s]]></string>
 
     <!-- Journal Strings -->
     <string name="quote_body">\"%s\"</string>

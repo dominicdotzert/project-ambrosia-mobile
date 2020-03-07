@@ -1,13 +1,19 @@
 package com.projectambrosia.ambrosia.tasks
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.projectambrosia.ambrosia.R
 import com.projectambrosia.ambrosia.data.models.Task
 import com.projectambrosia.ambrosia.databinding.ListItemTaskBinding
+import com.projectambrosia.ambrosia.utilities.Tool
 import com.projectambrosia.ambrosia.utilities.getHistoryDateString
 import com.projectambrosia.ambrosia.views.DateViewHolder
 
@@ -62,19 +68,35 @@ class TaskAdapter(
         submitList(list)
     }
 
-    class TaskViewHolder private constructor(val binding: ListItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TaskViewHolder private constructor(val binding: ListItemTaskBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Task, clickListener: TaskListener) {
             binding.task = item
+            binding.text = getTaskText(item)
             binding.clickListener = clickListener
             binding.executePendingBindings()
+        }
+
+        private fun getTaskText(task: Task): Spanned {
+            val taskText = when (task.tool) {
+                Tool.JOURNAL -> context.resources.getString(R.string.task_item_journal, task.taskText)
+                Tool.HS -> context.resources.getString(R.string.task_item_hunger_scale, task.taskText)
+                else -> context.resources.getString(R.string.task_item_action, task.taskText)
+            }
+
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Html.fromHtml(taskText, Html.FROM_HTML_MODE_COMPACT)
+            } else {
+                @Suppress("DEPRECATION")
+                Html.fromHtml(taskText)
+            }
         }
 
         companion object {
             fun from(parent: ViewGroup): TaskViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemTaskBinding.inflate(layoutInflater, parent, false)
-                return TaskViewHolder(binding)
+                return TaskViewHolder(binding, parent.context)
             }
         }
     }

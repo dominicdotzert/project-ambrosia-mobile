@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="text"
+            type="android.text.Spanned" />
+
+        <variable
             name="task"
             type="com.projectambrosia.ambrosia.data.models.Task" />
 
@@ -35,7 +39,7 @@
             android:layout_marginStart="@dimen/spacing_regular"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginBottom="@dimen/spacing_small"
-            android:text="@{task.taskText}"
+            android:text="@{text}"
             android:textAppearance="@style/TextAppearance.BodyText"
             android:textColor="@color/list_item_task_text_colour"
             app:layout_constraintBottom_toBottomOf="parent"

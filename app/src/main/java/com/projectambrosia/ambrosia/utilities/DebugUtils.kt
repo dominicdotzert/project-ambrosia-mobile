@@ -58,9 +58,9 @@ suspend fun populateDatabaseForNewUser(context: Context, userId: String) {
         val today = Calendar.getInstance()
         db.taskDao.insert(
             Task(1, userId, today, "Complete the Intuitive Eating Assessment Scale", 1, Tool.IEAS, 1),
-            Task(2, userId, today, "Describe how your lunch actually tasted in your mouth", 1, Tool.JOURNAL, 1),
-            Task(3, userId, today, "Chose a meal or snack, and use the hunger scale", 1, Tool.HS, 1),
-            Task(4, userId, today, "Do some self-love yoga.", 1, Tool.OTHER, 1)
+            Task(2, userId, today, "Describe a food you love that loves you back.", 1, Tool.JOURNAL, 1),
+            Task(3, userId, today, "Rate your hunger before and after a meal.", 1, Tool.HS, 1),
+            Task(4, userId, today, "Move your body in a way that makes you feel good.", 1, Tool.OTHER, 1)
         )
     }
 }

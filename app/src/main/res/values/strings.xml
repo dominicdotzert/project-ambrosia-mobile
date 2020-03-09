@@ -66,7 +66,7 @@
     <string name="ieas_full_instructions_2"><![CDATA[There will be <font color=%s>4 sections</font>, and you will see your results afterwards.]]></string>
     <string name="ieas_credit">Assessment adapted from Tracy Tylka</string>
     <string name="lets_go">Let\'s go</string>
-    <string name="ieas_questions_instructions"><![CDATA[Does it <i>mostly</i> apply?]]></string>
+    <string name="ieas_questions_instructions"><![CDATA[Select the ones that <i>mostly</i> apply:]]></string>
     <string name="next">Next</string>
     <string name="ieas_results_confirmation_dialog_header">Just to make sure</string>
     <string name="ieas_results_confirmation_dialog_label">By tapping complete, you will no longer be able to adjust your answers and you will be shown your results.</string>

@@ -7,16 +7,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-// TODO: Write tests
 class IEASRepository(
     private val prefs: PreferencesHelper,
     private val ieasResultsDao: IEASResultsDao
 ) {
 
     // TODO: Add network call
-    suspend fun saveResults(taskId: Long, responses: BooleanArray) {
+    suspend fun saveResults(taskId: Long, responses: BooleanArray, timestamp: Calendar) {
         withContext(Dispatchers.IO) {
-            val result = IEASResults(prefs.userId!!, responses, Calendar.getInstance(), taskId)
+            val result = IEASResults(prefs.userId!!, responses, timestamp, taskId)
             ieasResultsDao.insert(result)
         }
     }

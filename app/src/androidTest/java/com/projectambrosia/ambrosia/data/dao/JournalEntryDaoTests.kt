@@ -1,11 +1,10 @@
-package com.projectambrosia.ambrosia.data
+package com.projectambrosia.ambrosia.data.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.projectambrosia.ambrosia.data.dao.JournalEntryDao
-import com.projectambrosia.ambrosia.data.dao.UserDao
+import com.projectambrosia.ambrosia.data.AmbrosiaDatabase
 import com.projectambrosia.ambrosia.data.models.JournalEntry
 import com.projectambrosia.ambrosia.data.models.User
 import com.projectambrosia.ambrosia.utilities.getValue

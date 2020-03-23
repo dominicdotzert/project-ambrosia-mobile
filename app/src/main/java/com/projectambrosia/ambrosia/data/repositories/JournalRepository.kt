@@ -10,11 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-// TODO: Write tests
 class JournalRepository(
     private val prefs: PreferencesHelper,
     private val journalEntryDao: JournalEntryDao,
-    private val  taskDao: TaskDao
+    private val taskDao: TaskDao
 ) {
 
     suspend fun saveEntry(promptText: String, entryText: String, timestamp: Calendar, taskId: Long?) {
@@ -26,7 +25,7 @@ class JournalRepository(
     }
 
     fun loadPrompts(): LiveData<List<Task>> {
-        return taskDao.getJournalTasks(prefs.userId!!)
+        return taskDao.getUncompletedJournalTasks(prefs.userId!!)
     }
 
     fun loadHistory(): LiveData<List<JournalEntry>> {

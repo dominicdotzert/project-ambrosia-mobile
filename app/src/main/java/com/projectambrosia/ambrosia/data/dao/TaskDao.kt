@@ -13,24 +13,23 @@ interface TaskDao : BaseDao<Task> {
     @Query("SELECT * FROM tasks WHERE user_id = :userId ORDER BY timestamp DESC, id ASC")
     fun getTasks(userId: String) : LiveData<List<Task>>
 
-    // TODO: Add test
     @Query("SELECT * FROM tasks WHERE user_id = :userId AND task_id = :taskId LIMIT 1")
     fun getTask(userId: String, taskId: Long) : Task?
 
-    @Query("SELECT * FROM tasks WHERE user_id = :userId AND timestamp > :timeInMillis")
-    fun getTasksSince(userId: String, timeInMillis: Long): LiveData<List<Task>>
+//    @Query("SELECT * FROM tasks WHERE user_id = :userId AND timestamp > :timeInMillis")
+//    fun getTasksSince(userId: String, timeInMillis: Long): LiveData<List<Task>>
 
     @Query("UPDATE tasks SET is_completed = 1 WHERE user_id = :userId AND task_id = :taskId")
     fun updateTaskIsCompleted(userId: String, taskId: Long)
 
-    @Query("UPDATE tasks SET is_completed = 0 WHERE user_id = :userId AND task_id = :taskId")
-    fun updateTaskIsIncomplete(userId: String, taskId: Long)
+//    @Query("UPDATE tasks SET is_completed = 0 WHERE user_id = :userId AND task_id = :taskId")
+//    fun updateTaskIsIncomplete(userId: String, taskId: Long)
 
     @Query("SELECT * FROM tasks WHERE user_id = :userId AND is_completed = 0 AND tool = $JOURNAL")
-    fun getJournalTasks(userId: String): LiveData<List<Task>>
+    fun getUncompletedJournalTasks(userId: String): LiveData<List<Task>>
 
     @Query("SELECT * FROM tasks WHERE user_id = :userId AND is_completed = 0 AND tool = $HUNGER_SCALE")
-    fun getHungerScaleTasks(userId: String): LiveData<List<Task>>
+    fun getUncompletedHungerScaleTasks(userId: String): LiveData<List<Task>>
 
     // FIXME: Remove later
     @Query("DELETE FROM tasks WHERE user_id = :userId")

@@ -16,7 +16,7 @@ class HSEntryRepository(
     private val taskDao: TaskDao
 ) {
     fun loadHungerScaleTasks(): LiveData<List<Task>> {
-        return taskDao.getHungerScaleTasks(prefs.userId!!)
+        return taskDao.getUncompletedHungerScaleTasks(prefs.userId!!)
     }
 
     fun loadHistory(): LiveData<List<HSEntry>> {

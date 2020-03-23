@@ -33,6 +33,11 @@ android {
             debuggable true
         }
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -85,7 +90,10 @@ dependencies {
     // Testing
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "io.mockk:mockk:1.9.3"
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
 }

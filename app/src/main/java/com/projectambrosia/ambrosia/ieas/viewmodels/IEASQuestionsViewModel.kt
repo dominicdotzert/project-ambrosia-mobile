@@ -22,7 +22,7 @@ class IEASQuestionsViewModel(application: Application) : AndroidViewModel(applic
     }
 
     // Question lists
-    private val questions = MutableLiveData<List<IEASQuestion>>(
+    private val questions = MutableLiveData(
         IEASQuestion.get(application)
     )
     val currentQuestions: LiveData<List<IEASQuestion>> = Transformations.map(_currentPage) {

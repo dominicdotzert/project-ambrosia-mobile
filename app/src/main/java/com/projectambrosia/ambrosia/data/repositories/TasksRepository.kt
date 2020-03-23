@@ -5,7 +5,6 @@ import com.projectambrosia.ambrosia.utilities.PreferencesHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-// TODO: Write tests
 class TasksRepository(
     private val prefs: PreferencesHelper,
     private val taskDao: TaskDao
@@ -21,8 +20,8 @@ class TasksRepository(
         taskDao.updateTaskIsCompleted(prefs.userId!!, taskId)
     }
 
-    suspend fun markTaskAsIncomplete(taskId: Long) = withContext(Dispatchers.IO) {
-        // TODO: Add network call
-        taskDao.updateTaskIsIncomplete(prefs.userId!!, taskId)
-    }
+//    suspend fun markTaskAsIncomplete(taskId: Long) = withContext(Dispatchers.IO) {
+//        // TODO: Add network call
+//        taskDao.updateTaskIsIncomplete(prefs.userId!!, taskId)
+//    }
 }

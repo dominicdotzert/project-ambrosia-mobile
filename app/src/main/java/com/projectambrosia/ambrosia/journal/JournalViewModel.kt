@@ -73,7 +73,7 @@ class JournalViewModel(
         viewModelScope.launch {
             delay(DIALOG_OPEN_DELAY_MILLIS)
 
-            val task = tasksRepository.getTask(taskId)
+            val task = _journalTasks.value?.firstOrNull { task -> task.taskId == taskId }
 
             task?.let {
                 if (!it.isCompleted && it.tool == Tool.JOURNAL) {
